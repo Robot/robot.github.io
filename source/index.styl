@@ -1,0 +1,118 @@
+////////////////////////////////////////////////////////////////////////////////
+// -------------------------------------------------------------------------- //
+//                                                                            //
+//                       (C) 2010-2015 Robot Developers                       //
+//                       See LICENSE for licensing info                       //
+//                                                                            //
+// -------------------------------------------------------------------------- //
+////////////////////////////////////////////////////////////////////////////////
+
+@import common
+@import menu
+
+//----------------------------------------------------------------------------//
+// Header                                                                     //
+//----------------------------------------------------------------------------//
+
+#header
+	 width: 100%
+	height: auto
+	relative: left top
+
+	background: url("/common/header.jpg")
+	background-position: center
+	background-repeat: no-repeat
+	background-size: cover
+
+
+
+//----------------------------------------------------------------------------//
+// Banner                                                                     //
+//----------------------------------------------------------------------------//
+
+#banner
+	 width: 100%
+	height: 440px
+	relative: left top
+
+	& .container
+		absolute: left 50% top 50%
+		 margin: -168px 0 0 -490px
+		padding: 20px
+		text-align: center
+
+	& svg
+		 width: 384px
+		height:  88px
+		fill: grey(230)
+		margin-bottom: 10px
+
+	& h1, & h2
+		  font-size: 45px
+		line-height: 50px
+		font-weight: 700
+
+		 margin: 0px
+		padding: 0px
+		color: grey(230)
+
+	& h2
+		font-size: 50px
+
+	& a
+		 width: 320px
+		height:  70px
+		relative: left top
+
+		  font-size: 42px
+		line-height: 65px
+		font-weight: 700
+
+		color: grey(230)
+		background: none
+		margin-top: 25px
+		display: inline-block
+
+		border-radius: 8px
+		border: 2px solid grey(230)
+
+		&:hover
+			     color: grey( 60)
+			background: grey(230)
+
+
+
+//----------------------------------------------------------------------------//
+// Features                                                                   //
+//----------------------------------------------------------------------------//
+
+#features
+	& .feature
+		 float: left
+		 width: 220px
+		height: 365px
+		text-align: center
+
+		margin: 0px
+		margin-right: 20px
+		 fill: grey(60)
+		color: grey(60)
+
+		& svg
+			 width: 220px
+			height: 220px
+
+		& h1
+			  font-size: 24px
+			line-height: 38px
+			font-weight: 400
+			margin: 0px
+
+		& p
+			  font-size: 18px
+			line-height: 26px
+			font-weight: 300
+			margin: 0px
+
+	& .last
+		margin-right: 0px
