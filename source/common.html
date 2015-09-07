@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<!--////////////////////////////////////////////////////////////////////////////
+// ========================================================================== //
+//                                                                            //
+//                       (C) 2010-2015 Robot Developers                       //
+//                       See LICENSE for licensing info                       //
+//                                                                            //
+// ========================================================================== //
+/////////////////////////////////////////////////////////////////////////////-->
+
+<html lang="en">
+<head>
+
+	<title>{{title}}</title>
+	<meta name="description" content="Robot documentation and information site">
+
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name=      "mobile-web-app-capable" content="no">
+	<meta name="apple-mobile-web-app-capable" content="no">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="viewport" content="width=980, maximum-scale=1">
+
+	<link rel="stylesheet" href="/common/normalize.css" />
+	{{#each styles}}
+	<link rel="stylesheet" href="/common/{{this}}.css" />
+	{{/each}}
+
+</head>
+<body>
+
+	<div id="body">
+		{{{body}}}
+
+		<div id="footer-pad"></div>
+		<section id="footer">
+			<div class="container">
+
+				<div class="author">
+					<p>Licensed under the <a href="//tldrlegal.com/license/zlib-libpng-license-(zlib)">ZLIB License</a></p>
+					<p>Project by the <a href="//github.com/orgs/Robot/people">Robot Developers</a></p>
+				</div>
+
+				<div class="github">
+					<p>Proudly Hosted on <a href="//pages.github.com">
+						<svg><use xlink:href="/common/vectors.svg#github" /></svg>
+					</a></p>
+				</div>
+
+				<div class="clearfix"></div>
+
+			</div>
+		</section>
+	</div>
+
+	<script src="/common/svg4everybody.js"></script>
+
+	<script>
+		(function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,"script","//www.google-analytics.com/analytics.js","ga");
+		ga("create", "UA-41804800-7", "auto"); ga("send", "pageview");
+	</script>
+
+</body>
+</html>
