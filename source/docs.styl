@@ -24,95 +24,92 @@
 	background-repeat: no-repeat
 	background-size: cover
 
-
-
-//----------------------------------------------------------------------------//
-// Banner                                                                     //
-//----------------------------------------------------------------------------//
-
 #banner
 	 width: 100%
-	height: 440px
+	height: 100px
 	relative: left top
 
 	& .container
 		absolute: left 50% top 50%
-		 margin: -168px 0 0 -490px
-		padding: 20px
+		 margin: -32px 0 0 -490px
+		padding: 0px 20px 0px 20px
 		text-align: center
 
 	& svg
-		 width: 384px
-		height:  88px
+		 width: 256px
+		height:  64px
 		fill: grey(230)
 		margin-bottom: 10px
 
-	& h1, & h2
-		  font-size: 45px
-		line-height: 50px
-		font-weight: 700
 
-		 margin: 0px
+
+//----------------------------------------------------------------------------//
+// Docs                                                                       //
+//----------------------------------------------------------------------------//
+
+#docs
+	 width: 100%
+	height: auto
+	relative: left top
+
+	& .container
+		width: 980px
 		padding: 0px
-		color: grey(230)
-
-	& h2
-		font-size: 50px
-
-	& a
-		 width: 320px
-		height:  70px
-		relative: left top
-
-		  font-size: 42px
-		line-height: 65px
-		font-weight: 700
-
-		color: grey(230)
-		background: none
-		margin-top: 25px
-		display: inline-block
-
-		border-radius: 8px
-		border: 2px solid grey(230)
-
-		&:hover
-			     color: grey( 60)
-			background: grey(230)
 
 
 
 //----------------------------------------------------------------------------//
-// Features                                                                   //
+// Sidebar                                                                    //
 //----------------------------------------------------------------------------//
 
-#features
-	& .feature
-		 float: left
-		 width: 220px
-		height: 365px
-		text-align: center
+#sidebar
+	 float: left
+	 width: 220px
+	height: auto
+	relative: left top
 
-		margin: 0px
-		margin-right: 20px
-		 fill: grey(60)
+	& nav
+		margin: 20px 0px 0px 20px
+
+	& h1, & a
+		display: block
+
+		  font-size: 18px
+		line-height: 44px
+		font-weight: 400
+		 text-align: left
+
+		 margin: 0px 0px 0px  0px
+		padding: 0px 0px 0px 20px
+
+	& h1
+		font-weight: 600
+		color: grey(230)
+		background: rgb(200, 100, 20)
+
+	& a,
+	& a:hover, a:active,
+	& a:focus, a:visited
 		color: grey(60)
 
-		& svg
-			 width: 220px
-			height: 220px
+	& a:hover
+		color: grey(60)
+		background: grey(220)
 
-		& h1
-			  font-size: 24px
-			line-height: 38px
-			font-weight: 400
-			margin: 0px
+	& .active, & .active:hover
+		background: grey(220)
 
-		& p
-			  font-size: 18px
-			line-height: 26px
-			font-weight: 300
-			margin: 0px
 
-	& .last
-		margin-right: 0px
+
+//----------------------------------------------------------------------------//
+// Content                                                                    //
+//----------------------------------------------------------------------------//
+
+#content
+	 float: right
+	 width: 720px
+	height: auto
+	relative: left top
+
+	 margin:  0px
+	padding: 20px

@@ -1,0 +1,90 @@
+{{#context}}
+{
+	"styles" : [ "docs" ]
+}
+{{/context}}
+
+<section id="header">
+	<div class="noise"></div>
+
+	<section id="banner">
+		<div class="container">
+
+			<a href="/">
+				<svg><use xlink:href="/common/vectors.svg#robot" /></svg>
+			</a>
+
+		</div>
+	</section>
+
+	{{> partial-menu}}
+
+</section>
+
+<section id="docs">
+	<div class="container">
+
+		{{#if isAPI}}
+		<div id="sidebar">
+
+			<nav>
+				<h1>Types</h1>
+				<a class="{{global}}"    href="/api/global.html"   >Global   </a>
+				<a class="{{enum}}"      href="/api/enum.html"     >Enum     </a>
+				<a class="{{hash}}"      href="/api/hash.html"     >Hash     </a>
+				<a class="{{color}}"     href="/api/color.html"    >Color    </a>
+				<a class="{{image}}"     href="/api/image.html"    >Image    </a>
+				<a class="{{range}}"     href="/api/range.html"    >Range    </a>
+				<a class="{{point}}"     href="/api/point.html"    >Point    </a>
+				<a class="{{size}}"      href="/api/size.html"     >Size     </a>
+				<a class="{{bounds}}"    href="/api/bounds.html"   >Bounds   </a>
+			</nav>
+			<nav>
+				<h1>Native</h1>
+				<a class="{{keyboard}}"  href="/api/keyboard.html" >Keyboard </a>
+				<a class="{{mouse}}"     href="/api/mouse.html"    >Mouse    </a>
+				<a class="{{process}}"   href="/api/process.html"  >Process  </a>
+				<a class="{{module}}"    href="/api/module.html"   >Module   </a>
+				<a class="{{memory}}"    href="/api/memory.html"   >Memory   </a>
+				<a class="{{window}}"    href="/api/window.html"   >Window   </a>
+				<a class="{{screen}}"    href="/api/screen.html"   >Screen   </a>
+				<a class="{{timer}}"     href="/api/timer.html"    >Timer    </a>
+				<a class="{{clipboard}}" href="/api/clipboard.html">Clipboard</a>
+			</nav>
+
+		</div>
+		<div id="content">
+
+			{{{content}}}
+
+		</div>
+		{{else}}
+		<div id="sidebar">
+
+			<nav>
+				<h1>Documentation</h1>
+				<a class="{{about}}"        href="/docs/about.html"       >About       </a>
+				<a class="{{usage}}"        href="/docs/usage.html"       >Usage       </a>
+				<a class="{{platforms}}"    href="/docs/platforms.html"   >Platforms   </a>
+				<a class="{{versioning}}"   href="/docs/versioning.html"  >Versioning  </a>
+				<a class="{{changes}}"      href="/docs/changes.html"     >Changes     </a>
+			</nav>
+			<nav>
+				<h1>Community</h1>
+				<a class="{{philosophy}}"   href="/docs/philosophy.html"  >Philosophy  </a>
+				<a class="{{contributing}}" href="/docs/contributing.html">Contributing</a>
+				<a class="{{resources}}"    href="/docs/resources.html"   >Resources   </a>
+				<a class="{{attribution}}"  href="/docs/attribution.html" >Attribution </a>
+			</nav>
+
+		</div>
+		<div id="content">
+
+			{{{content}}}
+
+		</div>
+		{{/if}}
+
+		<div class="clearfix"></div>
+	</div>
+</section>
