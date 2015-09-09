@@ -9,6 +9,7 @@
 
 @import common
 @import menu
+@import marked
 
 //----------------------------------------------------------------------------//
 // Header                                                                     //
@@ -88,16 +89,16 @@
 		background: rgb(200, 100, 20)
 
 	& a,
-	& a:hover, a:active,
-	& a:focus, a:visited
+	& a:hover, & a:active,
+	& a:focus, & a:visited
 		color: grey(60)
 
 	& a:hover
 		color: grey(60)
-		background: grey(220)
+		background: grey(230)
 
 	& .active, & .active:hover
-		background: grey(220)
+		background: grey(230)
 
 
 
@@ -110,6 +111,3 @@
 	 width: 720px
 	height: auto
 	relative: left top
-
-	 margin:  0px
-	padding: 20px

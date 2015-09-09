@@ -1,0 +1,155 @@
+////////////////////////////////////////////////////////////////////////////////
+// -------------------------------------------------------------------------- //
+//                                                                            //
+//                       (C) 2010-2015 Robot Developers                       //
+//                       See LICENSE for licensing info                       //
+//                                                                            //
+// -------------------------------------------------------------------------- //
+////////////////////////////////////////////////////////////////////////////////
+
+//----------------------------------------------------------------------------//
+// Marked                                                                     //
+//----------------------------------------------------------------------------//
+
+.marked
+	 margin:  0px
+	padding: 20px
+	color: grey(60)
+
+	  font-size: 16px
+	line-height: 22px
+	font-weight: 400
+
+	& *
+		box-sizing: border-box
+
+	& > *:first-child
+		margin-top: 0px
+
+	& > *:last-child
+		margin-bottom: 0px
+
+	& p, & ul, & ol, & pre
+	& blockquote, & table
+		margin: 0px 0px 16px 0px
+
+	& h1, & h2, & h3,
+	& h4, & h5, & h6
+		  font-size: 16px
+		line-height: 16px
+		font-weight: 700
+		 margin: 16px 0px 16px 0px
+		padding:  0px 0px  0px 0px
+
+	& h1
+		  font-size: 36px
+		line-height: 36px
+		 margin-top: 36px
+
+		padding-bottom: 10px
+		 border-bottom: 2px solid grey(230)
+
+	& h2
+		  font-size: 28px
+		line-height: 28px
+		 margin-top: 28px
+
+		padding-bottom: 8px
+		 border-bottom: 2px solid grey(230)
+
+	& h3
+		  font-size: 24px
+		line-height: 24px
+		 margin-top: 24px
+
+	& h4
+		  font-size: 20px
+		line-height: 20px
+		 margin-top: 20px
+
+	& h6
+		color: grey(140)
+
+	& p
+		text-align: justify
+
+	& ol ol, & ul ol
+		list-style-type: lower-roman
+
+	& ul ul ol
+	& ul ol ol
+	& ol ul ol
+	& ol ol ol
+		list-style-type: lower-alpha
+
+	& a,
+	& a:hover, & a:active,
+	& a:focus, & a:visited
+		color: rgb(60, 120, 180)
+
+	& a:hover
+		text-decoration: underline
+
+	& code
+		background: grey(230)
+		padding: 0px 4px 0px 4px
+
+	& pre
+		font-family: monospace, monospace
+		line-height: 18px
+		font-weight: 400
+
+		background: grey(230)
+		padding: 20px
+
+		& code
+			background: transparent
+			padding: 0px 0px 0px 0px
+
+		& .hljs-comment
+			color: rgb(40, 120, 40)
+
+		& .hljs-keyword
+		& .hljs-literal
+			color: rgb(45, 110, 150)
+			font-weight: 700
+
+		& .hljs-number
+			color: rgb(0, 140, 140)
+
+		& .hljs-string
+		& .hljs-regexp
+			color: rgb(200, 0, 0)
+
+	& table
+		width: 100%
+
+		& th, & td
+			padding: 6px
+			border: 1px solid grey(220)
+
+		& th
+			font-weight: 700
+			background: grey(230)
+
+		& tr
+			background: grey(235)
+
+		& tr:hover
+			background: grey(240)
+
+		& code
+			background: transparent
+
+	& blockquote
+		color: grey(140)
+		 margin: 0px  0px 0px  0px
+		padding: 0px 16px 0px 16px
+		border-left: 4px solid grey(230)
+
+	& hr
+		 height:  4px
+		 border:  0px
+		 margin: 16px 0px 16px 0px
+		padding:  0px 0px  0px 0px
+		background: grey(230)

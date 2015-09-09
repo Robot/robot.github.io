@@ -10,7 +10,26 @@
 "use strict";
 
 //----------------------------------------------------------------------------//
-// Application                                                                //
+// Modules                                                                    //
+//----------------------------------------------------------------------------//
+
+var mMarked = require ("marked");
+
+mMarked.setOptions
+({
+	breaks: true,
+	// Set highlight settings
+	highlight: function (code)
+	{
+		return require ("highlight.js")
+			.highlightAuto (code).value;
+	}
+});
+
+
+
+//----------------------------------------------------------------------------//
+// Grunt                                                                      //
 //----------------------------------------------------------------------------//
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -107,6 +126,13 @@ module.exports = function (grunt)
 						"string" : function (name, value)
 						{
 							this[name] = value.fn (this);
+						},
+
+						// Inline markdown block processing
+						"markdown" : function (name, value)
+						{
+							this[name] = mMarked
+								(value.fn (this));
 						}
 					},
 
