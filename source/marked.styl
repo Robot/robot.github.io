@@ -95,11 +95,12 @@
 		padding: 0px 4px 0px 4px
 
 	& pre
-		font-family: monospace, monospace
+		font-family: inconsolata, monospace
 		line-height: 18px
 		font-weight: 400
 
 		background: grey(230)
+		border: 1px solid grey(220)
 		padding: 20px
 
 		& code
@@ -123,6 +124,7 @@
 
 	& table
 		width: 100%
+		table-layout: fixed
 
 		& th, & td
 			padding: 6px
@@ -140,6 +142,30 @@
 
 		& code
 			background: transparent
+
+	& .api-table td
+		font-family: inconsolata, monospace
+		line-height: 18px
+
+	& .api-table th
+	& .api-table td
+		white-space: pre
+		vertical-align: top
+
+		&:nth-child(1)
+			width: 35px
+			text-align: center
+
+		&:nth-child(2)
+			width: 150px
+			text-align: left
+
+		&:nth-child(3)
+			width: 150px
+			text-align: left
+
+		&:nth-child(4)
+			text-align: left
 
 	& blockquote
 		color: grey(140)
