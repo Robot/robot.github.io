@@ -1,0 +1,20 @@
+<table class="header">
+<thead>
+	<tr>
+		<th>S</th>
+		<th>Return</th>
+		<th>Name</th>
+		<th>Parameters</th>
+	</tr>
+</thead>
+<tbody>
+{{#each class}}
+	<tr>
+		<td>{{#if static}}&#10006;{{/if}}</td>
+		<td>{{#if return}}{{return}}{{/if}}</td>
+		<td>{{#if name}}<a href="#{{link}}">{{name}}</a>{{/if}}</td>
+		<td>{{#if args}}{{args}}{{#if const}} const{{/if}}{{/if}}</td>
+	</tr>
+{{/each}}
+</tbody>
+</table>

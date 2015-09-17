@@ -17,7 +17,6 @@ var mMarked = require ("marked");
 
 mMarked.setOptions
 ({
-	breaks: true,
 	// Set highlight settings
 	highlight: function (code)
 	{
@@ -34,41 +33,132 @@ mMarked.setOptions
 
 ////////////////////////////////////////////////////////////////////////////////
 
+var mLinkAPI =
+[
+	{ name: "int8",			page: "global"		},
+	{ name: "int16",		page: "global"		},
+	{ name: "int32",		page: "global"		},
+	{ name: "int64",		page: "global"		},
+
+	{ name: "uint8",		page: "global"		},
+	{ name: "uint16",		page: "global"		},
+	{ name: "uint32",		page: "global"		},
+	{ name: "uint64",		page: "global"		},
+
+	{ name: "real32",		page: "global"		},
+	{ name: "real64",		page: "global"		},
+
+	{ name: "intptr",		page: "global"		},
+	{ name: "uintptr",		page: "global"		},
+
+	{ name: "Color",		page: "color"		},
+	{ name: "Image",		page: "image"		},
+	{ name: "Range",		page: "range"		},
+	{ name: "Point",		page: "point"		},
+	{ name: "Size",			page: "size"		},
+	{ name: "Bounds",		page: "bounds"		},
+
+	{ name: "Key",			page: "keyboard"	},
+	{ name: "KeyList",		page: "keyboard"	},
+	{ name: "KeyState",		page: "keyboard"	},
+	{ name: "Button",		page: "mouse"		},
+	{ name: "ButtonState",	page: "mouse"		},
+
+	{ name: "Process",		page: "process"		},
+	{ name: "ProcessList",	page: "process"		},
+	{ name: "Module",		page: "module"		},
+	{ name: "ModuleList",	page: "module"		},
+	{ name: "Segment",		page: "module"		},
+	{ name: "SegmentList",	page: "module"		},
+	{ name: "Memory",		page: "memory"		},
+	{ name: "Stats",		page: "memory"		},
+	{ name: "Region",		page: "memory"		},
+	{ name: "RegionList",	page: "memory"		},
+	{ name: "Flags",		page: "memory"		},
+	{ name: "AddressList",	page: "memory"		},
+
+	{ name: "Window",		page: "window"		},
+	{ name: "WindowList",	page: "window"		},
+	{ name: "Screen",		page: "screen"		},
+	{ name: "ScreenList",	page: "screen"		},
+];
+
+// Compile the data in the linkAPI array
+for (var i = 0; i < mLinkAPI.length; ++i)
+{
+	var name = mLinkAPI[i].name;
+	var page = mLinkAPI[i].page;
+
+	mLinkAPI[i].page = "<a href=\"/api/" +
+		  page + ".html#" + name + "\">" +
+		  name + "</a>";
+
+	mLinkAPI[i].name = new RegExp
+		("\\b" + name + "\\b", "gm");
+}
+
+////////////////////////////////////////////////////////////////////////////////
+
 function parseSrc (content)
 {
 	var parsed = [ ]; // Fully tokenized input
-	var result = [ ]; // The resulting context
+	var result = [ ]; // The resulting array
+	var object = { }; // The resulting object
 	var duplex = { }; // Operator overloading
 
 	// Standardize and remove all C++ comments
 	content = content.replace (/\r?\n/gm, "\n")
 		  .replace (/(?:^|[^\\])\/\/.*$/gm, "")
 		  .replace (  /\/\*[\s\S]*?\*\//gm, "")
-		  .split (/\n/);
+		  .split (/(\t+|\(|\)|;)/);
 
+	var accum = "";
+	var level = 0;
 	// Loop through every line in the source
 	for (var l = 0; l < content.length; ++l)
 	{
-		var tokens = content[l]
-			// Split line into tokens
-			.split (/(\s+|\(|\)|;|,)/);
-
-		var first = true;
-		// Loop through every token in the line
-		for (var t = 0; t < tokens.length; ++t)
+		// Make sure to ignore empty tokens
+		if (content[l].trim().length !== 0)
 		{
-			tokens[t] = tokens[t].trim();
-			// Ignore any empty tokens
-			if (tokens[t].length !== 0)
+			// Check for params list
+			if (content[l] === "(")
 			{
-				// Preserve parameter formatting hints
-				if (first === true && parsed.length &&
-					parsed[parsed.length-1] !== ";" &&
-					parsed[parsed.length-1] !== "public:")
-					tokens[t] = "\n " + tokens[t];
-
-				parsed.push (tokens[t]); first = false;
+				accum += content[l];
+				++level; continue;
 			}
+
+			// Check if params over
+			if (content[l] === ")")
+			{
+				accum += content[l];
+				if (--level === 0)
+				{
+					// Nested brackets are over
+					parsed.push (accum.trim());
+					accum = "";
+				}
+
+				continue;
+			}
+
+			if (accum)
+			{
+				// Collecting params
+				accum += content[l];
+				continue;
+			}
+
+			// Handle static as a special keyword
+			if (content[l].indexOf ("static ") >= 0)
+			{
+				parsed.push ("static");
+				content[l] = content[l]
+					.replace ("static ", "");
+			}
+
+			// Remove miscellaneous chars
+			parsed.push (content[l].trim()
+				  .replace (/\n|:/gm, ""));
 		}
 	}
 
@@ -76,12 +166,11 @@ function parseSrc (content)
 	for (var p = 0; p < parsed.length; )
 	{
 		var token = parsed[p++];
-		if (token === "public:")
+		if (token === "public")
 		{
 			// Push separator value
 			if (result.length !== 0)
 				result.push ({ });
-
 			continue;
 		}
 
@@ -93,29 +182,14 @@ function parseSrc (content)
 			token = parsed[p++];
 		}
 
-		// Check virtual keyword
-		if (token === "virtual")
-		{
-			line.virtual = true;
-			token = parsed[p++];
-		}
-
 		// Check explicit keyword
 		if (token === "explicit")
 			token = parsed[p++];
 
-		line.return = "";
-		// Check const keyword
-		if (token === "const")
-		{
-			line.return = "const ";
-			token = parsed[p++];
-		}
-
-		line.return += token;
+		line.return = token;
 		token = parsed[p++];
 
-		if (token === "(")
+		if (token.charAt (0) === "(")
 		{
 			// Value must be a ctor
 			line.name = line.return;
@@ -134,96 +208,17 @@ function parseSrc (content)
 				result.push (line);
 				continue;
 			}
-
-			// Check for operator function
-			if (line.name === "operator")
-			{
-				if (token === "(")
-				{
-					// Handle operator()
-					line.name += " ()";
-					token = parsed[p++];
-					token = parsed[p++];
-				}
-
-				else
-				{
-					line.name += " " + token;
-					token = parsed[p++];
-				}
-			}
 		}
 
 		if (!duplex[line.name])
 			 duplex[line.name] = 0;
 		   ++duplex[line.name];
 
-		if (token !== "(")
+		if (token.charAt (0) !== "(")
 			// Expecting start of parameters list
 			throw new Error ("Expecting \"(\"");
-		token = parsed[p++];
 
-		line.args = [ ];
-		// Iterate parameters
-		while (token !== ")")
-		{
-			// Empty params list
-			if (token === "void")
-			{
-				token = parsed[p++];
-				continue;
-			}
-
-			var arg = { type: "" };
-			// Check const keyword
-			if (token ===    "const" ||
-				token === "\n const")
-			{
-				arg.type = token + " ";
-				token = parsed[p++];
-			}
-
-			arg.type += token;
-			token = parsed[p++];
-
-			arg.name = token;
-			token = parsed[p++];
-
-			// Assemble default
-			if (token === "=")
-			{
-				token = parsed[p++];
-				arg.default = "";
-
-				var level = 0;
-				while (true)
-				{
-					if (token === "(") ++level;
-					if (token === ")") --level;
-
-					arg.default += token;
-					token = parsed[p++];
-
-					if (level === 0 &&
-					   (token === "," ||
-						token === ")"))
-						break;
-				}
-			}
-
-			line.args.push (arg);
-			if (token !== "," &&
-				token !== ")")
-				throw new Error ("Expecting \",\" or \")\"");
-
-
-			if (token === ",")
-				token = parsed[p++];
-		}
-
-		if (token !== ")")
-			// Expecting end of parameters list
-			throw new Error ("Expecting \")\"");
+		line.args = token;
 		token = parsed[p++];
 
 		// Check const keyword
@@ -239,7 +234,6 @@ function parseSrc (content)
 
 		// Must be variable
 		result.push (line);
-		line = { };
 	}
 
 	// Loop through results and assign link names
@@ -254,7 +248,7 @@ function parseSrc (content)
 		{
 			// Properly handle negation
 			if (name === "operator -" &&
-				!result[i].args.length)
+				result[i].args === "(void)")
 				name = "operator-neg";
 
 			switch (name)
@@ -287,7 +281,7 @@ function parseSrc (content)
 			}
 		}
 
-		// If operator overloading
+		// If overloading function
 		else if (duplex[name] > 1)
 			name += "-" + duplex[name]--;
 
@@ -295,7 +289,11 @@ function parseSrc (content)
 		result[i].link = name;
 	}
 
-	return result;
+	// Loop through results and create object
+	for (var i = 0; i < result.length; ++i)
+		object[result[i].link] = result[i];
+
+	return object;
 };
 
 
@@ -423,19 +421,35 @@ module.exports = function (grunt)
 								(value.fn (this));
 						},
 
-						// Inline source block processing
-						"source" : function (name, value)
+						// Inline header block processing
+						"header" : function (name, value)
 						{
 							this[name] = parseSrc
 								(value.fn (this));
-						}
+						},
+
+						// Inline api link rendering
+						"linkapi" : function (content)
+						{
+							content = content.fn (this);
+							// Auto link all of the Robot data types
+							for (var i = 0; i < mLinkAPI.length; ++i)
+							{
+								content = content.replace
+										(mLinkAPI[i].name,
+										 mLinkAPI[i].page);
+							}
+
+							return content;
+						},
 					},
 
 					partials :
 					{
-						"partial-menu"  : "source/menu.html",
-						"partial-docs"  : "source/docs.html",
-						"partial-table" : "source/table.html"
+						"partial-menu"   : "source/menu.html",
+						"partial-docs"   : "source/docs.html",
+						"partial-header" : "source/header.html",
+						"partial-func"   : "source/func.html"
 					}
 				},
 
