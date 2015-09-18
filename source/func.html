@@ -1,6 +1,4 @@
-<pre class="func">
-{{#linkapi}}
-	<code>{{#if link.static}}static {{/if}}{{#if link.return}}{{link.return}} {{/if}}{{#if link.name}}{{link.name}}{{/if}}</code>
-	<code>{{#if link.args}}{{link.args}}{{#if link.const}} const{{/if}}{{/if}}</code>
-{{/linkapi}}
+<pre id="{{link.link}}" class="func">
+	<code>{{#if link.static}}static {{/if}}{{#linkapi}}{{#if link.return}}{{link.return}} {{/if}}{{/linkapi}}<b>{{link.name}}</b></code>
+	<code>{{#linkapi}}{{link.args}}{{/linkapi}}{{#if link.const}} const{{/if}}</code>
 </pre>

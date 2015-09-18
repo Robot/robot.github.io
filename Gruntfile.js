@@ -249,41 +249,49 @@ function parseSrc (content)
 			// Properly handle negation
 			if (name === "operator -" &&
 				result[i].args === "(void)")
-				name = "operator-neg";
+				name = "OpNeg";
 
 			switch (name)
 			{
-				case "operator +=" : name = "operator-add-eq"; break;
-				case "operator -=" : name = "operator-sub-eq"; break;
-				case "operator *=" : name = "operator-mul-eq"; break;
-				case "operator /=" : name = "operator-div-eq"; break;
+				case "operator +=" : name = "OpAddEq"; break;
+				case "operator -=" : name = "OpSubEq"; break;
+				case "operator *=" : name = "OpMulEq"; break;
+				case "operator /=" : name = "OpDivEq"; break;
 
-				case "operator +"  : name = "operator-add";    break;
-				case "operator -"  : name = "operator-sub";    break;
-				case "operator *"  : name = "operator-mul";    break;
-				case "operator /"  : name = "operator-div";    break;
+				case "operator +"  : name = "OpAdd";   break;
+				case "operator -"  : name = "OpSub";   break;
+				case "operator *"  : name = "OpMul";   break;
+				case "operator /"  : name = "OpDiv";   break;
 
-				case "operator &=" : name = "operator-and-eq"; break;
-				case "operator &"  : name = "operator-and";    break;
-				case "operator |=" : name = "operator-or-eq";  break;
-				case "operator |"  : name = "operator-or";     break;
+				case "operator &=" : name = "OpAndEq"; break;
+				case "operator &"  : name = "OpAnd";   break;
+				case "operator |=" : name = "OpOrEq";  break;
+				case "operator |"  : name = "OpOr";    break;
 
-				case "operator <"  : name = "operator-lt";     break;
-				case "operator >"  : name = "operator-gt";     break;
-				case "operator <=" : name = "operator-le";     break;
-				case "operator >=" : name = "operator-ge";     break;
+				case "operator <"  : name = "OpLt";    break;
+				case "operator >"  : name = "OpGt";    break;
+				case "operator <=" : name = "OpLe";    break;
+				case "operator >=" : name = "OpGe";    break;
 
-				case "operator ==" : name = "operator-eq";     break;
-				case "operator !=" : name = "operator-ne";     break;
+				case "operator ==" : name = "OpEq";    break;
+				case "operator !=" : name = "OpNe";    break;
 
-				case "operator ="  : name = "operator-as";     break;
-				case "operator ()" : name = "operator-fn";     break;
+				case "operator ="  : name = "OpAs";    break;
+				case "operator ()" : name = "OpFn";    break;
 			}
+		}
+
+		// Process constructors separately
+		else if (!result[i].return.length)
+		{
+			name = "Ctor" + name +
+				(duplex[name] > 1 ?
+				 duplex[name]-- : "");
 		}
 
 		// If overloading function
 		else if (duplex[name] > 1)
-			name += "-" + duplex[name]--;
+			name += duplex[name]--;
 
 		// Assign new link name
 		result[i].link = name;
@@ -424,8 +432,8 @@ module.exports = function (grunt)
 						// Inline header block processing
 						"header" : function (name, value)
 						{
-							this[name] = parseSrc
-								(value.fn (this));
+							var header = parseSrc (value.fn (this));
+							header.name = name; this[name] = header;
 						},
 
 						// Inline api link rendering
@@ -441,7 +449,7 @@ module.exports = function (grunt)
 							}
 
 							return content;
-						},
+						}
 					},
 
 					partials :
