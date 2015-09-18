@@ -429,11 +429,11 @@ module.exports = function (grunt)
 								(value.fn (this));
 						},
 
-						// Inline header block processing
-						"header" : function (name, value)
+						// Inline class block processing
+						"class" : function (name, value)
 						{
-							var header = parseSrc (value.fn (this));
-							header.name = name; this[name] = header;
+							var source = parseSrc (value.fn (this));
+							source.name = name; this[name] = source;
 						},
 
 						// Inline api link rendering
@@ -454,10 +454,10 @@ module.exports = function (grunt)
 
 					partials :
 					{
-						"partial-menu"   : "source/menu.html",
-						"partial-docs"   : "source/docs.html",
-						"partial-header" : "source/header.html",
-						"partial-func"   : "source/func.html"
+						"partial-menu"  : "source/menu.html",
+						"partial-docs"  : "source/docs.html",
+						"partial-class" : "source/class.html",
+						"partial-fn"    : "source/function.html"
 					}
 				},
 

@@ -1,11 +1,11 @@
-<table id="{{class.name}}" class="header">
+<table id="{{name.name}}" class="class">
 <thead>
 	<tr>
 		<th>S</th><th>Return</th><th>Name</th><th>Parameters</th>
 	</tr>
 </thead>
 <tbody>
-{{#each class}}
+{{#each name}}
 {{#ifne @key "name"}}
 	<tr>
 		<td>{{#if static}}&#10006;{{/if}}</td>
