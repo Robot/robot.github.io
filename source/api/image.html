@@ -1,0 +1,158 @@
+{{#context}}
+{
+	"title" : "Image Class | Robot", "api" : "Image"
+}
+{{/context}}
+
+{{#class "Image"}}
+
+public:
+				 Image			(void);
+
+				 Image			(const Image&  image);
+				 Image			(      Image&& image);
+
+	explicit	 Image			(const  Size&  size);
+	explicit	 Image			(uint16 w, uint16 h);
+
+public:
+	bool		IsValid			(void) const;
+
+	void		Create			(const  Size&  size);
+	void		Create			(uint16 w, uint16 h);
+	void		Destroy			(void);
+
+	uint16		GetWidth		(void) const;
+	uint16		GetHeight		(void) const;
+	uint32		GetLength		(void) const;
+	uint32*		GetData			(void) const;
+	uint32		GetLimit		(void) const;
+
+	Color		GetPixel		(const Point& point) const;
+	Color		GetPixel		(uint16 x, uint16 y) const;
+
+	void		SetPixel		(const Point& point, Color c);
+	void		SetPixel		(uint16 x, uint16 y, Color c);
+
+	bool		Fill			(const Color& color);
+	bool		Fill			(uint8 r, uint8 g,
+								 uint8 b, uint8 a = 255);
+
+	bool		Swap			(const char* sw);
+	bool		Flip			(bool h, bool v);
+
+public:
+	Image&		operator =		(const Image&  image);
+	Image&		operator =		(      Image&& image);
+
+	bool		operator ==		(const Image& image) const;
+	bool		operator !=		(const Image& image) const;
+
+{{/class}}
+
+{{#string "content"}}
+{{#marked}}
+
+# Image
+
+```cpp
+#include <Image.h>
+```
+
+{{/marked}}
+{{> partial-class name=Image}}
+{{#marked}}
+
+## Description
+Placeholder
+
+## Constructors
+{{> partial-fn name=Image.CtorImage}}
+Placeholder
+<br><br>
+{{> partial-fn name=Image.CtorImage2}}
+Placeholder
+<br><br>
+{{> partial-fn name=Image.CtorImage3}}
+Placeholder
+<br><br>
+{{> partial-fn name=Image.CtorImage4}}
+Placeholder
+<br><br>
+{{> partial-fn name=Image.CtorImage5}}
+Placeholder
+
+## Functions
+{{> partial-fn name=Image.IsValid}}
+Placeholder
+<br><br>
+{{> partial-fn name=Image.Create}}
+Placeholder
+<br><br>
+{{> partial-fn name=Image.Create2}}
+Placeholder
+<br><br>
+{{> partial-fn name=Image.Destroy}}
+Placeholder
+<br><br>
+{{> partial-fn name=Image.GetWidth}}
+Placeholder
+<br><br>
+{{> partial-fn name=Image.GetHeight}}
+Placeholder
+<br><br>
+{{> partial-fn name=Image.GetLength}}
+Placeholder
+<br><br>
+{{> partial-fn name=Image.GetData}}
+Placeholder
+<br><br>
+{{> partial-fn name=Image.GetLimit}}
+Placeholder
+<br><br>
+{{> partial-fn name=Image.GetPixel}}
+Placeholder
+<br><br>
+{{> partial-fn name=Image.GetPixel2}}
+Placeholder
+<br><br>
+{{> partial-fn name=Image.SetPixel}}
+Placeholder
+<br><br>
+{{> partial-fn name=Image.SetPixel2}}
+Placeholder
+<br><br>
+{{> partial-fn name=Image.Fill}}
+Placeholder
+<br><br>
+{{> partial-fn name=Image.Fill2}}
+Placeholder
+<br><br>
+{{> partial-fn name=Image.Swap}}
+Placeholder
+<br><br>
+{{> partial-fn name=Image.Flip}}
+Placeholder
+
+## Operators
+{{> partial-fn name=Image.OpAs}}
+Placeholder
+<br><br>
+{{> partial-fn name=Image.OpAs2}}
+Placeholder
+<br><br>
+{{> partial-fn name=Image.OpEq}}
+Placeholder
+<br><br>
+{{> partial-fn name=Image.OpNe}}
+Placeholder
+
+## Examples
+```cpp
+Placeholder
+```
+
+{{/marked}}
+{{/string}}
+
+{{> partial-docs}}

@@ -1,0 +1,102 @@
+{{#context}}
+{
+	"title" : "Point Class | Robot", "api" : "Point"
+}
+{{/context}}
+
+{{#class "Point"}}
+
+public:
+	Point						(int32 value  = 0);
+	Point						(int32 x, int32 y);
+
+public:
+	bool		IsZero			(void) const;
+	Size		ToSize			(void) const;
+
+public:
+	Point&		operator +=		(const Point& point);
+	Point&		operator -=		(const Point& point);
+
+	Point		operator +		(const Point& point) const;
+	Point		operator -		(const Point& point) const;
+
+	bool		operator ==		(const Point& point) const;
+	bool		operator !=		(const Point& point) const;
+
+	Point		operator -		(void) const;
+
+public:
+	int32		X;				// Point X coordinate
+	int32		Y;				// Point Y coordinate
+
+{{/class}}
+
+{{#string "content"}}
+{{#marked}}
+
+# Point
+
+```cpp
+#include <Point.h>
+```
+
+{{/marked}}
+{{> partial-class name=Point}}
+{{#marked}}
+
+## Description
+Placeholder
+
+## Constructors
+{{> partial-fn name=Point.CtorPoint}}
+Placeholder
+<br><br>
+{{> partial-fn name=Point.CtorPoint2}}
+Placeholder
+
+## Functions
+{{> partial-fn name=Point.IsZero}}
+Placeholder
+<br><br>
+{{> partial-fn name=Point.ToSize}}
+Placeholder
+
+## Operators
+{{> partial-fn name=Point.OpAddEq}}
+Placeholder
+<br><br>
+{{> partial-fn name=Point.OpSubEq}}
+Placeholder
+<br><br>
+{{> partial-fn name=Point.OpAdd}}
+Placeholder
+<br><br>
+{{> partial-fn name=Point.OpSub}}
+Placeholder
+<br><br>
+{{> partial-fn name=Point.OpEq}}
+Placeholder
+<br><br>
+{{> partial-fn name=Point.OpNe}}
+Placeholder
+<br><br>
+{{> partial-fn name=Point.OpNeg}}
+Placeholder
+
+## Properties
+{{> partial-fn name=Point.X}}
+Placeholder
+<br><br>
+{{> partial-fn name=Point.Y}}
+Placeholder
+
+## Examples
+```cpp
+Placeholder
+```
+
+{{/marked}}
+{{/string}}
+
+{{> partial-docs}}

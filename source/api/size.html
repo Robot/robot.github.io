@@ -1,0 +1,97 @@
+{{#context}}
+{
+	"title" : "Size Class | Robot", "api" : "Size"
+}
+{{/context}}
+
+{{#class "Size"}}
+
+public:
+	Size						(int32 value  = 0);
+	Size						(int32 w, int32 h);
+
+public:
+	bool		IsEmpty			(void) const;
+	Point		ToPoint			(void) const;
+
+public:
+	Size&		operator +=		(const Size& size);
+	Size&		operator -=		(const Size& size);
+
+	Size		operator +		(const Size& size) const;
+	Size		operator -		(const Size& size) const;
+
+	bool		operator ==		(const Size& size) const;
+	bool		operator !=		(const Size& size) const;
+
+public:
+	int32		W;				// Width  of the size
+	int32		H;				// Height of the size
+
+{{/class}}
+
+{{#string "content"}}
+{{#marked}}
+
+# Size
+
+```cpp
+#include <Size.h>
+```
+
+{{/marked}}
+{{> partial-class name=Size}}
+{{#marked}}
+
+## Description
+Placeholder
+
+## Constructors
+{{> partial-fn name=Size.CtorSize}}
+Placeholder
+<br><br>
+{{> partial-fn name=Size.CtorSize2}}
+Placeholder
+
+## Functions
+{{> partial-fn name=Size.IsEmpty}}
+Placeholder
+<br><br>
+{{> partial-fn name=Size.ToPoint}}
+Placeholder
+
+## Operators
+{{> partial-fn name=Size.OpAddEq}}
+Placeholder
+<br><br>
+{{> partial-fn name=Size.OpSubEq}}
+Placeholder
+<br><br>
+{{> partial-fn name=Size.OpAdd}}
+Placeholder
+<br><br>
+{{> partial-fn name=Size.OpSub}}
+Placeholder
+<br><br>
+{{> partial-fn name=Size.OpEq}}
+Placeholder
+<br><br>
+{{> partial-fn name=Size.OpNe}}
+Placeholder
+
+## Properties
+{{> partial-fn name=Size.W}}
+Placeholder
+<br><br>
+{{> partial-fn name=Size.H}}
+Placeholder
+
+## Examples
+```cpp
+Placeholder
+```
+
+{{/marked}}
+{{/string}}
+
+{{> partial-docs}}

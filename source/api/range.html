@@ -1,0 +1,95 @@
+{{#context}}
+{
+	"title" : "Range Class | Robot", "api" : "Range"
+}
+{{/context}}
+
+{{#class "Range"}}
+
+public:
+	Range						(int32 value = 0);
+	Range						(int32 minimum,
+								 int32 maximum);
+
+public:
+	int32		GetRange		(void) const;
+	void		SetRange		(int32 value);
+	void		SetRange		(int32 minimum,
+								 int32 maximum);
+
+	int32		GetRandom		(void) const;
+	bool		Contains		(int32 value,
+								 bool inclusive = true) const;
+
+public:
+	bool		operator ==		(const Range& range) const;
+	bool		operator !=		(const Range& range) const;
+
+public:
+	int32		Min;			// Minimum range value
+	int32		Max;			// Maximum range value
+
+{{/class}}
+
+{{#string "content"}}
+{{#marked}}
+
+# Range
+
+```cpp
+#include <Range.h>
+```
+
+{{/marked}}
+{{> partial-class name=Range}}
+{{#marked}}
+
+## Description
+Placeholder
+
+## Constructors
+{{> partial-fn name=Range.CtorRange}}
+Placeholder
+<br><br>
+{{> partial-fn name=Range.CtorRange2}}
+Placeholder
+
+## Functions
+{{> partial-fn name=Range.GetRange}}
+Placeholder
+<br><br>
+{{> partial-fn name=Range.SetRange}}
+Placeholder
+<br><br>
+{{> partial-fn name=Range.SetRange2}}
+Placeholder
+<br><br>
+{{> partial-fn name=Range.GetRandom}}
+Placeholder
+<br><br>
+{{> partial-fn name=Range.Contains}}
+Placeholder
+
+## Operators
+{{> partial-fn name=Range.OpEq}}
+Placeholder
+<br><br>
+{{> partial-fn name=Range.OpNe}}
+Placeholder
+
+## Properties
+{{> partial-fn name=Range.Min}}
+Placeholder
+<br><br>
+{{> partial-fn name=Range.Max}}
+Placeholder
+
+## Examples
+```cpp
+Placeholder
+```
+
+{{/marked}}
+{{/string}}
+
+{{> partial-docs}}

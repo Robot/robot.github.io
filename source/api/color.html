@@ -1,0 +1,88 @@
+{{#context}}
+{
+	"title" : "Color Class | Robot", "api" : "Color"
+}
+{{/context}}
+
+{{#class "Color"}}
+
+public:
+	Color						(uint32 argb = 0);
+	Color						(uint8 r, uint8 g,
+								 uint8 b, uint8 a = 255);
+
+public:
+	uint32		GetARGB			(void) const;
+	void		SetARGB			(uint32 argb);
+
+public:
+	bool		operator ==		(const Color& color) const;
+	bool		operator !=		(const Color& color) const;
+
+public:
+	uint8		B;				// Color blue  channel
+	uint8		G;				// Color green channel
+	uint8		R;				// Color red   channel
+	uint8		A;				// Color alpha channel
+
+{{/class}}
+
+{{#string "content"}}
+{{#marked}}
+
+# Color
+
+```cpp
+#include <Color.h>
+```
+
+{{/marked}}
+{{> partial-class name=Color}}
+{{#marked}}
+
+## Description
+Placeholder
+
+## Constructors
+{{> partial-fn name=Color.CtorColor}}
+Placeholder
+<br><br>
+{{> partial-fn name=Color.CtorColor2}}
+Placeholder
+
+## Functions
+{{> partial-fn name=Color.GetARGB}}
+Placeholder
+<br><br>
+{{> partial-fn name=Color.SetARGB}}
+Placeholder
+
+## Operators
+{{> partial-fn name=Color.OpEq}}
+Placeholder
+<br><br>
+{{> partial-fn name=Color.OpNe}}
+Placeholder
+
+## Properties
+{{> partial-fn name=Color.R}}
+Placeholder
+<br><br>
+{{> partial-fn name=Color.G}}
+Placeholder
+<br><br>
+{{> partial-fn name=Color.B}}
+Placeholder
+<br><br>
+{{> partial-fn name=Color.A}}
+Placeholder
+
+## Examples
+```cpp
+Placeholder
+```
+
+{{/marked}}
+{{/string}}
+
+{{> partial-docs}}

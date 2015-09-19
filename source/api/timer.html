@@ -1,0 +1,118 @@
+{{#context}}
+{
+	"title" : "Timer Class | Robot", "api" : "Timer"
+}
+{{/context}}
+
+{{#class "Timer"}}
+
+public:
+	Timer							(void);
+
+public:
+	void			Start			(void);
+	void			Reset			(void);
+	uint64			Restart			(void);
+
+	uint64			GetElapsed		(void) const;
+	bool			HasStarted		(void) const;
+	bool			HasExpired		(uint64 time) const;
+
+	static void		Sleep			(const Range& time);
+	static void		Sleep			(uint32 minimum,
+									 uint32 maximum);
+
+	static uint64	GetCpuTime		(void);
+
+public:
+	uint64			operator ()		(void) const;
+
+	bool			operator <		(const Timer& timer) const;
+	bool			operator >		(const Timer& timer) const;
+	bool			operator <=		(const Timer& timer) const;
+	bool			operator >=		(const Timer& timer) const;
+
+	bool			operator ==		(const Timer& timer) const;
+	bool			operator !=		(const Timer& timer) const;
+
+{{/class}}
+
+{{#string "content"}}
+{{#marked}}
+
+# Timer
+
+```cpp
+#include <Timer.h>
+```
+
+{{/marked}}
+{{> partial-class name=Timer}}
+{{#marked}}
+
+## Description
+Placeholder
+
+## Constructors
+{{> partial-fn name=Timer.CtorTimer}}
+Placeholder
+
+## Functions
+{{> partial-fn name=Timer.Start}}
+Placeholder
+<br><br>
+{{> partial-fn name=Timer.Reset}}
+Placeholder
+<br><br>
+{{> partial-fn name=Timer.Restart}}
+Placeholder
+<br><br>
+{{> partial-fn name=Timer.GetElapsed}}
+Placeholder
+<br><br>
+{{> partial-fn name=Timer.HasStarted}}
+Placeholder
+<br><br>
+{{> partial-fn name=Timer.HasExpired}}
+Placeholder
+<br><br>
+{{> partial-fn name=Timer.Sleep}}
+Placeholder
+<br><br>
+{{> partial-fn name=Timer.Sleep2}}
+Placeholder
+<br><br>
+{{> partial-fn name=Timer.GetCpuTime}}
+Placeholder
+
+## Operators
+{{> partial-fn name=Timer.OpFn}}
+Placeholder
+<br><br>
+{{> partial-fn name=Timer.OpLt}}
+Placeholder
+<br><br>
+{{> partial-fn name=Timer.OpGt}}
+Placeholder
+<br><br>
+{{> partial-fn name=Timer.OpLe}}
+Placeholder
+<br><br>
+{{> partial-fn name=Timer.OpGe}}
+Placeholder
+<br><br>
+{{> partial-fn name=Timer.OpEq}}
+Placeholder
+<br><br>
+{{> partial-fn name=Timer.OpNe}}
+Placeholder
+
+## Examples
+```cpp
+Placeholder
+```
+
+{{/marked}}
+{{/string}}
+
+{{> partial-docs}}
