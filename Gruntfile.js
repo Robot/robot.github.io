@@ -157,8 +157,17 @@ function parseSrc (content)
 			}
 
 			// Remove miscellaneous chars
-			parsed.push (content[l].trim()
-				  .replace (/\n|:/gm, ""));
+			var token = content[l].trim()
+				  .replace (/\n|:/gm, "");
+
+			// Handle assignment operator
+			if (token === "operator" &&
+				content[l+1] === "(" &&
+				content[l+3] === ")") {
+				token += " ()"; l += 3;
+			}
+
+			parsed.push (token);
 		}
 	}
 
@@ -283,15 +292,11 @@ function parseSrc (content)
 
 		// Process constructors separately
 		else if (!result[i].return.length)
-		{
-			name = "Ctor" + name +
-				(duplex[name] > 1 ?
-				 duplex[name]-- : "");
-		}
+			name = "Ctor" + name;
 
-		// If overloading function
-		else if (duplex[name] > 1)
-			name += duplex[name]--;
+		// For function overloading
+		if (duplex[result[i].name] > 1)
+			name += duplex[result[i].name]--;
 
 		// Assign new link name
 		result[i].link = name;
@@ -299,7 +304,7 @@ function parseSrc (content)
 
 	// Loop through results and create object
 	for (var i = 0; i < result.length; ++i)
-		object[result[i].link] = result[i];
+		object[result[i].link || ("empty" + i)] = result[i];
 
 	return object;
 };
