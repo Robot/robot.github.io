@@ -8,7 +8,7 @@
 {{#each name}}
 {{#ifne @key "name"}}
 	<tr>
-		<td>{{#if static}}&#10006;{{/if}}</td>
+		<td>{{#if static}}&#10004;{{/if}}</td>
 		<td>{{#if return}}{{return}}{{/if}}</td>
 		<td>{{#if name}}<a href="#{{link}}">{{name}}</a>{{/if}}</td>
 		<td>{{#if args}}{{args}}{{#if const}} const{{/if}}{{/if}}</td>
@@ -17,3 +17,4 @@
 {{/each}}
 </tbody>
 </table>
+

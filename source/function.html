@@ -1,4 +1,32 @@
-<pre id="{{name.link}}" class="fn">
-	<code>{{#if name.static}}static {{/if}}{{#if name.return}}{{#linkapi}}{{name.return}}{{/linkapi}} {{/if}}<b>{{name.name}}</b></code>
-	<code>{{#if name.args}}{{#linkapi}}{{name.args}}{{/linkapi}}{{#if name.const}} const{{/if}}{{/if}}</code>
+<pre class="fn">
+	<a name="{{name.link}}"></a>
+	{{#if name2}}<a name="{{name2.link}}"></a>{{/if}}
+	{{#if name3}}<a name="{{name3.link}}"></a>{{/if}}
+	{{#if name4}}<a name="{{name4.link}}"></a>{{/if}}
+
+	<table>
+		<tr>
+			<td>{{#if name.static}}static {{/if}}{{#if name.return}}{{#linkapi}}{{name.return}}{{/linkapi}} {{/if}}<b>{{name.name}}</b></td>
+			<td>{{#if name.args}}{{#linkapi}}{{name.args}}{{/linkapi}}{{#if name.const}} const{{/if}}{{/if}}</td>
+		</tr>
+	{{#if name2}}
+		<tr>
+			<td>{{#if name2.static}}static {{/if}}{{#if name2.return}}{{#linkapi}}{{name2.return}}{{/linkapi}} {{/if}}<b>{{name2.name}}</b></td>
+			<td>{{#if name2.args}}{{#linkapi}}{{name2.args}}{{/linkapi}}{{#if name2.const}} const{{/if}}{{/if}}</td>
+		</tr>
+	{{/if}}
+	{{#if name3}}
+		<tr>
+			<td>{{#if name3.static}}static {{/if}}{{#if name3.return}}{{#linkapi}}{{name3.return}}{{/linkapi}} {{/if}}<b>{{name3.name}}</b></td>
+			<td>{{#if name3.args}}{{#linkapi}}{{name3.args}}{{/linkapi}}{{#if name3.const}} const{{/if}}{{/if}}</td>
+		</tr>
+	{{/if}}
+	{{#if name4}}
+		<tr>
+			<td>{{#if name4.static}}static {{/if}}{{#if name4.return}}{{#linkapi}}{{name4.return}}{{/linkapi}} {{/if}}<b>{{name4.name}}</b></td>
+			<td>{{#if name4.args}}{{#linkapi}}{{name4.args}}{{/linkapi}}{{#if name4.const}} const{{/if}}{{/if}}</td>
+		</tr>
+	{{/if}}
+	</table>
 </pre>
+

@@ -86,6 +86,7 @@
 	& a,
 	& a:hover, & a:active,
 	& a:focus, & a:visited
+		font-weight: 700
 		color: rgb(60, 120, 180)
 
 	& a:hover
@@ -129,7 +130,7 @@
 
 		& th, & td
 			padding: 6px
-			border: 1px solid grey(220)
+			 border: 1px solid grey(220)
 
 		& th
 			font-weight: 700
@@ -157,9 +158,6 @@
 		background: grey(230)
 
 	& .class
-		& a
-			font-weight: 700
-
 		& th, & td
 			white-space: pre
 			vertical-align: top
@@ -185,14 +183,22 @@
 			line-height: 18px
 
 	& .fn
+		font-family: inconsolata, monospace
+		  font-size: 18px
+		line-height: 18px
+
+		padding: 10px 20px 10px 20px
 		white-space: nowrap
-		padding-top: 10px
-		padding-bottom: 10px
 
-		& a
-			font-weight: 700
+		& table
+			 width: auto
+			margin: 0px
 
-		& code
-			display: inline-block
-			vertical-align: text-top
-			white-space: pre
+			& td
+				border: none
+				padding: 0px 8px 0px 0px
+				white-space: pre
+				vertical-align: top
+
+			& tr, & tr:hover
+				background: transparent

@@ -13,15 +13,17 @@
 // Modules                                                                    //
 //----------------------------------------------------------------------------//
 
-var mMarked = require ("marked");
+var mMarked    = require ("marked"      );
+var mHighlight = require ("highlight.js");
 
 mMarked.setOptions
 ({
-	// Set highlight settings
-	highlight: function (code)
+	// Include the highlight settings
+	highlight: function (code, lang)
 	{
-		return require ("highlight.js")
-			.highlightAuto (code).value;
+		return lang ?
+			mHighlight.highlight     (lang, code).value :
+			mHighlight.highlightAuto (      code).value;
 	}
 });
 
@@ -90,8 +92,7 @@ for (var i = 0; i < mLinkAPI.length; ++i)
 	var page = mLinkAPI[i].page;
 
 	mLinkAPI[i].page = "<a href=\"/api/" +
-		  page + ".html#" + name + "\">" +
-		  name + "</a>";
+		page + ".html\">" +  name + "</a>";
 
 	mLinkAPI[i].name = new RegExp
 		("\\b" + name + "\\b", "gm");
@@ -258,7 +259,10 @@ function parseSrc (content)
 			// Properly handle negation
 			if (name === "operator -" &&
 				result[i].args === "(void)")
+			{
 				name = "OpNeg";
+				--duplex[result[i].name];
+			}
 
 			switch (name)
 			{
@@ -292,7 +296,7 @@ function parseSrc (content)
 
 		// Process constructors separately
 		else if (!result[i].return.length)
-			name = "Ctor" + name;
+			name = "Ctor";
 
 		// For function overloading
 		if (duplex[result[i].name] > 1)
