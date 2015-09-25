@@ -11,6 +11,7 @@ public:
 	Size						(int32 w, int32 h);
 
 public:
+	bool		IsZero			(void) const;
 	bool		IsEmpty			(void) const;
 	Point		ToPoint			(void) const;
 
@@ -47,13 +48,14 @@ public:
 Placeholder
 
 ## Constructors
-{{> partial-fn name=Size.CtorSize}}
-Placeholder
-<br><br>
-{{> partial-fn name=Size.CtorSize2}}
+{{> partial-fn name =Size.Ctor
+			   name2=Size.Ctor2}}
 Placeholder
 
 ## Functions
+{{> partial-fn name=Size.IsZero}}
+Placeholder
+<br><br>
 {{> partial-fn name=Size.IsEmpty}}
 Placeholder
 <br><br>
@@ -61,32 +63,24 @@ Placeholder
 Placeholder
 
 ## Operators
-{{> partial-fn name=Size.OpAddEq}}
+{{> partial-fn name =Size.OpAddEq
+			   name2=Size.OpSubEq}}
 Placeholder
 <br><br>
-{{> partial-fn name=Size.OpSubEq}}
+{{> partial-fn name =Size.OpAdd
+			   name2=Size.OpSub}}
 Placeholder
 <br><br>
-{{> partial-fn name=Size.OpAdd}}
-Placeholder
-<br><br>
-{{> partial-fn name=Size.OpSub}}
-Placeholder
-<br><br>
-{{> partial-fn name=Size.OpEq}}
-Placeholder
-<br><br>
-{{> partial-fn name=Size.OpNe}}
+{{> partial-fn name =Size.OpEq
+			   name2=Size.OpNe}}
 Placeholder
 
 ## Properties
-{{> partial-fn name=Size.W}}
-Placeholder
-<br><br>
-{{> partial-fn name=Size.H}}
+{{> partial-fn name =Size.W
+			   name2=Size.H}}
 Placeholder
 
-## Examples
+# Examples
 ```cpp
 Placeholder
 ```

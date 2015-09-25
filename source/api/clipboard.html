@@ -1,0 +1,73 @@
+{{#context}}
+{
+	"title" : "Clipboard Class | Robot", "api" : "Clipboard"
+}
+{{/context}}
+
+{{#class "Clipboard"}}
+
+public:
+	static bool			Clear			(void);
+
+	static bool			HasText			(void);
+	static string		GetText			(void);
+	static bool			SetText			(const char* string);
+
+	static bool			HasImage		(void);
+	static bool			GetImage		(      Image& image);
+	static bool			SetImage		(const Image& image);
+
+	static uint64		GetSequence		(void);
+
+{{/class}}
+
+{{#string "content"}}
+{{#marked}}
+
+# Clipboard
+
+```cpp
+#include <Clipboard.h>
+```
+
+{{/marked}}
+{{> partial-class name=Clipboard}}
+{{#marked}}
+
+## Description
+Placeholder
+
+## Functions
+{{> partial-fn name=Clipboard.Clear}}
+Placeholder
+<br><br>
+{{> partial-fn name=Clipboard.HasText}}
+Placeholder
+<br><br>
+{{> partial-fn name=Clipboard.GetText}}
+Placeholder
+<br><br>
+{{> partial-fn name=Clipboard.SetText}}
+Placeholder
+<br><br>
+{{> partial-fn name=Clipboard.HasImage}}
+Placeholder
+<br><br>
+{{> partial-fn name=Clipboard.GetImage}}
+Placeholder
+<br><br>
+{{> partial-fn name=Clipboard.SetImage}}
+Placeholder
+<br><br>
+{{> partial-fn name=Clipboard.GetSequence}}
+Placeholder
+
+# Examples
+```cpp
+Placeholder
+```
+
+{{/marked}}
+{{/string}}
+
+{{> partial-docs}}

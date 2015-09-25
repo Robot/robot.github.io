@@ -1,0 +1,161 @@
+{{#context}}
+{
+	"title" : "Keyboard Class | Robot", "api" : "Keyboard"
+}
+{{/context}}
+
+{{#class "Keyboard"}}
+
+public:
+	Keyboard						(void);
+
+public:
+	void			Click			(Key keycode) const;
+	void			Press			(Key keycode) const;
+	void			Release			(Key keycode) const;
+
+	bool			Click			(const char* keys) const;
+	static bool		Compile			(const char* keys,
+									 KeyList& result);
+
+	static bool		GetState		(Key       keycode);
+	static bool		GetState		(KeyState& result );
+
+public:
+	Range			AutoDelay;		// Auto delay range
+
+{{/class}}
+
+{{#string "content"}}
+{{#marked}}
+
+# Keyboard
+
+```cpp
+#include <Keyboard.h>
+```
+
+{{/marked}}
+{{> partial-class name=Keyboard}}
+{{#marked}}
+
+## Description
+Placeholder
+
+## Constructors
+{{> partial-fn name=Keyboard.Ctor}}
+Placeholder
+
+## Functions
+{{> partial-fn name=Keyboard.Click}}
+Placeholder
+<br><br>
+{{> partial-fn name=Keyboard.Press}}
+Placeholder
+<br><br>
+{{> partial-fn name=Keyboard.Release}}
+Placeholder
+<br><br>
+{{> partial-fn name=Keyboard.Click2}}
+Placeholder
+<br><br>
+{{> partial-fn name=Keyboard.Compile}}
+Placeholder
+<br><br>
+{{> partial-fn name =Keyboard.GetState
+			   name2=Keyboard.GetState2}}
+Placeholder
+
+## Properties
+{{> partial-fn name=Keyboard.AutoDelay}}
+Placeholder
+
+# Key
+Placeholder
+```cpp
+enum Key
+{
+	KeySpace,
+	KeyEscape,
+	KeyTab,
+
+	KeyAlt,    KeyControl,
+	KeyLAlt,   KeyLControl,
+	KeyRAlt,   KeyRControl,
+
+	KeyShift,  KeySystem,
+	KeyLShift, KeyLSystem,
+	KeyRShift, KeyRSystem,
+
+	KeyF1,  KeyF2,  KeyF3,
+	KeyF4,  KeyF5,  KeyF6,
+	KeyF7,  KeyF8,  KeyF9,
+	KeyF10, KeyF11, KeyF12,
+
+	Key0, Key1, Key2, Key3,
+	Key4, Key5, Key6, Key7,
+	Key8, Key9,
+
+	KeyA, KeyB, KeyC, KeyD,
+	KeyE, KeyF, KeyG, KeyH,
+	KeyI, KeyJ, KeyK, KeyL,
+	KeyM, KeyN, KeyO, KeyP,
+	KeyQ, KeyR, KeyS, KeyT,
+	KeyU, KeyV, KeyW, KeyX,
+	KeyY, KeyZ,
+
+	KeyGrave,
+	KeyMinus,
+	KeyEqual,
+	KeyBackspace,
+	KeyLBracket,
+	KeyRBracket,
+	KeyBackslash,
+	KeySemicolon,
+	KeyQuote,
+	KeyReturn,
+	KeyComma,
+	KeyPeriod,
+	KeySlash,
+
+	KeyLeft,
+	KeyUp,
+	KeyRight,
+	KeyDown,
+
+	KeyPrint,
+	KeyPause,
+	KeyInsert,
+	KeyDelete,
+	KeyHome,
+	KeyEnd,
+	KeyPageUp,
+	KeyPageDown,
+
+	KeyAdd,
+	KeySubtract,
+	KeyMultiply,
+	KeyDivide,
+	KeyDecimal,
+	KeyEnter,
+
+	KeyNum0, KeyNum1, KeyNum2,
+	KeyNum3, KeyNum4, KeyNum5,
+	KeyNum6, KeyNum7, KeyNum8,
+	KeyNum9,
+
+	KeyCapsLock,
+	KeyScrollLock,
+	KeyNumLock,
+};
+```
+
+# Examples
+```cpp
+Placeholder
+```
+
+{{/marked}}
+{{/string}}
+
+{{> partial-docs}}

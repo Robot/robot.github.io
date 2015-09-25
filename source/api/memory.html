@@ -1,0 +1,278 @@
+{{#context}}
+{
+	"title" : "Memory Class | Robot", "api" : "Memory"
+}
+{{/context}}
+
+{{#class "Memory"}}
+
+public:
+	explicit			Memory			(const Process&
+										 p = Process());
+
+public:
+	bool				IsValid			(void) const;
+	Process				GetProcess		(void) const;
+
+	Stats				GetStats		(void) const;
+	Stats				GetStats		(bool reset);
+
+	Region				GetRegion		(uintptr address) const;
+
+	RegionList			GetRegions		(uintptr start =  0,
+										 uintptr stop  = -1) const;
+
+	bool				SetAccess		(const Region& region,
+										 uint32 nativeAccess);
+	bool				SetAccess		(const Region& region,
+										 bool r, bool w, bool x);
+
+	AddressList			Find			(const char* pattern,
+										 uintptr start =  0,
+										 uintptr stop  = -1,
+										 uintptr limit =  0,
+										 const char* f =  0);
+
+	bool				CreateCache		(uintptr blockLength,
+										 uintptr blockBuffer,
+										 uintptr initialSize,
+										 uintptr enlargeSize = 0,
+										 uintptr maximumSize = 0);
+
+	void				 ClearCache		(void);
+	void				DeleteCache		(void);
+
+	bool				IsCaching		(void) const;
+	uintptr				GetCacheSize	(void) const;
+
+	uintptr				GetPtrSize		(void) const;
+	uintptr				GetMinAddress	(void) const;
+	uintptr				GetMaxAddress	(void) const;
+	uintptr				GetPageSize		(void) const;
+
+	uintptr				ReadData		(uintptr address, void* dataOutput,
+										 uintptr length, Flags f = Default);
+
+	uintptr				WriteData		(uintptr address, const void* data,
+										 uintptr length, Flags f = Default);
+
+{{/class}}
+{{#class "Stats"}}
+
+public:
+	bool				operator ==		(const Stats& stats) const;
+	bool				operator !=		(const Stats& stats) const;
+
+public:
+	uint32				SystemReads;	// Total system reads
+	uint32				CachedReads;	// Total cached reads
+	uint32				SystemWrites;	// Total system writes
+	uint32				AccessWrites;	// Total access writes
+
+	uint32				 ReadErrors;	// Total  read errors
+	uint32				WriteErrors;	// Total write errors
+
+{{/class}}
+{{#class "Region"}}
+
+public:
+	bool				operator <		(uintptr address) const;
+	bool				operator >		(uintptr address) const;
+	bool				operator <=		(uintptr address) const;
+	bool				operator >=		(uintptr address) const;
+
+	bool				operator <		(const Region& region) const;
+	bool				operator >		(const Region& region) const;
+	bool				operator <=		(const Region& region) const;
+	bool				operator >=		(const Region& region) const;
+
+	bool				operator ==		(const Region& region) const;
+	bool				operator !=		(const Region& region) const;
+
+public:
+	bool				Valid;			// If this structure is valid
+	bool				Bound;			// If memory has been committed
+
+	uintptr				Start;			// Start address of the region
+	uintptr				Stop;			// Stop  address of the region
+	uintptr				Size;			// Total size of the region
+
+	bool				Readable;		// If the region is readable
+	bool				Writable;		// If the region is writable
+	bool				Executable;		// If the region is executable
+	uint32				Access;			// Native protection attribute
+
+	bool				Private;		// If the region is private
+	bool				Guarded;		// If the region is guarded
+
+{{/class}}
+
+{{#string "content"}}
+{{#marked}}
+
+# Memory
+
+```cpp
+#include <Memory.h>
+```
+
+{{/marked}}
+{{> partial-class name=Memory}}
+{{#marked}}
+
+## Description
+Placeholder
+
+## Constructors
+{{> partial-fn name=Memory.Ctor}}
+Placeholder
+
+## Functions
+{{> partial-fn name=Memory.IsValid}}
+Placeholder
+<br><br>
+{{> partial-fn name=Memory.GetProcess}}
+Placeholder
+<br><br>
+{{> partial-fn name =Memory.GetStats
+			   name2=Memory.GetStats2}}
+Placeholder
+<br><br>
+{{> partial-fn name=Memory.GetRegion}}
+Placeholder
+<br><br>
+{{> partial-fn name=Memory.GetRegions}}
+Placeholder
+<br><br>
+{{> partial-fn name=Memory.SetAccess}}
+Placeholder
+<br><br>
+{{> partial-fn name=Memory.SetAccess2}}
+Placeholder
+<br><br>
+{{> partial-fn name=Memory.Find}}
+Placeholder
+<br><br>
+{{> partial-fn name=Memory.CreateCache}}
+Placeholder
+<br><br>
+{{> partial-fn name=Memory.ClearCache}}
+Placeholder
+<br><br>
+{{> partial-fn name=Memory.DeleteCache}}
+Placeholder
+<br><br>
+{{> partial-fn name=Memory.IsCaching}}
+Placeholder
+<br><br>
+{{> partial-fn name=Memory.GetCacheSize}}
+Placeholder
+<br><br>
+{{> partial-fn name=Memory.GetPtrSize}}
+Placeholder
+<br><br>
+{{> partial-fn name =Memory.GetMinAddress
+			   name2=Memory.GetMaxAddress}}
+Placeholder
+<br><br>
+{{> partial-fn name=Memory.GetPageSize}}
+Placeholder
+<br><br>
+{{> partial-fn name=Memory.ReadData}}
+Placeholder
+<br><br>
+{{> partial-fn name=Memory.WriteData}}
+Placeholder
+
+# Stats
+
+{{/marked}}
+{{> partial-class name=Stats}}
+{{#marked}}
+
+## Description
+Placeholder
+
+## Operators
+{{> partial-fn name =Stats.OpEq
+			   name2=Stats.OpNe}}
+Placeholder
+
+## Properties
+{{> partial-fn name=Stats.SystemReads}}
+Placeholder
+<br><br>
+{{> partial-fn name=Stats.CachedReads}}
+Placeholder
+<br><br>
+{{> partial-fn name=Stats.SystemWrites}}
+Placeholder
+<br><br>
+{{> partial-fn name=Stats.AccessWrites}}
+Placeholder
+<br><br>
+{{> partial-fn name=Stats.ReadErrors}}
+Placeholder
+<br><br>
+{{> partial-fn name=Stats.WriteErrors}}
+Placeholder
+
+# Region
+
+{{/marked}}
+{{> partial-class name=Region}}
+{{#marked}}
+
+## Description
+Placeholder
+
+## Operators
+{{> partial-fn name =Region.OpLt
+			   name2=Region.OpGt
+			   name3=Region.OpLe
+			   name4=Region.OpGe}}
+Placeholder
+<br><br>
+{{> partial-fn name =Region.OpLt2
+			   name2=Region.OpGt2
+			   name3=Region.OpLe2
+			   name4=Region.OpGe2}}
+Placeholder
+<br><br>
+{{> partial-fn name =Region.OpEq
+			   name2=Region.OpNe}}
+Placeholder
+
+## Properties
+{{> partial-fn name=Region.Valid}}
+Placeholder
+<br><br>
+{{> partial-fn name=Region.Bound}}
+Placeholder
+<br><br>
+{{> partial-fn name =Region.Start
+			   name2=Region.Stop
+			   name3=Region.Size}}
+Placeholder
+<br><br>
+{{> partial-fn name =Region.Readable
+			   name2=Region.Writable
+			   name3=Region.Executable
+			   name4=Region.Access}}
+Placeholder
+<br><br>
+{{> partial-fn name=Region.Private}}
+Placeholder
+<br><br>
+{{> partial-fn name=Region.Guarded}}
+Placeholder
+
+# Examples
+```cpp
+Placeholder
+```
+
+{{/marked}}
+{{/string}}
+
+{{> partial-docs}}

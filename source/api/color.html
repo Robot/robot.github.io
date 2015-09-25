@@ -20,9 +20,9 @@ public:
 	bool		operator !=		(const Color& color) const;
 
 public:
-	uint8		B;				// Color blue  channel
-	uint8		G;				// Color green channel
 	uint8		R;				// Color red   channel
+	uint8		G;				// Color green channel
+	uint8		B;				// Color blue  channel
 	uint8		A;				// Color alpha channel
 
 {{/class}}
@@ -44,10 +44,10 @@ public:
 Placeholder
 
 ## Constructors
-{{> partial-fn name=Color.CtorColor}}
+{{> partial-fn name=Color.Ctor}}
 Placeholder
 <br><br>
-{{> partial-fn name=Color.CtorColor2}}
+{{> partial-fn name=Color.Ctor2}}
 Placeholder
 
 ## Functions
@@ -58,26 +58,18 @@ Placeholder
 Placeholder
 
 ## Operators
-{{> partial-fn name=Color.OpEq}}
-Placeholder
-<br><br>
-{{> partial-fn name=Color.OpNe}}
+{{> partial-fn name =Color.OpEq
+			   name2=Color.OpNe}}
 Placeholder
 
 ## Properties
-{{> partial-fn name=Color.R}}
-Placeholder
-<br><br>
-{{> partial-fn name=Color.G}}
-Placeholder
-<br><br>
-{{> partial-fn name=Color.B}}
-Placeholder
-<br><br>
-{{> partial-fn name=Color.A}}
+{{> partial-fn name =Color.R
+			   name2=Color.G
+			   name3=Color.B
+			   name4=Color.A}}
 Placeholder
 
-## Examples
+# Examples
 ```cpp
 Placeholder
 ```

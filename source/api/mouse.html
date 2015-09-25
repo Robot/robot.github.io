@@ -1,0 +1,105 @@
+{{#context}}
+{
+	"title" : "Mouse Class | Robot", "api" : "Mouse"
+}
+{{/context}}
+
+{{#class "Mouse"}}
+
+public:
+	Mouse							(void);
+
+public:
+	void			Click			(Button button) const;
+	void			Press			(Button button) const;
+	void			Release			(Button button) const;
+
+	void			ScrollH			(int32 amount) const;
+	void			ScrollV			(int32 amount) const;
+
+	static Point	GetPos			(void);
+	static void		SetPos			(const Point& point);
+	static void		SetPos			(uint32 x, uint32 y);
+
+	static bool		GetState		(Button       button);
+	static bool		GetState		(ButtonState& result);
+
+public:
+	Range			AutoDelay;		// Auto delay range
+
+{{/class}}
+
+{{#string "content"}}
+{{#marked}}
+
+# Mouse
+
+```cpp
+#include <Mouse.h>
+```
+
+{{/marked}}
+{{> partial-class name=Mouse}}
+{{#marked}}
+
+## Description
+Placeholder
+
+## Constructors
+{{> partial-fn name=Mouse.Ctor}}
+Placeholder
+
+## Functions
+{{> partial-fn name=Mouse.Click}}
+Placeholder
+<br><br>
+{{> partial-fn name=Mouse.Press}}
+Placeholder
+<br><br>
+{{> partial-fn name=Mouse.Release}}
+Placeholder
+<br><br>
+{{> partial-fn name=Mouse.ScrollH}}
+Placeholder
+<br><br>
+{{> partial-fn name=Mouse.ScrollV}}
+Placeholder
+<br><br>
+{{> partial-fn name=Mouse.GetPos}}
+Placeholder
+<br><br>
+{{> partial-fn name =Mouse.SetPos
+			   name2=Mouse.SetPos2}}
+Placeholder
+<br><br>
+{{> partial-fn name =Mouse.GetState
+			   name2=Mouse.GetState2}}
+Placeholder
+
+## Properties
+{{> partial-fn name=Mouse.AutoDelay}}
+Placeholder
+
+# Button
+Placeholder
+```cpp
+enum Button
+{
+	ButtonLeft,
+	ButtonMid,
+	ButtonMiddle,
+	ButtonRight,
+	ButtonX1,
+	ButtonX2,
+};
+```
+
+# Examples
+```cpp
+Placeholder
+```
+
+{{/marked}}
+{{/string}}
+
+{{> partial-docs}}

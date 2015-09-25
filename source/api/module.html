@@ -1,0 +1,172 @@
+{{#context}}
+{
+	"title" : "Module Class | Robot", "api" : "Module"
+}
+{{/context}}
+
+{{#class "Module"}}
+
+public:
+	Module								(void);
+	Module								(Process process,
+										 string  name,
+										 string  path,
+										 uintptr base,
+										 uintptr size);
+
+public:
+	bool				IsValid			(void) const;
+
+	string				GetName			(void) const;
+	string				GetPath			(void) const;
+
+	uintptr				GetBase			(void) const;
+	uintptr				GetSize			(void) const;
+
+	Process				GetProcess		(void) const;
+	SegmentList			GetSegments		(void) const;
+
+public:
+	bool				operator <		(uintptr address) const;
+	bool				operator >		(uintptr address) const;
+	bool				operator <=		(uintptr address) const;
+	bool				operator >=		(uintptr address) const;
+
+	bool				operator <		(const Module& module) const;
+	bool				operator >		(const Module& module) const;
+	bool				operator <=		(const Module& module) const;
+	bool				operator >=		(const Module& module) const;
+
+	bool				operator ==		(const Module& module) const;
+	bool				operator !=		(const Module& module) const;
+
+{{/class}}
+{{#class "Segment"}}
+
+public:
+	bool				operator <		(uintptr address) const;
+	bool				operator >		(uintptr address) const;
+	bool				operator <=		(uintptr address) const;
+	bool				operator >=		(uintptr address) const;
+
+	bool				operator <		(const Segment& segment) const;
+	bool				operator >		(const Segment& segment) const;
+	bool				operator <=		(const Segment& segment) const;
+	bool				operator >=		(const Segment& segment) const;
+
+	bool				operator ==		(const Segment& segment) const;
+	bool				operator !=		(const Segment& segment) const;
+
+public:
+	bool				Valid;			// If this structure is valid
+	char*				Name;			// Short name of the segment
+
+	uintptr				Base;			// Base address of the segment
+	uintptr				Size;			// Virtual size of the segment
+
+{{/class}}
+
+{{#string "content"}}
+{{#marked}}
+
+# Module
+
+```cpp
+#include <Module.h>
+```
+
+{{/marked}}
+{{> partial-class name=Module}}
+{{#marked}}
+
+## Description
+Placeholder
+
+## Constructors
+{{> partial-fn name =Module.Ctor
+			   name2=Module.Ctor2}}
+Placeholder
+
+## Functions
+{{> partial-fn name=Module.IsValid}}
+Placeholder
+<br><br>
+{{> partial-fn name=Module.GetName}}
+Placeholder
+<br><br>
+{{> partial-fn name=Module.GetPath}}
+Placeholder
+<br><br>
+{{> partial-fn name =Module.GetBase
+			   name2=Module.GetSize}}
+Placeholder
+<br><br>
+{{> partial-fn name=Module.GetProcess}}
+Placeholder
+<br><br>
+{{> partial-fn name=Module.GetSegments}}
+Placeholder
+
+## Operators
+{{> partial-fn name =Module.OpLt
+			   name2=Module.OpGt
+			   name3=Module.OpLe
+			   name4=Module.OpGe}}
+Placeholder
+<br><br>
+{{> partial-fn name =Module.OpLt2
+			   name2=Module.OpGt2
+			   name3=Module.OpLe2
+			   name4=Module.OpGe2}}
+Placeholder
+<br><br>
+{{> partial-fn name =Module.OpEq
+			   name2=Module.OpNe}}
+Placeholder
+
+# Segment
+
+{{/marked}}
+{{> partial-class name=Segment}}
+{{#marked}}
+
+## Description
+Placeholder
+
+## Operators
+{{> partial-fn name =Segment.OpLt
+			   name2=Segment.OpGt
+			   name3=Segment.OpLe
+			   name4=Segment.OpGe}}
+Placeholder
+<br><br>
+{{> partial-fn name =Segment.OpLt2
+			   name2=Segment.OpGt2
+			   name3=Segment.OpLe2
+			   name4=Segment.OpGe2}}
+Placeholder
+<br><br>
+{{> partial-fn name =Segment.OpEq
+			   name2=Segment.OpNe}}
+Placeholder
+
+## Properties
+{{> partial-fn name=Segment.Valid}}
+Placeholder
+<br><br>
+{{> partial-fn name=Segment.Name}}
+Placeholder
+<br><br>
+{{> partial-fn name =Segment.Base
+			   name2=Segment.Size}}
+Placeholder
+
+# Examples
+```cpp
+Placeholder
+```
+
+{{/marked}}
+{{/string}}
+
+{{> partial-docs}}

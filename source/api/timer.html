@@ -54,7 +54,7 @@ public:
 Placeholder
 
 ## Constructors
-{{> partial-fn name=Timer.CtorTimer}}
+{{> partial-fn name=Timer.Ctor}}
 Placeholder
 
 ## Functions
@@ -76,10 +76,8 @@ Placeholder
 {{> partial-fn name=Timer.HasExpired}}
 Placeholder
 <br><br>
-{{> partial-fn name=Timer.Sleep}}
-Placeholder
-<br><br>
-{{> partial-fn name=Timer.Sleep2}}
+{{> partial-fn name =Timer.Sleep
+			   name2=Timer.Sleep2}}
 Placeholder
 <br><br>
 {{> partial-fn name=Timer.GetCpuTime}}
@@ -89,25 +87,17 @@ Placeholder
 {{> partial-fn name=Timer.OpFn}}
 Placeholder
 <br><br>
-{{> partial-fn name=Timer.OpLt}}
+{{> partial-fn name =Timer.OpLt
+			   name2=Timer.OpGt
+			   name3=Timer.OpLe
+			   name4=Timer.OpGe}}
 Placeholder
 <br><br>
-{{> partial-fn name=Timer.OpGt}}
-Placeholder
-<br><br>
-{{> partial-fn name=Timer.OpLe}}
-Placeholder
-<br><br>
-{{> partial-fn name=Timer.OpGe}}
-Placeholder
-<br><br>
-{{> partial-fn name=Timer.OpEq}}
-Placeholder
-<br><br>
-{{> partial-fn name=Timer.OpNe}}
+{{> partial-fn name =Timer.OpEq
+			   name2=Timer.OpNe}}
 Placeholder
 
-## Examples
+# Examples
 ```cpp
 Placeholder
 ```

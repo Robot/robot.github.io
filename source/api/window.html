@@ -1,0 +1,186 @@
+{{#context}}
+{
+	"title" : "Window Class | Robot", "api" : "Window"
+}
+{{/context}}
+
+{{#class "Window"}}
+
+public:
+	explicit			Window			(uintptr handle = 0);
+
+public:
+	bool				IsValid			(void) const;
+	void				Close			(void);
+
+	bool				IsTopMost		(void) const;
+	bool				IsBorderless	(void) const;
+	bool				IsMinimized		(void) const;
+	bool				IsMaximized		(void) const;
+
+	void				SetTopMost		(bool state);
+	void				SetBorderless	(bool state);
+	void				SetMinimized	(bool state);
+	void				SetMaximized	(bool state);
+
+	Process				GetProcess		(void) const;
+	int32				GetPID			(void) const;
+
+	uintptr				GetHandle		(void) const;
+	bool				SetHandle		(uintptr handle);
+	uintptr				GetHandleAx		(void) const;
+
+	string				GetTitle		(void) const;
+	void				SetTitle		(const char* title);
+
+	Bounds				GetBounds		(void) const;
+	void				SetBounds		(const Bounds&  b);
+	void				SetBounds		(int32 x, int32 y,
+										 int32 w, int32 h);
+
+	Bounds				GetClient		(void) const;
+	void				SetClient		(const Bounds&  b);
+	void				SetClient		(int32 x, int32 y,
+										 int32 w, int32 h);
+
+	Point				MapToClient		(const  Point&  point) const;
+	Point				MapToScreen		(const  Point&  point) const;
+	Bounds				MapToClient		(const Bounds& bounds) const;
+	Bounds				MapToScreen		(const Bounds& bounds) const;
+
+	static WindowList	GetList			(const char* title = nullptr);
+
+	static Window		GetActive		(void);
+	static void			SetActive		(const Window& window);
+
+	static bool			IsAxEnabled		(bool options = false);
+
+public:
+	bool				operator ==		(const Window& window) const;
+	bool				operator !=		(const Window& window) const;
+
+	bool				operator ==		(uintptr handle) const;
+	bool				operator !=		(uintptr handle) const;
+
+{{/class}}
+
+{{#string "content"}}
+{{#marked}}
+
+# Window
+
+```cpp
+#include <Window.h>
+```
+
+{{/marked}}
+{{> partial-class name=Window}}
+{{#marked}}
+
+## Description
+Placeholder
+
+## Constructors
+{{> partial-fn name=Window.Ctor}}
+Placeholder
+
+## Functions
+{{> partial-fn name=Window.IsValid}}
+Placeholder
+<br><br>
+{{> partial-fn name=Window.Close}}
+Placeholder
+<br><br>
+{{> partial-fn name=Window.IsTopMost}}
+Placeholder
+<br><br>
+{{> partial-fn name=Window.IsBorderless}}
+Placeholder
+<br><br>
+{{> partial-fn name =Window.IsMinimized
+			   name2=Window.IsMaximized}}
+Placeholder
+<br><br>
+{{> partial-fn name=Window.SetTopMost}}
+Placeholder
+<br><br>
+{{> partial-fn name=Window.SetBorderless}}
+Placeholder
+<br><br>
+{{> partial-fn name =Window.SetMinimized
+			   name2=Window.SetMaximized}}
+Placeholder
+<br><br>
+{{> partial-fn name=Window.GetProcess}}
+Placeholder
+<br><br>
+{{> partial-fn name=Window.GetPID}}
+Placeholder
+<br><br>
+{{> partial-fn name=Window.GetHandle}}
+Placeholder
+<br><br>
+{{> partial-fn name=Window.SetHandle}}
+Placeholder
+<br><br>
+{{> partial-fn name=Window.GetHandleAx}}
+Placeholder
+<br><br>
+{{> partial-fn name=Window.GetTitle}}
+Placeholder
+<br><br>
+{{> partial-fn name=Window.SetTitle}}
+Placeholder
+<br><br>
+{{> partial-fn name=Window.GetBounds}}
+Placeholder
+<br><br>
+{{> partial-fn name =Window.SetBounds
+			   name2=Window.SetBounds2}}
+Placeholder
+<br><br>
+{{> partial-fn name=Window.GetClient}}
+Placeholder
+<br><br>
+{{> partial-fn name =Window.SetClient
+			   name2=Window.SetClient2}}
+Placeholder
+<br><br>
+{{> partial-fn name =Window.MapToClient
+			   name2=Window.MapToScreen}}
+Placeholder
+<br><br>
+{{> partial-fn name =Window.MapToClient
+			   name2=Window.MapToScreen}}
+Placeholder
+<br><br>
+{{> partial-fn name=Window.GetList}}
+Placeholder
+<br><br>
+{{> partial-fn name=Window.GetActive}}
+Placeholder
+<br><br>
+{{> partial-fn name=Window.SetActive}}
+Placeholder
+<br><br>
+{{> partial-fn name=Window.IsAxEnabled}}
+Placeholder
+
+## Operators
+{{> partial-fn name =Window.OpEq
+			   name2=Window.OpNe}}
+Placeholder
+<br><br>
+{{> partial-fn name =Window.OpEq2
+			   name2=Window.OpNe2}}
+Placeholder
+
+# Examples
+```cpp
+Placeholder
+```
+
+{{/marked}}
+{{/string}}
+
+{{> partial-docs}}
