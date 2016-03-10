@@ -1,6 +1,6 @@
 {{#context}}
 {
-	"title" : "Image Class | Robot", "api" : "Image"
+	"title" : "Robot Image Class", "api" : "Image"
 }
 {{/context}}
 
@@ -18,8 +18,8 @@ public:
 public:
 	bool		IsValid			(void) const;
 
-	void		Create			(const  Size&  size);
-	void		Create			(uint16 w, uint16 h);
+	bool		Create			(const  Size&  size);
+	bool		Create			(uint16 w, uint16 h);
 	void		Destroy			(void);
 
 	uint16		GetWidth		(void) const;
@@ -51,16 +51,9 @@ public:
 {{/class}}
 
 {{#string "content"}}
-{{#marked}}
-
-# Image
-
-```cpp
-#include <Image.h>
-```
-
-{{/marked}}
-{{> partial-class name=Image}}
+<h1 id="image">Image</h1>
+{{> partial-inc   name="Image"}}
+{{> partial-class name= Image }}
 {{#marked}}
 
 ## Description

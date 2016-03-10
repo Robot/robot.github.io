@@ -1,6 +1,6 @@
 {{#context}}
 {
-	"title" : "Size Class | Robot", "api" : "Size"
+	"title" : "Robot Size Class", "api" : "Size"
 }
 {{/context}}
 
@@ -32,16 +32,9 @@ public:
 {{/class}}
 
 {{#string "content"}}
-{{#marked}}
-
-# Size
-
-```cpp
-#include <Size.h>
-```
-
-{{/marked}}
-{{> partial-class name=Size}}
+<h1 id="size">Size</h1>
+{{> partial-inc   name="Size"}}
+{{> partial-class name= Size }}
 {{#marked}}
 
 ## Description
@@ -71,8 +64,10 @@ Placeholder
 			   name2=Size.OpSub}}
 Placeholder
 <br><br>
-{{> partial-fn name =Size.OpEq
-			   name2=Size.OpNe}}
+{{> partial-fn name=Size.OpEq}}
+Placeholder
+<br><br>
+{{> partial-fn name=Size.OpNe}}
 Placeholder
 
 ## Properties

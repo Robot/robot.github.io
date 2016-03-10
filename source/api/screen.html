@@ -1,6 +1,6 @@
 {{#context}}
 {
-	"title" : "Screen Class | Robot", "api" : "Screen"
+	"title" : "Robot Screen Class", "api" : "Screen"
 }
 {{/context}}
 
@@ -8,8 +8,8 @@
 
 public:
 	Screen								(void);
-	Screen								(Bounds bounds,
-										 Bounds usable);
+	Screen								(const Bounds& bounds,
+										 const Bounds& usable);
 
 public:
 	Bounds				GetBounds		(void) const;
@@ -42,19 +42,15 @@ public:
 {{/class}}
 
 {{#string "content"}}
-{{#marked}}
-
-# Screen
-
-```cpp
-#include <Screen.h>
-```
-
-{{/marked}}
-{{> partial-class name=Screen}}
+<h1 id="screen">Screen</h1>
+{{> partial-inc   name="Screen"}}
+{{> partial-class name= Screen }}
 {{#marked}}
 
 ## Description
+Placeholder
+
+## Types
 Placeholder
 
 ## Constructors
@@ -82,11 +78,9 @@ Placeholder
 {{> partial-fn name=Screen.GetList}}
 Placeholder
 <br><br>
-{{> partial-fn name=Screen.GetScreen}}
-Placeholder
-<br><br>
-{{> partial-fn name =Screen.GetScreen2
-			   name2=Screen.GetScreen3}}
+{{> partial-fn name =Screen.GetScreen
+			   name2=Screen.GetScreen2
+			   name3=Screen.GetScreen3}}
 Placeholder
 <br><br>
 {{> partial-fn name =Screen.GrabScreen
@@ -99,10 +93,9 @@ Placeholder
 {{> partial-fn name=Screen.GetTotalUsable}}
 Placeholder
 <br><br>
-{{> partial-fn name=Screen.IsCompositing}}
-Placeholder
-<br><br>
-{{> partial-fn name=Screen.SetCompositing}}
+{{> partial-fn name =Screen.IsCompositing
+			   name2=Screen.SetCompositing
+			   right=true}}
 Placeholder
 
 # Examples

@@ -1,6 +1,6 @@
 {{#context}}
 {
-	"title" : "Hash Class | Robot", "api" : "Hash"
+	"title" : "Robot Hash Class", "api" : "Hash"
 }
 {{/context}}
 
@@ -8,12 +8,12 @@
 
 public:
 	explicit	Hash			(void);
-	explicit	Hash			(const char* file);
+	explicit	Hash			(const  char* file);
 	explicit	Hash			(const uint8* data,
 								 uintptr dataLength);
 
 public:
-	bool		Append			(const char* file);
+	bool		Append			(const  char* file);
 	void		Append			(const uint8* data,
 								 uintptr dataLength);
 
@@ -30,16 +30,9 @@ public:
 {{/class}}
 
 {{#string "content"}}
-{{#marked}}
-
-# Hash
-
-```cpp
-#include <Hash.h>
-```
-
-{{/marked}}
-{{> partial-class name=Hash}}
+<h1 id="hash">Hash</h1>
+{{> partial-inc   name="Hash"}}
+{{> partial-class name= Hash }}
 {{#marked}}
 
 ## Description
@@ -49,10 +42,8 @@ Placeholder
 {{> partial-fn name=Hash.Ctor}}
 Placeholder
 <br><br>
-{{> partial-fn name=Hash.Ctor2}}
-Placeholder
-<br><br>
-{{> partial-fn name=Hash.Ctor3}}
+{{> partial-fn name =Hash.Ctor2
+			   name2=Hash.Ctor3}}
 Placeholder
 
 ## Functions

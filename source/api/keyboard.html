@@ -1,6 +1,6 @@
 {{#context}}
 {
-	"title" : "Keyboard Class | Robot", "api" : "Keyboard"
+	"title" : "Robot Keyboard Class", "api" : "Keyboard"
 }
 {{/context}}
 
@@ -27,19 +27,15 @@ public:
 {{/class}}
 
 {{#string "content"}}
-{{#marked}}
-
-# Keyboard
-
-```cpp
-#include <Keyboard.h>
-```
-
-{{/marked}}
-{{> partial-class name=Keyboard}}
+<h1 id="keyboard">Keyboard</h1>
+{{> partial-inc   name="Keyboard"}}
+{{> partial-class name= Keyboard }}
 {{#marked}}
 
 ## Description
+Placeholder
+
+## Types
 Placeholder
 
 ## Constructors
@@ -50,10 +46,8 @@ Placeholder
 {{> partial-fn name=Keyboard.Click}}
 Placeholder
 <br><br>
-{{> partial-fn name=Keyboard.Press}}
-Placeholder
-<br><br>
-{{> partial-fn name=Keyboard.Release}}
+{{> partial-fn name =Keyboard.Press
+			   name2=Keyboard.Release}}
 Placeholder
 <br><br>
 {{> partial-fn name=Keyboard.Click2}}
@@ -62,8 +56,10 @@ Placeholder
 {{> partial-fn name=Keyboard.Compile}}
 Placeholder
 <br><br>
-{{> partial-fn name =Keyboard.GetState
-			   name2=Keyboard.GetState2}}
+{{> partial-fn name=Keyboard.GetState}}
+Placeholder
+<br><br>
+{{> partial-fn name=Keyboard.GetState2}}
 Placeholder
 
 ## Properties
@@ -72,6 +68,7 @@ Placeholder
 
 # Key
 Placeholder
+
 ```cpp
 enum Key
 {

@@ -1,6 +1,6 @@
 {{#context}}
 {
-	"title" : "Mouse Class | Robot", "api" : "Mouse"
+	"title" : "Robot Mouse Class", "api" : "Mouse"
 }
 {{/context}}
 
@@ -30,19 +30,15 @@ public:
 {{/class}}
 
 {{#string "content"}}
-{{#marked}}
-
-# Mouse
-
-```cpp
-#include <Mouse.h>
-```
-
-{{/marked}}
-{{> partial-class name=Mouse}}
+<h1 id="mouse">Mouse</h1>
+{{> partial-inc   name="Mouse"}}
+{{> partial-class name= Mouse }}
 {{#marked}}
 
 ## Description
+Placeholder
+
+## Types
 Placeholder
 
 ## Constructors
@@ -53,27 +49,23 @@ Placeholder
 {{> partial-fn name=Mouse.Click}}
 Placeholder
 <br><br>
-{{> partial-fn name=Mouse.Press}}
+{{> partial-fn name =Mouse.Press
+			   name2=Mouse.Release}}
 Placeholder
 <br><br>
-{{> partial-fn name=Mouse.Release}}
+{{> partial-fn name =Mouse.ScrollH
+			   name2=Mouse.ScrollV}}
 Placeholder
 <br><br>
-{{> partial-fn name=Mouse.ScrollH}}
+{{> partial-fn name =Mouse.GetPos
+			   name2=Mouse.SetPos
+			   name3=Mouse.SetPos2}}
 Placeholder
 <br><br>
-{{> partial-fn name=Mouse.ScrollV}}
+{{> partial-fn name=Mouse.GetState}}
 Placeholder
 <br><br>
-{{> partial-fn name=Mouse.GetPos}}
-Placeholder
-<br><br>
-{{> partial-fn name =Mouse.SetPos
-			   name2=Mouse.SetPos2}}
-Placeholder
-<br><br>
-{{> partial-fn name =Mouse.GetState
-			   name2=Mouse.GetState2}}
+{{> partial-fn name=Mouse.GetState2}}
 Placeholder
 
 ## Properties
@@ -82,6 +74,7 @@ Placeholder
 
 # Button
 Placeholder
+
 ```cpp
 enum Button
 {

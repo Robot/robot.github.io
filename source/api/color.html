@@ -1,6 +1,6 @@
 {{#context}}
 {
-	"title" : "Color Class | Robot", "api" : "Color"
+	"title" : "Robot Color Class", "api" : "Color"
 }
 {{/context}}
 
@@ -20,24 +20,17 @@ public:
 	bool		operator !=		(const Color& color) const;
 
 public:
-	uint8		R;				// Color red   channel
-	uint8		G;				// Color green channel
 	uint8		B;				// Color blue  channel
+	uint8		G;				// Color green channel
+	uint8		R;				// Color red   channel
 	uint8		A;				// Color alpha channel
 
 {{/class}}
 
 {{#string "content"}}
-{{#marked}}
-
-# Color
-
-```cpp
-#include <Color.h>
-```
-
-{{/marked}}
-{{> partial-class name=Color}}
+<h1 id="color">Color</h1>
+{{> partial-inc   name="Color"}}
+{{> partial-class name= Color }}
 {{#marked}}
 
 ## Description
@@ -58,14 +51,16 @@ Placeholder
 Placeholder
 
 ## Operators
-{{> partial-fn name =Color.OpEq
-			   name2=Color.OpNe}}
+{{> partial-fn name=Color.OpEq}}
+Placeholder
+<br><br>
+{{> partial-fn name=Color.OpNe}}
 Placeholder
 
 ## Properties
-{{> partial-fn name =Color.R
+{{> partial-fn name =Color.B
 			   name2=Color.G
-			   name3=Color.B
+			   name3=Color.R
 			   name4=Color.A}}
 Placeholder
 

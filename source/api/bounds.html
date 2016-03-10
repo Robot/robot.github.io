@@ -1,6 +1,6 @@
 {{#context}}
 {
-	"title" : "Bounds Class | Robot", "api" : "Bounds"
+	"title" : "Robot Bounds Class", "api" : "Bounds"
 }
 {{/context}}
 
@@ -65,11 +65,11 @@ public:
 	Point		GetCenter		(void) const;
 
 public:
-	Bounds		operator &		(const Bounds& bounds) const;
-	Bounds		operator |		(const Bounds& bounds) const;
-
-	Bounds&		operator &=		(const Bounds& bounds);
 	Bounds&		operator |=		(const Bounds& bounds);
+	Bounds&		operator &=		(const Bounds& bounds);
+
+	Bounds		operator |		(const Bounds& bounds) const;
+	Bounds		operator &		(const Bounds& bounds) const;
 
 	bool		operator ==		(const Bounds& bounds) const;
 	bool		operator !=		(const Bounds& bounds) const;
@@ -83,16 +83,9 @@ public:
 {{/class}}
 
 {{#string "content"}}
-{{#marked}}
-
-# Bounds
-
-```cpp
-#include <Bounds.h>
-```
-
-{{/marked}}
-{{> partial-class name=Bounds}}
+<h1 id="bounds">Bounds</h1>
+{{> partial-inc   name="Bounds"}}
+{{> partial-class name= Bounds }}
 {{#marked}}
 
 ## Description
@@ -100,8 +93,10 @@ Placeholder
 
 ## Constructors
 {{> partial-fn name =Bounds.Ctor
-			   name2=Bounds.Ctor2
-			   name3=Bounds.Ctor3}}
+			   name2=Bounds.Ctor2}}
+Placeholder
+<br><br>
+{{> partial-fn name=Bounds.Ctor3}}
 Placeholder
 
 ## Functions
@@ -165,20 +160,22 @@ Placeholder
 Placeholder
 
 ## Operators
-{{> partial-fn name=Bounds.OpAnd}}
-Placeholder
-<br><br>
-{{> partial-fn name=Bounds.OpOr}}
+{{> partial-fn name=Bounds.OpOrEq}}
 Placeholder
 <br><br>
 {{> partial-fn name=Bounds.OpAndEq}}
 Placeholder
 <br><br>
-{{> partial-fn name=Bounds.OpOrEq}}
+{{> partial-fn name=Bounds.OpOr}}
 Placeholder
 <br><br>
-{{> partial-fn name =Bounds.OpEq
-			   name2=Bounds.OpNe}}
+{{> partial-fn name=Bounds.OpAnd}}
+Placeholder
+<br><br>
+{{> partial-fn name=Bounds.OpEq}}
+Placeholder
+<br><br>
+{{> partial-fn name=Bounds.OpNe}}
 Placeholder
 
 ## Properties

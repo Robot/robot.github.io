@@ -1,6 +1,6 @@
 {{#context}}
 {
-	"title" : "Process Class | Robot", "api" : "Process"
+	"title" : "Robot Process Class", "api" : "Process"
 }
 {{/context}}
 
@@ -44,19 +44,15 @@ public:
 {{/class}}
 
 {{#string "content"}}
-{{#marked}}
-
-# Process
-
-```cpp
-#include <Process.h>
-```
-
-{{/marked}}
-{{> partial-class name=Process}}
+<h1 id="process">Process</h1>
+{{> partial-inc   name="Process"}}
+{{> partial-class name= Process }}
 {{#marked}}
 
 ## Description
+Placeholder
+
+## Types
 Placeholder
 
 ## Constructors
@@ -117,11 +113,9 @@ Placeholder
 
 ## Operators
 {{> partial-fn name =Process.OpEq
-			   name2=Process.OpNe}}
-Placeholder
-<br><br>
-{{> partial-fn name =Process.OpEq2
-			   name2=Process.OpNe2}}
+			   name2=Process.OpNe
+			   name3=Process.OpEq2
+			   name4=Process.OpNe2}}
 Placeholder
 
 # Examples

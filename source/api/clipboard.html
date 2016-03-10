@@ -1,6 +1,6 @@
 {{#context}}
 {
-	"title" : "Clipboard Class | Robot", "api" : "Clipboard"
+	"title" : "Robot Clipboard Class", "api" : "Clipboard"
 }
 {{/context}}
 
@@ -22,16 +22,9 @@ public:
 {{/class}}
 
 {{#string "content"}}
-{{#marked}}
-
-# Clipboard
-
-```cpp
-#include <Clipboard.h>
-```
-
-{{/marked}}
-{{> partial-class name=Clipboard}}
+<h1 id="clipboard">Clipboard</h1>
+{{> partial-inc   name="Clipboard"}}
+{{> partial-class name= Clipboard }}
 {{#marked}}
 
 ## Description

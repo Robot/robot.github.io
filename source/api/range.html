@@ -1,6 +1,6 @@
 {{#context}}
 {
-	"title" : "Range Class | Robot", "api" : "Range"
+	"title" : "Robot Range Class", "api" : "Range"
 }
 {{/context}}
 
@@ -32,16 +32,9 @@ public:
 {{/class}}
 
 {{#string "content"}}
-{{#marked}}
-
-# Range
-
-```cpp
-#include <Range.h>
-```
-
-{{/marked}}
-{{> partial-class name=Range}}
+<h1 id="range">Range</h1>
+{{> partial-inc   name="Range"}}
+{{> partial-class name= Range }}
 {{#marked}}
 
 ## Description
@@ -67,8 +60,10 @@ Placeholder
 Placeholder
 
 ## Operators
-{{> partial-fn name =Range.OpEq
-			   name2=Range.OpNe}}
+{{> partial-fn name=Range.OpEq}}
+Placeholder
+<br><br>
+{{> partial-fn name=Range.OpNe}}
 Placeholder
 
 ## Properties

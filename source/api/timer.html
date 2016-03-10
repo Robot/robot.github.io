@@ -1,6 +1,6 @@
 {{#context}}
 {
-	"title" : "Timer Class | Robot", "api" : "Timer"
+	"title" : "Robot Timer Class", "api" : "Timer"
 }
 {{/context}}
 
@@ -11,7 +11,7 @@ public:
 
 public:
 	void			Start			(void);
-	void			Reset			(void);
+	uint64			Reset			(void);
 	uint64			Restart			(void);
 
 	uint64			GetElapsed		(void) const;
@@ -38,16 +38,9 @@ public:
 {{/class}}
 
 {{#string "content"}}
-{{#marked}}
-
-# Timer
-
-```cpp
-#include <Timer.h>
-```
-
-{{/marked}}
-{{> partial-class name=Timer}}
+<h1 id="timer">Timer</h1>
+{{> partial-inc   name="Timer"}}
+{{> partial-class name= Timer }}
 {{#marked}}
 
 ## Description

@@ -1,6 +1,6 @@
 {{#context}}
 {
-	"title" : "Window Class | Robot", "api" : "Window"
+	"title" : "Robot Window Class", "api" : "Window"
 }
 {{/context}}
 
@@ -65,19 +65,15 @@ public:
 {{/class}}
 
 {{#string "content"}}
-{{#marked}}
-
-# Window
-
-```cpp
-#include <Window.h>
-```
-
-{{/marked}}
-{{> partial-class name=Window}}
+<h1 id="window">Window</h1>
+{{> partial-inc   name="Window"}}
+{{> partial-class name= Window }}
 {{#marked}}
 
 ## Description
+Placeholder
+
+## Types
 Placeholder
 
 ## Constructors
@@ -91,24 +87,21 @@ Placeholder
 {{> partial-fn name=Window.Close}}
 Placeholder
 <br><br>
-{{> partial-fn name=Window.IsTopMost}}
+{{> partial-fn name =Window.IsTopMost
+			   name2=Window.SetTopMost
+			   right=true}}
 Placeholder
 <br><br>
-{{> partial-fn name=Window.IsBorderless}}
+{{> partial-fn name =Window.IsBorderless
+			   name2=Window.SetBorderless
+			   right=true}}
 Placeholder
 <br><br>
 {{> partial-fn name =Window.IsMinimized
-			   name2=Window.IsMaximized}}
-Placeholder
-<br><br>
-{{> partial-fn name=Window.SetTopMost}}
-Placeholder
-<br><br>
-{{> partial-fn name=Window.SetBorderless}}
-Placeholder
-<br><br>
-{{> partial-fn name =Window.SetMinimized
-			   name2=Window.SetMaximized}}
+			   name2=Window.IsMaximized
+			   name3=Window.SetMinimized
+			   name4=Window.SetMaximized
+			   right=true}}
 Placeholder
 <br><br>
 {{> partial-fn name=Window.GetProcess}}
@@ -126,41 +119,31 @@ Placeholder
 {{> partial-fn name=Window.GetHandleAx}}
 Placeholder
 <br><br>
-{{> partial-fn name=Window.GetTitle}}
+{{> partial-fn name =Window.GetTitle
+			   name2=Window.SetTitle}}
 Placeholder
 <br><br>
-{{> partial-fn name=Window.SetTitle}}
+{{> partial-fn name =Window.GetBounds
+			   name2=Window.SetBounds
+			   name3=Window.SetBounds2}}
 Placeholder
 <br><br>
-{{> partial-fn name=Window.GetBounds}}
-Placeholder
-<br><br>
-{{> partial-fn name =Window.SetBounds
-			   name2=Window.SetBounds2}}
-Placeholder
-<br><br>
-{{> partial-fn name=Window.GetClient}}
-Placeholder
-<br><br>
-{{> partial-fn name =Window.SetClient
-			   name2=Window.SetClient2}}
+{{> partial-fn name =Window.GetClient
+			   name2=Window.SetClient
+			   name3=Window.SetClient2}}
 Placeholder
 <br><br>
 {{> partial-fn name =Window.MapToClient
-			   name2=Window.MapToScreen}}
-Placeholder
-<br><br>
-{{> partial-fn name =Window.MapToClient
-			   name2=Window.MapToScreen}}
+			   name2=Window.MapToScreen
+			   name3=Window.MapToClient
+			   name4=Window.MapToScreen}}
 Placeholder
 <br><br>
 {{> partial-fn name=Window.GetList}}
 Placeholder
 <br><br>
-{{> partial-fn name=Window.GetActive}}
-Placeholder
-<br><br>
-{{> partial-fn name=Window.SetActive}}
+{{> partial-fn name =Window.GetActive
+			   name2=Window.SetActive}}
 Placeholder
 <br><br>
 {{> partial-fn name=Window.IsAxEnabled}}
@@ -168,11 +151,9 @@ Placeholder
 
 ## Operators
 {{> partial-fn name =Window.OpEq
-			   name2=Window.OpNe}}
-Placeholder
-<br><br>
-{{> partial-fn name =Window.OpEq2
-			   name2=Window.OpNe2}}
+			   name2=Window.OpNe
+			   name3=Window.OpEq2
+			   name4=Window.OpNe2}}
 Placeholder
 
 # Examples

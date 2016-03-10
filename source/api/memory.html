@@ -1,6 +1,6 @@
 {{#context}}
 {
-	"title" : "Memory Class | Robot", "api" : "Memory"
+	"title" : "Robot Memory Class", "api" : "Memory"
 }
 {{/context}}
 
@@ -76,6 +76,8 @@ public:
 {{#class "Region"}}
 
 public:
+	bool				Contains		(uintptr address) const;
+
 	bool				operator <		(uintptr address) const;
 	bool				operator >		(uintptr address) const;
 	bool				operator <=		(uintptr address) const;
@@ -108,19 +110,15 @@ public:
 {{/class}}
 
 {{#string "content"}}
-{{#marked}}
-
-# Memory
-
-```cpp
-#include <Memory.h>
-```
-
-{{/marked}}
-{{> partial-class name=Memory}}
+<h1 id="memory">Memory</h1>
+{{> partial-inc   name="Memory"}}
+{{> partial-class name= Memory }}
 {{#marked}}
 
 ## Description
+Placeholder
+
+## Types
 Placeholder
 
 ## Constructors
@@ -144,10 +142,8 @@ Placeholder
 {{> partial-fn name=Memory.GetRegions}}
 Placeholder
 <br><br>
-{{> partial-fn name=Memory.SetAccess}}
-Placeholder
-<br><br>
-{{> partial-fn name=Memory.SetAccess2}}
+{{> partial-fn name =Memory.SetAccess
+			   name2=Memory.SetAccess2}}
 Placeholder
 <br><br>
 {{> partial-fn name=Memory.Find}}
@@ -199,22 +195,19 @@ Placeholder
 Placeholder
 
 ## Properties
-{{> partial-fn name=Stats.SystemReads}}
+{{> partial-fn name =Stats.SystemReads
+			   name2=Stats.SystemWrites}}
 Placeholder
 <br><br>
 {{> partial-fn name=Stats.CachedReads}}
 Placeholder
 <br><br>
-{{> partial-fn name=Stats.SystemWrites}}
-Placeholder
-<br><br>
 {{> partial-fn name=Stats.AccessWrites}}
 Placeholder
 <br><br>
-{{> partial-fn name=Stats.ReadErrors}}
-Placeholder
-<br><br>
-{{> partial-fn name=Stats.WriteErrors}}
+{{> partial-fn name =Stats.ReadErrors
+			   name2=Stats.WriteErrors
+			   right=true}}
 Placeholder
 
 # Region
@@ -224,6 +217,10 @@ Placeholder
 {{#marked}}
 
 ## Description
+Placeholder
+
+## Functions
+{{> partial-fn name=Region.Contains}}
 Placeholder
 
 ## Operators
@@ -265,6 +262,9 @@ Placeholder
 Placeholder
 <br><br>
 {{> partial-fn name=Region.Guarded}}
+Placeholder
+
+# Flags
 Placeholder
 
 # Examples

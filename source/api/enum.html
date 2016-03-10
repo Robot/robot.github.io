@@ -1,0 +1,51 @@
+{{#context}}
+{
+	"title" : "Robot Enum Class", "api" : "Enum"
+}
+{{/context}}
+
+{{#class "Enum"}}
+
+public:
+	static uintptr			Size	(void);
+	static const ValueMap&	GetMap	(void);
+	static Type				Parse	(const string& key, Type default = -1);
+	static string			Parse	(Type value, const char* default = "");
+
+{{/class}}
+
+{{#string "content"}}
+<h1 id="enum">Enum&lt;T&gt;</h1>
+{{> partial-inc   name="Enum" source=false}}
+{{> partial-class name= Enum              }}
+{{#marked}}
+
+## Description
+Placeholder
+
+## Macros
+Placeholder
+
+## Types
+Placeholder
+
+## Functions
+{{> partial-fn name=Enum.Size}}
+Placeholder
+<br><br>
+{{> partial-fn name=Enum.GetMap}}
+Placeholder
+<br><br>
+{{> partial-fn name =Enum.Parse
+			   name2=Enum.Parse2}}
+Placeholder
+
+# Examples
+```cpp
+Placeholder
+```
+
+{{/marked}}
+{{/string}}
+
+{{> partial-docs}}

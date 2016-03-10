@@ -1,6 +1,6 @@
 {{#context}}
 {
-	"title" : "Module Class | Robot", "api" : "Module"
+	"title" : "Robot Module Class", "api" : "Module"
 }
 {{/context}}
 
@@ -8,11 +8,10 @@
 
 public:
 	Module								(void);
-	Module								(Process process,
-										 string  name,
-										 string  path,
-										 uintptr base,
-										 uintptr size);
+	Module								(const Process& process,
+										 const string& name,
+										 const string& path,
+										 uintptr base, uintptr size);
 
 public:
 	bool				IsValid			(void) const;
@@ -25,6 +24,8 @@ public:
 
 	Process				GetProcess		(void) const;
 	SegmentList			GetSegments		(void) const;
+
+	bool				Contains		(uintptr address) const;
 
 public:
 	bool				operator <		(uintptr address) const;
@@ -44,6 +45,8 @@ public:
 {{#class "Segment"}}
 
 public:
+	bool				Contains		(uintptr address) const;
+
 	bool				operator <		(uintptr address) const;
 	bool				operator >		(uintptr address) const;
 	bool				operator <=		(uintptr address) const;
@@ -67,24 +70,22 @@ public:
 {{/class}}
 
 {{#string "content"}}
-{{#marked}}
-
-# Module
-
-```cpp
-#include <Module.h>
-```
-
-{{/marked}}
-{{> partial-class name=Module}}
+<h1 id="module">Module</h1>
+{{> partial-inc   name="Module"}}
+{{> partial-class name= Module }}
 {{#marked}}
 
 ## Description
 Placeholder
 
+## Types
+Placeholder
+
 ## Constructors
-{{> partial-fn name =Module.Ctor
-			   name2=Module.Ctor2}}
+{{> partial-fn name=Module.Ctor}}
+Placeholder
+<br><br>
+{{> partial-fn name=Module.Ctor2}}
 Placeholder
 
 ## Functions
@@ -105,6 +106,9 @@ Placeholder
 Placeholder
 <br><br>
 {{> partial-fn name=Module.GetSegments}}
+Placeholder
+<br><br>
+{{> partial-fn name=Module.Contains}}
 Placeholder
 
 ## Operators
@@ -131,6 +135,10 @@ Placeholder
 {{#marked}}
 
 ## Description
+Placeholder
+
+## Functions
+{{> partial-fn name=Segment.Contains}}
 Placeholder
 
 ## Operators

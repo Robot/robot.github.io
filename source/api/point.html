@@ -1,6 +1,6 @@
 {{#context}}
 {
-	"title" : "Point Class | Robot", "api" : "Point"
+	"title" : "Robot Point Class", "api" : "Point"
 }
 {{/context}}
 
@@ -33,16 +33,9 @@ public:
 {{/class}}
 
 {{#string "content"}}
-{{#marked}}
-
-# Point
-
-```cpp
-#include <Point.h>
-```
-
-{{/marked}}
-{{> partial-class name=Point}}
+<h1 id="point">Point</h1>
+{{> partial-inc   name="Point"}}
+{{> partial-class name= Point }}
 {{#marked}}
 
 ## Description
@@ -69,8 +62,10 @@ Placeholder
 			   name2=Point.OpSub}}
 Placeholder
 <br><br>
-{{> partial-fn name =Point.OpEq
-			   name2=Point.OpNe}}
+{{> partial-fn name=Point.OpEq}}
+Placeholder
+<br><br>
+{{> partial-fn name=Point.OpNe}}
 Placeholder
 <br><br>
 {{> partial-fn name=Point.OpNeg}}
