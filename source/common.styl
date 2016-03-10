@@ -1,14 +1,14 @@
 ////////////////////////////////////////////////////////////////////////////////
 // -------------------------------------------------------------------------- //
 //                                                                            //
-//                       (C) 2010-2015 Robot Developers                       //
+//                       (C) 2010-2016 Robot Developers                       //
 //                       See LICENSE for licensing info                       //
 //                                                                            //
 // -------------------------------------------------------------------------- //
 ////////////////////////////////////////////////////////////////////////////////
 
 //----------------------------------------------------------------------------//
-// Functions                                                                  //
+// Mixins                                                                     //
 //----------------------------------------------------------------------------//
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -18,17 +18,6 @@ grey($color, $alpha = 1)
 		rgba($color, $color, $color, $alpha)
 	else
 		rgb($color, $color, $color)
-
-////////////////////////////////////////////////////////////////////////////////
-
-retina($path, $extn, $w = auto, $h = auto)
-	if ($w in (cover contain) and $h == auto)
-		$h = null
-
-	background-image: url($path + $extn)
-	@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)
-		background-image: url($path + "@2x" + $extn)
-		background-size: $w $h
 
 
 
@@ -47,6 +36,14 @@ html, body
 	height: auto
 	min-height: 100%
 	relative: left top
+
+::-moz-selection
+	     color: rgb(240, 240, 240);
+	background: rgb(100, 150, 200);
+
+::selection
+	     color: rgb(240, 240, 240);
+	background: rgb(100, 150, 200);
 
 canvas, img, svg, video
 	vertical-align: middle
@@ -176,3 +173,14 @@ a:hover
 		 margin: 0px
 		padding: 0px
 		color: grey(230)
+
+
+
+//----------------------------------------------------------------------------//
+// Print                                                                      //
+//----------------------------------------------------------------------------//
+
+@media print
+	#footer
+	#footer-pad
+		display: none !important

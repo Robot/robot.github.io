@@ -6,27 +6,37 @@
 
 	<table>
 		<tr>
-			<td>{{#if name.static}}static {{/if}}{{#if name.return}}{{#linkapi}}{{name.return}}{{/linkapi}} {{/if}}<b>{{name.name}}</b></td>
+			{{#if name.static}}<td>static</td>{{/if}}
+			{{#if name.return}}<td>{{#linkapi}}{{name.return}}{{/linkapi}}</td>{{/if}}
+			<td {{#if right}}class="right-align"{{/if}}><b>{{name.name}}</b></td>
 			<td>{{#if name.args}}{{#linkapi}}{{name.args}}{{/linkapi}}{{#if name.const}} const{{/if}}{{/if}}</td>
 		</tr>
 	{{#if name2}}
 		<tr>
-			<td>{{#if name2.static}}static {{/if}}{{#if name2.return}}{{#linkapi}}{{name2.return}}{{/linkapi}} {{/if}}<b>{{name2.name}}</b></td>
+			{{#if name2.static}}<td>static</td>{{/if}}
+			{{#if name2.return}}<td>{{#linkapi}}{{name2.return}}{{/linkapi}}</td>{{/if}}
+			<td {{#if right}}class="right-align"{{/if}}><b>{{name2.name}}</b></td>
 			<td>{{#if name2.args}}{{#linkapi}}{{name2.args}}{{/linkapi}}{{#if name2.const}} const{{/if}}{{/if}}</td>
 		</tr>
 	{{/if}}
 	{{#if name3}}
 		<tr>
-			<td>{{#if name3.static}}static {{/if}}{{#if name3.return}}{{#linkapi}}{{name3.return}}{{/linkapi}} {{/if}}<b>{{name3.name}}</b></td>
+			{{#if name3.static}}<td>static</td>{{/if}}
+			{{#if name3.return}}<td>{{#linkapi}}{{name3.return}}{{/linkapi}}</td>{{/if}}
+			<td {{#if right}}class="right-align"{{/if}}><b>{{name3.name}}</b></td>
 			<td>{{#if name3.args}}{{#linkapi}}{{name3.args}}{{/linkapi}}{{#if name3.const}} const{{/if}}{{/if}}</td>
 		</tr>
 	{{/if}}
 	{{#if name4}}
 		<tr>
-			<td>{{#if name4.static}}static {{/if}}{{#if name4.return}}{{#linkapi}}{{name4.return}}{{/linkapi}} {{/if}}<b>{{name4.name}}</b></td>
+			{{#if name4.static}}<td>static</td>{{/if}}
+			{{#if name4.return}}<td>{{#linkapi}}{{name4.return}}{{/linkapi}}</td>{{/if}}
+			<td {{#if right}}class="right-align"{{/if}}><b>{{name4.name}}</b></td>
 			<td>{{#if name4.args}}{{#linkapi}}{{name4.args}}{{/linkapi}}{{#if name4.const}} const{{/if}}{{/if}}</td>
 		</tr>
 	{{/if}}
 	</table>
+
+	{{#if annotation}}<p class="annotation">{{annotation}}</p>{{/if}}
 </pre>
 

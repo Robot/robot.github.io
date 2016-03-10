@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 // -------------------------------------------------------------------------- //
 //                                                                            //
-//                       (C) 2010-2015 Robot Developers                       //
+//                       (C) 2010-2016 Robot Developers                       //
 //                       See LICENSE for licensing info                       //
 //                                                                            //
 // -------------------------------------------------------------------------- //
@@ -53,6 +53,7 @@ var mLinkAPI =
 	{ name: "intptr",		page: "global"		},
 	{ name: "uintptr",		page: "global"		},
 
+	{ name: "Hash",			page: "hash"		},
 	{ name: "Color",		page: "color"		},
 	{ name: "Image",		page: "image"		},
 	{ name: "Range",		page: "range"		},
@@ -465,6 +466,7 @@ module.exports = function (grunt)
 					{
 						"partial-menu"  : "source/menu.html",
 						"partial-docs"  : "source/docs.html",
+						"partial-inc"   : "source/include.html",
 						"partial-class" : "source/class.html",
 						"partial-fn"    : "source/function.html"
 					}
@@ -476,14 +478,14 @@ module.exports = function (grunt)
 
 					"docs/about.html"		: "source/docs/about.html",
 					"docs/usage.html"		: "source/docs/usage.html",
+					"docs/node.html"		: "source/docs/node.html",
 					"docs/platforms.html"	: "source/docs/platforms.html",
 					"docs/versioning.html"	: "source/docs/versioning.html",
-					"docs/changes.html"		: "source/docs/changes.html",
 
 					"docs/philosophy.html"	: "source/docs/philosophy.html",
 					"docs/contributing.html": "source/docs/contributing.html",
-					"docs/resources.html"	: "source/docs/resources.html",
-					"docs/attribution.html"	: "source/docs/attribution.html",
+					"docs/branding.html"	: "source/docs/branding.html",
+					"docs/attributions.html": "source/docs/attributions.html",
 
 					"api/global.html"		: "source/api/global.html",
 					"api/enum.html"			: "source/api/enum.html",

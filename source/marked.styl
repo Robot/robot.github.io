@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 // -------------------------------------------------------------------------- //
 //                                                                            //
-//                       (C) 2010-2015 Robot Developers                       //
+//                       (C) 2010-2016 Robot Developers                       //
 //                       See LICENSE for licensing info                       //
 //                                                                            //
 // -------------------------------------------------------------------------- //
@@ -72,6 +72,16 @@
 
 	& p
 		text-align: justify
+		& strong
+			font-weight: 600
+
+	& ol
+	& ul
+		& p
+			margin: 0px 0px 8px 0px
+
+		& strong
+			font-weight: 600
 
 	& ol ol
 	& ul ol
@@ -157,6 +167,41 @@
 		padding:  0px 0px  0px 0px
 		background: grey(230)
 
+	& .left
+		float: left
+		margin-right: 20px
+		text-align: left
+
+	& .center
+		display: block
+		margin: 0px auto
+		text-align: center
+
+	& .right
+		float: right
+		margin-left: 20px
+		text-align: right
+	
+	& .include
+		font-family: inconsolata, monospace
+		  font-size: 18px
+		line-height: 18px
+
+		background: grey(230)
+		 border: 1px solid grey(220)
+		 margin:  0px  0px 16px  0px
+		padding: 20px 20px 20px 20px
+
+		& .keyword
+			color: rgb(45, 110, 150)
+			font-weight: 700
+
+		& .string
+			color: rgb(200, 0, 0)
+
+		& .details
+			float: right
+
 	& .class
 		& th, & td
 			white-space: pre
@@ -187,12 +232,16 @@
 		  font-size: 18px
 		line-height: 18px
 
-		padding: 10px 20px 10px 20px
+		padding: 10px 16px 10px 16px
 		white-space: nowrap
+		relative: left top
 
 		& table
 			 width: auto
 			margin: 0px
+
+			& tr, & tr:hover
+				background: transparent
 
 			& td
 				border: none
@@ -200,5 +249,26 @@
 				white-space: pre
 				vertical-align: top
 
-			& tr, & tr:hover
-				background: transparent
+			& .right-align
+				text-align: right
+
+		& .annotation
+			 margin: 0px
+			padding: 0px
+			absolute: right 16px bottom 10px
+
+			font-weight: 700
+			color: rgb(50, 150, 50)
+
+	@media print
+		h1, h2
+			page-break-before: always
+
+		h3, h4
+			page-break-after: avoid
+
+		pre, blockquote
+			page-break-inside: avoid
+
+		& .include .details
+			display: none
