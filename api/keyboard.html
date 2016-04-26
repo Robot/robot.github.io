@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+
+<!--////////////////////////////////////////////////////////////////////////////
+// ========================================================================== //
+//                                                                            //
+//                       (C) 2010-2016 Robot Developers                       //
+//                       See LICENSE for licensing info                       //
+//                                                                            //
+// ========================================================================== //
+/////////////////////////////////////////////////////////////////////////////-->
+
+<html lang="en">
+<head>
+
+	<title>Robot Keyboard Class</title>
+	<meta name="description" content="Robot documentation and information site">
+
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name=      "mobile-web-app-capable" content="no">
+	<meta name="apple-mobile-web-app-capable" content="no">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="viewport" content="width=980, maximum-scale=1">
+
+	<link rel="stylesheet" href="/common/normalize.css" />
+	<link rel="stylesheet" href="/common/docs.css" />
+
+	<link rel="shortcut icon" href="/common/favicon.ico" />
+
+</head>
+<body>
+
+	<div id="body">
+		
+
+
+
+<section id="header">
+	<div class="noise"></div>
+
+	<section id="banner">
+		<div class="container">
+
+			<a href="/">
+				<svg><use xlink:href="/common/vectors.svg#logo" /></svg>
+			</a>
+
+		</div>
+	</section>
+
+	<section id="menu">
+		<div class="container">
+	
+			<nav>
+				<a href="/docs/about.html"     >DOCUMENTATION</a>
+				<a href="/api/global.html"     >API          </a>
+				<a href="/docs/philosophy.html">COMMUNITY    </a>
+				<a href="//github.com/robot"   >GITHUB       </a>
+			</nav>
+	
+		</div>
+	</section>
+</section>
+
+<section id="docs">
+	<div class="container">
+
+		<div id="sidebar">
+
+			<nav>
+				<h1>Types</h1>
+				<a  href="/api/global.html"   >Global   </a>
+				<a  href="/api/enum.html"     >Enum     </a>
+				<a  href="/api/hash.html"     >Hash     </a>
+				<a  href="/api/color.html"    >Color    </a>
+				<a  href="/api/image.html"    >Image    </a>
+				<a  href="/api/range.html"    >Range    </a>
+				<a  href="/api/point.html"    >Point    </a>
+				<a  href="/api/size.html"     >Size     </a>
+				<a  href="/api/bounds.html"   >Bounds   </a>
+			</nav>
+			<nav>
+				<h1>Native</h1>
+				<a class="active" href="/api/keyboard.html" >Keyboard </a>
+				<a  href="/api/mouse.html"    >Mouse    </a>
+				<a  href="/api/process.html"  >Process  </a>
+				<a  href="/api/module.html"   >Module   </a>
+				<a  href="/api/memory.html"   >Memory   </a>
+				<a  href="/api/window.html"   >Window   </a>
+				<a  href="/api/screen.html"   >Screen   </a>
+				<a  href="/api/timer.html"    >Timer    </a>
+				<a  href="/api/clipboard.html">Clipboard</a>
+			</nav>
+
+		</div>
+		<div id="content" class="marked">
+
+			<h1 id="keyboard">Keyboard</h1>
+<a class="edit" href="//github.com/robot/robot.github.io/edit/master/source/api/keyboard.html">Edit on GitHub</a><div class="include">
+	#<span class="keyword">include</span> <span class="string">&lt;Keyboard.h&gt;</span>
+	<div class="details">
+		<a href="//github.com/robot/robot/blob/master/Source/Keyboard.h" >Header</a>
+		<a href="//github.com/robot/robot/blob/master/Source/Keyboard.cc">Source</a>
+	</div>
+	<div class="clearfix"></div>
+</div><table id="Keyboard" class="class">
+<thead>
+	<tr>
+		<th>S</th><th>Return</th><th>Name</th><th>Parameters</th>
+	</tr>
+</thead>
+<tbody>
+	<tr>
+		<td></td>
+		<td></td>
+		<td><a href="#Ctor">Keyboard</a></td>
+		<td>(void)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>void</td>
+		<td><a href="#Click">Click</a></td>
+		<td>(Key keycode) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>void</td>
+		<td><a href="#Press">Press</a></td>
+		<td>(Key keycode) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>void</td>
+		<td><a href="#Release">Release</a></td>
+		<td>(Key keycode) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#Click2">Click</a></td>
+		<td>(const char* keys) const</td>
+	</tr>
+	<tr>
+		<td>&#10004;</td>
+		<td>bool</td>
+		<td><a href="#Compile">Compile</a></td>
+		<td>(const char* keys,
+ KeyList&amp; result)</td>
+	</tr>
+	<tr>
+		<td>&#10004;</td>
+		<td>bool</td>
+		<td><a href="#GetState">GetState</a></td>
+		<td>(Key       keycode)</td>
+	</tr>
+	<tr>
+		<td>&#10004;</td>
+		<td>bool</td>
+		<td><a href="#GetState2">GetState</a></td>
+		<td>(KeyState&amp; result )</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>Range</td>
+		<td><a href="#AutoDelay">AutoDelay</a></td>
+		<td></td>
+	</tr>
+</tbody>
+</table><h2 id="description">Description</h2>
+<p>Provides a simple interface for generating native keyboard events on the system. These events can be used for the purposes of test automation, self-running demos, and other applications where control of the keyboard is needed. Certain platforms require special privileges or extensions to access low-level keyboard controls. If the current platform configuration does not allow this, most of the functionality in the class will perform no operation or return otherwise invalid data. As an example, Linux depends on XTest 2.2 to carry out the majority of the low-level functionality, when missing, the class will not work.</p>
+<p>Although keyboard events are system-wide, a keyboard object must still be created through the <a href="#Ctor">Constructor</a> in order to support multiple auto delays. Once created, use the <a href="#Press">Press</a> and <a href="#Release">Release</a> functions to generate keyboard key press and release events. Use the <a href="#Click">Click</a> function to generate both a press, followed by a release. Use the other <a href="#Click2">Click</a> function to produce multiple click events as specified by the input string. All these functions will block after generating an event, the amount of time blocked can be configured through the <a href="#AutoDelay">AutoDelay</a> property.</p>
+<p>The Keyboard class also offers a variety of non-blocking static functions. For instance, the compiler which transforms the input string for <a href="#Click2">Click</a> into basic click events is exposed through the <a href="#Compile">Compile</a> function. Additionally, the current down-state of one of more keyboard keys can be retrieved through the <a href="#GetState">GetState</a> functions.</p>
+<h2 id="types">Types</h2>
+<pre><code class="lang-cpp"><span class="hljs-keyword">typedef</span> <span class="hljs-built_in">vector</span>&lt;pair &lt;<span class="hljs-keyword">bool</span>, Key&gt;&gt; Robot::KeyList;
+<span class="hljs-keyword">typedef</span> <span class="hljs-built_in">unordered_map</span>&lt;Key, <span class="hljs-keyword">bool</span>&gt; Robot::KeyState;
+</code></pre>
+<h2 id="constructors">Constructors</h2>
+<p><a name="Ctor"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+
+            <td ><a class="link" href="#Ctor">Keyboard</a></td>
+            <td>(void)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Constructs a keyboard with an <a href="#AutoDelay">AutoDelay</a> between 40 and 90 milliseconds.</p>
+<h2 id="functions">Functions</h2>
+<p><a name="Click"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>void</td>
+            <td ><a class="link" href="#Click">Click</a></td>
+            <td>(<a href="/api/keyboard.html#key">Key</a> keycode) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p><a href="#Press">Presses</a> and then <a href="#Release">releases</a> <strong>keycode</strong>, blocking at each step.
+<br><br>
+<a name="Press"></a>
+<a name="Release"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>void</td>
+            <td ><a class="link" href="#Press">Press</a></td>
+            <td>(<a href="/api/keyboard.html#key">Key</a> keycode) const</td>
+        </tr>
+        <tr>
+
+            <td>void</td>
+            <td ><a class="link" href="#Release">Release</a></td>
+            <td>(<a href="/api/keyboard.html#key">Key</a> keycode) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Presses or releases a single keyboard key and blocks for <a href="#AutoDelay">AutoDelay</a> milliseconds. The value of <strong>keycode</strong> can be any valid <a href="#key">Key</a>. Passing a <strong>keycode</strong> which is not part of the <a href="#key">Key</a> enumeration is supported, as long as the correct platform-dependent constant is used. A pressed key should always be released. Pressing or releasing the same key multiple times is not always guaranteed to generate respective press or release events on the target platform.
+<br><br>
+<a name="Click2"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#Click2">Click</a></td>
+            <td>(const char* keys) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Performs <a href="#Press">Press</a> and <a href="#Release">Release</a> functions on the data resulting from the <a href="#Compile">compilation</a> of <strong>keys</strong>. If the syntax of <strong>keys</strong> is incorrect or the compilation fails, this function will return false.
+<br><br>
+<a name="Compile"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+            <td>static</td>
+            <td>bool</td>
+            <td ><a class="link" href="#Compile">Compile</a></td>
+            <td>(const char* keys,
+ <a href="/api/keyboard.html#types">KeyList</a>&amp; result)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Compiles <strong>keys</strong> into a list of pairs describing the key and whether it should be pressed (or released if false). The list is saved into <strong>result</strong>, which will be cleared prior to compilation. However, if <strong>keys</strong> is null, this function will return false immediately, without clearing <strong>result</strong>. If the syntax of <strong>keys</strong> is correct and the compilation succeeds, this function will return true.</p>
+<p><strong>keys</strong> expects a string of case-insensitive codes representing <a href="#key">keys</a>, as illustrated by the table below. Codes consisting of single characters may be specified directly, one after the other. For example, setting <strong>keys</strong> to &quot;abc&quot; will compile into clicking a, b and then c, in that order. Codes longer than one character must be wrapped in curly braces: {left}, {tab}. Curly braces can also be used to specify the number of times a key should be repeated, up to a maximum of 99 times: {left 4}, {tab 2}. Uppercase and and other &quot;shift-based&quot; keys such as ampersand and double quotes must be prefaced with the shift modifier. Modifiers can be specified with special codes:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Modifier</th>
+<th style="text-align:left">Code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">ALT</td>
+<td style="text-align:left">%</td>
+</tr>
+<tr>
+<td style="text-align:left">CONTROL</td>
+<td style="text-align:left">^</td>
+</tr>
+<tr>
+<td style="text-align:left">SHIFT</td>
+<td style="text-align:left">+</td>
+</tr>
+<tr>
+<td style="text-align:left">SYSTEM</td>
+<td style="text-align:left">$</td>
+</tr>
+</tbody>
+</table>
+<p>As an example, &quot;+a&quot; will compile into pressing and holding shift, clicking a and then releasing shift. To apply modifiers to multiple keys at once, specify the desired modifier followed by one or more codes within parentheses. For example, setting <strong>keys</strong> to &quot;+(ab^c)&quot; or &quot;+(ab^(c))&quot; will compile into pressing and holding shift, followed by clicking a and b, followed by pressing and holding control, followed by clicking c and then releasing both control and shift, in that order. Whitespace characters including \t, \n, \v, \f and \r are automatically ignored by the compiler.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><a href="#key">Key</a></th>
+<th style="text-align:left">Code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">KeySpace</td>
+<td style="text-align:left">{ }</td>
+</tr>
+<tr>
+<td style="text-align:left">KeySpace</td>
+<td style="text-align:left">{SPACE}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeySpace</td>
+<td style="text-align:left">{SPC}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyEscape</td>
+<td style="text-align:left">{ESCAPE}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyEscape</td>
+<td style="text-align:left">{ESC}</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">KeyTab</td>
+<td style="text-align:left">{TAB}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyAlt</td>
+<td style="text-align:left">{ALT}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyLAlt</td>
+<td style="text-align:left">{LALT}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyRAlt</td>
+<td style="text-align:left">{RALT}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyControl</td>
+<td style="text-align:left">{CONTROL}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyLControl</td>
+<td style="text-align:left">{LCONTROL}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyRControl</td>
+<td style="text-align:left">{RCONTROL}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyControl</td>
+<td style="text-align:left">{CTRL}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyLControl</td>
+<td style="text-align:left">{LCTRL}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyRControl</td>
+<td style="text-align:left">{RCTRL}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyShift</td>
+<td style="text-align:left">{SHIFT}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyLShift</td>
+<td style="text-align:left">{LSHIFT}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyRShift</td>
+<td style="text-align:left">{RSHIFT}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeySystem</td>
+<td style="text-align:left">{SYSTEM}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyLSystem</td>
+<td style="text-align:left">{LSYSTEM}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyRSystem</td>
+<td style="text-align:left">{RSYSTEM}</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">KeyF1</td>
+<td style="text-align:left">{F1}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyF12</td>
+<td style="text-align:left">{F12}</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">Key0</td>
+<td style="text-align:left">{0}</td>
+</tr>
+<tr>
+<td style="text-align:left">Key9</td>
+<td style="text-align:left">{9}</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">KeyA</td>
+<td style="text-align:left">{A}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyZ</td>
+<td style="text-align:left">{Z}</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">KeyGrave</td>
+<td style="text-align:left">{`}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyMinus</td>
+<td style="text-align:left">{-}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyEqual</td>
+<td style="text-align:left">{=}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyBackspace</td>
+<td style="text-align:left">{&lt;}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyLBracket</td>
+<td style="text-align:left">{[}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyRBracket</td>
+<td style="text-align:left">{]}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyBackslash</td>
+<td style="text-align:left">{}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeySemicolon</td>
+<td style="text-align:left">{;}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyQuote</td>
+<td style="text-align:left">{&#39;}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyReturn</td>
+<td style="text-align:left">{~}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyComma</td>
+<td style="text-align:left">{,}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyPeriod</td>
+<td style="text-align:left">{.}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeySlash</td>
+<td style="text-align:left">{/}</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">KeyGrave</td>
+<td style="text-align:left">{GRAVE}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyMinus</td>
+<td style="text-align:left">{MINUS}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyEqual</td>
+<td style="text-align:left">{EQUAL}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyBackspace</td>
+<td style="text-align:left">{BACKSPACE}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyBackspace</td>
+<td style="text-align:left">{BS}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyLBracket</td>
+<td style="text-align:left">{LBRACKET}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyRBracket</td>
+<td style="text-align:left">{RBRACKET}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyBackslash</td>
+<td style="text-align:left">{BACKSLASH}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeySemicolon</td>
+<td style="text-align:left">{SEMICOLON}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyQuote</td>
+<td style="text-align:left">{QUOTE}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyReturn</td>
+<td style="text-align:left">{RETURN}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyComma</td>
+<td style="text-align:left">{COMMA}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyPeriod</td>
+<td style="text-align:left">{PERIOD}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeySlash</td>
+<td style="text-align:left">{SLASH}</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">KeyLeft</td>
+<td style="text-align:left">{LEFT}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyUp</td>
+<td style="text-align:left">{UP}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyRight</td>
+<td style="text-align:left">{RIGHT}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyDown</td>
+<td style="text-align:left">{DOWN}</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">KeyPrint</td>
+<td style="text-align:left">{PRINT}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyPause</td>
+<td style="text-align:left">{PAUSE}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyPause</td>
+<td style="text-align:left">{BREAK}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyInsert</td>
+<td style="text-align:left">{INSERT}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyInsert</td>
+<td style="text-align:left">{INS}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyDelete</td>
+<td style="text-align:left">{DELETE}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyDelete</td>
+<td style="text-align:left">{DEL}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyHome</td>
+<td style="text-align:left">{HOME}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyEnd</td>
+<td style="text-align:left">{END}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyPageUp</td>
+<td style="text-align:left">{PAGEUP}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyPageUp</td>
+<td style="text-align:left">{PGUP}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyPageDown</td>
+<td style="text-align:left">{PAGEDOWN}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyPageDown</td>
+<td style="text-align:left">{PGDN}</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">KeyAdd</td>
+<td style="text-align:left">{NUM+}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeySubtract</td>
+<td style="text-align:left">{NUM-}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyMultiply</td>
+<td style="text-align:left">{NUM*}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyDivide</td>
+<td style="text-align:left">{NUM/}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyDecimal</td>
+<td style="text-align:left">{NUM.}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyEnter</td>
+<td style="text-align:left">{NUM~}</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">KeyAdd</td>
+<td style="text-align:left">{ADD}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeySubtract</td>
+<td style="text-align:left">{SUBTRACT}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyMultiply</td>
+<td style="text-align:left">{MULTIPLY}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyDivide</td>
+<td style="text-align:left">{DIVIDE}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyDecimal</td>
+<td style="text-align:left">{DECIMAL}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyEnter</td>
+<td style="text-align:left">{ENTER}</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">KeyNum0</td>
+<td style="text-align:left">{NUM0}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyNum9</td>
+<td style="text-align:left">{NUM9}</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">KeyCapsLock</td>
+<td style="text-align:left">{CAPSLOCK}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyScrollLock</td>
+<td style="text-align:left">{SCROLLLOCK}</td>
+</tr>
+<tr>
+<td style="text-align:left">KeyNumLock</td>
+<td style="text-align:left">{NUMLOCK}</td>
+</tr>
+</tbody>
+</table>
+<p><br>
+<a name="GetState"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+            <td>static</td>
+            <td>bool</td>
+            <td ><a class="link" href="#GetState">GetState</a></td>
+            <td>(<a href="/api/keyboard.html#key">Key</a>       keycode)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns true if <strong>keycode</strong> is currently pressed system-wide, regardless of whether or not the calling application has focus. The value of <strong>keycode</strong> can be any valid <a href="#key">Key</a>. Passing a <strong>keycode</strong> which is not part of the <a href="#key">Key</a> enumeration will also cause this function to return false. If two of more key states need to be checked, consider using the other <a href="#GetState2">GetState</a> function for improved performance.
+<br><br>
+<a name="GetState2"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+            <td>static</td>
+            <td>bool</td>
+            <td ><a class="link" href="#GetState2">GetState</a></td>
+            <td>(<a href="/api/keyboard.html#types">KeyState</a>&amp; result )</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Checks the pressed state of all <a href="#key">keys</a> system-wide, regardless of whether or not the calling application has focus. If an error occurs, this function will return false, however, <strong>result</strong> will always be cleared regardless of whether or not this function succeeds. If only one key state needs to be checked, consider using the other <a href="#GetState">GetState</a> function for improved performance.</p>
+<h2 id="properties">Properties</h2>
+<p><a name="AutoDelay"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td><a href="/api/range.html">Range</a></td>
+            <td ><a class="link" href="#AutoDelay">AutoDelay</a></td>
+            <td></td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Provides direct access to the automatic delay range in milliseconds.</p>
+<h1 id="key">Key</h1>
+<p>Represents the keyboard keys supported by this class. These keys map to platform-dependent values. On Linux, keys map to the XK_* series of constants which get translated into key codes with XKeysymToKeycode. On Mac, keys map to the kVK_* series of constants, as defined by CGKeyCode. On Windows, keys map to the standard VK_* series of constants.</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">enum</span> Key
+{
+    KeySpace,
+    KeyEscape,
+    KeyTab,
+
+    KeyAlt,    KeyControl,
+    KeyLAlt,   KeyLControl,
+    KeyRAlt,   KeyRControl,
+
+    KeyShift,  KeySystem,
+    KeyLShift, KeyLSystem,
+    KeyRShift, KeyRSystem,
+
+    KeyF1,  KeyF2,  KeyF3,
+    KeyF4,  KeyF5,  KeyF6,
+    KeyF7,  KeyF8,  KeyF9,
+    KeyF10, KeyF11, KeyF12,
+
+    Key0, Key1, Key2, Key3,
+    Key4, Key5, Key6, Key7,
+    Key8, Key9,
+
+    KeyA, KeyB, KeyC, KeyD,
+    KeyE, KeyF, KeyG, KeyH,
+    KeyI, KeyJ, KeyK, KeyL,
+    KeyM, KeyN, KeyO, KeyP,
+    KeyQ, KeyR, KeyS, KeyT,
+    KeyU, KeyV, KeyW, KeyX,
+    KeyY, KeyZ,
+
+    KeyGrave,
+    KeyMinus,
+    KeyEqual,
+    KeyBackspace,
+    KeyLBracket,
+    KeyRBracket,
+    KeyBackslash,
+    KeySemicolon,
+    KeyQuote,
+    KeyReturn,
+    KeyComma,
+    KeyPeriod,
+    KeySlash,
+
+    KeyLeft,
+    KeyUp,
+    KeyRight,
+    KeyDown,
+
+    KeyPrint,
+    KeyPause,
+    KeyInsert,
+    KeyDelete,
+    KeyHome,
+    KeyEnd,
+    KeyPageUp,
+    KeyPageDown,
+
+    KeyAdd,
+    KeySubtract,
+    KeyMultiply,
+    KeyDivide,
+    KeyDecimal,
+    KeyEnter,
+
+    KeyNum0, KeyNum1, KeyNum2,
+    KeyNum3, KeyNum4, KeyNum5,
+    KeyNum6, KeyNum7, KeyNum8,
+    KeyNum9,
+
+    KeyCapsLock,
+    KeyScrollLock,
+    KeyNumLock,
+};
+</code></pre>
+<h1 id="examples">Examples</h1>
+<pre><code class="lang-cpp"><span class="hljs-comment">// C++</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;Robot.h&gt;</span></span>
+ROBOT_NS_USE_ALL;
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span> <span class="hljs-params">(<span class="hljs-keyword">void</span>)</span>
+</span>{
+    Keyboard keyboard;
+    <span class="hljs-comment">// Type a capital H character</span>
+    keyboard.Press   (KeyShift);
+    keyboard.Click   (KeyH    );
+    keyboard.Release (KeyShift);
+
+    <span class="hljs-comment">// Change default auto delay</span>
+    keyboard.AutoDelay.Min = <span class="hljs-number">100</span>;
+    keyboard.AutoDelay.Max = <span class="hljs-number">200</span>;
+
+    <span class="hljs-comment">// Finish typing the fancy "Hello ROBOT!"</span>
+    keyboard.Click (<span class="hljs-string">"ELLO +Robo&lt;&lt;&lt;+(obot)+1"</span>);
+
+    KeyState s;
+    <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>)
+    {
+        <span class="hljs-comment">// Press the H and R</span>
+        <span class="hljs-comment">// keys to exit loop</span>
+        Keyboard::GetState (s);
+        <span class="hljs-keyword">if</span> (s[KeyH] &amp;&amp; s[KeyR])
+            <span class="hljs-keyword">break</span>;
+
+        <span class="hljs-comment">// Avoid busy wait</span>
+        Timer::Sleep (<span class="hljs-number">15</span>);
+    }
+
+    return <span class="hljs-number">0</span>;
+}
+</code></pre>
+<pre><code class="lang-js"><span class="hljs-comment">// Node</span>
+<span class="hljs-keyword">var</span> robot = <span class="hljs-built_in">require</span> (<span class="hljs-string">"robot-js"</span>);
+
+<span class="hljs-keyword">var</span> keyboard = robot.Keyboard();
+<span class="hljs-comment">// Type a capital H character</span>
+keyboard.press   (robot.KEY_SHIFT);
+keyboard.click   (robot.KEY_H    );
+keyboard.release (robot.KEY_SHIFT);
+
+<span class="hljs-comment">// Change default auto delay</span>
+keyboard.autoDelay.min = <span class="hljs-number">100</span>;
+keyboard.autoDelay.max = <span class="hljs-number">200</span>;
+
+<span class="hljs-comment">// Finish typing the fancy "Hello ROBOT!"</span>
+keyboard.click (<span class="hljs-string">"ELLO +Robo&lt;&lt;&lt;+(obot)+1"</span>);
+
+<span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>)
+{
+    <span class="hljs-comment">// Press H and R keys to exit loop</span>
+    <span class="hljs-keyword">var</span> s = robot.Keyboard.getState();
+    <span class="hljs-keyword">if</span> (s[robot.KEY_H] &amp;&amp; s[robot.KEY_R])
+        <span class="hljs-keyword">break</span>;
+
+    <span class="hljs-comment">// Avoid busy waiting</span>
+    robot.Timer.sleep (<span class="hljs-number">15</span>);
+}
+</code></pre>
+
+
+		</div>
+
+		<div class="clearfix"></div>
+	</div>
+</section>
+
+		<div id="footer-pad"></div>
+		<section id="footer">
+			<div class="container">
+
+				<div class="author">
+					<p>Licensed under the <a href="//opensource.org/licenses/Zlib">ZLIB License</a></p>
+					<p>Project by the <a href="//github.com/orgs/robot/people">Robot Developers</a></p>
+				</div>
+
+				<div class="github">
+					<p>Proudly Hosted on <a href="//pages.github.com">
+						<svg><use xlink:href="/common/vectors.svg#github" /></svg>
+					</a></p>
+				</div>
+
+				<div class="clearfix"></div>
+
+			</div>
+		</section>
+	</div>
+
+	<script src="/common/svg4everybody.js"></script><script>svg4everybody();</script>
+
+	<script>
+		(function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,"script","//www.google-analytics.com/analytics.js","ga");
+		ga("create", "UA-41804800-7", "auto"); ga("send", "pageview");
+	</script>
+
+</body>
+</html>

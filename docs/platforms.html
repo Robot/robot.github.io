@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+
+<!--////////////////////////////////////////////////////////////////////////////
+// ========================================================================== //
+//                                                                            //
+//                       (C) 2010-2016 Robot Developers                       //
+//                       See LICENSE for licensing info                       //
+//                                                                            //
+// ========================================================================== //
+/////////////////////////////////////////////////////////////////////////////-->
+
+<html lang="en">
+<head>
+
+	<title>Robot Platform Support</title>
+	<meta name="description" content="Robot documentation and information site">
+
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name=      "mobile-web-app-capable" content="no">
+	<meta name="apple-mobile-web-app-capable" content="no">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="viewport" content="width=980, maximum-scale=1">
+
+	<link rel="stylesheet" href="/common/normalize.css" />
+	<link rel="stylesheet" href="/common/docs.css" />
+
+	<link rel="shortcut icon" href="/common/favicon.ico" />
+
+</head>
+<body>
+
+	<div id="body">
+		
+
+
+<section id="header">
+	<div class="noise"></div>
+
+	<section id="banner">
+		<div class="container">
+
+			<a href="/">
+				<svg><use xlink:href="/common/vectors.svg#logo" /></svg>
+			</a>
+
+		</div>
+	</section>
+
+	<section id="menu">
+		<div class="container">
+	
+			<nav>
+				<a href="/docs/about.html"     >DOCUMENTATION</a>
+				<a href="/api/global.html"     >API          </a>
+				<a href="/docs/philosophy.html">COMMUNITY    </a>
+				<a href="//github.com/robot"   >GITHUB       </a>
+			</nav>
+	
+		</div>
+	</section>
+</section>
+
+<section id="docs">
+	<div class="container">
+
+		<div id="sidebar">
+
+			<nav>
+				<h1>Documentation</h1>
+				<a  href="/docs/about.html"       >About       </a>
+				<a  href="/docs/usage.html"       >Usage       </a>
+				<a  href="/docs/node.html"        >Node        </a>
+				<a class="active" href="/docs/platforms.html"   >Platforms   </a>
+				<a  href="/docs/versioning.html"  >Versioning  </a>
+			</nav>
+			<nav>
+				<h1>Community</h1>
+				<a  href="/docs/philosophy.html"  >Philosophy  </a>
+				<a  href="/docs/contributing.html">Contributing</a>
+				<a  href="/docs/conduct.html"     >Conduct     </a>
+				<a  href="/docs/branding.html"    >Branding    </a>
+				<a  href="/docs/attributions.html">Attributions</a>
+			</nav>
+
+		</div>
+		<div id="content" class="marked">
+
+			<h1 id="platforms">Platforms</h1>
+<p><a class="edit" href="//github.com/robot/robot.github.io/edit/master/source/docs/platforms.html">Edit on GitHub</a>Robot supports all three major desktop operating systems including <strong>Linux</strong>, <strong>Mac</strong>, and <strong>Windows</strong>. However, even though the API is identical across all these platforms, certain implementations differ. Please consult the API documentation for more information regarding these differences. Below are tables representing the operating systems Robot has been tested on, other operating systems may also be supported.</p>
+<h2 id="linux">Linux</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Name</th>
+<th style="text-align:center">Version</th>
+<th style="text-align:center">Architecture</th>
+<th style="text-align:center">Compiler</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Ubuntu</td>
+<td style="text-align:center">12.04</td>
+<td style="text-align:center">x32/x64</td>
+<td style="text-align:center">g++ 4.9+</td>
+</tr>
+<tr>
+<td style="text-align:center">Ubuntu</td>
+<td style="text-align:center">14.04</td>
+<td style="text-align:center">x32/x64</td>
+<td style="text-align:center">g++ 4.9+</td>
+</tr>
+</tbody>
+</table>
+<p class="center"><strong>Other distributions and versions may also be supported</strong></p>
+
+<h2 id="mac">Mac</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Name</th>
+<th style="text-align:center">Version</th>
+<th style="text-align:center">Architecture</th>
+<th style="text-align:center">Compiler</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Mountain Lion</td>
+<td style="text-align:center">10.8</td>
+<td style="text-align:center">x64</td>
+<td style="text-align:center">clang++ 5.1+</td>
+</tr>
+<tr>
+<td style="text-align:center">Mavericks</td>
+<td style="text-align:center">10.9</td>
+<td style="text-align:center">x64</td>
+<td style="text-align:center">clang++ 5.1+</td>
+</tr>
+<tr>
+<td style="text-align:center">Yosemite</td>
+<td style="text-align:center">10.10</td>
+<td style="text-align:center">x64</td>
+<td style="text-align:center">clang++ 5.1+</td>
+</tr>
+<tr>
+<td style="text-align:center">El Capitan</td>
+<td style="text-align:center">10.11</td>
+<td style="text-align:center">x64</td>
+<td style="text-align:center">clang++ 5.1+</td>
+</tr>
+</tbody>
+</table>
+<h2 id="windows">Windows</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Name</th>
+<th style="text-align:center">Version</th>
+<th style="text-align:center">Architecture</th>
+<th style="text-align:center">Compiler</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Vista</td>
+<td style="text-align:center">6.0</td>
+<td style="text-align:center">x32/x64</td>
+<td style="text-align:center">VS 2010+</td>
+</tr>
+<tr>
+<td style="text-align:center">7</td>
+<td style="text-align:center">6.1</td>
+<td style="text-align:center">x32/x64</td>
+<td style="text-align:center">VS 2010+</td>
+</tr>
+<tr>
+<td style="text-align:center">8</td>
+<td style="text-align:center">6.2</td>
+<td style="text-align:center">x32/x64</td>
+<td style="text-align:center">VS 2010+</td>
+</tr>
+<tr>
+<td style="text-align:center">8.1</td>
+<td style="text-align:center">6.3</td>
+<td style="text-align:center">x32/x64</td>
+<td style="text-align:center">VS 2010+</td>
+</tr>
+<tr>
+<td style="text-align:center">10</td>
+<td style="text-align:center">10.0</td>
+<td style="text-align:center">x32/x64</td>
+<td style="text-align:center">VS 2010+</td>
+</tr>
+</tbody>
+</table>
+
+
+		</div>
+
+		<div class="clearfix"></div>
+	</div>
+</section>
+
+		<div id="footer-pad"></div>
+		<section id="footer">
+			<div class="container">
+
+				<div class="author">
+					<p>Licensed under the <a href="//opensource.org/licenses/Zlib">ZLIB License</a></p>
+					<p>Project by the <a href="//github.com/orgs/robot/people">Robot Developers</a></p>
+				</div>
+
+				<div class="github">
+					<p>Proudly Hosted on <a href="//pages.github.com">
+						<svg><use xlink:href="/common/vectors.svg#github" /></svg>
+					</a></p>
+				</div>
+
+				<div class="clearfix"></div>
+
+			</div>
+		</section>
+	</div>
+
+	<script src="/common/svg4everybody.js"></script><script>svg4everybody();</script>
+
+	<script>
+		(function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,"script","//www.google-analytics.com/analytics.js","ga");
+		ga("create", "UA-41804800-7", "auto"); ga("send", "pageview");
+	</script>
+
+</body>
+</html>

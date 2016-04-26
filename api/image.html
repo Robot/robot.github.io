@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+
+<!--////////////////////////////////////////////////////////////////////////////
+// ========================================================================== //
+//                                                                            //
+//                       (C) 2010-2016 Robot Developers                       //
+//                       See LICENSE for licensing info                       //
+//                                                                            //
+// ========================================================================== //
+/////////////////////////////////////////////////////////////////////////////-->
+
+<html lang="en">
+<head>
+
+	<title>Robot Image Class</title>
+	<meta name="description" content="Robot documentation and information site">
+
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name=      "mobile-web-app-capable" content="no">
+	<meta name="apple-mobile-web-app-capable" content="no">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="viewport" content="width=980, maximum-scale=1">
+
+	<link rel="stylesheet" href="/common/normalize.css" />
+	<link rel="stylesheet" href="/common/docs.css" />
+
+	<link rel="shortcut icon" href="/common/favicon.ico" />
+
+</head>
+<body>
+
+	<div id="body">
+		
+
+
+
+<section id="header">
+	<div class="noise"></div>
+
+	<section id="banner">
+		<div class="container">
+
+			<a href="/">
+				<svg><use xlink:href="/common/vectors.svg#logo" /></svg>
+			</a>
+
+		</div>
+	</section>
+
+	<section id="menu">
+		<div class="container">
+	
+			<nav>
+				<a href="/docs/about.html"     >DOCUMENTATION</a>
+				<a href="/api/global.html"     >API          </a>
+				<a href="/docs/philosophy.html">COMMUNITY    </a>
+				<a href="//github.com/robot"   >GITHUB       </a>
+			</nav>
+	
+		</div>
+	</section>
+</section>
+
+<section id="docs">
+	<div class="container">
+
+		<div id="sidebar">
+
+			<nav>
+				<h1>Types</h1>
+				<a  href="/api/global.html"   >Global   </a>
+				<a  href="/api/enum.html"     >Enum     </a>
+				<a  href="/api/hash.html"     >Hash     </a>
+				<a  href="/api/color.html"    >Color    </a>
+				<a class="active" href="/api/image.html"    >Image    </a>
+				<a  href="/api/range.html"    >Range    </a>
+				<a  href="/api/point.html"    >Point    </a>
+				<a  href="/api/size.html"     >Size     </a>
+				<a  href="/api/bounds.html"   >Bounds   </a>
+			</nav>
+			<nav>
+				<h1>Native</h1>
+				<a  href="/api/keyboard.html" >Keyboard </a>
+				<a  href="/api/mouse.html"    >Mouse    </a>
+				<a  href="/api/process.html"  >Process  </a>
+				<a  href="/api/module.html"   >Module   </a>
+				<a  href="/api/memory.html"   >Memory   </a>
+				<a  href="/api/window.html"   >Window   </a>
+				<a  href="/api/screen.html"   >Screen   </a>
+				<a  href="/api/timer.html"    >Timer    </a>
+				<a  href="/api/clipboard.html">Clipboard</a>
+			</nav>
+
+		</div>
+		<div id="content" class="marked">
+
+			<h1 id="image">Image</h1>
+<a class="edit" href="//github.com/robot/robot.github.io/edit/master/source/api/image.html">Edit on GitHub</a><div class="include">
+	#<span class="keyword">include</span> <span class="string">&lt;Image.h&gt;</span>
+	<div class="details">
+		<a href="//github.com/robot/robot/blob/master/Source/Image.h" >Header</a>
+		<a href="//github.com/robot/robot/blob/master/Source/Image.cc">Source</a>
+	</div>
+	<div class="clearfix"></div>
+</div><table id="Image" class="class">
+<thead>
+	<tr>
+		<th>S</th><th>Return</th><th>Name</th><th>Parameters</th>
+	</tr>
+</thead>
+<tbody>
+	<tr>
+		<td></td>
+		<td></td>
+		<td><a href="#Ctor">Image</a></td>
+		<td>(void)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td><a href="#Ctor2">Image</a></td>
+		<td>(const Image&amp;  image)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td><a href="#Ctor3">Image</a></td>
+		<td>(      Image&amp;&amp; image)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td><a href="#Ctor4">Image</a></td>
+		<td>(const  Size&amp;  size)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td><a href="#Ctor5">Image</a></td>
+		<td>(uint16 w, uint16 h)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#IsValid">IsValid</a></td>
+		<td>(void) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#Create">Create</a></td>
+		<td>(const  Size&amp;  size)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#Create2">Create</a></td>
+		<td>(uint16 w, uint16 h)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>void</td>
+		<td><a href="#Destroy">Destroy</a></td>
+		<td>(void)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>uint16</td>
+		<td><a href="#GetWidth">GetWidth</a></td>
+		<td>(void) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>uint16</td>
+		<td><a href="#GetHeight">GetHeight</a></td>
+		<td>(void) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>uint32</td>
+		<td><a href="#GetLength">GetLength</a></td>
+		<td>(void) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>uint32*</td>
+		<td><a href="#GetData">GetData</a></td>
+		<td>(void) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>uint32</td>
+		<td><a href="#GetLimit">GetLimit</a></td>
+		<td>(void) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>Color</td>
+		<td><a href="#GetPixel">GetPixel</a></td>
+		<td>(const Point&amp; point) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>Color</td>
+		<td><a href="#GetPixel2">GetPixel</a></td>
+		<td>(uint16 x, uint16 y) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>void</td>
+		<td><a href="#SetPixel">SetPixel</a></td>
+		<td>(const Point&amp; point, Color c)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>void</td>
+		<td><a href="#SetPixel2">SetPixel</a></td>
+		<td>(uint16 x, uint16 y, Color c)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#Fill">Fill</a></td>
+		<td>(const Color&amp; color)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#Fill2">Fill</a></td>
+		<td>(uint8 r, uint8 g,
+ uint8 b, uint8 a &#x3D; 255)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#Swap">Swap</a></td>
+		<td>(const char* sw)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#Flip">Flip</a></td>
+		<td>(bool h, bool v)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>Image&amp;</td>
+		<td><a href="#OpAs">operator &#x3D;</a></td>
+		<td>(const Image&amp;  image)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>Image&amp;</td>
+		<td><a href="#OpAs2">operator &#x3D;</a></td>
+		<td>(      Image&amp;&amp; image)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#OpEq">operator &#x3D;&#x3D;</a></td>
+		<td>(const Image&amp; image) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#OpNe">operator !&#x3D;</a></td>
+		<td>(const Image&amp; image) const</td>
+	</tr>
+</tbody>
+</table><h2 id="description">Description</h2>
+<p>Represents a cross-platform and hardware-independent two-dimensional image. An image can be created through the <a href="#Ctor4">Constructor</a> or <a href="#Create">Create</a> functions but in both cases, data is allocated using width and height. To check whether an image has been created, use the <a href="#IsValid">IsValid</a> function. Use the <a href="#Destroy">Destroy</a> function when the image is no longer needed to free up any used resources, although it is also called by the destructor automatically.</p>
+<p>When creating an image that&#39;s already been created, if the current <a href="#GetLimit">length</a> of the pixel <a href="#GetData">data</a> is greater than the new <a href="#GetLength">length</a>, then only the dimensions get set, and the pixel data remains unmodified. If, however, the current length is less than the new length, the image gets <a href="#Destroy">destroyed</a>, and new data gets allocated.</p>
+<p>Image metrics are available through accessor functions like <a href="#GetWidth">GetWidth</a>, <a href="#GetHeight">GetHeight</a>, and <a href="#GetLength">GetLength</a>. To get access to the pixel data directly, use the <a href="#GetData">GetData</a> function which returns a one-dimensional array of packed ARGB integers. Alternately, <a href="#GetPixel">GetPixel</a> and <a href="#SetPixel">SetPixel</a> can also be used to manipulate the pixel data.</p>
+<p><img class="left" src="/common/image1.png" /></p>
+<pre><code class="lang-cpp"><span class="hljs-function">Image <span class="hljs-title">image</span> <span class="hljs-params">(<span class="hljs-number">4</span>, <span class="hljs-number">6</span>)</span></span>;
+image.Fill  (<span class="hljs-number">0</span>   );
+uint32* data = image.GetData();
+
+image.GetWidth (); <span class="hljs-comment">// 4</span>
+image.GetHeight(); <span class="hljs-comment">// 6</span>
+image.GetLength(); <span class="hljs-comment">// 24</span>
+
+data[ <span class="hljs-number">4</span>] = <span class="hljs-number">0xFFC80000</span>;
+data[<span class="hljs-number">11</span>] = <span class="hljs-number">0xFF3CB43C</span>;
+data[<span class="hljs-number">17</span>] = <span class="hljs-number">0xFF3C78B4</span>;
+
+image.GetPixel (<span class="hljs-number">0</span>, <span class="hljs-number">1</span>); <span class="hljs-comment">// (200,   0,   0)</span>
+image.GetPixel (<span class="hljs-number">3</span>, <span class="hljs-number">2</span>); <span class="hljs-comment">// ( 60, 180,  60)</span>
+image.GetPixel (<span class="hljs-number">1</span>, <span class="hljs-number">4</span>); <span class="hljs-comment">// ( 60, 120, 180)</span>
+</code></pre>
+<p>The Image class provides additional functionality for manipulating the image. The <a href="#Fill">Fill</a> function, for instance, can be used to fill the entire image with a color while the <a href="#Flip">Flip</a> function can mirror the image vertically or horizontally. Individual channels of pixels can be swapped using the <a href="#Swap">Swap</a> function; this is especially useful for when the channels need to arranged in a specific order.</p>
+<p><img class="center" src="/common/image2.png" /></p>
+<p>The Image class supports deep copying, move semantics, and deep comparison. Where appropriate, the image gets copied in its entirety; the now independent copy has the same width and height as the original. In instances where a copy is inefficient, a move is used instead, allowing the class to behave like a regular POD type.</p>
+<h2 id="constructors">Constructors</h2>
+<p><a name="Ctor"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+
+            <td ><a class="link" href="#Ctor">Image</a></td>
+            <td>(void)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Constructs an image with all components set to zero.
+<br><br>
+<a name="Ctor2"></a>
+<a name="Ctor3"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+
+            <td ><a class="link" href="#Ctor2">Image</a></td>
+            <td>(const <a href="/api/image.html">Image</a>&amp;  image)</td>
+        </tr>
+        <tr>
+
+
+            <td ><a class="link" href="#Ctor3">Image</a></td>
+            <td>(      <a href="/api/image.html">Image</a>&amp;&amp; image)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Constructs an image by copying or moving the contents of <strong>image</strong>.
+<br><br>
+<a name="Ctor4"></a>
+<a name="Ctor5"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+
+            <td ><a class="link" href="#Ctor4">Image</a></td>
+            <td>(const  <a href="/api/size.html">Size</a>&amp;  size)</td>
+        </tr>
+        <tr>
+
+
+            <td ><a class="link" href="#Ctor5">Image</a></td>
+            <td>(<a href="/api/global.html#data-types">uint16</a> w, <a href="/api/global.html#data-types">uint16</a> h)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Constructs an image with width and height set to <strong>size</strong> or <strong>w</strong> and <strong>h</strong>.</p>
+<p><strong>Warning:</strong> <a href="#GetData">Data</a> is uninitialized, use the <a href="#Fill">Fill</a> function to initialize the data prior to use.</p>
+<h2 id="functions">Functions</h2>
+<p><a name="IsValid"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#IsValid">IsValid</a></td>
+            <td>(void) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns true if this image has been <a href="#Create">created</a>.
+<br><br>
+<a name="Create"></a>
+<a name="Create2"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#Create">Create</a></td>
+            <td>(const  <a href="/api/size.html">Size</a>&amp;  size)</td>
+        </tr>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#Create2">Create</a></td>
+            <td>(<a href="/api/global.html#data-types">uint16</a> w, <a href="/api/global.html#data-types">uint16</a> h)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Creates a new image with width and height set to <strong>size</strong>. If this image has already been created and the current <a href="#GetLimit">length</a> of the pixel <a href="#GetData">data</a> is enough to accommodate the new <a href="#GetLength">length</a>, then only the dimensions get set, and the pixel data remains unmodified. If, however, the current length is less than the new length, then this image gets <a href="#Destroy">destroyed</a>, and new data gets allocated. If any component of <strong>size</strong> is zero, this function returns false</p>
+<p><strong>Warning:</strong> <a href="#GetData">Data</a> is uninitialized, use the <a href="#Fill">Fill</a> function to initialize the data prior to use.
+<br><br>
+<a name="Destroy"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>void</td>
+            <td ><a class="link" href="#Destroy">Destroy</a></td>
+            <td>(void)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Destroys the internal pixel <a href="#GetData">data</a> and deletes any memory which might have been allocated. All values including width and height are set to zero. This function does nothing if the image has not yet been created or has already been destroyed.
+<br><br>
+<a name="GetWidth"></a>
+<a name="GetHeight"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td><a href="/api/global.html#data-types">uint16</a></td>
+            <td ><a class="link" href="#GetWidth">GetWidth</a></td>
+            <td>(void) const</td>
+        </tr>
+        <tr>
+
+            <td><a href="/api/global.html#data-types">uint16</a></td>
+            <td ><a class="link" href="#GetHeight">GetHeight</a></td>
+            <td>(void) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns the width and height of this image.
+<br><br>
+<a name="GetLength"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td><a href="/api/global.html#data-types">uint32</a></td>
+            <td ><a class="link" href="#GetLength">GetLength</a></td>
+            <td>(void) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns the number of pixels in this image (i.e. <a href="#GetWidth">width</a> &times; <a href="#GetHeight">height</a>).
+<br><br>
+<a name="GetData"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td><a href="/api/global.html#data-types">uint32</a>*</td>
+            <td ><a class="link" href="#GetData">GetData</a></td>
+            <td>(void) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns a pointer to the pixel data, stored as an array of packed ARGB integers.
+<br><br>
+<a name="GetLimit"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td><a href="/api/global.html#data-types">uint32</a></td>
+            <td ><a class="link" href="#GetLimit">GetLimit</a></td>
+            <td>(void) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns the length of the pixel <a href="#GetData">data</a> array, which could be greater than <a href="#GetLength">length</a>.
+<br><br>
+<a name="GetPixel"></a>
+<a name="GetPixel2"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td><a href="/api/color.html">Color</a></td>
+            <td ><a class="link" href="#GetPixel">GetPixel</a></td>
+            <td>(const <a href="/api/point.html">Point</a>&amp; point) const</td>
+        </tr>
+        <tr>
+
+            <td><a href="/api/color.html">Color</a></td>
+            <td ><a class="link" href="#GetPixel2">GetPixel</a></td>
+            <td>(<a href="/api/global.html#data-types">uint16</a> x, <a href="/api/global.html#data-types">uint16</a> y) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns the <a href="/api/color.html">Color</a> of the pixel at <strong>point</strong>. A default Color is returned if <strong>point</strong> is out of bounds.
+<br><br>
+<a name="SetPixel"></a>
+<a name="SetPixel2"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>void</td>
+            <td ><a class="link" href="#SetPixel">SetPixel</a></td>
+            <td>(const <a href="/api/point.html">Point</a>&amp; point, <a href="/api/color.html">Color</a> c)</td>
+        </tr>
+        <tr>
+
+            <td>void</td>
+            <td ><a class="link" href="#SetPixel2">SetPixel</a></td>
+            <td>(<a href="/api/global.html#data-types">uint16</a> x, <a href="/api/global.html#data-types">uint16</a> y, <a href="/api/color.html">Color</a> c)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Sets the <a href="/api/color.html">Color</a> of the pixel at <strong>point</strong> to <strong>c</strong>. Does nothing if <strong>point</strong> is out of bounds.
+<br><br>
+<a name="Fill"></a>
+<a name="Fill2"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#Fill">Fill</a></td>
+            <td>(const <a href="/api/color.html">Color</a>&amp; color)</td>
+        </tr>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#Fill2">Fill</a></td>
+            <td>(<a href="/api/global.html#data-types">uint8</a> r, <a href="/api/global.html#data-types">uint8</a> g,
+ <a href="/api/global.html#data-types">uint8</a> b, <a href="/api/global.html#data-types">uint8</a> a &#x3D; 255)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Fills the entire image with <strong>color</strong> and returns true. Returns false if this image is not <a href="#IsValid">valid</a>.
+<br><br>
+<a name="Swap"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#Swap">Swap</a></td>
+            <td>(const char* sw)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Swaps the channels of each pixel in the entire image based on the value of <strong>sw</strong> and returns true. <strong>sw</strong> is made up of four case-insensitive letters: r, g, b, and a, arranged in the order the channels should be rearranged in. Passing &quot;argb&quot;, for instance, results in no changes because that is the initial order of the channels, but passing &quot;abgr&quot; keeps the alpha and green channels where they are and only swaps the red and blue channels. Returns false if this image is not <a href="#IsValid">valid</a> or the format of <strong>sw</strong> is incorrect.
+<br><br>
+<a name="Flip"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#Flip">Flip</a></td>
+            <td>(bool h, bool v)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Flips the entire image horizontally or vertically depending on the values of <strong>h</strong> and <strong>v</strong> and returns true. Returns false if this image is not <a href="#IsValid">valid</a>.</p>
+<h2 id="operators">Operators</h2>
+<p><a name="OpAs"></a>
+<a name="OpAs2"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td><a href="/api/image.html">Image</a>&amp;</td>
+            <td ><a class="link" href="#OpAs">operator &#x3D;</a></td>
+            <td>(const <a href="/api/image.html">Image</a>&amp;  image)</td>
+        </tr>
+        <tr>
+
+            <td><a href="/api/image.html">Image</a>&amp;</td>
+            <td ><a class="link" href="#OpAs2">operator &#x3D;</a></td>
+            <td>(      <a href="/api/image.html">Image</a>&amp;&amp; image)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Copies or moves the contents of <strong>image</strong> to this image. Prior instances are destroyed.
+<br><br>
+<a name="OpEq"></a>
+<a name="OpNe"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#OpEq">operator &#x3D;&#x3D;</a></td>
+            <td>(const <a href="/api/image.html">Image</a>&amp; image) const</td>
+        </tr>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#OpNe">operator !&#x3D;</a></td>
+            <td>(const <a href="/api/image.html">Image</a>&amp; image) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Performs an equality comparison to determine whether the two images are identical.</p>
+<p><strong>Warning:</strong> This function can be slow for larger images unless they have different sizes.</p>
+<h1 id="examples">Examples</h1>
+<pre><code class="lang-cpp"><span class="hljs-comment">// C++</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;Robot.h&gt;</span></span>
+ROBOT_NS_USE_ALL;
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span> <span class="hljs-params">(<span class="hljs-keyword">void</span>)</span>
+</span>{
+    <span class="hljs-function">Image <span class="hljs-title">image</span> <span class="hljs-params">(<span class="hljs-number">2</span>, <span class="hljs-number">4</span>)</span></span>;
+    image.GetWidth (); <span class="hljs-comment">// 2</span>
+    image.GetHeight(); <span class="hljs-comment">// 4</span>
+    image.GetLength(); <span class="hljs-comment">// 8</span>
+    image.GetLimit (); <span class="hljs-comment">// 8</span>
+
+    <span class="hljs-comment">// GetData allocated</span>
+    image.Create (<span class="hljs-number">4</span>, <span class="hljs-number">6</span>);
+    image.GetLength(); <span class="hljs-comment">// 24</span>
+    image.GetLimit (); <span class="hljs-comment">// 24</span>
+
+    <span class="hljs-comment">// GetData unchanged</span>
+    image.Create (<span class="hljs-number">4</span>, <span class="hljs-number">2</span>);
+    image.GetLength(); <span class="hljs-comment">// 8</span>
+    image.GetLimit (); <span class="hljs-comment">// 24</span>
+
+    <span class="hljs-comment">// Fill image with white</span>
+    image.Fill (<span class="hljs-number">0xFFFFFFFF</span>);
+
+    <span class="hljs-comment">// 00AA00, BB00CC, white, white</span>
+    <span class="hljs-comment">// 00DD00, EE00FF, white, white</span>
+    uint32* data = image.GetData();
+    data[<span class="hljs-number">0</span>] = <span class="hljs-number">0xFF00AA00</span>; <span class="hljs-comment">// (0, 0)</span>
+    data[<span class="hljs-number">1</span>] = <span class="hljs-number">0xFFBB00CC</span>; <span class="hljs-comment">// (1, 0)</span>
+    data[<span class="hljs-number">4</span>] = <span class="hljs-number">0xFF00DD00</span>; <span class="hljs-comment">// (0, 1)</span>
+    data[<span class="hljs-number">5</span>] = <span class="hljs-number">0xFFEE00FF</span>; <span class="hljs-comment">// (1, 1)</span>
+
+    <span class="hljs-comment">// Switch red and blue channels</span>
+    <span class="hljs-comment">// 00AA00, CC00BB, white, white</span>
+    <span class="hljs-comment">// 00DD00, FF00EE, white, white</span>
+    image.Swap (<span class="hljs-string">"abgr"</span>);
+
+    <span class="hljs-comment">// Mirror the image horizontally</span>
+    <span class="hljs-comment">// white, white, CC00BB, 00AA00</span>
+    <span class="hljs-comment">// white, white, FF00EE, 00DD00</span>
+    image.Flip (<span class="hljs-literal">true</span>, <span class="hljs-literal">false</span>);
+
+    <span class="hljs-comment">// Create new copy</span>
+    Image copy = image;
+    copy.GetPixel (<span class="hljs-number">2</span>, <span class="hljs-number">0</span>); <span class="hljs-comment">// 0xFFCC00BB</span>
+    copy.GetPixel (<span class="hljs-number">3</span>, <span class="hljs-number">0</span>); <span class="hljs-comment">// 0xFF00AA00</span>
+    copy.GetPixel (<span class="hljs-number">2</span>, <span class="hljs-number">1</span>); <span class="hljs-comment">// 0xFFFF00EE</span>
+    copy.GetPixel (<span class="hljs-number">3</span>, <span class="hljs-number">1</span>); <span class="hljs-comment">// 0xFF00DD00</span>
+
+    image == copy; <span class="hljs-comment">// True</span>
+    image != copy; <span class="hljs-comment">// False</span>
+
+    copy.Destroy();
+    image == copy; <span class="hljs-comment">// False</span>
+    image != copy; <span class="hljs-comment">// True</span>
+    return <span class="hljs-number">0</span>;
+}
+</code></pre>
+<pre><code class="lang-js"><span class="hljs-comment">// Node</span>
+<span class="hljs-keyword">var</span> robot = <span class="hljs-built_in">require</span> (<span class="hljs-string">"robot-js"</span>);
+
+<span class="hljs-keyword">var</span> image = robot.Image (<span class="hljs-number">2</span>, <span class="hljs-number">4</span>);
+image.getWidth (); <span class="hljs-comment">// 2</span>
+image.getHeight(); <span class="hljs-comment">// 4</span>
+image.getLength(); <span class="hljs-comment">// 8</span>
+image.getLimit (); <span class="hljs-comment">// 8</span>
+
+<span class="hljs-comment">// getData allocated</span>
+image.create (<span class="hljs-number">4</span>, <span class="hljs-number">6</span>);
+image.getLength(); <span class="hljs-comment">// 24</span>
+image.getLimit (); <span class="hljs-comment">// 24</span>
+
+<span class="hljs-comment">// getData unchanged</span>
+image.create (<span class="hljs-number">4</span>, <span class="hljs-number">2</span>);
+image.getLength(); <span class="hljs-comment">// 8</span>
+image.getLimit (); <span class="hljs-comment">// 24</span>
+
+<span class="hljs-comment">// Fill image with white</span>
+image.fill (<span class="hljs-number">0xFFFFFFFF</span>);
+
+<span class="hljs-comment">// 00AA00, BB00CC, white, white</span>
+<span class="hljs-comment">// 00DD00, EE00FF, white, white</span>
+<span class="hljs-keyword">var</span> data = image.getData();
+data[<span class="hljs-number">0</span>] = <span class="hljs-number">0xFF00AA00</span>; <span class="hljs-comment">// (0, 0)</span>
+data[<span class="hljs-number">1</span>] = <span class="hljs-number">0xFFBB00CC</span>; <span class="hljs-comment">// (1, 0)</span>
+data[<span class="hljs-number">4</span>] = <span class="hljs-number">0xFF00DD00</span>; <span class="hljs-comment">// (0, 1)</span>
+data[<span class="hljs-number">5</span>] = <span class="hljs-number">0xFFEE00FF</span>; <span class="hljs-comment">// (1, 1)</span>
+
+<span class="hljs-comment">// Switch red and blue channels</span>
+<span class="hljs-comment">// 00AA00, CC00BB, white, white</span>
+<span class="hljs-comment">// 00DD00, FF00EE, white, white</span>
+image.swap (<span class="hljs-string">"abgr"</span>);
+
+<span class="hljs-comment">// Mirror the image horizontally</span>
+<span class="hljs-comment">// white, white, CC00BB, 00AA00</span>
+<span class="hljs-comment">// white, white, FF00EE, 00DD00</span>
+image.flip (<span class="hljs-literal">true</span>, <span class="hljs-literal">false</span>);
+
+<span class="hljs-comment">// Create new image clone</span>
+<span class="hljs-keyword">var</span> copy = image.clone();
+copy.getPixel (<span class="hljs-number">2</span>, <span class="hljs-number">0</span>); <span class="hljs-comment">// 0xFFCC00BB</span>
+copy.getPixel (<span class="hljs-number">3</span>, <span class="hljs-number">0</span>); <span class="hljs-comment">// 0xFF00AA00</span>
+copy.getPixel (<span class="hljs-number">2</span>, <span class="hljs-number">1</span>); <span class="hljs-comment">// 0xFFFF00EE</span>
+copy.getPixel (<span class="hljs-number">3</span>, <span class="hljs-number">1</span>); <span class="hljs-comment">// 0xFF00DD00</span>
+
+image.eq (copy); <span class="hljs-comment">// True</span>
+image.ne (copy); <span class="hljs-comment">// False</span>
+
+copy.destroy();
+image.eq (copy); <span class="hljs-comment">// False</span>
+image.ne (copy); <span class="hljs-comment">// True</span>
+</code></pre>
+
+
+		</div>
+
+		<div class="clearfix"></div>
+	</div>
+</section>
+
+		<div id="footer-pad"></div>
+		<section id="footer">
+			<div class="container">
+
+				<div class="author">
+					<p>Licensed under the <a href="//opensource.org/licenses/Zlib">ZLIB License</a></p>
+					<p>Project by the <a href="//github.com/orgs/robot/people">Robot Developers</a></p>
+				</div>
+
+				<div class="github">
+					<p>Proudly Hosted on <a href="//pages.github.com">
+						<svg><use xlink:href="/common/vectors.svg#github" /></svg>
+					</a></p>
+				</div>
+
+				<div class="clearfix"></div>
+
+			</div>
+		</section>
+	</div>
+
+	<script src="/common/svg4everybody.js"></script><script>svg4everybody();</script>
+
+	<script>
+		(function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,"script","//www.google-analytics.com/analytics.js","ga");
+		ga("create", "UA-41804800-7", "auto"); ga("send", "pageview");
+	</script>
+
+</body>
+</html>

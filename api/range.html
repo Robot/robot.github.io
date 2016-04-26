@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+
+<!--////////////////////////////////////////////////////////////////////////////
+// ========================================================================== //
+//                                                                            //
+//                       (C) 2010-2016 Robot Developers                       //
+//                       See LICENSE for licensing info                       //
+//                                                                            //
+// ========================================================================== //
+/////////////////////////////////////////////////////////////////////////////-->
+
+<html lang="en">
+<head>
+
+	<title>Robot Range Class</title>
+	<meta name="description" content="Robot documentation and information site">
+
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name=      "mobile-web-app-capable" content="no">
+	<meta name="apple-mobile-web-app-capable" content="no">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="viewport" content="width=980, maximum-scale=1">
+
+	<link rel="stylesheet" href="/common/normalize.css" />
+	<link rel="stylesheet" href="/common/docs.css" />
+
+	<link rel="shortcut icon" href="/common/favicon.ico" />
+
+</head>
+<body>
+
+	<div id="body">
+		
+
+
+
+<section id="header">
+	<div class="noise"></div>
+
+	<section id="banner">
+		<div class="container">
+
+			<a href="/">
+				<svg><use xlink:href="/common/vectors.svg#logo" /></svg>
+			</a>
+
+		</div>
+	</section>
+
+	<section id="menu">
+		<div class="container">
+	
+			<nav>
+				<a href="/docs/about.html"     >DOCUMENTATION</a>
+				<a href="/api/global.html"     >API          </a>
+				<a href="/docs/philosophy.html">COMMUNITY    </a>
+				<a href="//github.com/robot"   >GITHUB       </a>
+			</nav>
+	
+		</div>
+	</section>
+</section>
+
+<section id="docs">
+	<div class="container">
+
+		<div id="sidebar">
+
+			<nav>
+				<h1>Types</h1>
+				<a  href="/api/global.html"   >Global   </a>
+				<a  href="/api/enum.html"     >Enum     </a>
+				<a  href="/api/hash.html"     >Hash     </a>
+				<a  href="/api/color.html"    >Color    </a>
+				<a  href="/api/image.html"    >Image    </a>
+				<a class="active" href="/api/range.html"    >Range    </a>
+				<a  href="/api/point.html"    >Point    </a>
+				<a  href="/api/size.html"     >Size     </a>
+				<a  href="/api/bounds.html"   >Bounds   </a>
+			</nav>
+			<nav>
+				<h1>Native</h1>
+				<a  href="/api/keyboard.html" >Keyboard </a>
+				<a  href="/api/mouse.html"    >Mouse    </a>
+				<a  href="/api/process.html"  >Process  </a>
+				<a  href="/api/module.html"   >Module   </a>
+				<a  href="/api/memory.html"   >Memory   </a>
+				<a  href="/api/window.html"   >Window   </a>
+				<a  href="/api/screen.html"   >Screen   </a>
+				<a  href="/api/timer.html"    >Timer    </a>
+				<a  href="/api/clipboard.html">Clipboard</a>
+			</nav>
+
+		</div>
+		<div id="content" class="marked">
+
+			<h1 id="range">Range</h1>
+<a class="edit" href="//github.com/robot/robot.github.io/edit/master/source/api/range.html">Edit on GitHub</a><div class="include">
+	#<span class="keyword">include</span> <span class="string">&lt;Range.h&gt;</span>
+	<div class="details">
+		<a href="//github.com/robot/robot/blob/master/Source/Range.h" >Header</a>
+		<a href="//github.com/robot/robot/blob/master/Source/Range.cc">Source</a>
+	</div>
+	<div class="clearfix"></div>
+</div><table id="Range" class="class">
+<thead>
+	<tr>
+		<th>S</th><th>Return</th><th>Name</th><th>Parameters</th>
+	</tr>
+</thead>
+<tbody>
+	<tr>
+		<td></td>
+		<td></td>
+		<td><a href="#Ctor">Range</a></td>
+		<td>(int32 value &#x3D; 0)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td><a href="#Ctor2">Range</a></td>
+		<td>(int32 minimum,
+ int32 maximum)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>int32</td>
+		<td><a href="#GetRange">GetRange</a></td>
+		<td>(void) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>void</td>
+		<td><a href="#SetRange">SetRange</a></td>
+		<td>(int32 value)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>void</td>
+		<td><a href="#SetRange2">SetRange</a></td>
+		<td>(int32 minimum,
+ int32 maximum)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>int32</td>
+		<td><a href="#GetRandom">GetRandom</a></td>
+		<td>(void) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#Contains">Contains</a></td>
+		<td>(int32 value,
+ bool inclusive &#x3D; true) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#OpEq">operator &#x3D;&#x3D;</a></td>
+		<td>(const Range&amp; range) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#OpNe">operator !&#x3D;</a></td>
+		<td>(const Range&amp; range) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>int32</td>
+		<td><a href="#Min">Min</a></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>int32</td>
+		<td><a href="#Max">Max</a></td>
+		<td></td>
+	</tr>
+</tbody>
+</table><h2 id="description">Description</h2>
+<p>Represents a range of two numbers defined by <a href="#Min">Min</a> and <a href="#Max">Max</a> with integer precision. Each component can be manipulated directly through the exposed property values. The <a href="#GetRange">GetRange</a> function returns the difference between Min and Max while <a href="#SetRange">SetRange</a> sets Min and Max to the specified parameters.</p>
+<p>The Range class also supports an additional set of functionality including <a href="#GetRandom">GetRandom</a>, which returns a pseudorandom integer between [Min, Max) and <a href="#Contains">Contains</a>, which returns whether or not a value is between Min and Max.</p>
+<p><img class="center" src="/common/range.png" /></p>
+<h2 id="constructors">Constructors</h2>
+<p><a name="Ctor"></a>
+<a name="Ctor2"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+
+            <td ><a class="link" href="#Ctor">Range</a></td>
+            <td>(<a href="/api/global.html#data-types">int32</a> value &#x3D; 0)</td>
+        </tr>
+        <tr>
+
+
+            <td ><a class="link" href="#Ctor2">Range</a></td>
+            <td>(<a href="/api/global.html#data-types">int32</a> minimum,
+ <a href="/api/global.html#data-types">int32</a> maximum)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Constructs a range with both Min and Max set to <strong>value</strong> or <strong>minimum</strong> and <strong>maximum</strong>.</p>
+<h2 id="functions">Functions</h2>
+<p><a name="GetRange"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td><a href="/api/global.html#data-types">int32</a></td>
+            <td ><a class="link" href="#GetRange">GetRange</a></td>
+            <td>(void) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns the difference between Min and Max as an integer.
+<br><br>
+<a name="SetRange"></a>
+<a name="SetRange2"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>void</td>
+            <td ><a class="link" href="#SetRange">SetRange</a></td>
+            <td>(<a href="/api/global.html#data-types">int32</a> value)</td>
+        </tr>
+        <tr>
+
+            <td>void</td>
+            <td ><a class="link" href="#SetRange2">SetRange</a></td>
+            <td>(<a href="/api/global.html#data-types">int32</a> minimum,
+ <a href="/api/global.html#data-types">int32</a> maximum)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Sets both Min and Max to <strong>value</strong> or <strong>minimum</strong> and <strong>maximum</strong>.
+<br><br>
+<a name="GetRandom"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td><a href="/api/global.html#data-types">int32</a></td>
+            <td ><a class="link" href="#GetRandom">GetRandom</a></td>
+            <td>(void) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns a pseudorandom integer between <a href="#Min">Min</a> (inclusive) and <a href="#Max">Max</a> (exclusive). This function works similarly for both negative and positive inputs, however, if Max is less than or equal to Min then Min is returned. This function can be used for such purposes as generating input delays and randomizing sleep values, but distribution is not guaranteed.</p>
+<p>Internally, this function uses a self-contained <a href="//en.wikipedia.org/wiki/Linear_congruential_generator">LCG-glibc</a> algorithm, making it unsuitable for cryptographic purposes. Being self-contained means that this function does not depend on the compiler and thus, behaves more consistently across all platforms. Additionally, a separate state is used for each instance of this class, seeded at construction time using the current time.
+<br><br>
+<a name="Contains"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#Contains">Contains</a></td>
+            <td>(<a href="/api/global.html#data-types">int32</a> value,
+ bool inclusive &#x3D; true) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns true if <strong>value</strong> is between <a href="#Min">Min</a> and <a href="#Max">Max</a>. If <strong>inclusive</strong> is false, this function returns true only if <strong>value</strong> is entirely between Min and Max without being equal to either.</p>
+<h2 id="operators">Operators</h2>
+<p><a name="OpEq"></a>
+<a name="OpNe"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#OpEq">operator &#x3D;&#x3D;</a></td>
+            <td>(const <a href="/api/range.html">Range</a>&amp; range) const</td>
+        </tr>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#OpNe">operator !&#x3D;</a></td>
+            <td>(const <a href="/api/range.html">Range</a>&amp; range) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Performs equality comparison on each component.</p>
+<h2 id="properties">Properties</h2>
+<p><a name="Min"></a>
+<a name="Max"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td><a href="/api/global.html#data-types">int32</a></td>
+            <td ><a class="link" href="#Min">Min</a></td>
+            <td></td>
+        </tr>
+        <tr>
+
+            <td><a href="/api/global.html#data-types">int32</a></td>
+            <td ><a class="link" href="#Max">Max</a></td>
+            <td></td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Provides direct access to the minimum and maximum components of this range.</p>
+<h1 id="examples">Examples</h1>
+<pre><code class="lang-cpp"><span class="hljs-comment">// C++</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;Robot.h&gt;</span></span>
+ROBOT_NS_USE_ALL;
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span> <span class="hljs-params">(<span class="hljs-keyword">void</span>)</span>
+</span>{
+    Range r1, r2 (<span class="hljs-number">6</span>, <span class="hljs-number">24</span>);
+    <span class="hljs-comment">// r1 now equals (4, 18)</span>
+    r1.Min = <span class="hljs-number">4</span>; r1.Max = <span class="hljs-number">18</span>;
+
+    r1.GetRange (); <span class="hljs-comment">// 14</span>
+    r2.GetRange (); <span class="hljs-comment">// 18</span>
+    r1.GetRandom(); <span class="hljs-comment">// Between [4, 18)</span>
+    r2.GetRandom(); <span class="hljs-comment">// Between [6, 24)</span>
+
+    r1.Contains (<span class="hljs-number">3</span>, <span class="hljs-literal">false</span>); <span class="hljs-comment">// False</span>
+    r1.Contains (<span class="hljs-number">4</span>, <span class="hljs-literal">false</span>); <span class="hljs-comment">// False</span>
+    r1.Contains (<span class="hljs-number">4</span>, <span class="hljs-literal">true</span> ); <span class="hljs-comment">// True</span>
+    r1.Contains (<span class="hljs-number">5</span>, <span class="hljs-literal">true</span> ); <span class="hljs-comment">// True</span>
+
+    <span class="hljs-comment">// r2 becomes (4, 18)</span>
+    r2.SetRange (<span class="hljs-number">4</span>, <span class="hljs-number">18</span>);
+
+    r1 == r2; <span class="hljs-comment">// True</span>
+    r1 != r2; <span class="hljs-comment">// False</span>
+    return <span class="hljs-number">0</span>;
+}
+</code></pre>
+<pre><code class="lang-js"><span class="hljs-comment">// Node</span>
+<span class="hljs-keyword">var</span> robot = <span class="hljs-built_in">require</span> (<span class="hljs-string">"robot-js"</span>);
+
+<span class="hljs-keyword">var</span> r1 = robot.Range ();
+<span class="hljs-keyword">var</span> r2 = robot.Range (<span class="hljs-number">6</span>, <span class="hljs-number">24</span>);
+<span class="hljs-comment">// r1 now equals (4, 18)</span>
+r1.min = <span class="hljs-number">4</span>; r1.max = <span class="hljs-number">18</span>;
+
+r1.getRange (); <span class="hljs-comment">// 14</span>
+r2.getRange (); <span class="hljs-comment">// 18</span>
+r1.getRandom(); <span class="hljs-comment">// Between [4, 18)</span>
+r2.getRandom(); <span class="hljs-comment">// Between [6, 24)</span>
+
+r1.contains (<span class="hljs-number">3</span>, <span class="hljs-literal">false</span>); <span class="hljs-comment">// False</span>
+r1.contains (<span class="hljs-number">4</span>, <span class="hljs-literal">false</span>); <span class="hljs-comment">// False</span>
+r1.contains (<span class="hljs-number">4</span>, <span class="hljs-literal">true</span> ); <span class="hljs-comment">// True</span>
+r1.contains (<span class="hljs-number">5</span>, <span class="hljs-literal">true</span> ); <span class="hljs-comment">// True</span>
+
+<span class="hljs-comment">// r2 becomes (4, 18)</span>
+r2.setRange (<span class="hljs-number">4</span>, <span class="hljs-number">18</span>);
+
+r1.eq (r2); <span class="hljs-comment">// True</span>
+r1.ne (r2); <span class="hljs-comment">// False</span>
+
+<span class="hljs-comment">// Range construction</span>
+r1 = robot.Range (r2);
+r1 = robot.Range
+({
+    min: <span class="hljs-number">100</span>,
+    max: <span class="hljs-number">200</span>
+});
+</code></pre>
+
+
+		</div>
+
+		<div class="clearfix"></div>
+	</div>
+</section>
+
+		<div id="footer-pad"></div>
+		<section id="footer">
+			<div class="container">
+
+				<div class="author">
+					<p>Licensed under the <a href="//opensource.org/licenses/Zlib">ZLIB License</a></p>
+					<p>Project by the <a href="//github.com/orgs/robot/people">Robot Developers</a></p>
+				</div>
+
+				<div class="github">
+					<p>Proudly Hosted on <a href="//pages.github.com">
+						<svg><use xlink:href="/common/vectors.svg#github" /></svg>
+					</a></p>
+				</div>
+
+				<div class="clearfix"></div>
+
+			</div>
+		</section>
+	</div>
+
+	<script src="/common/svg4everybody.js"></script><script>svg4everybody();</script>
+
+	<script>
+		(function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,"script","//www.google-analytics.com/analytics.js","ga");
+		ga("create", "UA-41804800-7", "auto"); ga("send", "pageview");
+	</script>
+
+</body>
+</html>

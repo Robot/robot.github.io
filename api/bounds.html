@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+
+<!--////////////////////////////////////////////////////////////////////////////
+// ========================================================================== //
+//                                                                            //
+//                       (C) 2010-2016 Robot Developers                       //
+//                       See LICENSE for licensing info                       //
+//                                                                            //
+// ========================================================================== //
+/////////////////////////////////////////////////////////////////////////////-->
+
+<html lang="en">
+<head>
+
+	<title>Robot Bounds Class</title>
+	<meta name="description" content="Robot documentation and information site">
+
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name=      "mobile-web-app-capable" content="no">
+	<meta name="apple-mobile-web-app-capable" content="no">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="viewport" content="width=980, maximum-scale=1">
+
+	<link rel="stylesheet" href="/common/normalize.css" />
+	<link rel="stylesheet" href="/common/docs.css" />
+
+	<link rel="shortcut icon" href="/common/favicon.ico" />
+
+</head>
+<body>
+
+	<div id="body">
+		
+
+
+
+<section id="header">
+	<div class="noise"></div>
+
+	<section id="banner">
+		<div class="container">
+
+			<a href="/">
+				<svg><use xlink:href="/common/vectors.svg#logo" /></svg>
+			</a>
+
+		</div>
+	</section>
+
+	<section id="menu">
+		<div class="container">
+	
+			<nav>
+				<a href="/docs/about.html"     >DOCUMENTATION</a>
+				<a href="/api/global.html"     >API          </a>
+				<a href="/docs/philosophy.html">COMMUNITY    </a>
+				<a href="//github.com/robot"   >GITHUB       </a>
+			</nav>
+	
+		</div>
+	</section>
+</section>
+
+<section id="docs">
+	<div class="container">
+
+		<div id="sidebar">
+
+			<nav>
+				<h1>Types</h1>
+				<a  href="/api/global.html"   >Global   </a>
+				<a  href="/api/enum.html"     >Enum     </a>
+				<a  href="/api/hash.html"     >Hash     </a>
+				<a  href="/api/color.html"    >Color    </a>
+				<a  href="/api/image.html"    >Image    </a>
+				<a  href="/api/range.html"    >Range    </a>
+				<a  href="/api/point.html"    >Point    </a>
+				<a  href="/api/size.html"     >Size     </a>
+				<a class="active" href="/api/bounds.html"   >Bounds   </a>
+			</nav>
+			<nav>
+				<h1>Native</h1>
+				<a  href="/api/keyboard.html" >Keyboard </a>
+				<a  href="/api/mouse.html"    >Mouse    </a>
+				<a  href="/api/process.html"  >Process  </a>
+				<a  href="/api/module.html"   >Module   </a>
+				<a  href="/api/memory.html"   >Memory   </a>
+				<a  href="/api/window.html"   >Window   </a>
+				<a  href="/api/screen.html"   >Screen   </a>
+				<a  href="/api/timer.html"    >Timer    </a>
+				<a  href="/api/clipboard.html">Clipboard</a>
+			</nav>
+
+		</div>
+		<div id="content" class="marked">
+
+			<h1 id="bounds">Bounds</h1>
+<a class="edit" href="//github.com/robot/robot.github.io/edit/master/source/api/bounds.html">Edit on GitHub</a><div class="include">
+	#<span class="keyword">include</span> <span class="string">&lt;Bounds.h&gt;</span>
+	<div class="details">
+		<a href="//github.com/robot/robot/blob/master/Source/Bounds.h" >Header</a>
+		<a href="//github.com/robot/robot/blob/master/Source/Bounds.cc">Source</a>
+	</div>
+	<div class="clearfix"></div>
+</div><table id="Bounds" class="class">
+<thead>
+	<tr>
+		<th>S</th><th>Return</th><th>Name</th><th>Parameters</th>
+	</tr>
+</thead>
+<tbody>
+	<tr>
+		<td></td>
+		<td></td>
+		<td><a href="#Ctor">Bounds</a></td>
+		<td>(int32 value &#x3D; 0)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td><a href="#Ctor2">Bounds</a></td>
+		<td>(int32 x, int32 y,
+ int32 w, int32 h)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td><a href="#Ctor3">Bounds</a></td>
+		<td>(const Point&amp; p,
+ const  Size&amp; s)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#IsZero">IsZero</a></td>
+		<td>(void) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#IsEmpty">IsEmpty</a></td>
+		<td>(void) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#IsValid">IsValid</a></td>
+		<td>(void) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>int32</td>
+		<td><a href="#GetLeft">GetLeft</a></td>
+		<td>(void) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>int32</td>
+		<td><a href="#GetTop">GetTop</a></td>
+		<td>(void) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>int32</td>
+		<td><a href="#GetRight">GetRight</a></td>
+		<td>(void) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>int32</td>
+		<td><a href="#GetBottom">GetBottom</a></td>
+		<td>(void) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>void</td>
+		<td><a href="#SetLeft">SetLeft</a></td>
+		<td>(int32 l)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>void</td>
+		<td><a href="#SetTop">SetTop</a></td>
+		<td>(int32 t)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>void</td>
+		<td><a href="#SetRight">SetRight</a></td>
+		<td>(int32 r)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>void</td>
+		<td><a href="#SetBottom">SetBottom</a></td>
+		<td>(int32 b)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>void</td>
+		<td><a href="#GetLTRB">GetLTRB</a></td>
+		<td>(int32&amp; l, int32&amp; t,
+ int32&amp; r, int32&amp; b)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>void</td>
+		<td><a href="#SetLTRB">SetLTRB</a></td>
+		<td>(int32  l, int32  t,
+ int32  r, int32  b)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>void</td>
+		<td><a href="#Normalize">Normalize</a></td>
+		<td>(void)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#Contains">Contains</a></td>
+		<td>(const Point&amp; p,
+ bool inclusive &#x3D; true) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#Contains2">Contains</a></td>
+		<td>(int32 x, int32 y,
+ bool inclusive &#x3D; true) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#Contains3">Contains</a></td>
+		<td>(const Bounds&amp; b,
+ bool inclusive &#x3D; true) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#Contains4">Contains</a></td>
+		<td>(int32 x, int32 y,
+ int32 w, int32 h,
+ bool inclusive &#x3D; true) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#Intersects">Intersects</a></td>
+		<td>(const Bounds&amp; b,
+ bool inclusive &#x3D; true) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#Intersects2">Intersects</a></td>
+		<td>(int32 x, int32 y,
+ int32 w, int32 h,
+ bool inclusive &#x3D; true) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>Point</td>
+		<td><a href="#GetPoint">GetPoint</a></td>
+		<td>(void) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>void</td>
+		<td><a href="#SetPoint">SetPoint</a></td>
+		<td>(const    Point&amp; p)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>void</td>
+		<td><a href="#SetPoint2">SetPoint</a></td>
+		<td>(int32 x, int32  y)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>Size</td>
+		<td><a href="#GetSize">GetSize</a></td>
+		<td>(void) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>void</td>
+		<td><a href="#SetSize">SetSize</a></td>
+		<td>(const    Size&amp; s)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>void</td>
+		<td><a href="#SetSize2">SetSize</a></td>
+		<td>(int32 w, int32 h)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>Point</td>
+		<td><a href="#GetCenter">GetCenter</a></td>
+		<td>(void) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>Bounds&amp;</td>
+		<td><a href="#OpOrEq">operator |&#x3D;</a></td>
+		<td>(const Bounds&amp; bounds)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>Bounds&amp;</td>
+		<td><a href="#OpAndEq">operator &amp;&#x3D;</a></td>
+		<td>(const Bounds&amp; bounds)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>Bounds</td>
+		<td><a href="#OpOr">operator |</a></td>
+		<td>(const Bounds&amp; bounds) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>Bounds</td>
+		<td><a href="#OpAnd">operator &amp;</a></td>
+		<td>(const Bounds&amp; bounds) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#OpEq">operator &#x3D;&#x3D;</a></td>
+		<td>(const Bounds&amp; bounds) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#OpNe">operator !&#x3D;</a></td>
+		<td>(const Bounds&amp; bounds) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>int32</td>
+		<td><a href="#X">X</a></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>int32</td>
+		<td><a href="#Y">Y</a></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>int32</td>
+		<td><a href="#W">W</a></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>int32</td>
+		<td><a href="#H">H</a></td>
+		<td></td>
+	</tr>
+</tbody>
+</table><h2 id="description">Description</h2>
+<p>Represents a rectangle defined by <a href="#X">X</a>, <a href="#Y">Y</a>, <a href="#W">W</a> and <a href="#H">H</a> with integer precision. Each component can be manipulated directly through the exposed property values. X and Y represent the top-left corner of the bounds while W and H represent the width and height of the bounds, which could be negative. Calling <a href="#Normalize">Normalize</a> swaps the left and right or top and bottom edges of the bounds, as needed, to make the size positive.</p>
+<p><img class="right" src="/common/bounds1.png" />
+The <a href="#GetLTRB">GetLTRB</a> and <a href="#SetLTRB">SetLTRB</a> functions provide an alternative way for manipulating the bounds. These functions express bounds in much more traditional fashion by using left, top, right, and bottom to represent each of the four edges of the bounds. Functions pertaining to left and right modify the X and Width components while top and bottom modify the Y and Height components.</p>
+<p>The <a href="#IsZero">IsZero</a> function returns true if all components are equal to zero while the <a href="#IsEmpty">IsEmpty</a> function returns true if either Width or Height are equal to zero. An additional function, <a href="#IsValid">IsValid</a>, returns true if both Width and Height are greater than zero, and the <a href="#GetCenter">GetCenter</a> function returns a point at the center of the bounds.</p>
+<p>The Bounds class also offers an additional set of functionality for testing and manipulating the geometry of the bounds. For instance, the <a href="#Contains">Contains</a> function checks whether a point is inside or on the edges of the bounds. The other <a href="#Contains3">Contains</a> function performs the same task but with a bounds object instead of a point. Moreover, a bounds can be passed to the <a href="#Intersects">Intersects</a> function which checks whether any part of it is within or on the edges of the bounds. Two bounds can be <a href="#OpAnd">united</a> or <a href="#OpOr">intersected</a> through special overloaded operators.</p>
+<p><img class="center" src="/common/bounds2.png" /></p>
+<h2 id="constructors">Constructors</h2>
+<p><a name="Ctor"></a>
+<a name="Ctor2"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+
+            <td ><a class="link" href="#Ctor">Bounds</a></td>
+            <td>(<a href="/api/global.html#data-types">int32</a> value &#x3D; 0)</td>
+        </tr>
+        <tr>
+
+
+            <td ><a class="link" href="#Ctor2">Bounds</a></td>
+            <td>(<a href="/api/global.html#data-types">int32</a> x, <a href="/api/global.html#data-types">int32</a> y,
+ <a href="/api/global.html#data-types">int32</a> w, <a href="/api/global.html#data-types">int32</a> h)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Constructs a bounds with all components set to <strong>value</strong> or <strong>x</strong>, <strong>y</strong>, <strong>w</strong>, and <strong>h</strong>.
+<br><br>
+<a name="Ctor3"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+
+            <td ><a class="link" href="#Ctor3">Bounds</a></td>
+            <td>(const <a href="/api/point.html">Point</a>&amp; p,
+ const  <a href="/api/size.html">Size</a>&amp; s)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Constructs a bounds with position set to <strong>p</strong> and size set to <strong>s</strong>.</p>
+<h2 id="functions">Functions</h2>
+<p><a name="IsZero"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#IsZero">IsZero</a></td>
+            <td>(void) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns true if all components are equal to zero.
+<br><br>
+<a name="IsEmpty"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#IsEmpty">IsEmpty</a></td>
+            <td>(void) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns true if either Width or Height are equal to zero.
+<br><br>
+<a name="IsValid"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#IsValid">IsValid</a></td>
+            <td>(void) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns true if both Width and Height are greater than zero.
+<br><br>
+<a name="GetLeft"></a>
+<a name="GetTop"></a>
+<a name="GetRight"></a>
+<a name="GetBottom"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td><a href="/api/global.html#data-types">int32</a></td>
+            <td ><a class="link" href="#GetLeft">GetLeft</a></td>
+            <td>(void) const</td>
+        </tr>
+        <tr>
+
+            <td><a href="/api/global.html#data-types">int32</a></td>
+            <td ><a class="link" href="#GetTop">GetTop</a></td>
+            <td>(void) const</td>
+        </tr>
+        <tr>
+
+            <td><a href="/api/global.html#data-types">int32</a></td>
+            <td ><a class="link" href="#GetRight">GetRight</a></td>
+            <td>(void) const</td>
+        </tr>
+        <tr>
+
+            <td><a href="/api/global.html#data-types">int32</a></td>
+            <td ><a class="link" href="#GetBottom">GetBottom</a></td>
+            <td>(void) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns the left, top, right, and bottom edges of this bounds.
+<br><br>
+<a name="SetLeft"></a>
+<a name="SetTop"></a>
+<a name="SetRight"></a>
+<a name="SetBottom"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>void</td>
+            <td ><a class="link" href="#SetLeft">SetLeft</a></td>
+            <td>(<a href="/api/global.html#data-types">int32</a> l)</td>
+        </tr>
+        <tr>
+
+            <td>void</td>
+            <td ><a class="link" href="#SetTop">SetTop</a></td>
+            <td>(<a href="/api/global.html#data-types">int32</a> t)</td>
+        </tr>
+        <tr>
+
+            <td>void</td>
+            <td ><a class="link" href="#SetRight">SetRight</a></td>
+            <td>(<a href="/api/global.html#data-types">int32</a> r)</td>
+        </tr>
+        <tr>
+
+            <td>void</td>
+            <td ><a class="link" href="#SetBottom">SetBottom</a></td>
+            <td>(<a href="/api/global.html#data-types">int32</a> b)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Sets the left, top, right, and bottom edges of this bounds to <strong>l</strong>, <strong>t</strong>, <strong>r</strong>, and <strong>b</strong>.
+<br><br>
+<a name="GetLTRB"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>void</td>
+            <td ><a class="link" href="#GetLTRB">GetLTRB</a></td>
+            <td>(<a href="/api/global.html#data-types">int32</a>&amp; l, <a href="/api/global.html#data-types">int32</a>&amp; t,
+ <a href="/api/global.html#data-types">int32</a>&amp; r, <a href="/api/global.html#data-types">int32</a>&amp; b)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Sets <strong>l</strong>, <strong>t</strong>, <strong>r</strong>, and <strong>b</strong> to the left, top, right, and bottom edges of this bounds.
+<br><br>
+<a name="SetLTRB"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>void</td>
+            <td ><a class="link" href="#SetLTRB">SetLTRB</a></td>
+            <td>(<a href="/api/global.html#data-types">int32</a>  l, <a href="/api/global.html#data-types">int32</a>  t,
+ <a href="/api/global.html#data-types">int32</a>  r, <a href="/api/global.html#data-types">int32</a>  b)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Sets the left, top, right, and bottom edges of this bounds to <strong>l</strong>, <strong>t</strong>, <strong>r</strong>, and <strong>b</strong>.
+<br><br>
+<a name="Normalize"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>void</td>
+            <td ><a class="link" href="#Normalize">Normalize</a></td>
+            <td>(void)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Normalizes this bounds to ensure that Width and Height are positive. If Width is negative, this function swaps the left and right edges. If Height is negative, this function swaps the top and bottom edges.
+<br><br>
+<a name="Contains"></a>
+<a name="Contains2"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#Contains">Contains</a></td>
+            <td>(const <a href="/api/point.html">Point</a>&amp; p,
+ bool inclusive &#x3D; true) const</td>
+        </tr>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#Contains2">Contains</a></td>
+            <td>(<a href="/api/global.html#data-types">int32</a> x, <a href="/api/global.html#data-types">int32</a> y,
+ bool inclusive &#x3D; true) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns true if <strong>p</strong> is within or on the edges of this bounds. If <strong>inclusive</strong> is false, this function returns true only if <strong>p</strong> is entirely within this bounds and not on the edges. This function works even when Width and Height are negative.
+<br><br>
+<a name="Contains3"></a>
+<a name="Contains4"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#Contains3">Contains</a></td>
+            <td>(const <a href="/api/bounds.html">Bounds</a>&amp; b,
+ bool inclusive &#x3D; true) const</td>
+        </tr>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#Contains4">Contains</a></td>
+            <td>(<a href="/api/global.html#data-types">int32</a> x, <a href="/api/global.html#data-types">int32</a> y,
+ <a href="/api/global.html#data-types">int32</a> w, <a href="/api/global.html#data-types">int32</a> h,
+ bool inclusive &#x3D; true) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns true if <strong>b</strong> is within or on the edges of this bounds. If <strong>inclusive</strong> is false, this function returns true only if <strong>b</strong> is entirely within this bounds and not on the edges. This function works even when Width and Height are negative.
+<br><br>
+<a name="Intersects"></a>
+<a name="Intersects2"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#Intersects">Intersects</a></td>
+            <td>(const <a href="/api/bounds.html">Bounds</a>&amp; b,
+ bool inclusive &#x3D; true) const</td>
+        </tr>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#Intersects2">Intersects</a></td>
+            <td>(<a href="/api/global.html#data-types">int32</a> x, <a href="/api/global.html#data-types">int32</a> y,
+ <a href="/api/global.html#data-types">int32</a> w, <a href="/api/global.html#data-types">int32</a> h,
+ bool inclusive &#x3D; true) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns true if any part of <strong>b</strong> intersects with this bounds. If <strong>inclusive</strong> is false, this function returns true only if any part of <strong>b</strong> is entirely within this bounds and not on the edges. This function works even when Width and Height are negative.
+<br><br>
+<a name="GetPoint"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td><a href="/api/point.html">Point</a></td>
+            <td ><a class="link" href="#GetPoint">GetPoint</a></td>
+            <td>(void) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns a <a href="/api/point.html">Point</a> with this bounds X and Y components.
+<br><br>
+<a name="SetPoint"></a>
+<a name="SetPoint2"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>void</td>
+            <td ><a class="link" href="#SetPoint">SetPoint</a></td>
+            <td>(const    <a href="/api/point.html">Point</a>&amp; p)</td>
+        </tr>
+        <tr>
+
+            <td>void</td>
+            <td ><a class="link" href="#SetPoint2">SetPoint</a></td>
+            <td>(<a href="/api/global.html#data-types">int32</a> x, <a href="/api/global.html#data-types">int32</a>  y)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Sets the X and Y components of this bounds to <strong>p</strong>.
+<br><br>
+<a name="GetSize"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td><a href="/api/size.html">Size</a></td>
+            <td ><a class="link" href="#GetSize">GetSize</a></td>
+            <td>(void) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns a <a href="/api/size.html">Size</a> with this bounds Width and Height components.
+<br><br>
+<a name="SetSize"></a>
+<a name="SetSize2"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>void</td>
+            <td ><a class="link" href="#SetSize">SetSize</a></td>
+            <td>(const    <a href="/api/size.html">Size</a>&amp; s)</td>
+        </tr>
+        <tr>
+
+            <td>void</td>
+            <td ><a class="link" href="#SetSize2">SetSize</a></td>
+            <td>(<a href="/api/global.html#data-types">int32</a> w, <a href="/api/global.html#data-types">int32</a> h)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Sets the Width and Height components of this bounds to <strong>s</strong>.
+<br><br>
+<a name="GetCenter"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td><a href="/api/point.html">Point</a></td>
+            <td ><a class="link" href="#GetCenter">GetCenter</a></td>
+            <td>(void) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns a <a href="/api/point.html">Point</a> representing the center of this bounds.</p>
+<h2 id="operators">Operators</h2>
+<p><a name="OpOrEq"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td><a href="/api/bounds.html">Bounds</a>&amp;</td>
+            <td ><a class="link" href="#OpOrEq">operator |&#x3D;</a></td>
+            <td>(const <a href="/api/bounds.html">Bounds</a>&amp; bounds)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Unites <strong>bounds</strong> with this bounds and returns a reference to this bounds. This function works even when Width and Height are negative and always generates a normalized bounds.</p>
+<pre><code class="lang-cpp"><span class="hljs-function">Bounds <span class="hljs-title">b1</span> <span class="hljs-params">(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">4</span>, <span class="hljs-number">4</span>)</span></span>;
+<span class="hljs-function">Bounds <span class="hljs-title">b2</span> <span class="hljs-params">(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">4</span>, <span class="hljs-number">4</span>)</span></span>;
+
+<span class="hljs-comment">// b1 becomes (0, 0, 6, 6)</span>
+b1 |= b2;
+</code></pre>
+<p><br>
+<a name="OpAndEq"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td><a href="/api/bounds.html">Bounds</a>&amp;</td>
+            <td ><a class="link" href="#OpAndEq">operator &amp;&#x3D;</a></td>
+            <td>(const <a href="/api/bounds.html">Bounds</a>&amp; bounds)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Intersects <strong>bounds</strong> with this bounds and returns a reference to this bounds. If there is no intersection, a default bounds is returned. This function works even when Width and Height are negative and always generates a normalized bounds.</p>
+<pre><code class="lang-cpp"><span class="hljs-function">Bounds <span class="hljs-title">b1</span> <span class="hljs-params">(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">4</span>, <span class="hljs-number">4</span>)</span></span>;
+<span class="hljs-function">Bounds <span class="hljs-title">b2</span> <span class="hljs-params">(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">4</span>, <span class="hljs-number">4</span>)</span></span>;
+
+<span class="hljs-comment">// b1 becomes (2, 2, 2, 2)</span>
+b1 &amp;= b2;
+</code></pre>
+<p><br>
+<a name="OpOr"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td><a href="/api/bounds.html">Bounds</a></td>
+            <td ><a class="link" href="#OpOr">operator |</a></td>
+            <td>(const <a href="/api/bounds.html">Bounds</a>&amp; bounds) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Unites <strong>bounds</strong> with this bounds and returns the result in a new bounds. This function works even when Width and Height are negative and always returns a normalized bounds.
+<br><br>
+<a name="OpAnd"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td><a href="/api/bounds.html">Bounds</a></td>
+            <td ><a class="link" href="#OpAnd">operator &amp;</a></td>
+            <td>(const <a href="/api/bounds.html">Bounds</a>&amp; bounds) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Intersects <strong>bounds</strong> with this bounds and returns the result in a new bounds. If there is no intersection, a default bounds is returned. This function works even when Width and Height are negative and always returns a normalized bounds.
+<br><br>
+<a name="OpEq"></a>
+<a name="OpNe"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#OpEq">operator &#x3D;&#x3D;</a></td>
+            <td>(const <a href="/api/bounds.html">Bounds</a>&amp; bounds) const</td>
+        </tr>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#OpNe">operator !&#x3D;</a></td>
+            <td>(const <a href="/api/bounds.html">Bounds</a>&amp; bounds) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Performs equality comparison on each component.</p>
+<h2 id="properties">Properties</h2>
+<p><a name="X"></a>
+<a name="Y"></a>
+<a name="W"></a>
+<a name="H"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td><a href="/api/global.html#data-types">int32</a></td>
+            <td ><a class="link" href="#X">X</a></td>
+            <td></td>
+        </tr>
+        <tr>
+
+            <td><a href="/api/global.html#data-types">int32</a></td>
+            <td ><a class="link" href="#Y">Y</a></td>
+            <td></td>
+        </tr>
+        <tr>
+
+            <td><a href="/api/global.html#data-types">int32</a></td>
+            <td ><a class="link" href="#W">W</a></td>
+            <td></td>
+        </tr>
+        <tr>
+
+            <td><a href="/api/global.html#data-types">int32</a></td>
+            <td ><a class="link" href="#H">H</a></td>
+            <td></td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Provides direct access to the X, Y, Width and Height components of this bounds.</p>
+<h1 id="examples">Examples</h1>
+<pre><code class="lang-cpp"><span class="hljs-comment">// C++</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;Robot.h&gt;</span></span>
+ROBOT_NS_USE_ALL;
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span> <span class="hljs-params">(<span class="hljs-keyword">void</span>)</span>
+</span>{
+    Bounds b1, b2 (<span class="hljs-number">2</span>, <span class="hljs-number">4</span>, <span class="hljs-number">8</span>, <span class="hljs-number">6</span>);
+
+    b1.IsZero (); <span class="hljs-comment">// True</span>
+    b1.IsEmpty(); <span class="hljs-comment">// True</span>
+    b1.IsValid(); <span class="hljs-comment">// False</span>
+    b2.IsValid(); <span class="hljs-comment">// True</span>
+
+    <span class="hljs-comment">// b1 becomes (2, 4, 8, 6)</span>
+    b1.SetPoint (<span class="hljs-number">2</span>, <span class="hljs-number">4</span>);
+    b1.SetSize  (<span class="hljs-number">8</span>, <span class="hljs-number">6</span>);
+
+    <span class="hljs-comment">// Returns (6, 7)</span>
+    b1.GetCenter();
+
+    b1 == b2; <span class="hljs-comment">// True</span>
+    b1 != b2; <span class="hljs-comment">// False</span>
+
+    <span class="hljs-comment">// b1 becomes (6, 7, -6, -5)</span>
+    b1.SetLTRB (<span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">0</span>, <span class="hljs-number">2</span>);
+    <span class="hljs-comment">// b1 becomes (0, 2,  6,  5)</span>
+    b1.Normalize();
+
+    b1.Contains (<span class="hljs-number">5</span>, <span class="hljs-number">5</span>); <span class="hljs-comment">// True</span>
+    b1.Contains (<span class="hljs-number">6</span>, <span class="hljs-number">6</span>); <span class="hljs-comment">// True</span>
+    b1.Contains (<span class="hljs-number">5</span>, <span class="hljs-number">5</span>, <span class="hljs-literal">false</span>); <span class="hljs-comment">// True</span>
+    b1.Contains (<span class="hljs-number">6</span>, <span class="hljs-number">6</span>, <span class="hljs-literal">false</span>); <span class="hljs-comment">// False</span>
+
+    b1.Contains   (b2); <span class="hljs-comment">// False</span>
+    b1.Intersects (b2); <span class="hljs-comment">// True</span>
+
+    <span class="hljs-comment">// b3 becomes (0, 2, 10, 8)</span>
+    Bounds b3 = b1 | b2;
+    <span class="hljs-comment">// b4 becomes (2, 4,  4, 3)</span>
+    Bounds b4 = b1 &amp; b2;
+    return <span class="hljs-number">0</span>;
+}
+</code></pre>
+<pre><code class="lang-js"><span class="hljs-comment">// Node</span>
+<span class="hljs-keyword">var</span> robot = <span class="hljs-built_in">require</span> (<span class="hljs-string">"robot-js"</span>);
+
+<span class="hljs-keyword">var</span> b1 = robot.Bounds ();
+<span class="hljs-keyword">var</span> b2 = robot.Bounds (<span class="hljs-number">2</span>, <span class="hljs-number">4</span>, <span class="hljs-number">8</span>, <span class="hljs-number">6</span>);
+
+b1.isZero (); <span class="hljs-comment">// True</span>
+b1.isEmpty(); <span class="hljs-comment">// True</span>
+b1.isValid(); <span class="hljs-comment">// False</span>
+b2.isValid(); <span class="hljs-comment">// True</span>
+
+<span class="hljs-comment">// b1 becomes (2, 4, 8, 6)</span>
+b1.setPoint (<span class="hljs-number">2</span>, <span class="hljs-number">4</span>);
+b1.setSize  (<span class="hljs-number">8</span>, <span class="hljs-number">6</span>);
+
+<span class="hljs-comment">// Returns (6, 7)</span>
+b1.getCenter();
+
+b1.eq (b2); <span class="hljs-comment">// True</span>
+b1.ne (b2); <span class="hljs-comment">// False</span>
+
+<span class="hljs-comment">// b1 becomes (6, 7, -6, -5)</span>
+b1.setLTRB (<span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">0</span>, <span class="hljs-number">2</span>);
+<span class="hljs-comment">// b1 becomes (0, 2,  6,  5)</span>
+b1.normalize();
+
+b1.containsP (<span class="hljs-number">5</span>, <span class="hljs-number">5</span>); <span class="hljs-comment">// True</span>
+b1.containsP (<span class="hljs-number">6</span>, <span class="hljs-number">6</span>); <span class="hljs-comment">// True</span>
+b1.containsP (<span class="hljs-number">5</span>, <span class="hljs-number">5</span>, <span class="hljs-literal">false</span>); <span class="hljs-comment">// True</span>
+b1.containsP (<span class="hljs-number">6</span>, <span class="hljs-number">6</span>, <span class="hljs-literal">false</span>); <span class="hljs-comment">// False</span>
+
+b1.containsB  (b2); <span class="hljs-comment">// False</span>
+b1.intersects (b2); <span class="hljs-comment">// True</span>
+
+<span class="hljs-comment">// b3 becomes (0, 2, 10, 8)</span>
+<span class="hljs-keyword">var</span> b3 = b1.unite (b2);
+<span class="hljs-comment">// b4 becomes (2, 4,  4, 3)</span>
+<span class="hljs-keyword">var</span> b4 = b1.intersect (b2);
+
+<span class="hljs-comment">// Bounds construction</span>
+b1 = robot.Bounds (b2);
+
+b1 = robot.Bounds
+(
+    robot.Point (<span class="hljs-number">100</span>, <span class="hljs-number">200</span>),
+    robot.Size  (<span class="hljs-number">300</span>, <span class="hljs-number">400</span>)
+);
+
+b1 = robot.Bounds
+({
+    x: <span class="hljs-number">100</span>, y: <span class="hljs-number">200</span>,
+    w: <span class="hljs-number">300</span>, h: <span class="hljs-number">400</span>
+});
+
+b1 = robot.Bounds
+({
+    l: <span class="hljs-number">100</span>, t: <span class="hljs-number">200</span>,
+    r: <span class="hljs-number">300</span>, b: <span class="hljs-number">400</span>
+});
+
+b1 = robot.Bounds
+(
+    { x: <span class="hljs-number">100</span>, y: <span class="hljs-number">200</span> },
+    { w: <span class="hljs-number">300</span>, h: <span class="hljs-number">400</span> }
+);
+</code></pre>
+
+
+		</div>
+
+		<div class="clearfix"></div>
+	</div>
+</section>
+
+		<div id="footer-pad"></div>
+		<section id="footer">
+			<div class="container">
+
+				<div class="author">
+					<p>Licensed under the <a href="//opensource.org/licenses/Zlib">ZLIB License</a></p>
+					<p>Project by the <a href="//github.com/orgs/robot/people">Robot Developers</a></p>
+				</div>
+
+				<div class="github">
+					<p>Proudly Hosted on <a href="//pages.github.com">
+						<svg><use xlink:href="/common/vectors.svg#github" /></svg>
+					</a></p>
+				</div>
+
+				<div class="clearfix"></div>
+
+			</div>
+		</section>
+	</div>
+
+	<script src="/common/svg4everybody.js"></script><script>svg4everybody();</script>
+
+	<script>
+		(function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,"script","//www.google-analytics.com/analytics.js","ga");
+		ga("create", "UA-41804800-7", "auto"); ga("send", "pageview");
+	</script>
+
+</body>
+</html>

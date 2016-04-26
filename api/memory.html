@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+
+<!--////////////////////////////////////////////////////////////////////////////
+// ========================================================================== //
+//                                                                            //
+//                       (C) 2010-2016 Robot Developers                       //
+//                       See LICENSE for licensing info                       //
+//                                                                            //
+// ========================================================================== //
+/////////////////////////////////////////////////////////////////////////////-->
+
+<html lang="en">
+<head>
+
+	<title>Robot Memory Class</title>
+	<meta name="description" content="Robot documentation and information site">
+
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name=      "mobile-web-app-capable" content="no">
+	<meta name="apple-mobile-web-app-capable" content="no">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="viewport" content="width=980, maximum-scale=1">
+
+	<link rel="stylesheet" href="/common/normalize.css" />
+	<link rel="stylesheet" href="/common/docs.css" />
+
+	<link rel="shortcut icon" href="/common/favicon.ico" />
+
+</head>
+<body>
+
+	<div id="body">
+		
+
+
+
+<section id="header">
+	<div class="noise"></div>
+
+	<section id="banner">
+		<div class="container">
+
+			<a href="/">
+				<svg><use xlink:href="/common/vectors.svg#logo" /></svg>
+			</a>
+
+		</div>
+	</section>
+
+	<section id="menu">
+		<div class="container">
+	
+			<nav>
+				<a href="/docs/about.html"     >DOCUMENTATION</a>
+				<a href="/api/global.html"     >API          </a>
+				<a href="/docs/philosophy.html">COMMUNITY    </a>
+				<a href="//github.com/robot"   >GITHUB       </a>
+			</nav>
+	
+		</div>
+	</section>
+</section>
+
+<section id="docs">
+	<div class="container">
+
+		<div id="sidebar">
+
+			<nav>
+				<h1>Types</h1>
+				<a  href="/api/global.html"   >Global   </a>
+				<a  href="/api/enum.html"     >Enum     </a>
+				<a  href="/api/hash.html"     >Hash     </a>
+				<a  href="/api/color.html"    >Color    </a>
+				<a  href="/api/image.html"    >Image    </a>
+				<a  href="/api/range.html"    >Range    </a>
+				<a  href="/api/point.html"    >Point    </a>
+				<a  href="/api/size.html"     >Size     </a>
+				<a  href="/api/bounds.html"   >Bounds   </a>
+			</nav>
+			<nav>
+				<h1>Native</h1>
+				<a  href="/api/keyboard.html" >Keyboard </a>
+				<a  href="/api/mouse.html"    >Mouse    </a>
+				<a  href="/api/process.html"  >Process  </a>
+				<a  href="/api/module.html"   >Module   </a>
+				<a class="active" href="/api/memory.html"   >Memory   </a>
+				<a  href="/api/window.html"   >Window   </a>
+				<a  href="/api/screen.html"   >Screen   </a>
+				<a  href="/api/timer.html"    >Timer    </a>
+				<a  href="/api/clipboard.html">Clipboard</a>
+			</nav>
+
+		</div>
+		<div id="content" class="marked">
+
+			<h1 id="memory">Memory</h1>
+<a class="edit" href="//github.com/robot/robot.github.io/edit/master/source/api/memory.html">Edit on GitHub</a><div class="include">
+	#<span class="keyword">include</span> <span class="string">&lt;Memory.h&gt;</span>
+	<div class="details">
+		<a href="//github.com/robot/robot/blob/master/Source/Memory.h" >Header</a>
+		<a href="//github.com/robot/robot/blob/master/Source/Memory.cc">Source</a>
+	</div>
+	<div class="clearfix"></div>
+</div><table id="Memory" class="class">
+<thead>
+	<tr>
+		<th>S</th><th>Return</th><th>Name</th><th>Parameters</th>
+	</tr>
+</thead>
+<tbody>
+	<tr>
+		<td></td>
+		<td></td>
+		<td><a href="#Ctor">Memory</a></td>
+		<td>(const Process&amp;
+ p &#x3D; Process())</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#IsValid">IsValid</a></td>
+		<td>(void) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>Process</td>
+		<td><a href="#GetProcess">GetProcess</a></td>
+		<td>(void) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>Stats</td>
+		<td><a href="#GetStats">GetStats</a></td>
+		<td>(void) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>Stats</td>
+		<td><a href="#GetStats2">GetStats</a></td>
+		<td>(bool reset)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>Region</td>
+		<td><a href="#GetRegion">GetRegion</a></td>
+		<td>(uintptr address) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>RegionList</td>
+		<td><a href="#GetRegions">GetRegions</a></td>
+		<td>(uintptr start &#x3D;  0,
+ uintptr stop  &#x3D; -1) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#SetAccess">SetAccess</a></td>
+		<td>(const Region&amp; region,
+ uint32 nativeAccess)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#SetAccess2">SetAccess</a></td>
+		<td>(const Region&amp; region,
+ bool r, bool w, bool x)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>AddressList</td>
+		<td><a href="#Find">Find</a></td>
+		<td>(const char* pattern,
+ uintptr start &#x3D;  0,
+ uintptr stop  &#x3D; -1,
+ uintptr limit &#x3D;  0,
+ const char* f &#x3D;  0)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#CreateCache">CreateCache</a></td>
+		<td>(uintptr blockLength,
+ uintptr blockBuffer,
+ uintptr initialSize,
+ uintptr enlargeSize &#x3D; 0,
+ uintptr maximumSize &#x3D; 0)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>void</td>
+		<td><a href="#ClearCache">ClearCache</a></td>
+		<td>(void)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>void</td>
+		<td><a href="#DeleteCache">DeleteCache</a></td>
+		<td>(void)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#IsCaching">IsCaching</a></td>
+		<td>(void) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>uintptr</td>
+		<td><a href="#GetCacheSize">GetCacheSize</a></td>
+		<td>(void) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>uintptr</td>
+		<td><a href="#GetPtrSize">GetPtrSize</a></td>
+		<td>(void) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>uintptr</td>
+		<td><a href="#GetMinAddress">GetMinAddress</a></td>
+		<td>(void) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>uintptr</td>
+		<td><a href="#GetMaxAddress">GetMaxAddress</a></td>
+		<td>(void) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>uintptr</td>
+		<td><a href="#GetPageSize">GetPageSize</a></td>
+		<td>(void) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>uintptr</td>
+		<td><a href="#ReadData">ReadData</a></td>
+		<td>(uintptr address, void* dataOutput,
+ uintptr length, Flags f &#x3D; Default)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>uintptr</td>
+		<td><a href="#WriteData">WriteData</a></td>
+		<td>(uintptr address, const void* data,
+ uintptr length, Flags f &#x3D; Default)</td>
+	</tr>
+</tbody>
+</table><h2 id="description">Description</h2>
+<p>Represents the virtual memory of a running process. All applications running on the system take up memory, and to them, memory appears contiguous and abundant. But for this to work, a memory management technique known as virtual memory must be used.</p>
+<h3 id="virtual-memory">Virtual Memory</h3>
+<p>Virtual memory is a memory management technique which maps memory addresses used by the program, called virtual addresses, to physical addresses in computer memory. This is achieved with the help of both hardware and software. The operating system, and more specifically the kernel, handle allocation and mapping of new virtual addresses to physical addresses while the processor, and more specifically the memory management unit (MMU), handle address translation. By using page tables, the processor and MMU are able to do this translation quickly and easily behind the scenes, without any additional software.</p>
+<p>Virtual addresses don&#39;t always map to RAM, certain operating systems are able to extend the virtual memory system further by using empty hard drive space as additional storage. Through the use of swap files, or page files, the system can pretend to have more memory than it actually has, opening up contingencies in cases where the system runs out of RAM. This technique is orders of magnitude slower, but is necessary. This also happens automatically and transparently to running applications.</p>
+<p>Other benefits of virtual memory systems include: freeing applications from having to manage a shared memory space, increased security due to memory isolation, obscuring physical memory fragmentation, and having a dedicated address space for every running process on the system. However, applications wanting to read or inquire about the memory of other applications must go through the operating system, which may be slow or otherwise inaccessible at times. But performance problems can usually be mitigated through the use of various caching algorithms, which the Memory class implements.</p>
+<h3 id="memory-layout">Memory Layout</h3>
+<p>Most platforms, specifically those supported by Robot, share a common memory layout. On the lowest level, memory is divided into equal-sized chunks called <strong>pages</strong> and pages are the smallest unit of memory which can be allocated by any application. On most systems, pages consist of 4096 bytes and when a specific address is referenced, the address is first aligned to the nearest page boundary before being offset to the desired address. In addition, each page has a list of attributes associated with it. These attributes are, for the most part, platform-dependent but often share some similarities including whether the page is readable, writable or executable.</p>
+<p>To save on memory, pages may be shared with one or more processes at the same time. In such cases, the page is marked as shared and is usually read-only. Shared pages may also be marked as copy-on-write in which case a process writing to it will create a copy of that page in the virtual address space of the writing process. From that point forward, the writing process maintains its own copy of the page, which it may write to at any time.</p>
+<p>A group of consecutive pages with identical attributes, including page state and access rights, are grouped into <strong>regions</strong>. These regions have a start and stop address and can either be bound or unbound. Regions which are bound have a physical address assigned to them and regions which are unbound don&#39;t. This is often referred to as committed and non-committed memory, respectively. Some platforms denominate these further but for cross-platform purposes, there are only two possibilities.</p>
+<p><img class="center" src="/common/memory1.png" /></p>
+<p>On the highest level, processes are divided into three main sections. The first section, starting at zero, is the <strong>null section</strong> and consists of one or more pages of unbound memory. This is used to prevent null pointer access, since almost all null pointers are represented by zero. The next section, starting at the minimum address, is the <strong>application section</strong>. This section contains all the memory associated with the application which can be accessed and manipulated. Unless the application is a device driver or root-kit running in ring-0, this is the only section that matters. The third and final section, starting at the maximum address, is the <strong>kernel section</strong>. This section contains all the memory associated with the operating system kernel and is inaccessible to standard user-space applications.</p>
+<h3 id="process-layout">Process Layout</h3>
+<p>As mentioned previously, processes are divided into three sections, two of which are unused for memory analysis purposes. Like memory layout, most platforms share a common process layout. On the highest level, the application section is divided into three or more parts. Each part consists of one or more regions, not necessarily contiguous, that represent the overall structure of the application. The first part is the main <strong>executable</strong> which is a copy of the main executable image used to launch this application. The next part consists of any number of shared <strong>libraries</strong> which the executable depends upon. These libraries are shared amongst all other applications that need them, resulting in less overall memory consumption. The third part includes the <strong>stack</strong> and the <strong>heap</strong>. The stack is used for local and automatic variables, as well as function return addresses while the heap is used to store all dynamically allocated memory. Other parts are considered platform-specific and are not discussed here. Moreover, order is not guaranteed, every part may appear in any order, depending on the underlying application loader.</p>
+<p><img class="center" src="/common/memory2.png" /></p>
+<p>As described in the <a href="/api/module.html">Module</a> class, the main executable and the shared libraries are considered modules. All modules share a similar internal data structure consisting of multiple segments including the Header, Text, rData, Data and iData segments. The <strong>Header</strong> segment describes module metadata such as the processor architecture, segment offsets and more. The <strong>Text</strong> segment contains the actual code being executed. The <strong>rData</strong> segment contains read-only data. The <strong>Data</strong> segment contains initialized and uninitialized data. And the <strong>iData</strong> segments contain library function offsets. The order and the number of segments depends on the application itself and the platform its running on.</p>
+<h3 id="class-functionality">Class Functionality</h3>
+<p>To interact with the virtual memory of a running application, simply pass the associated <a href="/api/process.html">Process</a> to the <a href="#Ctor">Constructor</a>. To check whether the virtual memory of the assigned process can be interacted with, use the <a href="#IsValid">IsValid</a> function. To retrieve the assigned process, use the <a href="#GetProcess">GetProcess</a> function. To retrieve statistics about how the Memory class is being used, use the <a href="#GetStats">GetStats</a> function.</p>
+<p>After a process has been assigned, the Memory class offers several functions for interacting with its virtual memory. For instance, to retrieve information about a particular memory region at an arbitrary address, use the <a href="#GetRegion">GetRegion</a> function. To retrieve information about all memory regions within a particular address range, use the <a href="#GetRegions">GetRegions</a> function. To assign different protection attributes to existing memory regions, use the <a href="#SetAccess">SetAccess</a> functions. Useful properties such as the pointer size, page size and minimum and maximum accessible addresses can be retrieved through their respective <a href="#GetPtrSize">accessor</a> functions. Finally, reading from and writing to the virtual memory of the assigned process can be done through the <a href="#ReadData">ReadData</a> and <a href="#WriteData">WriteData</a> functions respectively.</p>
+<p>In addition to virtual memory interaction, the Memory class also offers several algorithms for speeding up development and improving performance. One such algorithm is a general-purpose signature scanner which can be used to find a particular pattern of bytes within an address range, available through the <a href="#Find">Find</a> function. Another algorithm is a memory caching system which greatly improves memory reading performance and reduces overall code complexity. To create a cache, use the <a href="#CreateCache">CreateCache</a> function. When the cache needs to be cleared, use the <a href="#ClearCache">ClearCache</a> function. When a cache is no longer needed, use the <a href="#DeleteCache">DeleteCache</a> function. To check whether a cache is currently being used, use the <a href="#IsCaching">IsCaching</a> function. And finally, to get the total allocated size of the cache, use the <a href="#GetCacheSize">GetCacheSize</a> function. Once a cache has been created, simply use the <a href="#ReadData">ReadData</a> function as always and memory will be cached automatically based on the parameters of a cache.</p>
+<h2 id="types">Types</h2>
+<pre><code class="lang-cpp"><span class="hljs-keyword">typedef</span> <span class="hljs-built_in">vector</span>&lt;uintptr&gt;  Robot::AddressList;
+<span class="hljs-keyword">typedef</span> <span class="hljs-built_in">vector</span>&lt;Region &gt; Memory:: RegionList;
+</code></pre>
+<h2 id="constructors">Constructors</h2>
+<p><a name="Ctor"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+
+            <td ><a class="link" href="#Ctor">Memory</a></td>
+            <td>(const <a href="/api/process.html">Process</a>&amp;
+ p &#x3D; <a href="/api/process.html">Process</a>())</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Constructs a memory object associated with <strong>p</strong>, without allocation or process interaction.</p>
+<h2 id="functions">Functions</h2>
+<p><a name="IsValid"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#IsValid">IsValid</a></td>
+            <td>(void) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns true if the selected process is <a href="/api/process.html#IsValid">valid</a>. On Mac, performs an additional check to determine whether a valid mach task port was retrieved during process <a href="/api/process.html#Open">selection</a>. If this function returns false, the majority of this class will fail.
+<br><br>
+<a name="GetProcess"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td><a href="/api/process.html">Process</a></td>
+            <td ><a class="link" href="#GetProcess">GetProcess</a></td>
+            <td>(void) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns the process associated with this class during <a href="#Ctor">construction</a>.
+<br><br>
+<a name="GetStats"></a>
+<a name="GetStats2"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td><a href="/api/memory.html#stats">Stats</a></td>
+            <td ><a class="link" href="#GetStats">GetStats</a></td>
+            <td>(void) const</td>
+        </tr>
+        <tr>
+
+            <td><a href="/api/memory.html#stats">Stats</a></td>
+            <td ><a class="link" href="#GetStats2">GetStats</a></td>
+            <td>(bool reset)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns <a href="#Stats">statistics</a> about how this class is being used. Especially useful for measuring and optimizing the performance of a particular code segment. Set <strong>reset</strong> to true to also reset the statistics upon return.
+<br><br>
+<a name="GetRegion"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td><a href="/api/memory.html#region">Region</a></td>
+            <td ><a class="link" href="#GetRegion">GetRegion</a></td>
+            <td>(<a href="/api/global.html#data-types">uintptr</a> address) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns the <a href="#Region">region</a> at <strong>address</strong>, or an <a href="#Valid">invalid</a> region if the selected process is not <a href="#IsValid">valid</a> or <strong>address</strong> is out of range.</p>
+<p>When using this function, the starting address of the returned region will always be aligned to the nearest page boundary encompassing <strong>address</strong>. That is, if the region spans [0x4000, 0x8000) and <strong>address</strong> is 0x6020, the starting address of the returned region will be 0x6000. To determine the true starting address of a region, consider getting all regions with the <a href="#GetRegions">GetRegions</a> function. As for the ending address, it will always be accurate as this function scans subsequent pages following the initial page until it finishes scanning the entire region. In the example above, the ending address will be 0x8000.</p>
+<p><strong>Linux</strong>: It is strongly recommended to use the <a href="#GetRegions">GetRegions</a> function when retrieving information on multiple regions as that function is used in the implementation of this function.
+<br><br>
+<a name="GetRegions"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td><a href="/api/memory.html#types">RegionList</a></td>
+            <td ><a class="link" href="#GetRegions">GetRegions</a></td>
+            <td>(<a href="/api/global.html#data-types">uintptr</a> start &#x3D;  0,
+ <a href="/api/global.html#data-types">uintptr</a> stop  &#x3D; -1) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns a list of all <a href="#Region">regions</a> between [<strong>start</strong>, <strong>stop</strong>), or an empty list if the selected process is not <a href="#IsValid">valid</a> or <strong>start</strong> is greater than or equal to <strong>stop</strong>. The resulting list is guaranteed to be sorted from <strong>start</strong> to <strong>stop</strong> and will include both <a href="#Bound">bound</a> and unbound regions. Both <strong>start</strong> and <strong>stop</strong> will be clamped to the <a href="#GetMinAddress">minimum</a> and <a href="#GetMaxAddress">maximum</a> accessible address values.</p>
+<p>Like <a href="#GetRegion">GetRegion</a>, <strong>start</strong> will always be aligned to the current page boundary while <strong>stop</strong> will always be aligned to the next page boundary, if it wasn&#39;t already aligned. That is, if <strong>start</strong> is set to 0x6020 then the first region in the list will begin at 0x6000 and if <strong>stop</strong> is set to either 0x7020 or 0x8000 then the last region in the list will stop at 0x8000. This function will continue to scan regions until either <strong>stop</strong> is reached or an error occurs.
+<br><br>
+<a name="SetAccess"></a>
+<a name="SetAccess2"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#SetAccess">SetAccess</a></td>
+            <td>(const <a href="/api/memory.html#region">Region</a>&amp; region,
+ <a href="/api/global.html#data-types">uint32</a> nativeAccess)</td>
+        </tr>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#SetAccess2">SetAccess</a></td>
+            <td>(const <a href="/api/memory.html#region">Region</a>&amp; region,
+ bool r, bool w, bool x)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Attempts to change the access rights of <strong>region</strong> and returns true on success. Returns false if the selected process is not <a href="#IsValid">valid</a> or <strong>region</strong> is not <a href="#Valid">valid</a> and <a href="#Bound">bound</a>. In most cases it is recommended to specify new access rights with <strong>read</strong>, <strong>write</strong> and <strong>exec</strong> as this will work on all platforms. For increased flexibility, however, it is also possible to supply the platform-specific access code directly with <strong>access</strong>. On Mac, <strong>access</strong> is passed directly to the mach_vm_protect function. On Windows, <strong>access</strong> is passed directly to the VirtualProtectEx function.</p>
+<p><strong>Note:</strong> It is possible to specify a custom address range encompassing multiple regions at the same time. To do this, simply create a region with both <a href="#Valid">Valid</a> and <a href="#Bound">Bound</a> set to true. Then set <a href="#Start">Start</a> and <a href="#Stop">Stop</a> to the desired address range. This function will then modify the access rights accordingly, however, if the access rights of any page in the range cannot be modified, this function will return false without modifying the access rights of any page. Addresses are automatically aligned to page boundaries.</p>
+<p><strong>Linux:</strong> This function is not available and will always return false.
+<br><br>
+<a name="Find"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td><a href="/api/memory.html#types">AddressList</a></td>
+            <td ><a class="link" href="#Find">Find</a></td>
+            <td>(const char* pattern,
+ <a href="/api/global.html#data-types">uintptr</a> start &#x3D;  0,
+ <a href="/api/global.html#data-types">uintptr</a> stop  &#x3D; -1,
+ <a href="/api/global.html#data-types">uintptr</a> limit &#x3D;  0,
+ const char* f &#x3D;  0)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Searches for <strong>pattern</strong> in the selected process and returns a list of results. <strong>pattern</strong> expects a string of case-insensitive hexadecimal bytes with each byte consisting of exactly two characters. Wildcards are supported and denoted by a single question mark. Each byte or wildcard can be optionally separated by one or more spaces. Internally, searching is performed on a region by region basis beginning at <strong>start</strong> and ending at <strong>stop</strong>, however, if the number of results reaches <strong>limit</strong>, and <strong>limit</strong> is greater than zero, the search will end. An empty list is returned if the selected process is not <a href="#IsValid">valid</a>, <strong>pattern</strong> is incorrect, <strong>start</strong> and <strong>stop</strong> return no <a href="#GetRegions">regions</a>, <strong>f</strong> is incorrect or a read error occurred.</p>
+<p>This function is not multi-threaded and uses <a href="//en.cppreference.com/w/cpp/algorithm/search">search</a>, which will be slow for large address ranges. It is not ideal for atomic pattern searching, such as searching for integers. This function is, however, ideal for quick tests and other general-purpose use.</p>
+<p>Results can be filtered through flags defined by <strong>f</strong>. These flags define which regions will be searched based on their access rights. Flags are defined by a string of up to four characters. Each character represents a different access right property. The first character represents <a href="#Writable">writable</a>, the second <a href="#Executable">executable</a>, the third <a href="#Private">private</a> and the fourth <a href="#Guarded">guarded</a>. Each character can either be a space, a minus or a letter (W, X, P, G respectively). A space denotes any value, a minus denotes a false value and a letter denotes a true value. As an example, if <strong>f</strong> is &quot;w-&quot;, then in order for a region to be searched it must be writable but not executable.</p>
+<p><strong>Warning:</strong> <a href="#CreateCache">Caching</a> should not enabled as it will result in a large memory overhead.
+<br><br>
+<a name="CreateCache"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#CreateCache">CreateCache</a></td>
+            <td>(<a href="/api/global.html#data-types">uintptr</a> blockLength,
+ <a href="/api/global.html#data-types">uintptr</a> blockBuffer,
+ <a href="/api/global.html#data-types">uintptr</a> initialSize,
+ <a href="/api/global.html#data-types">uintptr</a> enlargeSize &#x3D; 0,
+ <a href="/api/global.html#data-types">uintptr</a> maximumSize &#x3D; 0)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Engages the internal memory caching system, usually resulting in a tremendous improvement in memory <a href="#ReadData">reading</a> performance. The algorithm works by optimizing the calls made to native memory reading functions as well as reducing the total number of calls made to these functions. If the cache was successfully created, this function will return true. If any of the specified parameters are incorrect, this function will return false.</p>
+<p>Internally, this function allocates a data buffer for storing the memory of the selected process. As more and more memory gets read, the buffer becomes larger and larger. If multiple reads are performed in proximity of one another, the resulting data is copied from the buffer instead of performing a native read. This results in a huge performance boost as native memory reads are notoriously slow, particularly on Windows.</p>
+<p>The caching algorithm requires a strict set of parameters in order to work, most of which should not be surprising. First, all parameters must be divisible by <a href="#GetPageSize">PageSize</a>. Second, <strong>blockLength</strong>, <strong>blockBuffer</strong> and <strong>initialSize</strong> cannot be zero. Third, <strong>blockLength</strong> must be a power of two and greater than or equal to <strong>blockBuffer</strong>. Fourth, <strong>initialSize</strong> must be greater than or equal to the sum of <strong>blockLength</strong> and <strong>blockBuffer</strong>. Fifth, if <strong>enlargeSize</strong> is not zero then it must also be greater than or equal to the sum of <strong>blockLength</strong> and <strong>blockBuffer</strong>. And last, if <strong>maximumSize</strong> is not zero then it must be greater than or equal to <strong>initialSize</strong>.</p>
+<p>As for the parameters themselves, the sum of <strong>blockLength</strong> and <strong>blockBuffer</strong> defines the amount of data which will be read during a single native read. <strong>blockLength</strong> defines the amount of accessible data from that read while <strong>blockBuffer</strong> defines the largest amount of data which could be read at any given time. Reading more than <strong>blockBuffer</strong> at a time results in a native read. <strong>initialSize</strong> defines the initial size of the data buffer, allocated immediately upon return. <strong>enlargeSize</strong> defines the size to grow the data buffer by upon running out of space. If set to zero, a native read will be performed upon running out of space. <strong>maximumSize</strong> defines the maximum possible size of the data buffer. If set to zero, the size of the data buffer is limitless, however, in the case that the size cannot be extended, a native read will be performed upon running out of space. All parameters should be represented in bytes.</p>
+<p><img class="center" src="/common/memory3.png" />
+<br>
+<a name="ClearCache"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>void</td>
+            <td ><a class="link" href="#ClearCache">ClearCache</a></td>
+            <td>(void)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Removes all <a href="#CreateCache">cached</a> data accumulated through <a href="#ReadData">reading</a> memory. Call this function when the latest version of the memory needs to be read as the data in the cache may be out of date. This function has no performance implications and does not perform reallocation. This function does nothing if a cache has not yet been created.
+<br><br>
+<a name="DeleteCache"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>void</td>
+            <td ><a class="link" href="#DeleteCache">DeleteCache</a></td>
+            <td>(void)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Disables memory <a href="#CreateCache">caching</a> and deletes any allocated memory. This function does nothing if a cache has not yet been created.
+<br><br>
+<a name="IsCaching"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#IsCaching">IsCaching</a></td>
+            <td>(void) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns true if memory <a href="#CreateCache">caching</a> has been enabled.
+<br><br>
+<a name="GetCacheSize"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td><a href="/api/global.html#data-types">uintptr</a></td>
+            <td ><a class="link" href="#GetCacheSize">GetCacheSize</a></td>
+            <td>(void) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns the current size of the allocated memory <a href="#CreateCache">cache</a>, in bytes. The cache may grow depending on the cache parameters and how much data has already been <a href="#ReadData">read</a>. Unless the cache is <a href="#DeleteCache">deleted</a>, it will never shrink.
+<br><br>
+<a name="GetPtrSize"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td><a href="/api/global.html#data-types">uintptr</a></td>
+            <td ><a class="link" href="#GetPtrSize">GetPtrSize</a></td>
+            <td>(void) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns the size of a single pointer in the selected process, in bytes. That is, if a 32-bit process has been selected, this function will return 4 and if a 64-bit process has been selected, this function will return 8.
+<br><br>
+<a name="GetMinAddress"></a>
+<a name="GetMaxAddress"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td><a href="/api/global.html#data-types">uintptr</a></td>
+            <td ><a class="link" href="#GetMinAddress">GetMinAddress</a></td>
+            <td>(void) const</td>
+        </tr>
+        <tr>
+
+            <td><a href="/api/global.html#data-types">uintptr</a></td>
+            <td ><a class="link" href="#GetMaxAddress">GetMaxAddress</a></td>
+            <td>(void) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns the minimum and maximum accessible address for the selected process.
+<br><br>
+<a name="GetPageSize"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td><a href="/api/global.html#data-types">uintptr</a></td>
+            <td ><a class="link" href="#GetPageSize">GetPageSize</a></td>
+            <td>(void) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns the size of a single page of memory, in bytes. This value is typically 4096.
+<br><br>
+<a name="ReadData"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td><a href="/api/global.html#data-types">uintptr</a></td>
+            <td ><a class="link" href="#ReadData">ReadData</a></td>
+            <td>(<a href="/api/global.html#data-types">uintptr</a> address, void* dataOutput,
+ <a href="/api/global.html#data-types">uintptr</a> length, <a href="/api/memory.html#flags">Flags</a> f &#x3D; Default)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Copies the memory of the selected process into <strong>dataOutput</strong>. <strong>address</strong> specifies the base address in the selected process from which the data is read while <strong>length</strong> specifies the number of bytes to read. Ensure that <strong>dataOutput</strong> is large enough to store <strong>length</strong> bytes to avoid a buffer overflow error. On success, this function returns the number of bytes successfully copied into <strong>dataOutput</strong>. On failure, this function returns zero. This function can fail if the selected process is not <a href="#IsValid">valid</a>, <strong>address</strong> is outside the <a href="#GetMinAddress">minimum</a> and <a href="#GetMaxAddress">maximum</a> accessible address space, <strong>dataOutput</strong> is null, <strong>length</strong> is zero or the read fails.</p>
+<p>A read can fail due to a variety of reasons, but the most common reason is that <strong>address</strong> and <strong>length</strong> intersect an unreadable region of memory. While less of a concern for smaller reads, larger reads spanning multiple regions, such as those performed by the memory <a href="#CreateCache">caching</a> algorithm, may encounter this error more frequently. For this, consider specifying a non-default <strong>flag</strong>. See <a href="#flags">Flags</a> for more information.</p>
+<p><strong>Note:</strong> For improved performance, consider using a memory <a href="#CreateCache">cache</a>.
+<br><br>
+<a name="WriteData"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td><a href="/api/global.html#data-types">uintptr</a></td>
+            <td ><a class="link" href="#WriteData">WriteData</a></td>
+            <td>(<a href="/api/global.html#data-types">uintptr</a> address, const void* data,
+ <a href="/api/global.html#data-types">uintptr</a> length, <a href="/api/memory.html#flags">Flags</a> f &#x3D; Default)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Copies <strong>data</strong> into the memory of the selected process. <strong>address</strong> specifies the base address in the selected process to which the data is written while <strong>length</strong> specifies the number of bytes to write. Ensure that <strong>data</strong> holds at least <strong>length</strong> bytes to avoid a buffer overflow error. On success, this function returns the number of bytes successfully copied into the memory of the selected process. On failure, this function returns zero. This function can fail if the selected process is not <a href="#IsValid">valid</a>, <strong>address</strong> is outside the <a href="#GetMinAddress">minimum</a> and <a href="#GetMaxAddress">maximum</a> accessible address space, <strong>data</strong> is null, <strong>length</strong> is zero or the write fails.</p>
+<p>A write can fail due to a variety of reasons, but the most common reason is that <strong>address</strong> and <strong>length</strong> intersect an unwritable region of memory. While less of a concern for smaller writes, larger writes spanning multiple regions may encounter this error more frequently. For this, consider specifying a non-default <strong>flag</strong>. See <a href="#flags">Flags</a> for more information.</p>
+<h1 id="stats">Stats</h1>
+<table id="Stats" class="class">
+<thead>
+	<tr>
+		<th>S</th><th>Return</th><th>Name</th><th>Parameters</th>
+	</tr>
+</thead>
+<tbody>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#OpEq">operator &#x3D;&#x3D;</a></td>
+		<td>(const Stats&amp; stats) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#OpNe">operator !&#x3D;</a></td>
+		<td>(const Stats&amp; stats) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>uint32</td>
+		<td><a href="#SystemReads">SystemReads</a></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>uint32</td>
+		<td><a href="#CachedReads">CachedReads</a></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>uint32</td>
+		<td><a href="#SystemWrites">SystemWrites</a></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>uint32</td>
+		<td><a href="#AccessWrites">AccessWrites</a></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>uint32</td>
+		<td><a href="#ReadErrors">ReadErrors</a></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>uint32</td>
+		<td><a href="#WriteErrors">WriteErrors</a></td>
+		<td></td>
+	</tr>
+</tbody>
+</table><h2 id="description">Description</h2>
+<p>Represents statistics about how the Memory class is being used. These statistics are quite useful for debugging, especially in the case of measuring and optimizing the performance of particular code segments. To retrieve statistics, use the <a href="#GetStats">GetStats</a> function within the <a href="#Memory">Memory</a> class.</p>
+<p>After obtaining a copy of the statistics, all information can be retrieved through the class properties. For instance, to get the number of times a native read or write was performed on the process, use the <a href="#SystemReads">SystemReads</a> or <a href="#SystemWrites">SystemWrites</a> properties. To get the number of times a native read or write failed, use the <a href="#ReadErrors">ReadErrors</a> or <a href="#WriteErrors">WriteErrors</a> properties. See the properties list for all other available properties. Comparison is supported as well.</p>
+<h2 id="operators">Operators</h2>
+<p><a name="OpEq"></a>
+<a name="OpNe"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#OpEq">operator &#x3D;&#x3D;</a></td>
+            <td>(const <a href="/api/memory.html#stats">Stats</a>&amp; stats) const</td>
+        </tr>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#OpNe">operator !&#x3D;</a></td>
+            <td>(const <a href="/api/memory.html#stats">Stats</a>&amp; stats) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Performs equality comparison to determine whether both structures have identical statistics.</p>
+<h2 id="properties">Properties</h2>
+<p><a name="SystemReads"></a>
+<a name="SystemWrites"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td><a href="/api/global.html#data-types">uint32</a></td>
+            <td ><a class="link" href="#SystemReads">SystemReads</a></td>
+            <td></td>
+        </tr>
+        <tr>
+
+            <td><a href="/api/global.html#data-types">uint32</a></td>
+            <td ><a class="link" href="#SystemWrites">SystemWrites</a></td>
+            <td></td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns the number of times a native <a href="#ReadData">read</a> or <a href="#WriteData">write</a> was performed on the process. Regardless or whether or not the operation actually succeeded.
+<br><br>
+<a name="CachedReads"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td><a href="/api/global.html#data-types">uint32</a></td>
+            <td ><a class="link" href="#CachedReads">CachedReads</a></td>
+            <td></td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns the number of times <a href="#ReadData">data</a> was copied from the internal <a href="#CreateCache">cache</a>, including the number of times a native read was performed to get that data.
+<br><br>
+<a name="AccessWrites"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td><a href="/api/global.html#data-types">uint32</a></td>
+            <td ><a class="link" href="#AccessWrites">AccessWrites</a></td>
+            <td></td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns the number of times region access-rights were successfully <a href="#SetAccess">modified</a>.
+<br><br>
+<a name="ReadErrors"></a>
+<a name="WriteErrors"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td><a href="/api/global.html#data-types">uint32</a></td>
+            <td class="right-align"><a class="link" href="#ReadErrors">ReadErrors</a></td>
+            <td></td>
+        </tr>
+        <tr>
+
+            <td><a href="/api/global.html#data-types">uint32</a></td>
+            <td class="right-align"><a class="link" href="#WriteErrors">WriteErrors</a></td>
+            <td></td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns the number of times a native <a href="#ReadData">read</a> or <a href="#WriteData">write</a> on the process failed.</p>
+<h1 id="region">Region</h1>
+<table id="Region" class="class">
+<thead>
+	<tr>
+		<th>S</th><th>Return</th><th>Name</th><th>Parameters</th>
+	</tr>
+</thead>
+<tbody>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#Contains">Contains</a></td>
+		<td>(uintptr address) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#OpLt">operator &lt;</a></td>
+		<td>(uintptr address) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#OpGt">operator &gt;</a></td>
+		<td>(uintptr address) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#OpLe">operator &lt;&#x3D;</a></td>
+		<td>(uintptr address) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#OpGe">operator &gt;&#x3D;</a></td>
+		<td>(uintptr address) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#OpLt2">operator &lt;</a></td>
+		<td>(const Region&amp; region) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#OpGt2">operator &gt;</a></td>
+		<td>(const Region&amp; region) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#OpLe2">operator &lt;&#x3D;</a></td>
+		<td>(const Region&amp; region) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#OpGe2">operator &gt;&#x3D;</a></td>
+		<td>(const Region&amp; region) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#OpEq">operator &#x3D;&#x3D;</a></td>
+		<td>(const Region&amp; region) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#OpNe">operator !&#x3D;</a></td>
+		<td>(const Region&amp; region) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#Valid">Valid</a></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#Bound">Bound</a></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>uintptr</td>
+		<td><a href="#Start">Start</a></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>uintptr</td>
+		<td><a href="#Stop">Stop</a></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>uintptr</td>
+		<td><a href="#Size">Size</a></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#Readable">Readable</a></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#Writable">Writable</a></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#Executable">Executable</a></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>uint32</td>
+		<td><a href="#Access">Access</a></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#Private">Private</a></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#Guarded">Guarded</a></td>
+		<td></td>
+	</tr>
+</tbody>
+</table><h2 id="description">Description</h2>
+<p>Represents a single region of memory. A region is nothing more than a group of consecutive pages which share common attributes including page state and access rights. To retrieve a region or list of regions, use the <a href="#GetRegion">GetRegion</a> or <a href="#GetRegions">GetRegions</a> functions within the <a href="#Memory">Memory</a> class. Regions can also be synthesized as all properties are public and mutable, but doing so may lead to various side effects.</p>
+<p>After a region has been created, all information can be retrieved through the class properties. For instance, to check whether the region information is valid, use the <a href="#Valid">Valid</a> property. To check whether the region is bound, or has physical storage assigned to it, use the <a href="#Bound">Bound</a> property. To retrieve the start and stop addresses of the region, as well as its size, use the <a href="#Start">Start</a>, <a href="#Stop">Stop</a> and <a href="#Size">Size</a> properties. To get the access rights in a cross-platform manner, use the <a href="#Readable">Readable</a>, <a href="#Writable">Writable</a> and <a href="#Executable">Executable</a> properties. To get the native platform-dependent access code, use the <a href="#Access">Access</a> property. To check whether the region is private to the process, as opposed to shared across multiple processes, use the <a href="#Private">Private</a> property. And on Windows, to check whether the pages in the region are guard pages, use the <a href="#Guarded">Guarded</a> property.</p>
+<p>The Region class also offers a wide range of useful functionality. For example, the <a href="#Contains">Contains</a> function can be used to check whether an address is contained within the region. And various relational operators help in cases where a region needs to be compared to other regions, as in the case of sorting. Comparison is supported as well.</p>
+<p><strong>Note:</strong> Although copy-on-write is not explicitly supported, the native platform-dependent access code can be used to retrieve this property, setting it however, is not recommended.</p>
+<h2 id="functions">Functions</h2>
+<p><a name="Contains"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#Contains">Contains</a></td>
+            <td>(<a href="/api/global.html#data-types">uintptr</a> address) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns true if <strong>address</strong> is in the range [<a href="#Start">Start</a>, <a href="#Stop">Stop</a>) of this region.</p>
+<h2 id="operators">Operators</h2>
+<p><a name="OpLt"></a>
+<a name="OpGt"></a>
+<a name="OpLe"></a>
+<a name="OpGe"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#OpLt">operator &lt;</a></td>
+            <td>(<a href="/api/global.html#data-types">uintptr</a> address) const</td>
+        </tr>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#OpGt">operator &gt;</a></td>
+            <td>(<a href="/api/global.html#data-types">uintptr</a> address) const</td>
+        </tr>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#OpLe">operator &lt;&#x3D;</a></td>
+            <td>(<a href="/api/global.html#data-types">uintptr</a> address) const</td>
+        </tr>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#OpGe">operator &gt;&#x3D;</a></td>
+            <td>(<a href="/api/global.html#data-types">uintptr</a> address) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Performs relational comparison using the <a href="#Start">Start</a> of this region and <strong>address</strong>.
+<br><br>
+<a name="OpLt2"></a>
+<a name="OpGt2"></a>
+<a name="OpLe2"></a>
+<a name="OpGe2"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#OpLt2">operator &lt;</a></td>
+            <td>(const <a href="/api/memory.html#region">Region</a>&amp; region) const</td>
+        </tr>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#OpGt2">operator &gt;</a></td>
+            <td>(const <a href="/api/memory.html#region">Region</a>&amp; region) const</td>
+        </tr>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#OpLe2">operator &lt;&#x3D;</a></td>
+            <td>(const <a href="/api/memory.html#region">Region</a>&amp; region) const</td>
+        </tr>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#OpGe2">operator &gt;&#x3D;</a></td>
+            <td>(const <a href="/api/memory.html#region">Region</a>&amp; region) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Performs relational comparison using the <a href="#Start">Start</a> of this region and <strong>region</strong>.
+<br><br>
+<a name="OpEq"></a>
+<a name="OpNe"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#OpEq">operator &#x3D;&#x3D;</a></td>
+            <td>(const <a href="/api/memory.html#region">Region</a>&amp; region) const</td>
+        </tr>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#OpNe">operator !&#x3D;</a></td>
+            <td>(const <a href="/api/memory.html#region">Region</a>&amp; region) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Performs equality comparison to determine whether two regions have identical properties.</p>
+<h2 id="properties">Properties</h2>
+<p><a name="Valid"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#Valid">Valid</a></td>
+            <td></td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Gets or sets a value indicating whether the information in this region is valid.
+<br><br>
+<a name="Bound"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#Bound">Bound</a></td>
+            <td></td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Gets or sets a value indicating whether the region is a bound/committed region.
+<br><br>
+<a name="Start"></a>
+<a name="Stop"></a>
+<a name="Size"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td><a href="/api/global.html#data-types">uintptr</a></td>
+            <td ><a class="link" href="#Start">Start</a></td>
+            <td></td>
+        </tr>
+        <tr>
+
+            <td><a href="/api/global.html#data-types">uintptr</a></td>
+            <td ><a class="link" href="#Stop">Stop</a></td>
+            <td></td>
+        </tr>
+        <tr>
+
+            <td><a href="/api/global.html#data-types">uintptr</a></td>
+            <td ><a class="link" href="#Size">Size</a></td>
+            <td></td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Gets or sets the start and stop address of this region and the size it occupies, in bytes.
+<br><br>
+<a name="Readable"></a>
+<a name="Writable"></a>
+<a name="Executable"></a>
+<a name="Access"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#Readable">Readable</a></td>
+            <td></td>
+        </tr>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#Writable">Writable</a></td>
+            <td></td>
+        </tr>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#Executable">Executable</a></td>
+            <td></td>
+        </tr>
+        <tr>
+
+            <td><a href="/api/global.html#data-types">uint32</a></td>
+            <td ><a class="link" href="#Access">Access</a></td>
+            <td></td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Gets or sets a value indicating the various access rights of this region. The <strong>Readable</strong>, <strong>Writable</strong> and <strong>Executable</strong> properties are cross-platform while <strong>Access</strong> encodes this data in a single platform-specific code.
+<br><br>
+<a name="Private"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#Private">Private</a></td>
+            <td></td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Gets or sets a value indicating whether the region is private to the process (i.e. not shared).
+<br><br>
+<a name="Guarded"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#Guarded">Guarded</a></td>
+            <td></td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>On Windows, gets or sets a value indicating whether the pages in the region are guard pages. Any attempt to access a guard page causes the system to raise an exception and turn off the guard page status. Guard pages thus act as a one-time access alarm against spontaneous access. On Linux and Mac, this property is always false.</p>
+<h1 id="flags">Flags</h1>
+<p>Represents flags for modifying the way <a href="#ReadData">ReadDate</a> and <a href="#WriteData">WriteData</a> behave. <strong>Default</strong> represents the default behavior which passes all the parameters, as they are, directly to the native system function. <strong>SkipErrors</strong> splits the read and write request into multiple calls, each aligned to their own region. If an error occurs, that particular region is skipped and the operation continues. Failed reads fill the output buffer with zeros for that particular region. <strong>AutoAccess</strong> performs the same task as <strong>SkipErrors</strong> but also attempts to make the region readable or writable prior to performing the operation. Although access rights are restored upon completion, the use of this flag is discouraged as it may destabilize the target application. Flags are exclusive and should not be combined with one another.</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">enum</span> Flags
+{
+    Default,
+    SkipErrors,
+    AutoAccess,
+};
+</code></pre>
+<h1 id="examples">Examples</h1>
+<pre><code class="lang-cpp">// C++
+#include &lt;Robot.h&gt;
+ROBOT_NS_USE_ALL;
+
+int main (void)
+{
+    // Open process and create memory
+    Memory memory (Process (4815));
+
+    // Must be true for class to work
+    if (!memory.IsValid()) return 0;
+
+    // Results are in the context of the process
+    memory.GetPtrSize   (); // Size of a pointer
+    memory.GetMinAddress(); // Min accessible address
+    memory.GetMaxAddress(); // Max accessible address
+    memory.GetPageSize  (); // Size of a single page
+
+    // Retrieve all regions in process
+    auto regions = memory.GetRegions();
+
+    // Regions is an STL vector
+    for (const auto&amp; r : regions)
+    {
+        if (r.Valid &amp;&amp; r.Bound) // Check if region is valid
+        {
+            r.Start;      // Starting address of the region
+            r.Stop;       // Stopping address of the region
+            r.Size;       // Size, in bytes,  of the region
+
+            r.Readable;   // True if region can be read from
+            r.Writable;   // True if region can be written to
+            r.Executable; // True if region can execute code
+        }
+    }
+
+    // Read memory directly from the selected process
+    int16 v16; memory. ReadData (V16_ADDRESS, &amp;v16, 2);
+    int32 v32; memory. ReadData (V32_ADDRESS, &amp;v32, 4);
+    int64 v64; memory. ReadData (V64_ADDRESS, &amp;v64, 8);
+
+    // Write memory directly to the selected process
+    v16 = 123; memory.WriteData (V16_ADDRESS, &amp;v16, 2);
+    v32 = 456; memory.WriteData (V32_ADDRESS, &amp;v32, 4);
+    v64 = 789; memory.WriteData (V64_ADDRESS, &amp;v64, 8);
+
+    // Get the stats and then reset them
+    auto stats = memory.GetStats (true);
+    stats.SystemReads;  // 3
+    stats.CachedReads;  // 0
+    stats.SystemWrites; // 3
+
+    // Create memory cache for faster reads
+    memory.CreateCache (4096, 4096, 16384);
+    memory.GetCacheSize(); // 16384
+
+    // Read memory through the memory cache
+    memory.ReadData (V16_ADDRESS, &amp;v16, 2);
+    memory.ReadData (V32_ADDRESS, &amp;v32, 4);
+    memory.ReadData (V64_ADDRESS, &amp;v64, 8);
+
+    // Get the new stats again
+    stats = memory.GetStats();
+    stats.SystemReads;  // 1
+    stats.CachedReads;  // 3
+    stats.SystemWrites; // 0
+
+    // Clear the memory cache whenever
+    // fresh reads need to be performed
+    memory.ClearCache();
+
+    memory.IsCaching  (); // True
+    memory.DeleteCache();
+    memory.IsCaching  (); // False
+
+    // Perform pattern search
+    auto list = memory.Find
+        ("04 08 ? 16 23 42");
+
+    // List is an STL vector
+    for (const auto&amp; a : list)
+        a; // Found address
+
+    return 0;
+}
+</code></pre>
+<pre><code class="lang-js"><span class="hljs-comment">// Node</span>
+<span class="hljs-keyword">var</span> robot = <span class="hljs-built_in">require</span> (<span class="hljs-string">"robot-js"</span>);
+
+<span class="hljs-comment">// Open process and memory</span>
+<span class="hljs-keyword">var</span> memory = robot.Memory
+    (robot.Process (<span class="hljs-number">4815</span>));
+
+<span class="hljs-comment">// Check the validity</span>
+<span class="hljs-keyword">if</span> (memory.isValid())
+{
+    <span class="hljs-comment">// Results are in the context of the process</span>
+    memory.getPtrSize   (); <span class="hljs-comment">// Size of a pointer</span>
+    memory.getMinAddress(); <span class="hljs-comment">// Min accessible address</span>
+    memory.getMaxAddress(); <span class="hljs-comment">// Max accessible address</span>
+    memory.getPageSize  (); <span class="hljs-comment">// Size of a single page</span>
+
+    <span class="hljs-comment">// Retrieve all regions in process</span>
+    <span class="hljs-keyword">var</span> regions = memory.getRegions();
+
+    <span class="hljs-comment">// Regions is an array</span>
+    regions.map (<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">r</span>)
+    </span>{
+        <span class="hljs-keyword">if</span> (r.valid &amp;&amp; r.bound) <span class="hljs-comment">// Check if region is valid</span>
+        {
+            r.start;      <span class="hljs-comment">// Starting address of the region</span>
+            r.stop;       <span class="hljs-comment">// Stopping address of the region</span>
+            r.size;       <span class="hljs-comment">// Size, in bytes,  of the region</span>
+
+            r.readable;   <span class="hljs-comment">// True if region can be read from</span>
+            r.writable;   <span class="hljs-comment">// True if region can be written to</span>
+            r.executable; <span class="hljs-comment">// True if region can execute code</span>
+        }
+    });
+
+    <span class="hljs-comment">// Read memory directly from the process</span>
+    <span class="hljs-keyword">var</span> v16 = memory.readInt16 (V16_ADDRESS);
+    <span class="hljs-keyword">var</span> v32 = memory.readInt32 (V32_ADDRESS);
+    <span class="hljs-keyword">var</span> v64 = memory.readInt64 (V64_ADDRESS);
+
+    <span class="hljs-comment">// Write memory directly to the selected process</span>
+    v16 = <span class="hljs-number">123</span>; memory.writeInt16 (V16_ADDRESS, v16);
+    v32 = <span class="hljs-number">456</span>; memory.writeInt32 (V32_ADDRESS, v32);
+    v64 = <span class="hljs-number">789</span>; memory.writeInt64 (V64_ADDRESS, v64);
+
+    <span class="hljs-comment">// Get the stats and then reset them</span>
+    <span class="hljs-keyword">var</span> stats = memory.getStats (<span class="hljs-literal">true</span>);
+    stats.systemReads;  <span class="hljs-comment">// 3</span>
+    stats.cachedReads;  <span class="hljs-comment">// 0</span>
+    stats.systemWrites; <span class="hljs-comment">// 3</span>
+
+    <span class="hljs-comment">// Create memory cache for faster reads</span>
+    memory.createCache (<span class="hljs-number">4096</span>, <span class="hljs-number">4096</span>, <span class="hljs-number">16384</span>);
+    memory.getCacheSize(); <span class="hljs-comment">// 16384</span>
+
+    <span class="hljs-comment">// Read memory through memory cache</span>
+    v16 = memory.readInt16 (V16_ADDRESS);
+    v32 = memory.readInt32 (V32_ADDRESS);
+    v64 = memory.readInt64 (V64_ADDRESS);
+
+    <span class="hljs-comment">// Get the new stats again</span>
+    stats = memory.getStats();
+    stats.systemReads;  <span class="hljs-comment">// 1</span>
+    stats.cachedReads;  <span class="hljs-comment">// 3</span>
+    stats.systemWrites; <span class="hljs-comment">// 0</span>
+
+    <span class="hljs-comment">// Clear the memory cache whenever</span>
+    <span class="hljs-comment">// fresh reads need to be performed</span>
+    memory.clearCache();
+
+    memory.isCaching  (); <span class="hljs-comment">// True</span>
+    memory.deleteCache();
+    memory.isCaching  (); <span class="hljs-comment">// False</span>
+
+    <span class="hljs-comment">// Perform pattern search</span>
+    <span class="hljs-keyword">var</span> list = memory.find
+        (<span class="hljs-string">"04 08 ? 16 23 42"</span>);
+
+    <span class="hljs-comment">// List is an array</span>
+    list.map (<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">a</span>)
+    </span>{
+        a; <span class="hljs-comment">// Found address</span>
+    });
+}
+</code></pre>
+
+
+		</div>
+
+		<div class="clearfix"></div>
+	</div>
+</section>
+
+		<div id="footer-pad"></div>
+		<section id="footer">
+			<div class="container">
+
+				<div class="author">
+					<p>Licensed under the <a href="//opensource.org/licenses/Zlib">ZLIB License</a></p>
+					<p>Project by the <a href="//github.com/orgs/robot/people">Robot Developers</a></p>
+				</div>
+
+				<div class="github">
+					<p>Proudly Hosted on <a href="//pages.github.com">
+						<svg><use xlink:href="/common/vectors.svg#github" /></svg>
+					</a></p>
+				</div>
+
+				<div class="clearfix"></div>
+
+			</div>
+		</section>
+	</div>
+
+	<script src="/common/svg4everybody.js"></script><script>svg4everybody();</script>
+
+	<script>
+		(function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,"script","//www.google-analytics.com/analytics.js","ga");
+		ga("create", "UA-41804800-7", "auto"); ga("send", "pageview");
+	</script>
+
+</body>
+</html>

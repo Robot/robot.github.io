@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+
+<!--////////////////////////////////////////////////////////////////////////////
+// ========================================================================== //
+//                                                                            //
+//                       (C) 2010-2016 Robot Developers                       //
+//                       See LICENSE for licensing info                       //
+//                                                                            //
+// ========================================================================== //
+/////////////////////////////////////////////////////////////////////////////-->
+
+<html lang="en">
+<head>
+
+	<title>Robot Timer Class</title>
+	<meta name="description" content="Robot documentation and information site">
+
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name=      "mobile-web-app-capable" content="no">
+	<meta name="apple-mobile-web-app-capable" content="no">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="viewport" content="width=980, maximum-scale=1">
+
+	<link rel="stylesheet" href="/common/normalize.css" />
+	<link rel="stylesheet" href="/common/docs.css" />
+
+	<link rel="shortcut icon" href="/common/favicon.ico" />
+
+</head>
+<body>
+
+	<div id="body">
+		
+
+
+
+<section id="header">
+	<div class="noise"></div>
+
+	<section id="banner">
+		<div class="container">
+
+			<a href="/">
+				<svg><use xlink:href="/common/vectors.svg#logo" /></svg>
+			</a>
+
+		</div>
+	</section>
+
+	<section id="menu">
+		<div class="container">
+	
+			<nav>
+				<a href="/docs/about.html"     >DOCUMENTATION</a>
+				<a href="/api/global.html"     >API          </a>
+				<a href="/docs/philosophy.html">COMMUNITY    </a>
+				<a href="//github.com/robot"   >GITHUB       </a>
+			</nav>
+	
+		</div>
+	</section>
+</section>
+
+<section id="docs">
+	<div class="container">
+
+		<div id="sidebar">
+
+			<nav>
+				<h1>Types</h1>
+				<a  href="/api/global.html"   >Global   </a>
+				<a  href="/api/enum.html"     >Enum     </a>
+				<a  href="/api/hash.html"     >Hash     </a>
+				<a  href="/api/color.html"    >Color    </a>
+				<a  href="/api/image.html"    >Image    </a>
+				<a  href="/api/range.html"    >Range    </a>
+				<a  href="/api/point.html"    >Point    </a>
+				<a  href="/api/size.html"     >Size     </a>
+				<a  href="/api/bounds.html"   >Bounds   </a>
+			</nav>
+			<nav>
+				<h1>Native</h1>
+				<a  href="/api/keyboard.html" >Keyboard </a>
+				<a  href="/api/mouse.html"    >Mouse    </a>
+				<a  href="/api/process.html"  >Process  </a>
+				<a  href="/api/module.html"   >Module   </a>
+				<a  href="/api/memory.html"   >Memory   </a>
+				<a  href="/api/window.html"   >Window   </a>
+				<a  href="/api/screen.html"   >Screen   </a>
+				<a class="active" href="/api/timer.html"    >Timer    </a>
+				<a  href="/api/clipboard.html">Clipboard</a>
+			</nav>
+
+		</div>
+		<div id="content" class="marked">
+
+			<h1 id="timer">Timer</h1>
+<a class="edit" href="//github.com/robot/robot.github.io/edit/master/source/api/timer.html">Edit on GitHub</a><div class="include">
+	#<span class="keyword">include</span> <span class="string">&lt;Timer.h&gt;</span>
+	<div class="details">
+		<a href="//github.com/robot/robot/blob/master/Source/Timer.h" >Header</a>
+		<a href="//github.com/robot/robot/blob/master/Source/Timer.cc">Source</a>
+	</div>
+	<div class="clearfix"></div>
+</div><table id="Timer" class="class">
+<thead>
+	<tr>
+		<th>S</th><th>Return</th><th>Name</th><th>Parameters</th>
+	</tr>
+</thead>
+<tbody>
+	<tr>
+		<td></td>
+		<td></td>
+		<td><a href="#Ctor">Timer</a></td>
+		<td>(void)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>void</td>
+		<td><a href="#Start">Start</a></td>
+		<td>(void)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>uint64</td>
+		<td><a href="#Reset">Reset</a></td>
+		<td>(void)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>uint64</td>
+		<td><a href="#Restart">Restart</a></td>
+		<td>(void)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>uint64</td>
+		<td><a href="#GetElapsed">GetElapsed</a></td>
+		<td>(void) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#HasStarted">HasStarted</a></td>
+		<td>(void) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#HasExpired">HasExpired</a></td>
+		<td>(uint64 time) const</td>
+	</tr>
+	<tr>
+		<td>&#10004;</td>
+		<td>void</td>
+		<td><a href="#Sleep">Sleep</a></td>
+		<td>(const Range&amp; time)</td>
+	</tr>
+	<tr>
+		<td>&#10004;</td>
+		<td>void</td>
+		<td><a href="#Sleep2">Sleep</a></td>
+		<td>(uint32 minimum,
+ uint32 maximum)</td>
+	</tr>
+	<tr>
+		<td>&#10004;</td>
+		<td>uint64</td>
+		<td><a href="#GetCpuTime">GetCpuTime</a></td>
+		<td>(void)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>uint64</td>
+		<td><a href="#OpFn">operator ()</a></td>
+		<td>(void) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#OpLt">operator &lt;</a></td>
+		<td>(const Timer&amp; timer) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#OpGt">operator &gt;</a></td>
+		<td>(const Timer&amp; timer) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#OpLe">operator &lt;&#x3D;</a></td>
+		<td>(const Timer&amp; timer) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#OpGe">operator &gt;&#x3D;</a></td>
+		<td>(const Timer&amp; timer) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#OpEq">operator &#x3D;&#x3D;</a></td>
+		<td>(const Timer&amp; timer) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#OpNe">operator !&#x3D;</a></td>
+		<td>(const Timer&amp; timer) const</td>
+	</tr>
+</tbody>
+</table><h2 id="description">Description</h2>
+<p>Represents a monotonic timer used for calculating elapsed times with millisecond accuracy. Elapsed times are useful for determining the amount of time passed between two events, such as in the case of performance tuning and time-sensitive operations. Since the timer is monotonic, it does not overflow and it operates completely independent of the system clock. This has the added benefit of being immune to time adjustments and changes to the time zone settings.</p>
+<p>Unfortunately, there is no way to convert elapsed times to human-readable formats, meaning that elapsed times can only be compared with other elapsed times that use the same reference. Elapsed times also shouldn&#39;t be exchanged across a network or saved to disk, since there is no way of telling whether the computer receiving this data will be compatible or has even been rebooted. It is, however, possible to exchange elapsed times with other processes running on the same machine, provided they also use the same reference clock.</p>
+<p>Use the <a href="#Start">Start</a> function to take a snapshot of the current clock. This snapshot will be used as the starting reference when computing elapsed times. Use the <a href="#Reset">Reset</a> function to return the current elapsed time and reset the class back to its initial state. Calling <a href="#Restart">Restart</a> will return the current elapsed time and restart the timer. Use the <a href="#GetElapsed">GetElapsed</a> function to get the current elapsed time. Helper functions like <a href="#HasStarted">HasStarted</a> can be used to determine whether the class has been started and <a href="#HasExpired">HasExpired</a> can be used to determine if the class has expired by a specified number of milliseconds.</p>
+<p>The Timer class can also be used to block the execution of the current thread for a specified amount of time through the <a href="#Sleep">Sleep</a> function. Furthermore, the current platform-dependent clock value can also be retrieved through the <a href="#GetCpuTime">GetCpuTime</a> function. This level of direct access enables everybody to create functionality similar to what is provided by the class. Relational operators and comparison is supported as well.</p>
+<h2 id="constructors">Constructors</h2>
+<p><a name="Ctor"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+
+            <td ><a class="link" href="#Ctor">Timer</a></td>
+            <td>(void)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Constructs an unstarted timer which can be started with the <a href="#Start">Start</a> function.</p>
+<h2 id="functions">Functions</h2>
+<p><a name="Start"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>void</td>
+            <td ><a class="link" href="#Start">Start</a></td>
+            <td>(void)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Starts this timer by taking a snapshot of the current clock. Once started, elapsed times can be retrieved through the <a href="#GetElapsed">GetElapsed</a> function. Normally, a timer is started just before a lengthy operation, as illustrated in the example below:</p>
+<pre><code class="lang-cpp"><span class="hljs-comment">// Create and start a timer</span>
+Timer timer; timer.Start();
+
+<span class="hljs-comment">// Some slow operation here</span>
+
+<span class="hljs-comment">// Get elapsed time</span>
+timer.GetElapsed();
+</code></pre>
+<p><br>
+<a name="Reset"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td><a href="/api/global.html#data-types">uint64</a></td>
+            <td ><a class="link" href="#Reset">Reset</a></td>
+            <td>(void)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Resets this class back to its initial state and returns the <a href="#GetElapsed">elapsed</a> time since the previous call to <a href="#Start">Start</a>. If this timer was not previously started, this function will return zero.
+<br><br>
+<a name="Restart"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td><a href="/api/global.html#data-types">uint64</a></td>
+            <td ><a class="link" href="#Restart">Restart</a></td>
+            <td>(void)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Restarts the timer and returns the <a href="#GetElapsed">elapsed</a> time since the previous call to <a href="#Start">Start</a>. If this timer was not previously started, this function will return zero. This function is equivalent to obtaining the elapsed time and starting the timer again, but it does so in a single operation, avoiding the need to obtain the clock value twice.
+<br><br>
+<a name="GetElapsed"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td><a href="/api/global.html#data-types">uint64</a></td>
+            <td ><a class="link" href="#GetElapsed">GetElapsed</a></td>
+            <td>(void) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns the number of milliseconds since this timer was <a href="#Start">started</a>. If this timer has not yet been <a href="#HasStarted">started</a>, this function will return zero.
+<br><br>
+<a name="HasStarted"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#HasStarted">HasStarted</a></td>
+            <td>(void) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns true if this timer has been <a href="#Start">started</a>.
+<br><br>
+<a name="HasExpired"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#HasExpired">HasExpired</a></td>
+            <td>(<a href="/api/global.html#data-types">uint64</a> time) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns true if this timer&#39;s <a href="#GetElapsed">elapsed</a> time is greater than <strong>time</strong> milliseconds, or if this timer has not yet been <a href="#HasStarted">started</a>.
+<br><br>
+<a name="Sleep"></a>
+<a name="Sleep2"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+            <td>static</td>
+            <td>void</td>
+            <td ><a class="link" href="#Sleep">Sleep</a></td>
+            <td>(const <a href="/api/range.html">Range</a>&amp; time)</td>
+        </tr>
+        <tr>
+            <td>static</td>
+            <td>void</td>
+            <td ><a class="link" href="#Sleep2">Sleep</a></td>
+            <td>(<a href="/api/global.html#data-types">uint32</a> minimum,
+ <a href="/api/global.html#data-types">uint32</a> maximum)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Blocks the execution of the current thread for <strong>time</strong> milliseconds. If <strong>time</strong> is a range between two numbers, a <a href="/api/range.html#GetRandom">pseudorandom</a> number between that range will be used instead. This function does nothing if <strong>time</strong> is negative.
+<br><br>
+<a name="GetCpuTime"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+            <td>static</td>
+            <td><a href="/api/global.html#data-types">uint64</a></td>
+            <td ><a class="link" href="#GetCpuTime">GetCpuTime</a></td>
+            <td>(void)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns the current platform-dependent clock value, in milliseconds. On Linux, this function will return the result of clock_gettime with the CLOCK_MONOTONIC identifier. On Mac, this function will return the result of mach_absolute_time. On Windows, this function will return the result of QueryPerformanceCounter, or GetTickCount64 if for some reason QueryPerformanceFrequency fails to initialize.</p>
+<h2 id="operators">Operators</h2>
+<p><a name="OpFn"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td><a href="/api/global.html#data-types">uint64</a></td>
+            <td ><a class="link" href="#OpFn">operator ()</a></td>
+            <td>(void) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>This function is identical to <a href="#GetElapsed">GetElapsed</a>, as illustrated in the example below:</p>
+<pre><code class="lang-cpp"><span class="hljs-comment">// Create and start a timer</span>
+Timer timer; timer.Start();
+
+<span class="hljs-comment">// Two ways of obtaining time</span>
+timer.GetElapsed() == timer();
+</code></pre>
+<p><br>
+<a name="OpLt"></a>
+<a name="OpGt"></a>
+<a name="OpLe"></a>
+<a name="OpGe"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#OpLt">operator &lt;</a></td>
+            <td>(const Timer&amp; timer) const</td>
+        </tr>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#OpGt">operator &gt;</a></td>
+            <td>(const Timer&amp; timer) const</td>
+        </tr>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#OpLe">operator &lt;&#x3D;</a></td>
+            <td>(const Timer&amp; timer) const</td>
+        </tr>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#OpGe">operator &gt;&#x3D;</a></td>
+            <td>(const Timer&amp; timer) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Performs relational comparison using the <a href="#GetElapsed">elapsed</a> time of this timer and <strong>timer</strong>. If either timer has not yet been <a href="#HasStarted">started</a>, this function will return true or false depending on which makes the most sense. This function is equivalent to retrieving the elapsed times of both timers and performing the relational operation between them, as illustrated in the example below:</p>
+<pre><code class="lang-cpp"><span class="hljs-comment">// Create and start timers</span>
+Timer timer1; timer1.Start();
+Timer timer2; timer2.Start();
+
+<span class="hljs-comment">// Example of equivalent relational operations</span>
+(timer1 &lt;  timer2) == (timer1() &lt;  timer2());
+(timer1 &gt;  timer2) == (timer1() &gt;  timer2());
+(timer1 &lt;= timer2) == (timer1() &lt;= timer2());
+(timer1 &gt;= timer2) == (timer1() &gt;= timer2());
+</code></pre>
+<p><br>
+<a name="OpEq"></a>
+<a name="OpNe"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#OpEq">operator &#x3D;&#x3D;</a></td>
+            <td>(const Timer&amp; timer) const</td>
+        </tr>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#OpNe">operator !&#x3D;</a></td>
+            <td>(const Timer&amp; timer) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Performs equality comparison to determine whether two timers were <a href="#Start">started</a> at the same time.</p>
+<h1 id="examples">Examples</h1>
+<pre><code class="lang-cpp"><span class="hljs-comment">// C++</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;Robot.h&gt;</span></span>
+ROBOT_NS_USE_ALL;
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span> <span class="hljs-params">(<span class="hljs-keyword">void</span>)</span>
+</span>{
+    <span class="hljs-comment">// Create and start a timer</span>
+    Timer timer; timer.Start();
+
+    timer.HasStarted (  ); <span class="hljs-comment">// True</span>
+    timer.HasExpired (<span class="hljs-number">50</span>); <span class="hljs-comment">// False</span>
+
+    <span class="hljs-comment">// Some slow operation here</span>
+    Timer::Sleep (<span class="hljs-number">1000</span>, <span class="hljs-number">2000</span>);
+
+    timer.HasStarted (  ); <span class="hljs-comment">// True</span>
+    timer.HasExpired (<span class="hljs-number">50</span>); <span class="hljs-comment">// True</span>
+
+    <span class="hljs-comment">// Get elapsed time in milliseconds</span>
+    <span class="hljs-comment">// since calling the Start function</span>
+    timer.GetElapsed(); <span class="hljs-comment">/* or */</span> timer();
+
+    <span class="hljs-comment">// Create copy and restart the timer</span>
+    Timer copy = timer; timer.Restart();
+
+    <span class="hljs-comment">// Copy started first so timer &lt; copy</span>
+    timer &lt; copy; <span class="hljs-comment">// == timer() &lt; copy()</span>
+    timer &gt; copy; <span class="hljs-comment">// == timer() &gt; copy()</span>
+
+    timer.Reset(); <span class="hljs-comment">// timer.GetElapsed()</span>
+    copy .Reset(); <span class="hljs-comment">// copy .GetElapsed()</span>
+
+    timer == copy; <span class="hljs-comment">// True</span>
+    timer != copy; <span class="hljs-comment">// False</span>
+
+    <span class="hljs-comment">// Platform dependent</span>
+    Timer::GetCpuTime();
+    return <span class="hljs-number">0</span>;
+}
+</code></pre>
+<pre><code class="lang-js"><span class="hljs-comment">// Node</span>
+<span class="hljs-keyword">var</span> robot = <span class="hljs-built_in">require</span> (<span class="hljs-string">"robot-js"</span>);
+
+<span class="hljs-comment">// Create and start timer</span>
+<span class="hljs-keyword">var</span> timer = robot.Timer();
+timer.start();
+
+timer.hasStarted (  ); <span class="hljs-comment">// True</span>
+timer.hasExpired (<span class="hljs-number">50</span>); <span class="hljs-comment">// False</span>
+
+<span class="hljs-comment">// Some slow operation in here</span>
+robot.Timer.sleep (<span class="hljs-number">1000</span>, <span class="hljs-number">2000</span>);
+
+timer.hasStarted (  ); <span class="hljs-comment">// True</span>
+timer.hasExpired (<span class="hljs-number">50</span>); <span class="hljs-comment">// True</span>
+
+<span class="hljs-comment">// Get elapsed time in milliseconds</span>
+<span class="hljs-comment">// since calling the Start function</span>
+timer.getElapsed();
+
+<span class="hljs-comment">// Create a new copy and restart the timer</span>
+<span class="hljs-keyword">var</span> copy = timer.clone(); timer.restart();
+
+<span class="hljs-comment">// Copy started first so timer &lt; copy</span>
+timer.lt (copy); <span class="hljs-comment">// True</span>
+timer.gt (copy); <span class="hljs-comment">// False</span>
+
+timer.reset(); <span class="hljs-comment">// timer.getElapsed()</span>
+copy .reset(); <span class="hljs-comment">// copy .getElapsed()</span>
+
+timer.eq (copy); <span class="hljs-comment">// True</span>
+timer.ne (copy); <span class="hljs-comment">// False</span>
+
+<span class="hljs-comment">// Platform dependent</span>
+robot.Timer.getCpuTime();
+</code></pre>
+
+
+		</div>
+
+		<div class="clearfix"></div>
+	</div>
+</section>
+
+		<div id="footer-pad"></div>
+		<section id="footer">
+			<div class="container">
+
+				<div class="author">
+					<p>Licensed under the <a href="//opensource.org/licenses/Zlib">ZLIB License</a></p>
+					<p>Project by the <a href="//github.com/orgs/robot/people">Robot Developers</a></p>
+				</div>
+
+				<div class="github">
+					<p>Proudly Hosted on <a href="//pages.github.com">
+						<svg><use xlink:href="/common/vectors.svg#github" /></svg>
+					</a></p>
+				</div>
+
+				<div class="clearfix"></div>
+
+			</div>
+		</section>
+	</div>
+
+	<script src="/common/svg4everybody.js"></script><script>svg4everybody();</script>
+
+	<script>
+		(function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,"script","//www.google-analytics.com/analytics.js","ga");
+		ga("create", "UA-41804800-7", "auto"); ga("send", "pageview");
+	</script>
+
+</body>
+</html>

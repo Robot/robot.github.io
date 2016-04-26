@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+
+<!--////////////////////////////////////////////////////////////////////////////
+// ========================================================================== //
+//                                                                            //
+//                       (C) 2010-2016 Robot Developers                       //
+//                       See LICENSE for licensing info                       //
+//                                                                            //
+// ========================================================================== //
+/////////////////////////////////////////////////////////////////////////////-->
+
+<html lang="en">
+<head>
+
+	<title>Robot Screen Class</title>
+	<meta name="description" content="Robot documentation and information site">
+
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name=      "mobile-web-app-capable" content="no">
+	<meta name="apple-mobile-web-app-capable" content="no">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="viewport" content="width=980, maximum-scale=1">
+
+	<link rel="stylesheet" href="/common/normalize.css" />
+	<link rel="stylesheet" href="/common/docs.css" />
+
+	<link rel="shortcut icon" href="/common/favicon.ico" />
+
+</head>
+<body>
+
+	<div id="body">
+		
+
+
+
+<section id="header">
+	<div class="noise"></div>
+
+	<section id="banner">
+		<div class="container">
+
+			<a href="/">
+				<svg><use xlink:href="/common/vectors.svg#logo" /></svg>
+			</a>
+
+		</div>
+	</section>
+
+	<section id="menu">
+		<div class="container">
+	
+			<nav>
+				<a href="/docs/about.html"     >DOCUMENTATION</a>
+				<a href="/api/global.html"     >API          </a>
+				<a href="/docs/philosophy.html">COMMUNITY    </a>
+				<a href="//github.com/robot"   >GITHUB       </a>
+			</nav>
+	
+		</div>
+	</section>
+</section>
+
+<section id="docs">
+	<div class="container">
+
+		<div id="sidebar">
+
+			<nav>
+				<h1>Types</h1>
+				<a  href="/api/global.html"   >Global   </a>
+				<a  href="/api/enum.html"     >Enum     </a>
+				<a  href="/api/hash.html"     >Hash     </a>
+				<a  href="/api/color.html"    >Color    </a>
+				<a  href="/api/image.html"    >Image    </a>
+				<a  href="/api/range.html"    >Range    </a>
+				<a  href="/api/point.html"    >Point    </a>
+				<a  href="/api/size.html"     >Size     </a>
+				<a  href="/api/bounds.html"   >Bounds   </a>
+			</nav>
+			<nav>
+				<h1>Native</h1>
+				<a  href="/api/keyboard.html" >Keyboard </a>
+				<a  href="/api/mouse.html"    >Mouse    </a>
+				<a  href="/api/process.html"  >Process  </a>
+				<a  href="/api/module.html"   >Module   </a>
+				<a  href="/api/memory.html"   >Memory   </a>
+				<a  href="/api/window.html"   >Window   </a>
+				<a class="active" href="/api/screen.html"   >Screen   </a>
+				<a  href="/api/timer.html"    >Timer    </a>
+				<a  href="/api/clipboard.html">Clipboard</a>
+			</nav>
+
+		</div>
+		<div id="content" class="marked">
+
+			<h1 id="screen">Screen</h1>
+<a class="edit" href="//github.com/robot/robot.github.io/edit/master/source/api/screen.html">Edit on GitHub</a><div class="include">
+	#<span class="keyword">include</span> <span class="string">&lt;Screen.h&gt;</span>
+	<div class="details">
+		<a href="//github.com/robot/robot/blob/master/Source/Screen.h" >Header</a>
+		<a href="//github.com/robot/robot/blob/master/Source/Screen.cc">Source</a>
+	</div>
+	<div class="clearfix"></div>
+</div><table id="Screen" class="class">
+<thead>
+	<tr>
+		<th>S</th><th>Return</th><th>Name</th><th>Parameters</th>
+	</tr>
+</thead>
+<tbody>
+	<tr>
+		<td></td>
+		<td></td>
+		<td><a href="#Ctor">Screen</a></td>
+		<td>(void)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td><a href="#Ctor2">Screen</a></td>
+		<td>(const Bounds&amp; bounds,
+ const Bounds&amp; usable)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>Bounds</td>
+		<td><a href="#GetBounds">GetBounds</a></td>
+		<td>(void) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>Bounds</td>
+		<td><a href="#GetUsable">GetUsable</a></td>
+		<td>(void) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#IsPortrait">IsPortrait</a></td>
+		<td>(void) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#IsLandscape">IsLandscape</a></td>
+		<td>(void) const</td>
+	</tr>
+	<tr>
+		<td>&#10004;</td>
+		<td>bool</td>
+		<td><a href="#Synchronize">Synchronize</a></td>
+		<td>(void)</td>
+	</tr>
+	<tr>
+		<td>&#10004;</td>
+		<td>Screen*</td>
+		<td><a href="#GetMain">GetMain</a></td>
+		<td>(void)</td>
+	</tr>
+	<tr>
+		<td>&#10004;</td>
+		<td>ScreenList</td>
+		<td><a href="#GetList">GetList</a></td>
+		<td>(void)</td>
+	</tr>
+	<tr>
+		<td>&#10004;</td>
+		<td>Screen*</td>
+		<td><a href="#GetScreen">GetScreen</a></td>
+		<td>(const Window&amp; window)</td>
+	</tr>
+	<tr>
+		<td>&#10004;</td>
+		<td>Screen*</td>
+		<td><a href="#GetScreen2">GetScreen</a></td>
+		<td>(const Point &amp; point )</td>
+	</tr>
+	<tr>
+		<td>&#10004;</td>
+		<td>Screen*</td>
+		<td><a href="#GetScreen3">GetScreen</a></td>
+		<td>(int32  px, int32  py)</td>
+	</tr>
+	<tr>
+		<td>&#10004;</td>
+		<td>bool</td>
+		<td><a href="#GrabScreen">GrabScreen</a></td>
+		<td>(Image&amp; image, const Bounds&amp; bounds,
+ const Window&amp; window &#x3D; Window())</td>
+	</tr>
+	<tr>
+		<td>&#10004;</td>
+		<td>bool</td>
+		<td><a href="#GrabScreen2">GrabScreen</a></td>
+		<td>(Image&amp; image,
+ int32 x &#x3D; 0, int32 y &#x3D; 0,
+ int32 w &#x3D; 0, int32 h &#x3D; 0,
+ const Window&amp; window &#x3D; Window())</td>
+	</tr>
+	<tr>
+		<td>&#10004;</td>
+		<td>Bounds</td>
+		<td><a href="#GetTotalBounds">GetTotalBounds</a></td>
+		<td>(void)</td>
+	</tr>
+	<tr>
+		<td>&#10004;</td>
+		<td>Bounds</td>
+		<td><a href="#GetTotalUsable">GetTotalUsable</a></td>
+		<td>(void)</td>
+	</tr>
+	<tr>
+		<td>&#10004;</td>
+		<td>bool</td>
+		<td><a href="#IsCompositing">IsCompositing</a></td>
+		<td>(void)</td>
+	</tr>
+	<tr>
+		<td>&#10004;</td>
+		<td>void</td>
+		<td><a href="#SetCompositing">SetCompositing</a></td>
+		<td>(bool enabled)</td>
+	</tr>
+</tbody>
+</table><h2 id="description">Description</h2>
+<p>Represents a single screen available on the system. A screen is any physical or virtual display device or monitor attached to the computer. Before using most functions in the class, a call to <a href="#Synchronize">Synchronize</a> must be made. This function will gather the most up to date information about the display devices attached to the system and then caches it. This function must return true for most of the functionality in the class to work.</p>
+<p>After synchronization, the Screen class offers several functions for retrieving useful information about the display devices attached to the system. For instance, to retrieve a list of all available screens, use the <a href="#GetList">GetList</a> function. To retrieve the primary/default screen, use the <a href="#GetMain">GetMain</a> function. To retrieve the screen at a position, use any of the <a href="#GetScreen">GetScreen</a> functions.</p>
+<p>After a screen has been retrieved, use the accessor functions to extract a variety of useful information. For example, to retrieve the geometry of a screen, use the <a href="#GetBounds">GetBounds</a> function. To retrieve just the usable geometry of a screen, use the <a href="#GetUsable">GetUsable</a> function. To determine whether a screen is portrait or landscape, use the <a href="#IsPortrait">IsPortrait</a> or <a href="#IsLandscape">IsLandscape</a> function. The total geometry across all screens can be retrieved through the <a href="#GetTotalBounds">GetTotalBounds</a> function. Similarly, the total usable geometry across all screens can be retrieved through the <a href="#GetTotalUsable">GetTotalUsable</a> function.</p>
+<p>The Screen class also offers the ability to take screenshots of entire screens or portions of screens using the <a href="#GrabScreen">GrabScreen</a> function. And on Windows 7 and below, Aero can be toggled on and off using the <a href="#IsCompositing">IsCompositing</a> and <a href="#SetCompositing">SetCompositing</a> functions.</p>
+<h2 id="types">Types</h2>
+<pre><code class="lang-cpp"><span class="hljs-keyword">typedef</span> <span class="hljs-built_in">deque</span>&lt;Screen*&gt; Robot::ScreenList;
+</code></pre>
+<h2 id="constructors">Constructors</h2>
+<p><a name="Ctor"></a>
+<a name="Ctor2"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+
+            <td ><a class="link" href="#Ctor">Screen</a></td>
+            <td>(void)</td>
+        </tr>
+        <tr>
+
+
+            <td ><a class="link" href="#Ctor2">Screen</a></td>
+            <td>(const <a href="/api/bounds.html">Bounds</a>&amp; bounds,
+ const <a href="/api/bounds.html">Bounds</a>&amp; usable)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Constructs a local screen with all components set to the parameters.</p>
+<h2 id="functions">Functions</h2>
+<p><a name="GetBounds"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td><a href="/api/bounds.html">Bounds</a></td>
+            <td ><a class="link" href="#GetBounds">GetBounds</a></td>
+            <td>(void) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns the geometry of the screen in pixels. As an example this might return (0, 0, 1920, 1080), or (1920, 0, 1920, 1080) if operating in a virtual desktop environment.
+<br><br>
+<a name="GetUsable"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td><a href="/api/bounds.html">Bounds</a></td>
+            <td ><a class="link" href="#GetUsable">GetUsable</a></td>
+            <td>(void) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns the usable geometry of the screen in pixels. The usable geometry excludes window manager reserved areas such as task bars, system menus and gutter.
+<br><br>
+<a name="IsPortrait"></a>
+<a name="IsLandscape"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#IsPortrait">IsPortrait</a></td>
+            <td>(void) const</td>
+        </tr>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#IsLandscape">IsLandscape</a></td>
+            <td>(void) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns true depending on whether the screen or portrait or landscape.
+<br><br>
+<a name="Synchronize"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+            <td>static</td>
+            <td>bool</td>
+            <td ><a class="link" href="#Synchronize">Synchronize</a></td>
+            <td>(void)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Gathers the most up to date information about display devices attached to the system and caches the results. This function must be called before calling any other function in this class, unless otherwise specified. If this function is not called or it fails by returning false, other functions in this class will return invalid or otherwise incorrect data. This function can be called multiple times throughout the lifetime of an application, but beware as calling it too many times within a short period can have performance implications.
+<br><br>
+<a name="GetMain"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+            <td>static</td>
+            <td><a href="/api/screen.html">Screen</a>*</td>
+            <td ><a class="link" href="#GetMain">GetMain</a></td>
+            <td>(void)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns the primary/default screen on the system, or null if there is none.
+<br><br>
+<a name="GetList"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+            <td>static</td>
+            <td><a href="/api/screen.html#types">ScreenList</a></td>
+            <td ><a class="link" href="#GetList">GetList</a></td>
+            <td>(void)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns a list of all screens available to the application on the system.
+<br><br>
+<a name="GetScreen"></a>
+<a name="GetScreen2"></a>
+<a name="GetScreen3"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+            <td>static</td>
+            <td><a href="/api/screen.html">Screen</a>*</td>
+            <td ><a class="link" href="#GetScreen">GetScreen</a></td>
+            <td>(const <a href="/api/window.html">Window</a>&amp; window)</td>
+        </tr>
+        <tr>
+            <td>static</td>
+            <td><a href="/api/screen.html">Screen</a>*</td>
+            <td ><a class="link" href="#GetScreen2">GetScreen</a></td>
+            <td>(const <a href="/api/point.html">Point</a> &amp; point )</td>
+        </tr>
+        <tr>
+            <td>static</td>
+            <td><a href="/api/screen.html">Screen</a>*</td>
+            <td ><a class="link" href="#GetScreen3">GetScreen</a></td>
+            <td>(<a href="/api/global.html#data-types">int32</a>  px, <a href="/api/global.html#data-types">int32</a>  py)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns the screen at <strong>point</strong>. This function will return the <a href="#GetMain">main</a> screen if the point is out of bounds or null if there are no <a href="#GetList">available</a> screens. When passing a <strong>window</strong>, the point at the center of the window <a href="/api/window.html#GetBounds">bounds</a> will be used in place of <strong>point</strong>, however, if <strong>window</strong> is <a href="/api/window.html#IsValid">invalid</a>, this function will return null.
+<br><br>
+<a name="GrabScreen"></a>
+<a name="GrabScreen2"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+            <td>static</td>
+            <td>bool</td>
+            <td ><a class="link" href="#GrabScreen">GrabScreen</a></td>
+            <td>(<a href="/api/image.html">Image</a>&amp; image, const <a href="/api/bounds.html">Bounds</a>&amp; bounds,
+ const <a href="/api/window.html">Window</a>&amp; window &#x3D; <a href="/api/window.html">Window</a>())</td>
+        </tr>
+        <tr>
+            <td>static</td>
+            <td>bool</td>
+            <td ><a class="link" href="#GrabScreen2">GrabScreen</a></td>
+            <td>(<a href="/api/image.html">Image</a>&amp; image,
+ <a href="/api/global.html#data-types">int32</a> x &#x3D; 0, <a href="/api/global.html#data-types">int32</a> y &#x3D; 0,
+ <a href="/api/global.html#data-types">int32</a> w &#x3D; 0, <a href="/api/global.html#data-types">int32</a> h &#x3D; 0,
+ const <a href="/api/window.html">Window</a>&amp; window &#x3D; <a href="/api/window.html">Window</a>())</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Takes a screenshot of the system or <strong>window</strong>, minus the mouse cursor, at <strong>bounds</strong> and then copies the result into <strong>image</strong>. When specifying a <strong>window</strong>, the accuracy of the resulting image depends greatly on the underlying platform. For instance, windows which are partially off-screen or are otherwise obscured by other windows may have parts of it cut off, so be sure to test for all conditions when using this function. When an error occurs this function will return false. Moreover, <strong>image</strong> will only be overwritten when data is about to be copied into it, therefore a return value of false will never cause <strong>image</strong> to be modified.</p>
+<p>When width or height is zero or negative, their values are individually set to <strong>window</strong> <a href="/api/window.html#GetClient">client</a>. If <strong>window</strong> is invalid, the values are instead individually set to the <a href="#GetTotalBounds">total</a> bounds of the system. It is important to ensure that <strong>bounds</strong> do not fall outside the boundaries of the screen or <strong>window</strong>, doing so will result in a variety of platform-dependent errors. While some of these errors may only cause the out of bounds regions to become black or contain invalid data, some platforms will out right cause this function to fail.</p>
+<p>The performance of this function ranges dramatically from platform to platform. Even certain conditions and system configurations can cause the performance of this function to fluctuate. Therefore it is strongly advised to perform benchmarks to determine the viability of this function. Sometimes, certain tweaks such as disabling <a href="#IsCompositing">Aero</a> on Windows can be made to improve performance but overall, applications needing real-time solutions may need to rely on alternative methods to capture the screen.</p>
+<p><strong>Note:</strong> This function does not require <a href="#Synchronize">synchronization</a> when specifying a width and height.
+<br><br>
+<a name="GetTotalBounds"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+            <td>static</td>
+            <td><a href="/api/bounds.html">Bounds</a></td>
+            <td ><a class="link" href="#GetTotalBounds">GetTotalBounds</a></td>
+            <td>(void)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns the total geometry across all screens in pixels. This value is determined by combining the <a href="#GetBounds">bounds</a> of all screens on the system during class <a href="#Synchronize">synchronization</a>.
+<br><br>
+<a name="GetTotalUsable"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+            <td>static</td>
+            <td><a href="/api/bounds.html">Bounds</a></td>
+            <td ><a class="link" href="#GetTotalUsable">GetTotalUsable</a></td>
+            <td>(void)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns the total usable geometry across all screens in pixels. The usable geometry excludes window manager reserved areas such as task bars, system menus and gutter. This value is determined by combining the <a href="#GetUsable">usable</a> bounds of all screens on the system during class <a href="#Synchronize">synchronization</a>.
+<br><br>
+<a name="IsCompositing"></a>
+<a name="SetCompositing"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+            <td>static</td>
+            <td>bool</td>
+            <td class="right-align"><a class="link" href="#IsCompositing">IsCompositing</a></td>
+            <td>(void)</td>
+        </tr>
+        <tr>
+            <td>static</td>
+            <td>void</td>
+            <td class="right-align"><a class="link" href="#SetCompositing">SetCompositing</a></td>
+            <td>(bool enabled)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>On Windows 7 and below, gets or sets the current enabled state of <a href="//en.wikipedia.org/wiki/Windows_Aero">Windows Aero</a>. If <strong>enabled</strong> is false, the transparent glass effect, among other features, will be disabled. Certain applications, particularly those with high interactivity, will gain dramatic performance increases with Aero disabled. Additionally, the performance of <a href="#GrabScreen">GrabScreen</a> may also improve with Aero disabled, however, capturing individual windows hidden behind other windows will no longer work. Windows Aero will be automatically enabled when the application terminates. On Linux, Mac and Windows 8 and above, this function does nothing and will always return true.</p>
+<p><strong>Note:</strong> This function does not require <a href="#Synchronize">synchronization</a>.</p>
+<h1 id="examples">Examples</h1>
+<pre><code class="lang-cpp"><span class="hljs-comment">// C++</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;Robot.h&gt;</span></span>
+ROBOT_NS_USE_ALL;
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span> <span class="hljs-params">(<span class="hljs-keyword">void</span>)</span>
+</span>{
+    <span class="hljs-comment">// Must be true for the class to work</span>
+    <span class="hljs-keyword">if</span> (!Screen::Synchronize()) return <span class="hljs-number">0</span>;
+
+    <span class="hljs-comment">// Total / usable bounds</span>
+    Screen::GetTotalBounds();
+    Screen::GetTotalUsable();
+
+    <span class="hljs-comment">// Retrieve the primary screen</span>
+    <span class="hljs-keyword">auto</span> main = Screen::GetMain();
+
+    <span class="hljs-comment">// Retrieve list of all screens</span>
+    <span class="hljs-keyword">auto</span> <span class="hljs-built_in">list</span> = Screen::GetList();
+
+    <span class="hljs-comment">// List is an STL vector</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> <span class="hljs-keyword">auto</span>* s : <span class="hljs-built_in">list</span>)
+    {
+        s-&gt;GetBounds(); <span class="hljs-comment">// Total  bounds</span>
+        s-&gt;GetUsable(); <span class="hljs-comment">// Usable bounds</span>
+    }
+
+    <span class="hljs-comment">// Disable Windows compositing</span>
+    <span class="hljs-comment">// (also known as Windows Aero)</span>
+    Screen:: IsCompositing ();
+    Screen::SetCompositing (<span class="hljs-literal">false</span>);
+
+    Image output;
+    <span class="hljs-comment">// Take a screenshot of the</span>
+    <span class="hljs-comment">// entire desktop and store</span>
+    <span class="hljs-comment">// it in the output image</span>
+    Screen::GrabScreen (output);
+    return <span class="hljs-number">0</span>;
+}
+</code></pre>
+<pre><code class="lang-js"><span class="hljs-comment">// Node</span>
+<span class="hljs-keyword">var</span> robot = <span class="hljs-built_in">require</span> (<span class="hljs-string">"robot-js"</span>);
+
+<span class="hljs-comment">// Must be true in order to work</span>
+<span class="hljs-keyword">if</span> (robot.Screen.synchronize())
+{
+    <span class="hljs-comment">// Get total and usable bounds</span>
+    robot.Screen.getTotalBounds();
+    robot.Screen.getTotalUsable();
+
+    <span class="hljs-comment">// Retrieve the primary screen</span>
+    <span class="hljs-keyword">var</span> main = robot.Screen.getMain();
+
+    <span class="hljs-comment">// Retrieve list of all screens</span>
+    <span class="hljs-keyword">var</span> list = robot.Screen.getList();
+
+    <span class="hljs-comment">// List is an array</span>
+    list.map (<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">s</span>)
+    </span>{
+        s.getBounds(); <span class="hljs-comment">// Total  bounds</span>
+        s.getUsable(); <span class="hljs-comment">// Usable bounds</span>
+    });
+
+    <span class="hljs-comment">// Disable Windows compositing</span>
+    <span class="hljs-comment">// (also known as Windows Aero)</span>
+    robot.Screen. isCompositing ();
+    robot.Screen.setCompositing (<span class="hljs-literal">false</span>);
+
+    <span class="hljs-keyword">var</span> output = robot.Image();
+    <span class="hljs-comment">// Take a screenshot of the</span>
+    <span class="hljs-comment">// entire desktop and store</span>
+    <span class="hljs-comment">// it in the output image</span>
+    robot.Screen.grabScreen (output);
+}
+</code></pre>
+
+
+		</div>
+
+		<div class="clearfix"></div>
+	</div>
+</section>
+
+		<div id="footer-pad"></div>
+		<section id="footer">
+			<div class="container">
+
+				<div class="author">
+					<p>Licensed under the <a href="//opensource.org/licenses/Zlib">ZLIB License</a></p>
+					<p>Project by the <a href="//github.com/orgs/robot/people">Robot Developers</a></p>
+				</div>
+
+				<div class="github">
+					<p>Proudly Hosted on <a href="//pages.github.com">
+						<svg><use xlink:href="/common/vectors.svg#github" /></svg>
+					</a></p>
+				</div>
+
+				<div class="clearfix"></div>
+
+			</div>
+		</section>
+	</div>
+
+	<script src="/common/svg4everybody.js"></script><script>svg4everybody();</script>
+
+	<script>
+		(function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,"script","//www.google-analytics.com/analytics.js","ga");
+		ga("create", "UA-41804800-7", "auto"); ga("send", "pageview");
+	</script>
+
+</body>
+</html>

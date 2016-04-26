@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+
+<!--////////////////////////////////////////////////////////////////////////////
+// ========================================================================== //
+//                                                                            //
+//                       (C) 2010-2016 Robot Developers                       //
+//                       See LICENSE for licensing info                       //
+//                                                                            //
+// ========================================================================== //
+/////////////////////////////////////////////////////////////////////////////-->
+
+<html lang="en">
+<head>
+
+	<title>Robot Mouse Class</title>
+	<meta name="description" content="Robot documentation and information site">
+
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name=      "mobile-web-app-capable" content="no">
+	<meta name="apple-mobile-web-app-capable" content="no">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="viewport" content="width=980, maximum-scale=1">
+
+	<link rel="stylesheet" href="/common/normalize.css" />
+	<link rel="stylesheet" href="/common/docs.css" />
+
+	<link rel="shortcut icon" href="/common/favicon.ico" />
+
+</head>
+<body>
+
+	<div id="body">
+		
+
+
+
+<section id="header">
+	<div class="noise"></div>
+
+	<section id="banner">
+		<div class="container">
+
+			<a href="/">
+				<svg><use xlink:href="/common/vectors.svg#logo" /></svg>
+			</a>
+
+		</div>
+	</section>
+
+	<section id="menu">
+		<div class="container">
+	
+			<nav>
+				<a href="/docs/about.html"     >DOCUMENTATION</a>
+				<a href="/api/global.html"     >API          </a>
+				<a href="/docs/philosophy.html">COMMUNITY    </a>
+				<a href="//github.com/robot"   >GITHUB       </a>
+			</nav>
+	
+		</div>
+	</section>
+</section>
+
+<section id="docs">
+	<div class="container">
+
+		<div id="sidebar">
+
+			<nav>
+				<h1>Types</h1>
+				<a  href="/api/global.html"   >Global   </a>
+				<a  href="/api/enum.html"     >Enum     </a>
+				<a  href="/api/hash.html"     >Hash     </a>
+				<a  href="/api/color.html"    >Color    </a>
+				<a  href="/api/image.html"    >Image    </a>
+				<a  href="/api/range.html"    >Range    </a>
+				<a  href="/api/point.html"    >Point    </a>
+				<a  href="/api/size.html"     >Size     </a>
+				<a  href="/api/bounds.html"   >Bounds   </a>
+			</nav>
+			<nav>
+				<h1>Native</h1>
+				<a  href="/api/keyboard.html" >Keyboard </a>
+				<a class="active" href="/api/mouse.html"    >Mouse    </a>
+				<a  href="/api/process.html"  >Process  </a>
+				<a  href="/api/module.html"   >Module   </a>
+				<a  href="/api/memory.html"   >Memory   </a>
+				<a  href="/api/window.html"   >Window   </a>
+				<a  href="/api/screen.html"   >Screen   </a>
+				<a  href="/api/timer.html"    >Timer    </a>
+				<a  href="/api/clipboard.html">Clipboard</a>
+			</nav>
+
+		</div>
+		<div id="content" class="marked">
+
+			<h1 id="mouse">Mouse</h1>
+<a class="edit" href="//github.com/robot/robot.github.io/edit/master/source/api/mouse.html">Edit on GitHub</a><div class="include">
+	#<span class="keyword">include</span> <span class="string">&lt;Mouse.h&gt;</span>
+	<div class="details">
+		<a href="//github.com/robot/robot/blob/master/Source/Mouse.h" >Header</a>
+		<a href="//github.com/robot/robot/blob/master/Source/Mouse.cc">Source</a>
+	</div>
+	<div class="clearfix"></div>
+</div><table id="Mouse" class="class">
+<thead>
+	<tr>
+		<th>S</th><th>Return</th><th>Name</th><th>Parameters</th>
+	</tr>
+</thead>
+<tbody>
+	<tr>
+		<td></td>
+		<td></td>
+		<td><a href="#Ctor">Mouse</a></td>
+		<td>(void)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>void</td>
+		<td><a href="#Click">Click</a></td>
+		<td>(Button button) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>void</td>
+		<td><a href="#Press">Press</a></td>
+		<td>(Button button) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>void</td>
+		<td><a href="#Release">Release</a></td>
+		<td>(Button button) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>void</td>
+		<td><a href="#ScrollH">ScrollH</a></td>
+		<td>(int32 amount) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>void</td>
+		<td><a href="#ScrollV">ScrollV</a></td>
+		<td>(int32 amount) const</td>
+	</tr>
+	<tr>
+		<td>&#10004;</td>
+		<td>Point</td>
+		<td><a href="#GetPos">GetPos</a></td>
+		<td>(void)</td>
+	</tr>
+	<tr>
+		<td>&#10004;</td>
+		<td>void</td>
+		<td><a href="#SetPos">SetPos</a></td>
+		<td>(const Point&amp; point)</td>
+	</tr>
+	<tr>
+		<td>&#10004;</td>
+		<td>void</td>
+		<td><a href="#SetPos2">SetPos</a></td>
+		<td>(uint32 x, uint32 y)</td>
+	</tr>
+	<tr>
+		<td>&#10004;</td>
+		<td>bool</td>
+		<td><a href="#GetState">GetState</a></td>
+		<td>(Button       button)</td>
+	</tr>
+	<tr>
+		<td>&#10004;</td>
+		<td>bool</td>
+		<td><a href="#GetState2">GetState</a></td>
+		<td>(ButtonState&amp; result)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>Range</td>
+		<td><a href="#AutoDelay">AutoDelay</a></td>
+		<td></td>
+	</tr>
+</tbody>
+</table><h2 id="description">Description</h2>
+<p>Provides a simple interface for generating native mouse events on the system. These events can be used for the purposes of test automation, self-running demos, and other applications where control of the mouse is needed. Certain platforms require special privileges or extensions to access low-level mouse controls. If the current platform configuration does not allow this, most of the functionality in the class will perform no operation or return otherwise invalid data. As an example, Linux depends on XTest 2.2 to carry out the majority of the low-level functionality, when missing, the class will not work.</p>
+<p>Although mouse events are system-wide, a mouse object must still be created through the <a href="#Ctor">Constructor</a> in order to support multiple auto delays. Once created, use the <a href="#Press">Press</a> and <a href="#Release">Release</a> functions to generate mouse button press and release events. Use the <a href="#Click">Click</a> function to generate both a press, followed by a release. Use the <a href="#ScrollH">ScrollH</a> and <a href="#ScrollV">ScrollV</a> functions to generate either a horizontal or vertical mouse scroll event. All these functions will block after generating an event, the amount of time blocked can be configured through the <a href="#AutoDelay">AutoDelay</a> property.</p>
+<p>The Mouse class also offers a variety of non-blocking static functions. For instance, the position of the mouse can be manipulated through the <a href="#GetPos">GetPos</a> and <a href="#SetPos">SetPos</a> functions. Additionally, the current down-state of one of more mouse buttons can be retrieved through the <a href="#GetState">GetState</a> functions.</p>
+<h2 id="types">Types</h2>
+<pre><code class="lang-cpp"><span class="hljs-keyword">typedef</span> <span class="hljs-built_in">unordered_map</span>&lt;Button, <span class="hljs-keyword">bool</span>&gt; Robot::ButtonState;
+</code></pre>
+<h2 id="constructors">Constructors</h2>
+<p><a name="Ctor"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+
+            <td ><a class="link" href="#Ctor">Mouse</a></td>
+            <td>(void)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Constructs a mouse with an <a href="#AutoDelay">AutoDelay</a> between 40 and 90 milliseconds.</p>
+<h2 id="functions">Functions</h2>
+<p><a name="Click"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>void</td>
+            <td ><a class="link" href="#Click">Click</a></td>
+            <td>(<a href="/api/mouse.html#button">Button</a> button) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Performs a <a href="#Press">Press</a> followed by a <a href="#Release">Release</a>.
+<br><br>
+<a name="Press"></a>
+<a name="Release"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>void</td>
+            <td ><a class="link" href="#Press">Press</a></td>
+            <td>(<a href="/api/mouse.html#button">Button</a> button) const</td>
+        </tr>
+        <tr>
+
+            <td>void</td>
+            <td ><a class="link" href="#Release">Release</a></td>
+            <td>(<a href="/api/mouse.html#button">Button</a> button) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Presses or releases a single mouse button and blocks for <a href="#AutoDelay">AutoDelay</a> milliseconds. The value of <strong>button</strong> can be any valid <a href="#button">Button</a>, however, not all buttons are supported on all platforms and will be ignored without blocking. Passing a <strong>button</strong> which is not part of the <a href="#button">Button</a> enumeration leads to undefined results. A pressed button should always be released. Pressing or releasing the same button multiple times is not always guaranteed to generate respective press or release events on the target platform.</p>
+<p><strong>Mac:</strong> Double clicking is simulated using an internal timer, therefore, calling click twice within a short period of time will simulate a double click, just like it would on any other platform.
+<br><br>
+<a name="ScrollH"></a>
+<a name="ScrollV"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>void</td>
+            <td ><a class="link" href="#ScrollH">ScrollH</a></td>
+            <td>(<a href="/api/global.html#data-types">int32</a> amount) const</td>
+        </tr>
+        <tr>
+
+            <td>void</td>
+            <td ><a class="link" href="#ScrollV">ScrollV</a></td>
+            <td>(<a href="/api/global.html#data-types">int32</a> amount) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Rotates the scroll wheel on wheel-equipped mice and blocks for <a href="#AutoDelay">AutoDelay</a> milliseconds. Depending on the function used, the scroll wheel will either be rotated horizontally or vertically. <strong>amount</strong> refers to the physical number of &quot;notches&quot; to scroll. For horizontal scrolling, negative values indicate movement to the left while positive values indicate movement to the right. For vertical scrolling, negative values indicate movement down/towards the user while positive values indicate movement up/away from the user.
+<br><br>
+<a name="GetPos"></a>
+<a name="SetPos"></a>
+<a name="SetPos2"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+            <td>static</td>
+            <td><a href="/api/point.html">Point</a></td>
+            <td ><a class="link" href="#GetPos">GetPos</a></td>
+            <td>(void)</td>
+        </tr>
+        <tr>
+            <td>static</td>
+            <td>void</td>
+            <td ><a class="link" href="#SetPos">SetPos</a></td>
+            <td>(const <a href="/api/point.html">Point</a>&amp; point)</td>
+        </tr>
+        <tr>
+            <td>static</td>
+            <td>void</td>
+            <td ><a class="link" href="#SetPos2">SetPos</a></td>
+            <td>(<a href="/api/global.html#data-types">uint32</a> x, <a href="/api/global.html#data-types">uint32</a> y)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Gets or sets the global position of the mouse cursor in pixels. Out of bounds values are automatically corrected by the platform so that the cursor remains within the boundaries of the display devices on the computer.
+<br><br>
+<a name="GetState"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+            <td>static</td>
+            <td>bool</td>
+            <td ><a class="link" href="#GetState">GetState</a></td>
+            <td>(<a href="/api/mouse.html#button">Button</a>       button)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns true if <strong>button</strong> is currently pressed system-wide, regardless of whether or not the calling application has focus. The value of <strong>button</strong> can be any valid <a href="#button">Button</a>, however, not all buttons are supported on all platforms and thus, will cause this function to return false. Passing a <strong>button</strong> which is not part of the <a href="#button">Button</a> enumeration will also cause this function to return false. If two of more button states need to be checked, consider using the other <a href="#GetState2">GetState</a> function for improved performance.
+<br><br>
+<a name="GetState2"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+            <td>static</td>
+            <td>bool</td>
+            <td ><a class="link" href="#GetState2">GetState</a></td>
+            <td>(<a href="/api/mouse.html#types">ButtonState</a>&amp; result)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Checks the pressed state of all <a href="#button">buttons</a> system-wide, regardless of whether or not the calling application has focus. If an error occurs, this function will return false, however, <strong>result</strong> will always be cleared regardless of whether or not this function succeeds. Not all buttons are supported on all platforms and thus, will always be set to false. If only one button state needs to be checked, consider using the other <a href="#GetState">GetState</a> function for improved performance.</p>
+<h2 id="properties">Properties</h2>
+<p><a name="AutoDelay"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td><a href="/api/range.html">Range</a></td>
+            <td ><a class="link" href="#AutoDelay">AutoDelay</a></td>
+            <td></td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Provides direct access to the automatic delay range in milliseconds.</p>
+<h1 id="button">Button</h1>
+<p>Represents the mouse buttons supported by this class. These buttons do not map to any platform-dependent value. <strong>ButtonLeft</strong> and <strong>ButtonRight</strong> map to the users system-configured buttons rather than physical mouse buttons. <strong>ButtonMid</strong> and <strong>ButtonMiddle</strong> map to the same button. <strong>ButtonX1</strong> and <strong>ButtonX2</strong> are only supported on Windows and will be ignored when used on Linux and Mac.</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">enum</span> Button
+{
+    ButtonLeft,
+    ButtonMid,
+    ButtonMiddle,
+    ButtonRight,
+    ButtonX1,
+    ButtonX2,
+};
+</code></pre>
+<h1 id="examples">Examples</h1>
+<pre><code class="lang-cpp"><span class="hljs-comment">// C++</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;Robot.h&gt;</span></span>
+ROBOT_NS_USE_ALL;
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span> <span class="hljs-params">(<span class="hljs-keyword">void</span>)</span>
+</span>{
+    Mouse mouse;
+    <span class="hljs-comment">// Click the right button</span>
+    mouse.Click (ButtonRight);
+
+    <span class="hljs-comment">// Current mouse position</span>
+    <span class="hljs-keyword">auto</span> pos = Mouse::GetPos();
+
+    <span class="hljs-comment">// Move the mouse left</span>
+    <span class="hljs-comment">// and up by 50 pixels</span>
+    Mouse::SetPos (pos - <span class="hljs-number">50</span>);
+
+    <span class="hljs-comment">// Change default auto delay</span>
+    mouse.AutoDelay.Min = <span class="hljs-number">100</span>;
+    mouse.AutoDelay.Max = <span class="hljs-number">200</span>;
+
+    <span class="hljs-comment">// Maybe select some text</span>
+    mouse.Press   (ButtonLeft);
+    mouse.ScrollV (<span class="hljs-number">4</span>); <span class="hljs-comment">// up</span>
+    mouse.Release (ButtonLeft);
+
+    ButtonState s;
+    <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>)
+    {
+        <span class="hljs-comment">// Press left and right</span>
+        <span class="hljs-comment">// buttons to exit loop</span>
+        Mouse::GetState (s);
+        <span class="hljs-keyword">if</span> (s[ButtonLeft ] &amp;&amp;
+            s[ButtonRight])
+            <span class="hljs-keyword">break</span>;
+
+        <span class="hljs-comment">// Avoid busy wait</span>
+        Timer::Sleep (<span class="hljs-number">15</span>);
+    }
+
+    return <span class="hljs-number">0</span>;
+}
+</code></pre>
+<pre><code class="lang-js"><span class="hljs-comment">// Node</span>
+<span class="hljs-keyword">var</span> robot = <span class="hljs-built_in">require</span> (<span class="hljs-string">"robot-js"</span>);
+
+<span class="hljs-keyword">var</span> mouse = robot.Mouse();
+<span class="hljs-comment">// Click the right button</span>
+mouse.click (robot.BUTTON_RIGHT);
+
+<span class="hljs-comment">// Get current mouse position</span>
+<span class="hljs-keyword">var</span> pos = robot.Mouse.getPos();
+
+<span class="hljs-comment">// Move the mouse left</span>
+<span class="hljs-comment">// and up by 50 pixels</span>
+robot.Mouse.setPos (pos.sub (<span class="hljs-number">50</span>));
+
+<span class="hljs-comment">// Change default auto delay</span>
+mouse.autoDelay.min = <span class="hljs-number">100</span>;
+mouse.autoDelay.max = <span class="hljs-number">200</span>;
+
+<span class="hljs-comment">// Maybe select text in an editor</span>
+mouse.press   (robot.BUTTON_LEFT);
+mouse.scrollV (<span class="hljs-number">4</span>); <span class="hljs-comment">// up</span>
+mouse.release (robot.BUTTON_LEFT);
+
+<span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>)
+{
+    <span class="hljs-comment">// Press left and right</span>
+    <span class="hljs-comment">// buttons to exit loop</span>
+    <span class="hljs-keyword">var</span> s = robot.Mouse.getState();
+    <span class="hljs-keyword">if</span> (s[robot.BUTTON_LEFT ] &amp;&amp;
+        s[robot.BUTTON_RIGHT])
+        <span class="hljs-keyword">break</span>;
+
+    <span class="hljs-comment">// Avoid busy waiting</span>
+    robot.Timer.sleep (<span class="hljs-number">15</span>);
+}
+</code></pre>
+
+
+		</div>
+
+		<div class="clearfix"></div>
+	</div>
+</section>
+
+		<div id="footer-pad"></div>
+		<section id="footer">
+			<div class="container">
+
+				<div class="author">
+					<p>Licensed under the <a href="//opensource.org/licenses/Zlib">ZLIB License</a></p>
+					<p>Project by the <a href="//github.com/orgs/robot/people">Robot Developers</a></p>
+				</div>
+
+				<div class="github">
+					<p>Proudly Hosted on <a href="//pages.github.com">
+						<svg><use xlink:href="/common/vectors.svg#github" /></svg>
+					</a></p>
+				</div>
+
+				<div class="clearfix"></div>
+
+			</div>
+		</section>
+	</div>
+
+	<script src="/common/svg4everybody.js"></script><script>svg4everybody();</script>
+
+	<script>
+		(function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,"script","//www.google-analytics.com/analytics.js","ga");
+		ga("create", "UA-41804800-7", "auto"); ga("send", "pageview");
+	</script>
+
+</body>
+</html>

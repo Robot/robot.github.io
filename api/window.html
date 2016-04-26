@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+
+<!--////////////////////////////////////////////////////////////////////////////
+// ========================================================================== //
+//                                                                            //
+//                       (C) 2010-2016 Robot Developers                       //
+//                       See LICENSE for licensing info                       //
+//                                                                            //
+// ========================================================================== //
+/////////////////////////////////////////////////////////////////////////////-->
+
+<html lang="en">
+<head>
+
+	<title>Robot Window Class</title>
+	<meta name="description" content="Robot documentation and information site">
+
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name=      "mobile-web-app-capable" content="no">
+	<meta name="apple-mobile-web-app-capable" content="no">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="viewport" content="width=980, maximum-scale=1">
+
+	<link rel="stylesheet" href="/common/normalize.css" />
+	<link rel="stylesheet" href="/common/docs.css" />
+
+	<link rel="shortcut icon" href="/common/favicon.ico" />
+
+</head>
+<body>
+
+	<div id="body">
+		
+
+
+
+<section id="header">
+	<div class="noise"></div>
+
+	<section id="banner">
+		<div class="container">
+
+			<a href="/">
+				<svg><use xlink:href="/common/vectors.svg#logo" /></svg>
+			</a>
+
+		</div>
+	</section>
+
+	<section id="menu">
+		<div class="container">
+	
+			<nav>
+				<a href="/docs/about.html"     >DOCUMENTATION</a>
+				<a href="/api/global.html"     >API          </a>
+				<a href="/docs/philosophy.html">COMMUNITY    </a>
+				<a href="//github.com/robot"   >GITHUB       </a>
+			</nav>
+	
+		</div>
+	</section>
+</section>
+
+<section id="docs">
+	<div class="container">
+
+		<div id="sidebar">
+
+			<nav>
+				<h1>Types</h1>
+				<a  href="/api/global.html"   >Global   </a>
+				<a  href="/api/enum.html"     >Enum     </a>
+				<a  href="/api/hash.html"     >Hash     </a>
+				<a  href="/api/color.html"    >Color    </a>
+				<a  href="/api/image.html"    >Image    </a>
+				<a  href="/api/range.html"    >Range    </a>
+				<a  href="/api/point.html"    >Point    </a>
+				<a  href="/api/size.html"     >Size     </a>
+				<a  href="/api/bounds.html"   >Bounds   </a>
+			</nav>
+			<nav>
+				<h1>Native</h1>
+				<a  href="/api/keyboard.html" >Keyboard </a>
+				<a  href="/api/mouse.html"    >Mouse    </a>
+				<a  href="/api/process.html"  >Process  </a>
+				<a  href="/api/module.html"   >Module   </a>
+				<a  href="/api/memory.html"   >Memory   </a>
+				<a class="active" href="/api/window.html"   >Window   </a>
+				<a  href="/api/screen.html"   >Screen   </a>
+				<a  href="/api/timer.html"    >Timer    </a>
+				<a  href="/api/clipboard.html">Clipboard</a>
+			</nav>
+
+		</div>
+		<div id="content" class="marked">
+
+			<h1 id="window">Window</h1>
+<a class="edit" href="//github.com/robot/robot.github.io/edit/master/source/api/window.html">Edit on GitHub</a><div class="include">
+	#<span class="keyword">include</span> <span class="string">&lt;Window.h&gt;</span>
+	<div class="details">
+		<a href="//github.com/robot/robot/blob/master/Source/Window.h" >Header</a>
+		<a href="//github.com/robot/robot/blob/master/Source/Window.cc">Source</a>
+	</div>
+	<div class="clearfix"></div>
+</div><table id="Window" class="class">
+<thead>
+	<tr>
+		<th>S</th><th>Return</th><th>Name</th><th>Parameters</th>
+	</tr>
+</thead>
+<tbody>
+	<tr>
+		<td></td>
+		<td></td>
+		<td><a href="#Ctor">Window</a></td>
+		<td>(uintptr handle &#x3D; 0)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#IsValid">IsValid</a></td>
+		<td>(void) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>void</td>
+		<td><a href="#Close">Close</a></td>
+		<td>(void)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#IsTopMost">IsTopMost</a></td>
+		<td>(void) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#IsBorderless">IsBorderless</a></td>
+		<td>(void) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#IsMinimized">IsMinimized</a></td>
+		<td>(void) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#IsMaximized">IsMaximized</a></td>
+		<td>(void) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>void</td>
+		<td><a href="#SetTopMost">SetTopMost</a></td>
+		<td>(bool state)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>void</td>
+		<td><a href="#SetBorderless">SetBorderless</a></td>
+		<td>(bool state)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>void</td>
+		<td><a href="#SetMinimized">SetMinimized</a></td>
+		<td>(bool state)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>void</td>
+		<td><a href="#SetMaximized">SetMaximized</a></td>
+		<td>(bool state)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>Process</td>
+		<td><a href="#GetProcess">GetProcess</a></td>
+		<td>(void) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>int32</td>
+		<td><a href="#GetPID">GetPID</a></td>
+		<td>(void) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>uintptr</td>
+		<td><a href="#GetHandle">GetHandle</a></td>
+		<td>(void) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#SetHandle">SetHandle</a></td>
+		<td>(uintptr handle)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>uintptr</td>
+		<td><a href="#GetHandleAx">GetHandleAx</a></td>
+		<td>(void) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>string</td>
+		<td><a href="#GetTitle">GetTitle</a></td>
+		<td>(void) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>void</td>
+		<td><a href="#SetTitle">SetTitle</a></td>
+		<td>(const char* title)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>Bounds</td>
+		<td><a href="#GetBounds">GetBounds</a></td>
+		<td>(void) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>void</td>
+		<td><a href="#SetBounds">SetBounds</a></td>
+		<td>(const Bounds&amp;  b)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>void</td>
+		<td><a href="#SetBounds2">SetBounds</a></td>
+		<td>(int32 x, int32 y,
+ int32 w, int32 h)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>Bounds</td>
+		<td><a href="#GetClient">GetClient</a></td>
+		<td>(void) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>void</td>
+		<td><a href="#SetClient">SetClient</a></td>
+		<td>(const Bounds&amp;  b)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>void</td>
+		<td><a href="#SetClient2">SetClient</a></td>
+		<td>(int32 x, int32 y,
+ int32 w, int32 h)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>Point</td>
+		<td><a href="#MapToClient">MapToClient</a></td>
+		<td>(const  Point&amp;  point) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>Point</td>
+		<td><a href="#MapToScreen">MapToScreen</a></td>
+		<td>(const  Point&amp;  point) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>Bounds</td>
+		<td><a href="#MapToClient2">MapToClient</a></td>
+		<td>(const Bounds&amp; bounds) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>Bounds</td>
+		<td><a href="#MapToScreen2">MapToScreen</a></td>
+		<td>(const Bounds&amp; bounds) const</td>
+	</tr>
+	<tr>
+		<td>&#10004;</td>
+		<td>WindowList</td>
+		<td><a href="#GetList">GetList</a></td>
+		<td>(const char* title &#x3D; nullptr)</td>
+	</tr>
+	<tr>
+		<td>&#10004;</td>
+		<td>Window</td>
+		<td><a href="#GetActive">GetActive</a></td>
+		<td>(void)</td>
+	</tr>
+	<tr>
+		<td>&#10004;</td>
+		<td>void</td>
+		<td><a href="#SetActive">SetActive</a></td>
+		<td>(const Window&amp; window)</td>
+	</tr>
+	<tr>
+		<td>&#10004;</td>
+		<td>bool</td>
+		<td><a href="#IsAxEnabled">IsAxEnabled</a></td>
+		<td>(bool options &#x3D; false)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#OpEq">operator &#x3D;&#x3D;</a></td>
+		<td>(const Window&amp; window) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#OpNe">operator !&#x3D;</a></td>
+		<td>(const Window&amp; window) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#OpEq2">operator &#x3D;&#x3D;</a></td>
+		<td>(uintptr handle) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#OpNe2">operator !&#x3D;</a></td>
+		<td>(uintptr handle) const</td>
+	</tr>
+</tbody>
+</table><h2 id="description">Description</h2>
+<p>Represents a single window in the underlying windowing system. A window is most commonly identified by a pointer to a handle, but because the class only attaches to existing windows, it never has to manage its own handles. To select a window, simply pass the handle of the target window to the <a href="#Ctor">Constructor</a> or <a href="#SetHandle">SetHandle</a> function. In cases where the handle of the target window is not known, a list of all windows can be retrieved through the <a href="#GetList">GetList</a> function. To select the current active window, use the <a href="#GetActive">GetActive</a> function. To check whether a window is still valid, use the <a href="#IsValid">IsValid</a> function. Call <a href="#SetHandle">SetHandle</a> with zero to deselect the window and free up any used resources, although this is done by the destructor automatically, where needed.</p>
+<p>After a window has been selected, the Window class offers several functions for manipulating the window in various ways. For instance, to manipulate the window title, use the <a href="#GetTitle">GetTitle</a> and <a href="#SetTitle">SetTitle</a> functions, to close the window, use the <a href="#Close">Close</a> function. In addition to the built-in functions, the Window class also provides low-level access to the platform-dependent window handle, which can be used in conjunction with system calls to create custom functionality. This handle can be retrieved through the <a href="#GetHandle">GetHandle</a> and <a href="#GetHandleAx">GetHandleAx</a> functions.</p>
+<p>The size of the window can be manipulated in two ways. The first is manipulating the window bounds and the second is manipulating the window client. Depending on the underlying windowing system, a window can be made up of two components, the border and the client. The border represents the platform-specific window decoration which hosts the icon, title and control buttons while the client represents the client area which hosts the application-specific content. To manipulate the total size of the window including the border and client, use the <a href="#GetBounds">GetBounds</a> and <a href="#SetBounds">SetBounds</a> functions. To manipulate the size of just the client, use the <a href="#GetClient">GetClient</a> and <a href="#SetClient">SetClient</a> functions. Manipulating the client may result in a larger window due to the border taking up space.</p>
+<p><img class="center" src="/common/window.png" /></p>
+<p>The Window class is also capable of converting client-area coordinates to screen-area coordinates, and vice versa. For example, the <a href="#MapToClient">MapToClient</a> function will convert the specified point in screen-area to client-area while the <a href="#MapToScreen">MapToScreen</a> function will do the opposite. Variant functions accepting <a href="/api/bounds.html">Bounds</a> will perform the same operation, without modifying the width and height.</p>
+<p>The Window class can also be used to set the current active window (i.e. the window accepting user input) by using the <a href="#SetActive">SetActive</a> function. And on Mac, the <a href="#IsAxEnabled">IsAxEnabled</a> can be used to check whether or not <a href="//developer.apple.com/library/mac/documentation/Accessibility/Conceptual/AccessibilityMacOSX/">accessibility</a> is enabled for the calling application. A return value of false will prevent most of the functions in the class from working. Comparison is supported as well.</p>
+<h2 id="types">Types</h2>
+<pre><code class="lang-cpp"><span class="hljs-keyword">typedef</span> <span class="hljs-built_in">vector</span>&lt;Window&gt; Robot::WindowList;
+</code></pre>
+<h2 id="constructors">Constructors</h2>
+<p><a name="Ctor"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+
+            <td ><a class="link" href="#Ctor">Window</a></td>
+            <td>(<a href="/api/global.html#data-types">uintptr</a> handle &#x3D; 0)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Constructs a window with a call to <a href="#SetHandle">SetHandle</a>.</p>
+<h2 id="functions">Functions</h2>
+<p><a name="IsValid"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#IsValid">IsValid</a></td>
+            <td>(void) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns true if a window has been selected and is still currently accessible.
+<br><br>
+<a name="Close"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>void</td>
+            <td ><a class="link" href="#Close">Close</a></td>
+            <td>(void)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Attempts to close the selected window. This function may not always cause the window to close, such as in the case of save prompts. On Mac, this function simulates a click on the close button, which may not necessarily terminate the application. In cases where the application needs to be terminated, consider killing it through <a href="#GetProcess">GetProcess</a>. Does nothing if no window is selected.
+<br><br>
+<a name="IsTopMost"></a>
+<a name="SetTopMost"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>bool</td>
+            <td class="right-align"><a class="link" href="#IsTopMost">IsTopMost</a></td>
+            <td>(void) const</td>
+        </tr>
+        <tr>
+
+            <td>void</td>
+            <td class="right-align"><a class="link" href="#SetTopMost">SetTopMost</a></td>
+            <td>(bool state)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Gets or sets a value indicating whether the selected window appears in the topmost z-order. A topmost window appears above all other windows whose topmost property is false. A group of topmost windows will follow the same ordering as non-topmost windows (i.e. the current active window will be topmost). Returns false or does nothing if no window is selected.</p>
+<p><strong>Mac:</strong> This function is not available and will always return false.</p>
+<p><strong>Warning:</strong> It has been observed that some windows are unable to maintain their topmost status when appearing in front of fullscreen applications due to limitations in the underlying windowing system.
+<br><br>
+<a name="IsBorderless"></a>
+<a name="SetBorderless"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>bool</td>
+            <td class="right-align"><a class="link" href="#IsBorderless">IsBorderless</a></td>
+            <td>(void) const</td>
+        </tr>
+        <tr>
+
+            <td>void</td>
+            <td class="right-align"><a class="link" href="#SetBorderless">SetBorderless</a></td>
+            <td>(bool state)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Gets or sets a value indicating whether the selected window is borderless. A borderless window hides the native window border and only displays the application-specific client content. Returns false or does nothing if no window is selected.</p>
+<p><strong>Mac:</strong> This function is not available and will always return false.</p>
+<p><strong>Warning:</strong> Not all windows and windowing systems are able to support border manipulation, and those that do may experience unexpected side effects. This function should be tested on a window by window basis.
+<br><br>
+<a name="IsMinimized"></a>
+<a name="IsMaximized"></a>
+<a name="SetMinimized"></a>
+<a name="SetMaximized"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>bool</td>
+            <td class="right-align"><a class="link" href="#IsMinimized">IsMinimized</a></td>
+            <td>(void) const</td>
+        </tr>
+        <tr>
+
+            <td>bool</td>
+            <td class="right-align"><a class="link" href="#IsMaximized">IsMaximized</a></td>
+            <td>(void) const</td>
+        </tr>
+        <tr>
+
+            <td>void</td>
+            <td class="right-align"><a class="link" href="#SetMinimized">SetMinimized</a></td>
+            <td>(bool state)</td>
+        </tr>
+        <tr>
+
+            <td>void</td>
+            <td class="right-align"><a class="link" href="#SetMaximized">SetMaximized</a></td>
+            <td>(bool state)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Gets or sets a value indicating whether the selected window is restored, minimized, or maximized. A window can appear minimized, maximized, or both but it depends on the underlying windowing system to know what that means. Most often, a minimized window will appear hidden until the associated icon in the system taskbar is pressed, restoring the window to its former state. A maximized window will most often consume the entire screen space until it&#39;s restored, usually by using one of the window control buttons. On Mac, this function simulates a click on the minimize button. Returns false or does nothing if no window is selected.</p>
+<p><strong>Mac:</strong> Maximizing is not available and will always return false.
+<br><br>
+<a name="GetProcess"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td><a href="/api/process.html">Process</a></td>
+            <td ><a class="link" href="#GetProcess">GetProcess</a></td>
+            <td>(void) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns a <a href="/api/process.html">Process</a> using <a href="#GetPID">GetPID</a>.
+<br><br>
+<a name="GetPID"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td><a href="/api/global.html#data-types">int32</a></td>
+            <td ><a class="link" href="#GetPID">GetPID</a></td>
+            <td>(void) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns the identifier of the process that created the selected window. Returns zero if no window is selected.
+<br><br>
+<a name="GetHandle"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td><a href="/api/global.html#data-types">uintptr</a></td>
+            <td ><a class="link" href="#GetHandle">GetHandle</a></td>
+            <td>(void) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns the platform-dependent handle to the selected window. If no window is selected, this function returns zero. On Linux, this function returns an X11 Window. On Mac, this function returns a Quartz CGWindowID. On Windows, this function returns a window HWND.
+<br><br>
+<a name="SetHandle"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#SetHandle">SetHandle</a></td>
+            <td>(<a href="/api/global.html#data-types">uintptr</a> handle)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Attempts to select the window identified by <strong>handle</strong>, a platform-dependent handle to a window. On Linux, this function expects an X11 window. On Mac, this function expects a Quartz CGWindowID. On Windows, this function expects a window HWND. In all cases, these handles are managed by other applications and require no special handling. If a window has already been selected, it is deselected prior to selecting the new one, regardless of whether or not this function succeeded. If <strong>handle</strong> is zero, this function deselects any currently selected window and returns true. If <strong>handle</strong> is not zero and cannot be matched to a window, this function marks this class as <a href="#IsValid">invalid</a> and returns false.</p>
+<p><strong>Mac:</strong> Due to limitations in the OSX API, this function may have performance implications. If selecting multiple windows, consider using <a href="#GetList">GetList</a> instead. This is because most of the functionality in this class depends on the Accessibility API, which requires an AXUIElementRef. Accessibility handles such as this one are managed resources, and therefore cannot be used to uniquely identify windows. To identify windows, a Quartz CGWindowID must be used instead, and since there is no way to easily convert them into AXUIElementRefs, all the windows in the associated process will need to be searched for one by one, until the right one is found.</p>
+<p><strong>Warning:</strong> Selecting 64-bit windows from 32-bit applications may yield incorrect results.
+<br><br>
+<a name="GetHandleAx"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td><a href="/api/global.html#data-types">uintptr</a></td>
+            <td ><a class="link" href="#GetHandleAx">GetHandleAx</a></td>
+            <td>(void) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>On Mac, returns an AXUIElementRef handle to the selected window. This handle is an allocated resource managed by this class and should not be manually deallocated. If no window is selected, this function returns zero. On Linux and Windows, this function will always return zero.
+<br><br>
+<a name="GetTitle"></a>
+<a name="SetTitle"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>string</td>
+            <td ><a class="link" href="#GetTitle">GetTitle</a></td>
+            <td>(void) const</td>
+        </tr>
+        <tr>
+
+            <td>void</td>
+            <td ><a class="link" href="#SetTitle">SetTitle</a></td>
+            <td>(const char* title)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Gets or sets the title of the selected window, as a UTF-8 encoded string. The title is typically displayed at the top of the window, usually representing the name or state of the application. Returns an empty string or does nothing if no window is selected.</p>
+<p><strong>Warning:</strong> Not all windowing systems support spontaneous title modification, some don&#39;t even represent titles consistently across multiple windows, like in the case of Quartz Compositor on OSX. As such, this may result in unexpected side effects. This function should be tested on a window by window basis.
+<br><br>
+<a name="GetBounds"></a>
+<a name="SetBounds"></a>
+<a name="SetBounds2"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td><a href="/api/bounds.html">Bounds</a></td>
+            <td ><a class="link" href="#GetBounds">GetBounds</a></td>
+            <td>(void) const</td>
+        </tr>
+        <tr>
+
+            <td>void</td>
+            <td ><a class="link" href="#SetBounds">SetBounds</a></td>
+            <td>(const <a href="/api/bounds.html">Bounds</a>&amp;  b)</td>
+        </tr>
+        <tr>
+
+            <td>void</td>
+            <td ><a class="link" href="#SetBounds2">SetBounds</a></td>
+            <td>(<a href="/api/global.html#data-types">int32</a> x, <a href="/api/global.html#data-types">int32</a> y,
+ <a href="/api/global.html#data-types">int32</a> w, <a href="/api/global.html#data-types">int32</a> h)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Gets or sets the total geometry of the selected window, in pixels, including the window border and client. The resulting <a href="/api/bounds.html">Bounds</a> is guaranteed to be normalized with X and Y represented in global screen coordinates, as is expected from <strong>bounds</strong>. If no window is selected, this function returns a Bounds with all components set to zero.
+<br><br>
+<a name="GetClient"></a>
+<a name="SetClient"></a>
+<a name="SetClient2"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td><a href="/api/bounds.html">Bounds</a></td>
+            <td ><a class="link" href="#GetClient">GetClient</a></td>
+            <td>(void) const</td>
+        </tr>
+        <tr>
+
+            <td>void</td>
+            <td ><a class="link" href="#SetClient">SetClient</a></td>
+            <td>(const <a href="/api/bounds.html">Bounds</a>&amp;  b)</td>
+        </tr>
+        <tr>
+
+            <td>void</td>
+            <td ><a class="link" href="#SetClient2">SetClient</a></td>
+            <td>(<a href="/api/global.html#data-types">int32</a> x, <a href="/api/global.html#data-types">int32</a> y,
+ <a href="/api/global.html#data-types">int32</a> w, <a href="/api/global.html#data-types">int32</a> h)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Gets or sets the client geometry of the selected window, in pixels. This does not include the window border but rather just the application-specific content. To manipulate the total geometry, including the window border and client, use the <a href="#GetBounds">GetBounds</a> or <a href="#SetBounds">SetBounds</a> functions. The resulting <a href="/api/bounds.html">Bounds</a> is guaranteed to be normalized with X and Y represented in global screen coordinates, as is expected from <strong>bounds</strong>. If no window is selected, this function returns a Bounds with all components set to zero.</p>
+<p><strong>Warning:</strong> Not all windowing systems differentiate the border and client, some treat it as just one window, as in the case with Quartz Compositor on OSX. When that happens, these functions will be identical to <a href="#GetBounds">GetBounds</a> and <a href="#SetBounds">SetBounds</a>.</p>
+<p><strong>Note:</strong> Manipulating the client may result in a larger window due to the border taking up space.
+<br><br>
+<a name="MapToClient"></a>
+<a name="MapToScreen"></a>
+<a name="MapToClient2"></a>
+<a name="MapToScreen2"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td><a href="/api/point.html">Point</a></td>
+            <td ><a class="link" href="#MapToClient">MapToClient</a></td>
+            <td>(const  <a href="/api/point.html">Point</a>&amp;  point) const</td>
+        </tr>
+        <tr>
+
+            <td><a href="/api/point.html">Point</a></td>
+            <td ><a class="link" href="#MapToScreen">MapToScreen</a></td>
+            <td>(const  <a href="/api/point.html">Point</a>&amp;  point) const</td>
+        </tr>
+        <tr>
+
+            <td><a href="/api/bounds.html">Bounds</a></td>
+            <td ><a class="link" href="#MapToClient2">MapToClient</a></td>
+            <td>(const <a href="/api/bounds.html">Bounds</a>&amp; bounds) const</td>
+        </tr>
+        <tr>
+
+            <td><a href="/api/bounds.html">Bounds</a></td>
+            <td ><a class="link" href="#MapToScreen2">MapToScreen</a></td>
+            <td>(const <a href="/api/bounds.html">Bounds</a>&amp; bounds) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Converts client-area coordinates to screen-area coordinates, and vice versa. Conversions are made using the <a href="#GetClient">client</a> position of the selected window. If no window is selected, this function will return an object with all components set to zero. Functions accepting <a href="/api/bounds.html">Bounds</a> will perform the same operation, without modifying the width and height.
+<br><br>
+<a name="GetList"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+            <td>static</td>
+            <td><a href="/api/window.html#types">WindowList</a></td>
+            <td ><a class="link" href="#GetList">GetList</a></td>
+            <td>(const char* title &#x3D; nullptr)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns a list of all visible windows on the system. <strong>title</strong> accepts any valid case-insensitive <a href="//www.cplusplus.com/reference/regex/ECMAScript/">ECMAScript</a> regular expression which will be used to filter out windows by <a href="#GetTitle">title</a>. An empty list will be returned if the regular expression syntax is incorrect, as determined by <a href="//www.cplusplus.com/reference/regex/">regex</a>.
+<br><br>
+<a name="GetActive"></a>
+<a name="SetActive"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+            <td>static</td>
+            <td><a href="/api/window.html">Window</a></td>
+            <td ><a class="link" href="#GetActive">GetActive</a></td>
+            <td>(void)</td>
+        </tr>
+        <tr>
+            <td>static</td>
+            <td>void</td>
+            <td ><a class="link" href="#SetActive">SetActive</a></td>
+            <td>(const <a href="/api/window.html">Window</a>&amp; window)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Gets or sets the current active window on the system. An active window is the user&#39;s current foreground window which is currently accepting user input. An active window will also be the top-most of all top-level windows that don&#39;t explicitly set the <a href="#IsTopMost">topmost</a> property. If an error has occurred, <strong>GetActive</strong> returns an invalid window and <strong>SetActive</strong> does nothing. If no windows are active or no windows are open, the desktop element will be used.</p>
+<p><strong>Windows:</strong> <strong>GetActive</strong> may block in 20ms intervals up to a maximum of 20 times (400ms total) as it attempts to retrieve the active window. A block typically occurs when a new window is in the process of being activated but is not quite finished yet. Since these occurrences are so rare, this function will usually run without any blocks.</p>
+<p><strong>Warning:</strong> Not all windowing systems support active window manipulation.
+<br><br>
+<a name="IsAxEnabled"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+            <td>static</td>
+            <td>bool</td>
+            <td ><a class="link" href="#IsAxEnabled">IsAxEnabled</a></td>
+            <td>(bool options &#x3D; false)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>On Mac, returns whether or not <a href="//developer.apple.com/library/mac/documentation/Accessibility/Conceptual/AccessibilityMacOSX/">accessibility</a> is enabled for the calling application. A return value of false will prevent most of the functions in this class from working. If <strong>options</strong> is true and the OSX version is greater than 10.9 (Mavericks), the user will be informed if the calling application is untrusted. This could be used, for example, on application startup to always warn a user if accessibility is not enabled. Prompting occurs asynchronously but requires the calling application to have a user interface (i.e. console applications won&#39;t display a prompt), however, the return value is unaffected. On Linux and Windows, this function will always return true.</p>
+<h2 id="operators">Operators</h2>
+<p><a name="OpEq"></a>
+<a name="OpNe"></a>
+<a name="OpEq2"></a>
+<a name="OpNe2"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#OpEq">operator &#x3D;&#x3D;</a></td>
+            <td>(const <a href="/api/window.html">Window</a>&amp; window) const</td>
+        </tr>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#OpNe">operator !&#x3D;</a></td>
+            <td>(const <a href="/api/window.html">Window</a>&amp; window) const</td>
+        </tr>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#OpEq2">operator &#x3D;&#x3D;</a></td>
+            <td>(<a href="/api/global.html#data-types">uintptr</a> handle) const</td>
+        </tr>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#OpNe2">operator !&#x3D;</a></td>
+            <td>(<a href="/api/global.html#data-types">uintptr</a> handle) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Performs equality comparison to determine whether two windows have identical <a href="#GetHandle">handles</a>.</p>
+<h1 id="examples">Examples</h1>
+<pre><code class="lang-cpp"><span class="hljs-comment">// C++</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;Robot.h&gt;</span></span>
+ROBOT_NS_USE_ALL;
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span> <span class="hljs-params">(<span class="hljs-keyword">void</span>)</span>
+</span>{
+    <span class="hljs-comment">// Must be true for the class to work</span>
+    <span class="hljs-keyword">if</span> (!Window::IsAxEnabled()) return <span class="hljs-number">0</span>;
+
+    <span class="hljs-comment">// Retrieve the current active window</span>
+    Window window = Window::GetActive();
+
+    window.IsValid    (); <span class="hljs-comment">// True if valid</span>
+    window.IsMinimized(); <span class="hljs-comment">// True if minimized</span>
+    window.IsMaximized(); <span class="hljs-comment">// True if maximized</span>
+
+    window.GetTitle   (); <span class="hljs-comment">// Title of window</span>
+    window.GetBounds  (); <span class="hljs-comment">// Window geometry</span>
+    window.GetClient  (); <span class="hljs-comment">// Client geometry</span>
+
+    <span class="hljs-comment">// Reposition and resize the window</span>
+    window.SetBounds (<span class="hljs-number">100</span>, <span class="hljs-number">200</span>, <span class="hljs-number">300</span>, <span class="hljs-number">400</span>);
+
+    window.MapToClient (Point (<span class="hljs-number">0</span>, <span class="hljs-number">0</span>)); <span class="hljs-comment">// ~(-100, -200)</span>
+    window.MapToScreen (Point (<span class="hljs-number">0</span>, <span class="hljs-number">0</span>)); <span class="hljs-comment">// ~( 100,  200)</span>
+
+    <span class="hljs-comment">// Gets process associated with window</span>
+    Process process = window.GetProcess();
+
+    <span class="hljs-comment">// List all other visible windows belonging</span>
+    <span class="hljs-comment">// to the same process as the active window</span>
+    process.GetWindows();
+
+    <span class="hljs-comment">// Create shared copy</span>
+    Window copy = window;
+
+    copy.SetHandle (<span class="hljs-number">5</span>); <span class="hljs-comment">// True if valid and selectable</span>
+    copy == window;     <span class="hljs-comment">// True  because of shared ptr</span>
+    copy != window;     <span class="hljs-comment">// False because of shared ptr</span>
+
+    window.Close   ( ); <span class="hljs-comment">// Close the selected window</span>
+    window.IsValid ( ); <span class="hljs-comment">// False if window has closed</span>
+
+    <span class="hljs-comment">// Try debuggex.com for regex visualization</span>
+    <span class="hljs-keyword">auto</span> <span class="hljs-built_in">list</span> = Window::GetList (<span class="hljs-string">".*title.*"</span>);
+
+    <span class="hljs-comment">// List is an STL vector</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> <span class="hljs-keyword">auto</span>&amp; w : <span class="hljs-built_in">list</span>)
+        w.GetTitle(); <span class="hljs-comment">// Always contains "title"</span>
+
+    <span class="hljs-keyword">if</span> (!<span class="hljs-built_in">list</span>.empty())
+        <span class="hljs-comment">// Activate the first match</span>
+        Window::SetActive (<span class="hljs-built_in">list</span>[<span class="hljs-number">0</span>]);
+
+    return <span class="hljs-number">0</span>;
+}
+</code></pre>
+<pre><code class="lang-js"><span class="hljs-comment">// Node</span>
+<span class="hljs-keyword">var</span> robot = <span class="hljs-built_in">require</span> (<span class="hljs-string">"robot-js"</span>);
+
+<span class="hljs-comment">// Must be true in order to work</span>
+<span class="hljs-keyword">if</span> (robot.Window.isAxEnabled())
+{
+    <span class="hljs-comment">// Retrieve the current active window</span>
+    <span class="hljs-keyword">var</span> <span class="hljs-built_in">window</span> = robot.Window.getActive();
+
+    <span class="hljs-built_in">window</span>.isValid    (); <span class="hljs-comment">// True if valid</span>
+    <span class="hljs-built_in">window</span>.isMinimized(); <span class="hljs-comment">// True if minimized</span>
+    <span class="hljs-built_in">window</span>.isMaximized(); <span class="hljs-comment">// True if maximized</span>
+
+    <span class="hljs-built_in">window</span>.getTitle   (); <span class="hljs-comment">// Title of window</span>
+    <span class="hljs-built_in">window</span>.getBounds  (); <span class="hljs-comment">// Window geometry</span>
+    <span class="hljs-built_in">window</span>.getClient  (); <span class="hljs-comment">// Client geometry</span>
+
+    <span class="hljs-comment">// Reposition and resize the window</span>
+    <span class="hljs-built_in">window</span>.setBounds (<span class="hljs-number">100</span>, <span class="hljs-number">200</span>, <span class="hljs-number">300</span>, <span class="hljs-number">400</span>);
+
+    <span class="hljs-built_in">window</span>.mapToClient (<span class="hljs-number">0</span>, <span class="hljs-number">0</span>); <span class="hljs-comment">// ~(-100, -200)</span>
+    <span class="hljs-built_in">window</span>.mapToScreen (<span class="hljs-number">0</span>, <span class="hljs-number">0</span>); <span class="hljs-comment">// ~( 100,  200)</span>
+
+    <span class="hljs-comment">// Process associated with window</span>
+    <span class="hljs-keyword">var</span> process = <span class="hljs-built_in">window</span>.getProcess();
+
+    <span class="hljs-comment">// List all other visible windows belonging</span>
+    <span class="hljs-comment">// to the same process as the active window</span>
+    process.getWindows();
+
+    <span class="hljs-comment">// Create independent copy</span>
+    <span class="hljs-keyword">var</span> copy = <span class="hljs-built_in">window</span>.clone();
+
+    copy.setHandle (<span class="hljs-number">5</span>); <span class="hljs-comment">// True if valid and selectable</span>
+    copy.eq (<span class="hljs-built_in">window</span>);   <span class="hljs-comment">// False because of new copy</span>
+    copy.ne (<span class="hljs-built_in">window</span>);   <span class="hljs-comment">// True  because of new copy</span>
+
+    <span class="hljs-built_in">window</span>.close   ( ); <span class="hljs-comment">// Close the selected window</span>
+    <span class="hljs-built_in">window</span>.isValid ( ); <span class="hljs-comment">// False if window has closed</span>
+
+    <span class="hljs-comment">// Try debuggex.com for regex visualization</span>
+    <span class="hljs-keyword">var</span> list = robot.Window.getList (<span class="hljs-string">".*title.*"</span>);
+
+    <span class="hljs-comment">// List is an array</span>
+    list.map (<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">w</span>)
+    </span>{
+        w.getTitle(); <span class="hljs-comment">// Always contains "title"</span>
+    });
+
+    <span class="hljs-keyword">if</span> (list.length &gt; <span class="hljs-number">0</span>)
+        <span class="hljs-comment">// Activate first window in list</span>
+        robot.Window.setActive (list[<span class="hljs-number">0</span>]);
+}
+</code></pre>
+
+
+		</div>
+
+		<div class="clearfix"></div>
+	</div>
+</section>
+
+		<div id="footer-pad"></div>
+		<section id="footer">
+			<div class="container">
+
+				<div class="author">
+					<p>Licensed under the <a href="//opensource.org/licenses/Zlib">ZLIB License</a></p>
+					<p>Project by the <a href="//github.com/orgs/robot/people">Robot Developers</a></p>
+				</div>
+
+				<div class="github">
+					<p>Proudly Hosted on <a href="//pages.github.com">
+						<svg><use xlink:href="/common/vectors.svg#github" /></svg>
+					</a></p>
+				</div>
+
+				<div class="clearfix"></div>
+
+			</div>
+		</section>
+	</div>
+
+	<script src="/common/svg4everybody.js"></script><script>svg4everybody();</script>
+
+	<script>
+		(function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,"script","//www.google-analytics.com/analytics.js","ga");
+		ga("create", "UA-41804800-7", "auto"); ga("send", "pageview");
+	</script>
+
+</body>
+</html>

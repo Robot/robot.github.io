@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+
+<!--////////////////////////////////////////////////////////////////////////////
+// ========================================================================== //
+//                                                                            //
+//                       (C) 2010-2016 Robot Developers                       //
+//                       See LICENSE for licensing info                       //
+//                                                                            //
+// ========================================================================== //
+/////////////////////////////////////////////////////////////////////////////-->
+
+<html lang="en">
+<head>
+
+	<title>Robot Clipboard Class</title>
+	<meta name="description" content="Robot documentation and information site">
+
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name=      "mobile-web-app-capable" content="no">
+	<meta name="apple-mobile-web-app-capable" content="no">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="viewport" content="width=980, maximum-scale=1">
+
+	<link rel="stylesheet" href="/common/normalize.css" />
+	<link rel="stylesheet" href="/common/docs.css" />
+
+	<link rel="shortcut icon" href="/common/favicon.ico" />
+
+</head>
+<body>
+
+	<div id="body">
+		
+
+
+
+<section id="header">
+	<div class="noise"></div>
+
+	<section id="banner">
+		<div class="container">
+
+			<a href="/">
+				<svg><use xlink:href="/common/vectors.svg#logo" /></svg>
+			</a>
+
+		</div>
+	</section>
+
+	<section id="menu">
+		<div class="container">
+	
+			<nav>
+				<a href="/docs/about.html"     >DOCUMENTATION</a>
+				<a href="/api/global.html"     >API          </a>
+				<a href="/docs/philosophy.html">COMMUNITY    </a>
+				<a href="//github.com/robot"   >GITHUB       </a>
+			</nav>
+	
+		</div>
+	</section>
+</section>
+
+<section id="docs">
+	<div class="container">
+
+		<div id="sidebar">
+
+			<nav>
+				<h1>Types</h1>
+				<a  href="/api/global.html"   >Global   </a>
+				<a  href="/api/enum.html"     >Enum     </a>
+				<a  href="/api/hash.html"     >Hash     </a>
+				<a  href="/api/color.html"    >Color    </a>
+				<a  href="/api/image.html"    >Image    </a>
+				<a  href="/api/range.html"    >Range    </a>
+				<a  href="/api/point.html"    >Point    </a>
+				<a  href="/api/size.html"     >Size     </a>
+				<a  href="/api/bounds.html"   >Bounds   </a>
+			</nav>
+			<nav>
+				<h1>Native</h1>
+				<a  href="/api/keyboard.html" >Keyboard </a>
+				<a  href="/api/mouse.html"    >Mouse    </a>
+				<a  href="/api/process.html"  >Process  </a>
+				<a  href="/api/module.html"   >Module   </a>
+				<a  href="/api/memory.html"   >Memory   </a>
+				<a  href="/api/window.html"   >Window   </a>
+				<a  href="/api/screen.html"   >Screen   </a>
+				<a  href="/api/timer.html"    >Timer    </a>
+				<a class="active" href="/api/clipboard.html">Clipboard</a>
+			</nav>
+
+		</div>
+		<div id="content" class="marked">
+
+			<h1 id="clipboard">Clipboard</h1>
+<a class="edit" href="//github.com/robot/robot.github.io/edit/master/source/api/clipboard.html">Edit on GitHub</a><div class="include">
+	#<span class="keyword">include</span> <span class="string">&lt;Clipboard.h&gt;</span>
+	<div class="details">
+		<a href="//github.com/robot/robot/blob/master/Source/Clipboard.h" >Header</a>
+		<a href="//github.com/robot/robot/blob/master/Source/Clipboard.cc">Source</a>
+	</div>
+	<div class="clearfix"></div>
+</div><table id="Clipboard" class="class">
+<thead>
+	<tr>
+		<th>S</th><th>Return</th><th>Name</th><th>Parameters</th>
+	</tr>
+</thead>
+<tbody>
+	<tr>
+		<td>&#10004;</td>
+		<td>bool</td>
+		<td><a href="#Clear">Clear</a></td>
+		<td>(void)</td>
+	</tr>
+	<tr>
+		<td>&#10004;</td>
+		<td>bool</td>
+		<td><a href="#HasText">HasText</a></td>
+		<td>(void)</td>
+	</tr>
+	<tr>
+		<td>&#10004;</td>
+		<td>string</td>
+		<td><a href="#GetText">GetText</a></td>
+		<td>(void)</td>
+	</tr>
+	<tr>
+		<td>&#10004;</td>
+		<td>bool</td>
+		<td><a href="#SetText">SetText</a></td>
+		<td>(const char* string)</td>
+	</tr>
+	<tr>
+		<td>&#10004;</td>
+		<td>bool</td>
+		<td><a href="#HasImage">HasImage</a></td>
+		<td>(void)</td>
+	</tr>
+	<tr>
+		<td>&#10004;</td>
+		<td>bool</td>
+		<td><a href="#GetImage">GetImage</a></td>
+		<td>(      Image&amp; image)</td>
+	</tr>
+	<tr>
+		<td>&#10004;</td>
+		<td>bool</td>
+		<td><a href="#SetImage">SetImage</a></td>
+		<td>(const Image&amp; image)</td>
+	</tr>
+	<tr>
+		<td>&#10004;</td>
+		<td>uint64</td>
+		<td><a href="#GetSequence">GetSequence</a></td>
+		<td>(void)</td>
+	</tr>
+</tbody>
+</table><h2 id="description">Description</h2>
+<p>Provides a simple interface for manipulating the system clipboard. A clipboard enables users to copy and paste data between applications. To manipulate text data on the system clipboard, use the <a href="#HasText">HasText</a>, <a href="#GetText">GetText</a> and <a href="#SetText">SetText</a> functions. To manipulate image data on the system clipboard, use the <a href="#HasImage">HasImage</a>, <a href="#GetImage">GetImage</a> and <a href="#SetImage">SetImage</a> functions. To clear all data on the system clipboard, use the <a href="#Clear">Clear</a> function. And finally, to check if any changes have been made to the system clipboard, use the <a href="#GetSequence">GetSequence</a> function.</p>
+<p><strong>Linux:</strong> The functions in the Clipboard class are not available. They will perform no operations and will always return false or otherwise invalid information. This is due to the fact that Linux clipboards are handled very differently and require an active event loop to work. Because Robot does not yet implement such functionality, the Clipboard class is unable to be implemented at this time.</p>
+<h2 id="functions">Functions</h2>
+<p><a name="Clear"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+            <td>static</td>
+            <td>bool</td>
+            <td ><a class="link" href="#Clear">Clear</a></td>
+            <td>(void)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Clears the contents of the system clipboard and returns true. Returns false on error.
+<br><br>
+<a name="HasText"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+            <td>static</td>
+            <td>bool</td>
+            <td ><a class="link" href="#HasText">HasText</a></td>
+            <td>(void)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns true if the system clipboard currently contains text data that is not empty.
+<br><br>
+<a name="GetText"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+            <td>static</td>
+            <td>string</td>
+            <td ><a class="link" href="#GetText">GetText</a></td>
+            <td>(void)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns the text that is currently on the system clipboard, as a UTF-8 encoded string. Returns an empty string if an error occurred or there is no text currently on the system clipboard.
+<br><br>
+<a name="SetText"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+            <td>static</td>
+            <td>bool</td>
+            <td ><a class="link" href="#SetText">SetText</a></td>
+            <td>(const char* string)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Puts text on the system clipboard, as a UTF-8 encoded string, and returns true. Returns false if an error occurred or <strong>string</strong> points to a null pointer.
+<br><br>
+<a name="HasImage"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+            <td>static</td>
+            <td>bool</td>
+            <td ><a class="link" href="#HasImage">HasImage</a></td>
+            <td>(void)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns true if the system clipboard currently contains image data that is not empty.
+<br><br>
+<a name="GetImage"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+            <td>static</td>
+            <td>bool</td>
+            <td ><a class="link" href="#GetImage">GetImage</a></td>
+            <td>(      <a href="/api/image.html">Image</a>&amp; image)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Copies the image that is currently on the system clipboard into <strong>image</strong>, reusing previously allocated memory if possible, and returns true. Returns false if an error occurred or there is no image currently on the system clipboard. <strong>image</strong> will only be overwritten when data is about to be copied into it, therefore a return value of false will never cause <strong>image</strong> to be modified.</p>
+<p><strong>Warning:</strong> Alpha channels and certain types of image formats are not fully supported.
+<br><br>
+<a name="SetImage"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+            <td>static</td>
+            <td>bool</td>
+            <td ><a class="link" href="#SetImage">SetImage</a></td>
+            <td>(const <a href="/api/image.html">Image</a>&amp; image)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Puts <strong>image</strong> on the system clipboard and returns true. Returns false if an error occurred or <strong>image</strong> is <a href="/api/image.html#IsValid">invalid</a>. Images will be stored in the most basic format supported by the platform, without any sort of compression or advanced data format.
+<br><br>
+<a name="GetSequence"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+            <td>static</td>
+            <td><a href="/api/global.html#data-types">uint64</a></td>
+            <td ><a class="link" href="#GetSequence">GetSequence</a></td>
+            <td>(void)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns the sequence number of the system clipboard. This sequence number is incremented whenever the contents of the clipboard change, making this function extremely useful for monitoring various types of clipboard events.</p>
+<h1 id="examples">Examples</h1>
+<pre><code class="lang-cpp"><span class="hljs-comment">// C++</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;Robot.h&gt;</span></span>
+ROBOT_NS_USE_ALL;
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span> <span class="hljs-params">(<span class="hljs-keyword">void</span>)</span>
+</span>{
+    <span class="hljs-comment">// Set text on the clipboard</span>
+    Clipboard::SetText (<span class="hljs-string">"Text"</span>);
+
+    Clipboard::HasText (); <span class="hljs-comment">// True</span>
+    Clipboard::HasImage(); <span class="hljs-comment">// False</span>
+    Clipboard::GetText (); <span class="hljs-comment">// Text</span>
+
+    <span class="hljs-function">Image <span class="hljs-title">image</span> <span class="hljs-params">(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>)</span></span>;
+    image.SetPixel (<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0xFFFF0000</span>);
+    image.SetPixel (<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0xFF00FF00</span>);
+    image.SetPixel (<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0xFF0000FF</span>);
+    image.SetPixel (<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0xFFFFFFFF</span>);
+
+    <span class="hljs-comment">// Set image on the clipboard</span>
+    Clipboard::SetImage (image);
+
+    Clipboard::HasText (); <span class="hljs-comment">// True</span>
+    Clipboard::HasImage(); <span class="hljs-comment">// False</span>
+
+    Clipboard::GetSequence(); <span class="hljs-comment">// X</span>
+
+    Image output;
+    <span class="hljs-comment">// Save the image to output</span>
+    Clipboard::GetImage (output);
+    image == output; <span class="hljs-comment">// True</span>
+
+    Clipboard::GetSequence(); <span class="hljs-comment">// X</span>
+
+    <span class="hljs-comment">// Clear clipboard</span>
+    Clipboard::Clear();
+
+    Clipboard::GetSequence(); <span class="hljs-comment">// Y</span>
+    Clipboard::GetSequence(); <span class="hljs-comment">// Y</span>
+    return <span class="hljs-number">0</span>;
+}
+</code></pre>
+<pre><code class="lang-js"><span class="hljs-comment">// Node</span>
+<span class="hljs-keyword">var</span> robot = <span class="hljs-built_in">require</span> (<span class="hljs-string">"robot-js"</span>);
+
+<span class="hljs-comment">// Set some text on the clipboard</span>
+robot.Clipboard.setText (<span class="hljs-string">"Text"</span>);
+
+robot.Clipboard.hasText (); <span class="hljs-comment">// True</span>
+robot.Clipboard.hasImage(); <span class="hljs-comment">// False</span>
+robot.Clipboard.getText (); <span class="hljs-comment">// Text</span>
+
+<span class="hljs-keyword">var</span> image = robot.Image (<span class="hljs-number">2</span>, <span class="hljs-number">2</span>);
+image.setPixel (<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, robot.Color (<span class="hljs-number">0xFFFF0000</span>));
+image.setPixel (<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, robot.Color (<span class="hljs-number">0xFF00FF00</span>));
+image.setPixel (<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, robot.Color (<span class="hljs-number">0xFF0000FF</span>));
+image.setPixel (<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, robot.Color (<span class="hljs-number">0xFFFFFFFF</span>));
+
+<span class="hljs-comment">// Set the image on the clipboard</span>
+robot.Clipboard.setImage (image);
+
+robot.Clipboard.hasText (); <span class="hljs-comment">// True</span>
+robot.Clipboard.hasImage(); <span class="hljs-comment">// False</span>
+
+robot.Clipboard.getSequence(); <span class="hljs-comment">// X</span>
+
+<span class="hljs-keyword">var</span> output = robot.Image();
+<span class="hljs-comment">// Save the image to output</span>
+robot.Clipboard.getImage (output);
+image.eq (output); <span class="hljs-comment">// True</span>
+
+robot.Clipboard.getSequence(); <span class="hljs-comment">// X</span>
+
+<span class="hljs-comment">// Clear the clipboard</span>
+robot.Clipboard.clear();
+
+robot.Clipboard.getSequence(); <span class="hljs-comment">// Y</span>
+robot.Clipboard.getSequence(); <span class="hljs-comment">// Y</span>
+</code></pre>
+
+
+		</div>
+
+		<div class="clearfix"></div>
+	</div>
+</section>
+
+		<div id="footer-pad"></div>
+		<section id="footer">
+			<div class="container">
+
+				<div class="author">
+					<p>Licensed under the <a href="//opensource.org/licenses/Zlib">ZLIB License</a></p>
+					<p>Project by the <a href="//github.com/orgs/robot/people">Robot Developers</a></p>
+				</div>
+
+				<div class="github">
+					<p>Proudly Hosted on <a href="//pages.github.com">
+						<svg><use xlink:href="/common/vectors.svg#github" /></svg>
+					</a></p>
+				</div>
+
+				<div class="clearfix"></div>
+
+			</div>
+		</section>
+	</div>
+
+	<script src="/common/svg4everybody.js"></script><script>svg4everybody();</script>
+
+	<script>
+		(function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,"script","//www.google-analytics.com/analytics.js","ga");
+		ga("create", "UA-41804800-7", "auto"); ga("send", "pageview");
+	</script>
+
+</body>
+</html>

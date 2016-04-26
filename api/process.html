@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+
+<!--////////////////////////////////////////////////////////////////////////////
+// ========================================================================== //
+//                                                                            //
+//                       (C) 2010-2016 Robot Developers                       //
+//                       See LICENSE for licensing info                       //
+//                                                                            //
+// ========================================================================== //
+/////////////////////////////////////////////////////////////////////////////-->
+
+<html lang="en">
+<head>
+
+	<title>Robot Process Class</title>
+	<meta name="description" content="Robot documentation and information site">
+
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name=      "mobile-web-app-capable" content="no">
+	<meta name="apple-mobile-web-app-capable" content="no">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="viewport" content="width=980, maximum-scale=1">
+
+	<link rel="stylesheet" href="/common/normalize.css" />
+	<link rel="stylesheet" href="/common/docs.css" />
+
+	<link rel="shortcut icon" href="/common/favicon.ico" />
+
+</head>
+<body>
+
+	<div id="body">
+		
+
+
+
+<section id="header">
+	<div class="noise"></div>
+
+	<section id="banner">
+		<div class="container">
+
+			<a href="/">
+				<svg><use xlink:href="/common/vectors.svg#logo" /></svg>
+			</a>
+
+		</div>
+	</section>
+
+	<section id="menu">
+		<div class="container">
+	
+			<nav>
+				<a href="/docs/about.html"     >DOCUMENTATION</a>
+				<a href="/api/global.html"     >API          </a>
+				<a href="/docs/philosophy.html">COMMUNITY    </a>
+				<a href="//github.com/robot"   >GITHUB       </a>
+			</nav>
+	
+		</div>
+	</section>
+</section>
+
+<section id="docs">
+	<div class="container">
+
+		<div id="sidebar">
+
+			<nav>
+				<h1>Types</h1>
+				<a  href="/api/global.html"   >Global   </a>
+				<a  href="/api/enum.html"     >Enum     </a>
+				<a  href="/api/hash.html"     >Hash     </a>
+				<a  href="/api/color.html"    >Color    </a>
+				<a  href="/api/image.html"    >Image    </a>
+				<a  href="/api/range.html"    >Range    </a>
+				<a  href="/api/point.html"    >Point    </a>
+				<a  href="/api/size.html"     >Size     </a>
+				<a  href="/api/bounds.html"   >Bounds   </a>
+			</nav>
+			<nav>
+				<h1>Native</h1>
+				<a  href="/api/keyboard.html" >Keyboard </a>
+				<a  href="/api/mouse.html"    >Mouse    </a>
+				<a class="active" href="/api/process.html"  >Process  </a>
+				<a  href="/api/module.html"   >Module   </a>
+				<a  href="/api/memory.html"   >Memory   </a>
+				<a  href="/api/window.html"   >Window   </a>
+				<a  href="/api/screen.html"   >Screen   </a>
+				<a  href="/api/timer.html"    >Timer    </a>
+				<a  href="/api/clipboard.html">Clipboard</a>
+			</nav>
+
+		</div>
+		<div id="content" class="marked">
+
+			<h1 id="process">Process</h1>
+<a class="edit" href="//github.com/robot/robot.github.io/edit/master/source/api/process.html">Edit on GitHub</a><div class="include">
+	#<span class="keyword">include</span> <span class="string">&lt;Process.h&gt;</span>
+	<div class="details">
+		<a href="//github.com/robot/robot/blob/master/Source/Process.h" >Header</a>
+		<a href="//github.com/robot/robot/blob/master/Source/Process.cc">Source</a>
+	</div>
+	<div class="clearfix"></div>
+</div><table id="Process" class="class">
+<thead>
+	<tr>
+		<th>S</th><th>Return</th><th>Name</th><th>Parameters</th>
+	</tr>
+</thead>
+<tbody>
+	<tr>
+		<td></td>
+		<td></td>
+		<td><a href="#Ctor">Process</a></td>
+		<td>(int32 pid &#x3D; 0)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#Open">Open</a></td>
+		<td>(int32 pid)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>void</td>
+		<td><a href="#Close">Close</a></td>
+		<td>(void)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#IsValid">IsValid</a></td>
+		<td>(void) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#Is64Bit">Is64Bit</a></td>
+		<td>(void) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#IsDebugged">IsDebugged</a></td>
+		<td>(void) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>int32</td>
+		<td><a href="#GetPID">GetPID</a></td>
+		<td>(void) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>uintptr</td>
+		<td><a href="#GetHandle">GetHandle</a></td>
+		<td>(void) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>string</td>
+		<td><a href="#GetName">GetName</a></td>
+		<td>(void) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>string</td>
+		<td><a href="#GetPath">GetPath</a></td>
+		<td>(void) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>void</td>
+		<td><a href="#Exit">Exit</a></td>
+		<td>(void)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>void</td>
+		<td><a href="#Kill">Kill</a></td>
+		<td>(void)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#HasExited">HasExited</a></td>
+		<td>(void) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>ModuleList</td>
+		<td><a href="#GetModules">GetModules</a></td>
+		<td>(const char* name  &#x3D; nullptr) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>WindowList</td>
+		<td><a href="#GetWindows">GetWindows</a></td>
+		<td>(const char* title &#x3D; nullptr) const</td>
+	</tr>
+	<tr>
+		<td>&#10004;</td>
+		<td>ProcessList</td>
+		<td><a href="#GetList">GetList</a></td>
+		<td>(const char* name  &#x3D; nullptr)</td>
+	</tr>
+	<tr>
+		<td>&#10004;</td>
+		<td>Process</td>
+		<td><a href="#GetCurrent">GetCurrent</a></td>
+		<td>(void)</td>
+	</tr>
+	<tr>
+		<td>&#10004;</td>
+		<td>bool</td>
+		<td><a href="#IsSys64Bit">IsSys64Bit</a></td>
+		<td>(void)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#OpEq">operator &#x3D;&#x3D;</a></td>
+		<td>(const Process&amp; process) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#OpNe">operator !&#x3D;</a></td>
+		<td>(const Process&amp; process) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#OpEq2">operator &#x3D;&#x3D;</a></td>
+		<td>(int32 pid) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#OpNe2">operator !&#x3D;</a></td>
+		<td>(int32 pid) const</td>
+	</tr>
+</tbody>
+</table><h2 id="description">Description</h2>
+<p>Represents a single process running on the system. A process, in simpler terms, represents any application which can be uniquely identified by a <a href="//en.wikipedia.org/wiki/Process_identifier">PID</a>. To select a process, simply pass the PID of the target process to the <a href="#Ctor">Constructor</a> or <a href="#Open">Open</a> function. In cases where the PID of the target process is not known, a list of all processes can be retrieved through the <a href="#GetList">GetList</a> function. To select the current active/calling process, use the <a href="#GetCurrent">GetCurrent</a> function. To check whether a process has been selected, use the <a href="#IsValid">IsValid</a> function. Use the <a href="#Close">Close</a> function to deselect the process and free up any used resources, although this function is called by the destructor and open function automatically.</p>
+<p>After a process has been selected, the Process class offers several functions for retrieving useful information and manipulating the process in various ways. For instance, to retrieve the name of the process, use the <a href="#GetName">GetName</a> function, to terminate the process, use either the <a href="#Exit">Exit</a> or <a href="#Kill">Kill</a> function. In addition to the built-in functions, the Process class also provides low-level access to the platform-dependent process handle, which can be used in conjunction with system calls to create custom functionality. This handle can be retrieved through the <a href="#GetHandle">GetHandle</a> function.</p>
+<p>The Process class can also be used to check the architecture of the operating system at runtime by using the <a href="#IsSys64Bit">IsSys64Bit</a> function. Comparison is supported as well.</p>
+<h2 id="types">Types</h2>
+<pre><code class="lang-cpp"><span class="hljs-keyword">typedef</span> <span class="hljs-built_in">vector</span>&lt;Module &gt; Robot::ModuleList;
+<span class="hljs-keyword">typedef</span> <span class="hljs-built_in">vector</span>&lt;Window &gt; Robot::WindowList;
+<span class="hljs-keyword">typedef</span> <span class="hljs-built_in">vector</span>&lt;Process&gt; Robot::ProcessList;
+</code></pre>
+<h2 id="constructors">Constructors</h2>
+<p><a name="Ctor"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+
+            <td ><a class="link" href="#Ctor">Process</a></td>
+            <td>(<a href="/api/global.html#data-types">int32</a> pid &#x3D; 0)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Constructs a process with a call to <a href="#Open">Open</a>.</p>
+<h2 id="functions">Functions</h2>
+<p><a name="Open"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#Open">Open</a></td>
+            <td>(<a href="/api/global.html#data-types">int32</a> pid)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Attempts to select the process identified by <strong>PID</strong>. If a process has already been selected, it is <a href="#Close">closed</a> prior to selecting the new one, regardless of whether or not this function succeeded. If <strong>PID</strong> is zero, negative or not found, this function marks this class as <a href="#IsValid">invalid</a> and returns false. This function may also fail if the target process requires elevated privileges.</p>
+<p>In addition to selecting a process, this function will also read and cache certain information about that process. This includes the PID, name, path, architecture and the platform-dependent handle (if applicable). By caching this information locally, it ensures that respective accessor functions perform in constant-time and without any additional system calls.</p>
+<p><strong>Mac:</strong> This function will attempt to retrieve the mach task port, if it fails this function will still succeed but certain functionality will be unavailable. To check whether a mach task port was successfully retrieved, check that <a href="#GetHandle">GetHandle</a> returns a non-zero value.</p>
+<p><strong>Warning:</strong> A 64-bit process cannot be selected from a 32-bit application.
+<br><br>
+<a name="Close"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>void</td>
+            <td ><a class="link" href="#Close">Close</a></td>
+            <td>(void)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Deselects the process if one has been selected, making this class <a href="#IsValid">invalid</a>.
+<br><br>
+<a name="IsValid"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#IsValid">IsValid</a></td>
+            <td>(void) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns true if a process has been selected and is still currently accessible.
+<br><br>
+<a name="Is64Bit"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#Is64Bit">Is64Bit</a></td>
+            <td>(void) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns true if the selected process is 64-bit. Returns false if no process is selected.
+<br><br>
+<a name="IsDebugged"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#IsDebugged">IsDebugged</a></td>
+            <td>(void) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns true if the selected process is being debugged. Returns false if no process is selected.</p>
+<p><strong>Mac:</strong> This function requires a valid <a href="#Open">mach task port</a> in order to work.
+<br><br>
+<a name="GetPID"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td><a href="/api/global.html#data-types">int32</a></td>
+            <td ><a class="link" href="#GetPID">GetPID</a></td>
+            <td>(void) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns the unique PID of the selected process. Returns zero if no process is selected.
+<br><br>
+<a name="GetHandle"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td><a href="/api/global.html#data-types">uintptr</a></td>
+            <td ><a class="link" href="#GetHandle">GetHandle</a></td>
+            <td>(void) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns the platform-dependent handle to the selected process. If no process is selected, this function returns zero. On Linux, this function will always return zero. On Mac, this function returns a mach task port as retrieved by task_for_pid, or zero if it failed. On Windows, this function returns a handle to the process as retrieved by <a href="//msdn.microsoft.com/en-us/library/windows/desktop/ms684320.aspx">OpenProcess</a>.
+<br><br>
+<a name="GetName"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>string</td>
+            <td ><a class="link" href="#GetName">GetName</a></td>
+            <td>(void) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns the executable image name of the selected process, as a UTF-8 encoded string. This function does not return the platform-dependent executable name but rather just the last portion of <a href="#GetPath">GetPath</a>. Returns an empty string if no name is available or no process has been selected.
+<br><br>
+<a name="GetPath"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>string</td>
+            <td ><a class="link" href="#GetPath">GetPath</a></td>
+            <td>(void) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns the full path of the executable image for the selected process, as a UTF-8 encoded string. A forward slash (/) is always used to represent directories across all platforms. Returns an empty string if no path is available or no process has been selected.
+<br><br>
+<a name="Exit"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>void</td>
+            <td ><a class="link" href="#Exit">Exit</a></td>
+            <td>(void)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Attempts to exit the selected process. This function may not always cause the process to exit, such as in the case of save prompts. On Linux and Mac, a SIGTERM signal is sent to the selected process. On Windows, this function posts a WM_CLOSE message to all top-level windows of the process. Console applications on Windows that do not run an event loop, or whose event loop does not handle the WM_CLOSE message can only be terminated using <a href="#Kill">Kill</a>. Does nothing if no process is selected.
+<br><br>
+<a name="Kill"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>void</td>
+            <td ><a class="link" href="#Kill">Kill</a></td>
+            <td>(void)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Kills the selected process, causing it to exit immediately. On Linux and Mac, a SIGKILL signal is sent to the selected process. On Windows, this function calls <a href="//msdn.microsoft.com/en-us/library/windows/desktop/ms686714.aspx">TerminateProcess</a> on the selected process. Does nothing if no process is selected.
+<br><br>
+<a name="HasExited"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#HasExited">HasExited</a></td>
+            <td>(void) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns true if the selected process has exited. If no process is selected, this function returns true. On Linux and Mac, once the process has terminated, the associated PID will become invalid, in turn, making this class invalid. On Windows, a handle to a process can remain valid even when the process has terminated, allowing certain functionality to still work.
+<br><br>
+<a name="GetModules"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td><a href="/api/process.html#types">ModuleList</a></td>
+            <td ><a class="link" href="#GetModules">GetModules</a></td>
+            <td>(const char* name  &#x3D; nullptr) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns a list of all <a href="/api/module.html">modules</a> loaded into the selected process. <strong>name</strong> accepts any valid case-insensitive <a href="//www.cplusplus.com/reference/regex/ECMAScript/">ECMAScript</a> regular expression which will be used to filter out modules by <a href="/api/module.html#GetName">name</a>. An empty list will be returned if no process has been selected or the regular expression syntax is incorrect, as determined by <a href="//www.cplusplus.com/reference/regex/">regex</a>. The resulting list is guaranteed to be sorted from the lowest <a href="/api/module.html#GetBase">base</a> address to the highest and will never contain any duplicate entries.</p>
+<p><strong>Mac:</strong> This function requires a valid <a href="#Open">mach task port</a> in order to work.
+<br><br>
+<a name="GetWindows"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td><a href="/api/window.html#types">WindowList</a></td>
+            <td ><a class="link" href="#GetWindows">GetWindows</a></td>
+            <td>(const char* title &#x3D; nullptr) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns a list of all visible <a href="/api/window.html">windows</a> on the system which are a part of the selected process. <strong>title</strong> accepts any valid case-insensitive <a href="//www.cplusplus.com/reference/regex/ECMAScript/">ECMAScript</a> regular expression which will be used to filter out windows by <a href="/api/window.html#GetTitle">title</a>. An empty list will be returned if no process has been selected or the regular expression syntax is incorrect, as determined by <a href="//www.cplusplus.com/reference/regex/">regex</a>.
+<br><br>
+<a name="GetList"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+            <td>static</td>
+            <td><a href="/api/process.html#types">ProcessList</a></td>
+            <td ><a class="link" href="#GetList">GetList</a></td>
+            <td>(const char* name  &#x3D; nullptr)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns a list of all <a href="#Open">selectable</a> processes on the system. <strong>name</strong> accepts any valid case-insensitive <a href="//www.cplusplus.com/reference/regex/ECMAScript/">ECMAScript</a> regular expression which will be used to filter out processes by <a href="#GetName">name</a>. An empty list will be returned if the regular expression syntax is incorrect, as determined by <a href="//www.cplusplus.com/reference/regex/">regex</a>.
+<br><br>
+<a name="GetCurrent"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+            <td>static</td>
+            <td><a href="/api/process.html">Process</a></td>
+            <td ><a class="link" href="#GetCurrent">GetCurrent</a></td>
+            <td>(void)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Selects and returns the current active/calling process.
+<br><br>
+<a name="IsSys64Bit"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+            <td>static</td>
+            <td>bool</td>
+            <td ><a class="link" href="#IsSys64Bit">IsSys64Bit</a></td>
+            <td>(void)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns true if the running operating system is 64-bit.</p>
+<h2 id="operators">Operators</h2>
+<p><a name="OpEq"></a>
+<a name="OpNe"></a>
+<a name="OpEq2"></a>
+<a name="OpNe2"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#OpEq">operator &#x3D;&#x3D;</a></td>
+            <td>(const <a href="/api/process.html">Process</a>&amp; process) const</td>
+        </tr>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#OpNe">operator !&#x3D;</a></td>
+            <td>(const <a href="/api/process.html">Process</a>&amp; process) const</td>
+        </tr>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#OpEq2">operator &#x3D;&#x3D;</a></td>
+            <td>(<a href="/api/global.html#data-types">int32</a> pid) const</td>
+        </tr>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#OpNe2">operator !&#x3D;</a></td>
+            <td>(<a href="/api/global.html#data-types">int32</a> pid) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Performs equality comparison to determine whether two processes have identical <a href="#GetPID">PIDs</a>.</p>
+<h1 id="examples">Examples</h1>
+<pre><code class="lang-cpp"><span class="hljs-comment">// C++</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;Robot.h&gt;</span></span>
+ROBOT_NS_USE_ALL;
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span> <span class="hljs-params">(<span class="hljs-keyword">void</span>)</span>
+</span>{
+    <span class="hljs-comment">// Retrieve the active/calling process</span>
+    Process process = Process::GetCurrent();
+
+    process.IsValid(); <span class="hljs-comment">// True if valid</span>
+    process.Is64Bit(); <span class="hljs-comment">// True if 64-bit</span>
+    process.GetPID (); <span class="hljs-comment">// PID of process</span>
+    process.GetName(); <span class="hljs-comment">// binary</span>
+    process.GetPath(); <span class="hljs-comment">// path/to/binary</span>
+
+    <span class="hljs-comment">// Create a shared copy</span>
+    Process copy = process;
+
+    copy.Open (<span class="hljs-number">4815</span>); <span class="hljs-comment">// True if valid and selectable</span>
+    copy == process;  <span class="hljs-comment">// True  because of shared ptr</span>
+    copy != process;  <span class="hljs-comment">// False because of shared ptr</span>
+
+    process.Kill ();     <span class="hljs-comment">// Terminate immediately</span>
+    process.HasExited(); <span class="hljs-comment">// True if terminated</span>
+    process.Close();     <span class="hljs-comment">// Completely optional</span>
+
+    <span class="hljs-comment">// GetModules discussed in Module documentation</span>
+    <span class="hljs-comment">// GetWindows discussed in Window documentation</span>
+
+    <span class="hljs-comment">// Try debuggex.com for regex visualization</span>
+    <span class="hljs-keyword">auto</span> <span class="hljs-built_in">list</span> = Process::GetList (<span class="hljs-string">".*binary.*"</span>);
+
+    <span class="hljs-comment">// List is an STL vector</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> <span class="hljs-keyword">auto</span>&amp; p : <span class="hljs-built_in">list</span>)
+        p.GetName(); <span class="hljs-comment">// Always contains "binary"</span>
+
+    Process::IsSys64Bit(); <span class="hljs-comment">// True if 64-bit OS</span>
+    return <span class="hljs-number">0</span>;
+}
+</code></pre>
+<pre><code class="lang-js"><span class="hljs-comment">// Node</span>
+<span class="hljs-keyword">var</span> robot = <span class="hljs-built_in">require</span> (<span class="hljs-string">"robot-js"</span>);
+
+<span class="hljs-comment">// Retrieve the active/calling process</span>
+<span class="hljs-keyword">var</span> process = robot.Process.getCurrent();
+
+process.isValid(); <span class="hljs-comment">// True if valid</span>
+process.is64Bit(); <span class="hljs-comment">// True if 64-bit</span>
+process.getPID (); <span class="hljs-comment">// PID of process</span>
+process.getName(); <span class="hljs-comment">// binary</span>
+process.getPath(); <span class="hljs-comment">// path/to/binary</span>
+
+<span class="hljs-comment">// Create independent copy</span>
+<span class="hljs-keyword">var</span> copy = process.clone();
+
+copy.open  (<span class="hljs-number">4815</span>); <span class="hljs-comment">// True if valid and selectable</span>
+copy.eq (process); <span class="hljs-comment">// False because of new copy</span>
+copy.ne (process); <span class="hljs-comment">// True  because of new copy</span>
+
+copy.kill ();      <span class="hljs-comment">// Terminate immediately</span>
+copy.hasExited();  <span class="hljs-comment">// True if terminated</span>
+copy.close();      <span class="hljs-comment">// Completely optional</span>
+
+<span class="hljs-comment">// getModules discussed in Module documentation</span>
+<span class="hljs-comment">// getWindows discussed in Window documentation</span>
+
+<span class="hljs-comment">// Try debuggex.com for regex visualization</span>
+<span class="hljs-keyword">var</span> list = robot.Process.getList (<span class="hljs-string">".*binary.*"</span>);
+
+<span class="hljs-comment">// List is an array</span>
+list.map (<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">p</span>)
+</span>{
+    p.getName(); <span class="hljs-comment">// Always contains "binary"</span>
+});
+
+robot.Process.isSys64Bit(); <span class="hljs-comment">// True if 64-bit OS</span>
+</code></pre>
+
+
+		</div>
+
+		<div class="clearfix"></div>
+	</div>
+</section>
+
+		<div id="footer-pad"></div>
+		<section id="footer">
+			<div class="container">
+
+				<div class="author">
+					<p>Licensed under the <a href="//opensource.org/licenses/Zlib">ZLIB License</a></p>
+					<p>Project by the <a href="//github.com/orgs/robot/people">Robot Developers</a></p>
+				</div>
+
+				<div class="github">
+					<p>Proudly Hosted on <a href="//pages.github.com">
+						<svg><use xlink:href="/common/vectors.svg#github" /></svg>
+					</a></p>
+				</div>
+
+				<div class="clearfix"></div>
+
+			</div>
+		</section>
+	</div>
+
+	<script src="/common/svg4everybody.js"></script><script>svg4everybody();</script>
+
+	<script>
+		(function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,"script","//www.google-analytics.com/analytics.js","ga");
+		ga("create", "UA-41804800-7", "auto"); ga("send", "pageview");
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+
+<!--////////////////////////////////////////////////////////////////////////////
+// ========================================================================== //
+//                                                                            //
+//                       (C) 2010-2016 Robot Developers                       //
+//                       See LICENSE for licensing info                       //
+//                                                                            //
+// ========================================================================== //
+/////////////////////////////////////////////////////////////////////////////-->
+
+<html lang="en">
+<head>
+
+	<title>Robot Global Types</title>
+	<meta name="description" content="Robot documentation and information site">
+
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name=      "mobile-web-app-capable" content="no">
+	<meta name="apple-mobile-web-app-capable" content="no">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="viewport" content="width=980, maximum-scale=1">
+
+	<link rel="stylesheet" href="/common/normalize.css" />
+	<link rel="stylesheet" href="/common/docs.css" />
+
+	<link rel="shortcut icon" href="/common/favicon.ico" />
+
+</head>
+<body>
+
+	<div id="body">
+		
+
+
+<section id="header">
+	<div class="noise"></div>
+
+	<section id="banner">
+		<div class="container">
+
+			<a href="/">
+				<svg><use xlink:href="/common/vectors.svg#logo" /></svg>
+			</a>
+
+		</div>
+	</section>
+
+	<section id="menu">
+		<div class="container">
+	
+			<nav>
+				<a href="/docs/about.html"     >DOCUMENTATION</a>
+				<a href="/api/global.html"     >API          </a>
+				<a href="/docs/philosophy.html">COMMUNITY    </a>
+				<a href="//github.com/robot"   >GITHUB       </a>
+			</nav>
+	
+		</div>
+	</section>
+</section>
+
+<section id="docs">
+	<div class="container">
+
+		<div id="sidebar">
+
+			<nav>
+				<h1>Types</h1>
+				<a class="active" href="/api/global.html"   >Global   </a>
+				<a  href="/api/enum.html"     >Enum     </a>
+				<a  href="/api/hash.html"     >Hash     </a>
+				<a  href="/api/color.html"    >Color    </a>
+				<a  href="/api/image.html"    >Image    </a>
+				<a  href="/api/range.html"    >Range    </a>
+				<a  href="/api/point.html"    >Point    </a>
+				<a  href="/api/size.html"     >Size     </a>
+				<a  href="/api/bounds.html"   >Bounds   </a>
+			</nav>
+			<nav>
+				<h1>Native</h1>
+				<a  href="/api/keyboard.html" >Keyboard </a>
+				<a  href="/api/mouse.html"    >Mouse    </a>
+				<a  href="/api/process.html"  >Process  </a>
+				<a  href="/api/module.html"   >Module   </a>
+				<a  href="/api/memory.html"   >Memory   </a>
+				<a  href="/api/window.html"   >Window   </a>
+				<a  href="/api/screen.html"   >Screen   </a>
+				<a  href="/api/timer.html"    >Timer    </a>
+				<a  href="/api/clipboard.html">Clipboard</a>
+			</nav>
+
+		</div>
+		<div id="content" class="marked">
+
+			<h1 id="global">Global</h1>
+<a class="edit" href="//github.com/robot/robot.github.io/edit/master/source/api/global.html">Edit on GitHub</a><div class="include">
+	#<span class="keyword">include</span> <span class="string">&lt;Global.h&gt;</span>
+	<div class="details">
+		<a href="//github.com/robot/robot/blob/master/Source/Global.h" >Header</a>
+		
+	</div>
+	<div class="clearfix"></div>
+</div><p>Defines global symbols used throughout the library including <a href="#version">version</a> macros, <a href="#platforms">platform</a> macros, <a href="#export">class export</a> routines, <a href="#namespaces">namespace</a> declarations and <a href="#data-types">data type</a> definitions. Version macros can be used to retrieve the current version of Robot. Platform macros can be used to identify supported operating systems and architectures. Class export routines provide Robot with the flexibility of supporting multiple compiler configurations. Namespace declarations can be used to manage and modify the Robot namespace. And data type definitions define cross-platform fixed-length data types.</p>
+<h2 id="version">Version</h2>
+<p>Defines two macros representing the version of Robot currently in use. The first macro, <strong>ROBOT_VERSION</strong>, expands to an integer of the form <code>0xMMNNPP</code> where <code>MM</code> means major, <code>NN</code> means minor, and <code>PP</code> means patch. So if the application is compiled against Robot <code>2.3.4</code>, the macro will expand to <code>0x020304</code>. The second macro, <strong>ROBOT_VERSION_STR</strong>, expands to a string of the form <code>&quot;M.N.P&quot;</code>. As with the example above, the macro will expand to <code>&quot;2.3.4&quot;</code>.</p>
+<h2 id="platforms">Platforms</h2>
+<pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ROBOT_OS_LINUX          <span class="hljs-comment">// Defined when compiling on Linux</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ROBOT_OS_MAC            <span class="hljs-comment">// Defined when compiling on OS X</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ROBOT_OS_WIN            <span class="hljs-comment">// Defined when compiling on Windows</span></span>
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ROBOT_ARCH_64           <span class="hljs-comment">// Defined when compiling as x64</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ROBOT_ARCH_32           <span class="hljs-comment">// Defined when compiling as x86</span></span>
+</code></pre>
+<p>Defines macros for identifying operating systems and architectures. These macros are used heavily throughout the library and enable cross-platform development. operating system macros can be used in cases where platform-specific code is required whereas architecture macros can be used in cases where architecture-specific code is required.</p>
+<h2 id="export">Export</h2>
+<p>Defines macros for supporting multiple compiler configurations. These are especially important when Robot is used as a shared library. The <strong>ROBOT_EXPORT</strong> macro marks a symbol for export and is only used within the Robot library itself. The <strong>BUILDING_ROBOT_SHARED</strong> macro is defined whenever Robot is being built as a shared library. And the <strong>USING_ROBOT_SHARED</strong> macro is defined whenever an application using Robot as a shared library is being built. None of these macros should be defined when Robot is used as a static library.</p>
+<h2 id="namespaces">Namespaces</h2>
+<pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ROBOT_NS                <span class="hljs-comment">// Name of the Robot namespace</span></span>
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ROBOT_NS_BEGIN          <span class="hljs-comment">// Begins the Robot namespace</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ROBOT_NS_END            <span class="hljs-comment">//   Ends the Robot namespace</span></span>
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ROBOT_NS_PRE( name )    <span class="hljs-comment">// Preface a single Robot symbol</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ROBOT_NS_FWD( name )    <span class="hljs-comment">// Forward declare a Robot class</span></span>
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ROBOT_NS_USE_ALL        <span class="hljs-comment">// Use the entire Robot namespace</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ROBOT_NS_USE( name )    <span class="hljs-comment">// Use only a single Robot class</span></span>
+</code></pre>
+<p>Defines macros for configuring and managing the Robot namespace. By default, Robot uses <code>&quot;Robot&quot;</code> as its namespace. Most of the time this does not need to be modified, however, in the case of conflicts, the namespace can be modified through the <strong>ROBOT_NS</strong> macro. Namespaces can either be set on a project-wide basis or before including any Robot-specific header files. All other namespace macros adapt to use the custom namespace.</p>
+<h2 id="data-types">Data Types</h2>
+<pre><code class="lang-cpp"><span class="hljs-keyword">typedef</span> int8                    <span class="hljs-comment">// Signed  8-bit integer</span>
+<span class="hljs-keyword">typedef</span> int16                   <span class="hljs-comment">// Signed 16-bit integer</span>
+<span class="hljs-keyword">typedef</span> int32                   <span class="hljs-comment">// Signed 32-bit integer</span>
+<span class="hljs-keyword">typedef</span> int64                   <span class="hljs-comment">// Signed 64-bit integer</span>
+
+<span class="hljs-keyword">typedef</span> uint8                   <span class="hljs-comment">// Unsigned  8-bit integer</span>
+<span class="hljs-keyword">typedef</span> uint16                  <span class="hljs-comment">// Unsigned 16-bit integer</span>
+<span class="hljs-keyword">typedef</span> uint32                  <span class="hljs-comment">// Unsigned 32-bit integer</span>
+<span class="hljs-keyword">typedef</span> uint64                  <span class="hljs-comment">// Unsigned 64-bit integer</span>
+
+<span class="hljs-keyword">typedef</span> real32                  <span class="hljs-comment">// 32-bit float value</span>
+<span class="hljs-keyword">typedef</span> real64                  <span class="hljs-comment">// 64-bit float value</span>
+
+<span class="hljs-keyword">typedef</span> intptr                  <span class="hljs-comment">// Signed   pointer integer</span>
+<span class="hljs-keyword">typedef</span> uintptr                 <span class="hljs-comment">// Unsigned pointer integer</span>
+</code></pre>
+<p>Declares several data types that guarantee a specific bit-size on all supported platforms. Pointer types are guaranteed to be the size of a pointer, that is, 32-bit when compiling as x86 and 64-bit when compiling as x64.</p>
+
+
+		</div>
+
+		<div class="clearfix"></div>
+	</div>
+</section>
+
+		<div id="footer-pad"></div>
+		<section id="footer">
+			<div class="container">
+
+				<div class="author">
+					<p>Licensed under the <a href="//opensource.org/licenses/Zlib">ZLIB License</a></p>
+					<p>Project by the <a href="//github.com/orgs/robot/people">Robot Developers</a></p>
+				</div>
+
+				<div class="github">
+					<p>Proudly Hosted on <a href="//pages.github.com">
+						<svg><use xlink:href="/common/vectors.svg#github" /></svg>
+					</a></p>
+				</div>
+
+				<div class="clearfix"></div>
+
+			</div>
+		</section>
+	</div>
+
+	<script src="/common/svg4everybody.js"></script><script>svg4everybody();</script>
+
+	<script>
+		(function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,"script","//www.google-analytics.com/analytics.js","ga");
+		ga("create", "UA-41804800-7", "auto"); ga("send", "pageview");
+	</script>
+
+</body>
+</html>

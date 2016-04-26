@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+
+<!--////////////////////////////////////////////////////////////////////////////
+// ========================================================================== //
+//                                                                            //
+//                       (C) 2010-2016 Robot Developers                       //
+//                       See LICENSE for licensing info                       //
+//                                                                            //
+// ========================================================================== //
+/////////////////////////////////////////////////////////////////////////////-->
+
+<html lang="en">
+<head>
+
+	<title>Robot Enum Class</title>
+	<meta name="description" content="Robot documentation and information site">
+
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name=      "mobile-web-app-capable" content="no">
+	<meta name="apple-mobile-web-app-capable" content="no">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="viewport" content="width=980, maximum-scale=1">
+
+	<link rel="stylesheet" href="/common/normalize.css" />
+	<link rel="stylesheet" href="/common/docs.css" />
+
+	<link rel="shortcut icon" href="/common/favicon.ico" />
+
+</head>
+<body>
+
+	<div id="body">
+		
+
+
+
+<section id="header">
+	<div class="noise"></div>
+
+	<section id="banner">
+		<div class="container">
+
+			<a href="/">
+				<svg><use xlink:href="/common/vectors.svg#logo" /></svg>
+			</a>
+
+		</div>
+	</section>
+
+	<section id="menu">
+		<div class="container">
+	
+			<nav>
+				<a href="/docs/about.html"     >DOCUMENTATION</a>
+				<a href="/api/global.html"     >API          </a>
+				<a href="/docs/philosophy.html">COMMUNITY    </a>
+				<a href="//github.com/robot"   >GITHUB       </a>
+			</nav>
+	
+		</div>
+	</section>
+</section>
+
+<section id="docs">
+	<div class="container">
+
+		<div id="sidebar">
+
+			<nav>
+				<h1>Types</h1>
+				<a  href="/api/global.html"   >Global   </a>
+				<a class="active" href="/api/enum.html"     >Enum     </a>
+				<a  href="/api/hash.html"     >Hash     </a>
+				<a  href="/api/color.html"    >Color    </a>
+				<a  href="/api/image.html"    >Image    </a>
+				<a  href="/api/range.html"    >Range    </a>
+				<a  href="/api/point.html"    >Point    </a>
+				<a  href="/api/size.html"     >Size     </a>
+				<a  href="/api/bounds.html"   >Bounds   </a>
+			</nav>
+			<nav>
+				<h1>Native</h1>
+				<a  href="/api/keyboard.html" >Keyboard </a>
+				<a  href="/api/mouse.html"    >Mouse    </a>
+				<a  href="/api/process.html"  >Process  </a>
+				<a  href="/api/module.html"   >Module   </a>
+				<a  href="/api/memory.html"   >Memory   </a>
+				<a  href="/api/window.html"   >Window   </a>
+				<a  href="/api/screen.html"   >Screen   </a>
+				<a  href="/api/timer.html"    >Timer    </a>
+				<a  href="/api/clipboard.html">Clipboard</a>
+			</nav>
+
+		</div>
+		<div id="content" class="marked">
+
+			<h1 id="enum">Enum&lt;T&gt;</h1>
+<a class="edit" href="//github.com/robot/robot.github.io/edit/master/source/api/enum.html">Edit on GitHub</a><div class="include">
+	#<span class="keyword">include</span> <span class="string">&lt;Enum.h&gt;</span>
+	<div class="details">
+		<a href="//github.com/robot/robot/blob/master/Source/Enum.h" >Header</a>
+		
+	</div>
+	<div class="clearfix"></div>
+</div><table id="Enum" class="class">
+<thead>
+	<tr>
+		<th>S</th><th>Return</th><th>Name</th><th>Parameters</th>
+	</tr>
+</thead>
+<tbody>
+	<tr>
+		<td>&#10004;</td>
+		<td>uintptr</td>
+		<td><a href="#Size">Size</a></td>
+		<td>(void)</td>
+	</tr>
+	<tr>
+		<td>&#10004;</td>
+		<td>const ValueMap&amp;</td>
+		<td><a href="#GetMap">GetMap</a></td>
+		<td>(void)</td>
+	</tr>
+	<tr>
+		<td>&#10004;</td>
+		<td>Type</td>
+		<td><a href="#Parse">Parse</a></td>
+		<td>(const string&amp; key, Type default &#x3D; -1)</td>
+	</tr>
+	<tr>
+		<td>&#10004;</td>
+		<td>string</td>
+		<td><a href="#Parse2">Parse</a></td>
+		<td>(Type value, const char* default &#x3D; &quot;&quot;)</td>
+	</tr>
+</tbody>
+</table><h2 id="description">Description</h2>
+<p>Represents a helper class for modeling and analyzing C++ enumerations. Traditionally, C++ provides little to no runtime reflection capabilities, especially when it comes to enumerations. The Enum class changes this by providing the ability to model existing enumerations and analyze them at runtime. The underlying type remains unchanged, and all functionality is accessed directly through the Enum class.</p>
+<p>To begin analyzing enumerations, they must first be modeled through the use of <a href="#macros">macros</a>. Afterwards, static functions in the class can be used for a variety of tasks. For example, to get the size of the enumeration, use the <a href="#Size">Size</a> function. To retrieve the raw string-constant pairs, use the <a href="#GetMap">GetMap</a> function. To convert constants into strings and vice-versa, use the <a href="#Parse">Parse</a> functions.</p>
+<h2 id="macros">Macros</h2>
+<p>Defines two macros for modeling enumerations. The first macro, <strong>ROBOT_ENUM</strong>, expands into a function signature defining the constructor of this class. Since templates expand into unique types, a constructor must be defined for each supported enumeration. Place this macro inside a source file, with the desired enumeration name followed by an opening and closing brace.</p>
+<p>Within the declaration itself, use the second macro, <strong>ROBOT_ENUM_MAP</strong>, which expands into a hash map assignment. The first parameter represents the enumeration constant while the second represents the mapped string. If the second parameter is omitted, a stringified version of the first parameter will be used instead. A single constant may map to multiple strings.</p>
+<p><strong>Linux:</strong> To maintain compatibility with GCC, define models within the Robot namespace.</p>
+<pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ROBOT_ENUM     (type     )</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ROBOT_ENUM_MAP (cnst     )</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ROBOT_ENUM_MAP (cnst, str)</span>
+</code></pre>
+<h2 id="types">Types</h2>
+<pre><code class="lang-cpp"><span class="hljs-keyword">typedef</span> <span class="hljs-built_in">unordered_map</span>&lt;<span class="hljs-built_in">string</span>, Type&gt; Enum::ValueMap;
+</code></pre>
+<h2 id="functions">Functions</h2>
+<p><a name="Size"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+            <td>static</td>
+            <td><a href="/api/global.html#data-types">uintptr</a></td>
+            <td ><a class="link" href="#Size">Size</a></td>
+            <td>(void)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns the size of the enumeration, as specified by the <a href="#macros">model</a>. The size does not reflect the number of entries in the enumeration but rather, the total number of entries in the model.
+<br><br>
+<a name="GetMap"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+            <td>static</td>
+            <td>const <a href="/api/enum.html#types">ValueMap</a>&amp;</td>
+            <td ><a class="link" href="#GetMap">GetMap</a></td>
+            <td>(void)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns the enumeration <a href="#macros">model</a> as a hash map of string-constant pairs.
+<br><br>
+<a name="Parse"></a>
+<a name="Parse2"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+            <td>static</td>
+            <td>Type</td>
+            <td ><a class="link" href="#Parse">Parse</a></td>
+            <td>(const string&amp; key, Type default &#x3D; -1)</td>
+        </tr>
+        <tr>
+            <td>static</td>
+            <td>string</td>
+            <td ><a class="link" href="#Parse2">Parse</a></td>
+            <td>(Type value, const char* default &#x3D; &quot;&quot;)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Converts between enumeration constants and their equivalent string values, as specified by the <a href="#macros">model</a>. If <strong>key</strong> or <strong>value</strong> is not found, <strong>default</strong> is instead returned.</p>
+<h1 id="examples">Examples</h1>
+<pre><code class="lang-cpp"><span class="hljs-comment">// C++</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;Robot.h&gt;</span></span>
+ROBOT_NS_USE_ALL;
+
+<span class="hljs-keyword">enum</span> Example
+{
+    Value1,
+    Value2,
+    Value3,
+    Value4,
+};
+
+<span class="hljs-comment">// Models must be placed within source files and wrapped</span>
+<span class="hljs-comment">// inside the Robot namespace, as needed by GCC on Linux</span>
+
+<span class="hljs-function">ROBOT_NS_BEGIN
+    <span class="hljs-title">ROBOT_ENUM</span> <span class="hljs-params">(Example)</span>
+    </span>{
+        ROBOT_ENUM_MAP (Value1);
+        ROBOT_ENUM_MAP (Value2);
+        ROBOT_ENUM_MAP (Value3, <span class="hljs-string">"Custom1"</span>);
+        ROBOT_ENUM_MAP (Value4, <span class="hljs-string">"Custom2"</span>);
+    }
+<span class="hljs-function">ROBOT_NS_END
+
+<span class="hljs-keyword">int</span> <span class="hljs-title">main</span> <span class="hljs-params">(<span class="hljs-keyword">void</span>)</span>
+</span>{
+    Enum&lt;Example&gt;::Size(); <span class="hljs-comment">// 4</span>
+
+    Enum&lt;Example&gt;::Parse (  Value1 ); <span class="hljs-comment">//  "Value1"</span>
+    Enum&lt;Example&gt;::Parse (  Value3 ); <span class="hljs-comment">// "Custom1"</span>
+    Enum&lt;Example&gt;::Parse ( <span class="hljs-string">"Value2"</span>); <span class="hljs-comment">//   Value2</span>
+    Enum&lt;Example&gt;::Parse (<span class="hljs-string">"Custom2"</span>); <span class="hljs-comment">//   Value4</span>
+
+    Enum&lt;Example&gt;::Parse ((Example) <span class="hljs-number">4</span>); <span class="hljs-comment">// Empty</span>
+    Enum&lt;Example&gt;::Parse (<span class="hljs-string">"Invalid"</span>  ); <span class="hljs-comment">// -1</span>
+
+    <span class="hljs-comment">// Retrieve map for manual parsing</span>
+    <span class="hljs-keyword">auto</span> <span class="hljs-built_in">map</span> = Enum&lt;Example&gt;::GetMap();
+
+    <span class="hljs-comment">// Map is an unordered_map</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> <span class="hljs-keyword">auto</span>&amp; i : <span class="hljs-built_in">map</span>)
+    {
+        i.first;  <span class="hljs-comment">// String</span>
+        i.second; <span class="hljs-comment">// Constant</span>
+    }
+
+    return <span class="hljs-number">0</span>;
+}
+</code></pre>
+
+
+		</div>
+
+		<div class="clearfix"></div>
+	</div>
+</section>
+
+		<div id="footer-pad"></div>
+		<section id="footer">
+			<div class="container">
+
+				<div class="author">
+					<p>Licensed under the <a href="//opensource.org/licenses/Zlib">ZLIB License</a></p>
+					<p>Project by the <a href="//github.com/orgs/robot/people">Robot Developers</a></p>
+				</div>
+
+				<div class="github">
+					<p>Proudly Hosted on <a href="//pages.github.com">
+						<svg><use xlink:href="/common/vectors.svg#github" /></svg>
+					</a></p>
+				</div>
+
+				<div class="clearfix"></div>
+
+			</div>
+		</section>
+	</div>
+
+	<script src="/common/svg4everybody.js"></script><script>svg4everybody();</script>
+
+	<script>
+		(function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,"script","//www.google-analytics.com/analytics.js","ga");
+		ga("create", "UA-41804800-7", "auto"); ga("send", "pageview");
+	</script>
+
+</body>
+</html>

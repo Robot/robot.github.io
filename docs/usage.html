@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+
+<!--////////////////////////////////////////////////////////////////////////////
+// ========================================================================== //
+//                                                                            //
+//                       (C) 2010-2016 Robot Developers                       //
+//                       See LICENSE for licensing info                       //
+//                                                                            //
+// ========================================================================== //
+/////////////////////////////////////////////////////////////////////////////-->
+
+<html lang="en">
+<head>
+
+	<title>Using Robot</title>
+	<meta name="description" content="Robot documentation and information site">
+
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name=      "mobile-web-app-capable" content="no">
+	<meta name="apple-mobile-web-app-capable" content="no">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="viewport" content="width=980, maximum-scale=1">
+
+	<link rel="stylesheet" href="/common/normalize.css" />
+	<link rel="stylesheet" href="/common/docs.css" />
+
+	<link rel="shortcut icon" href="/common/favicon.ico" />
+
+</head>
+<body>
+
+	<div id="body">
+		
+
+
+<section id="header">
+	<div class="noise"></div>
+
+	<section id="banner">
+		<div class="container">
+
+			<a href="/">
+				<svg><use xlink:href="/common/vectors.svg#logo" /></svg>
+			</a>
+
+		</div>
+	</section>
+
+	<section id="menu">
+		<div class="container">
+	
+			<nav>
+				<a href="/docs/about.html"     >DOCUMENTATION</a>
+				<a href="/api/global.html"     >API          </a>
+				<a href="/docs/philosophy.html">COMMUNITY    </a>
+				<a href="//github.com/robot"   >GITHUB       </a>
+			</nav>
+	
+		</div>
+	</section>
+</section>
+
+<section id="docs">
+	<div class="container">
+
+		<div id="sidebar">
+
+			<nav>
+				<h1>Documentation</h1>
+				<a  href="/docs/about.html"       >About       </a>
+				<a class="active" href="/docs/usage.html"       >Usage       </a>
+				<a  href="/docs/node.html"        >Node        </a>
+				<a  href="/docs/platforms.html"   >Platforms   </a>
+				<a  href="/docs/versioning.html"  >Versioning  </a>
+			</nav>
+			<nav>
+				<h1>Community</h1>
+				<a  href="/docs/philosophy.html"  >Philosophy  </a>
+				<a  href="/docs/contributing.html">Contributing</a>
+				<a  href="/docs/conduct.html"     >Conduct     </a>
+				<a  href="/docs/branding.html"    >Branding    </a>
+				<a  href="/docs/attributions.html">Attributions</a>
+			</nav>
+
+		</div>
+		<div id="content" class="marked">
+
+			<h1 id="usage">Usage</h1>
+<p><a class="edit" href="//github.com/robot/robot.github.io/edit/master/source/docs/usage.html">Edit on GitHub</a>Integrating Robot with your project is relatively fast and straightforward, simply follow the instructions below and you&#39;ll be up and running in no time. Please keep in mind, however, that although the instructions are limited to only a select few compilers, there is no reason you shouldn&#39;t be able to use other compilers as well, just ensure you have all the prerequisites installed. If you encounter any problems, and you think it might be a bug, please submit a <a href="/docs/contributing.html#reporting-bugs">bug report</a> and we&#39;ll be more than happy to investigate.</p>
+<h2 id="linux">Linux</h2>
+<h3 id="prerequisites">Prerequisites</h3>
+<ul>
+<li>GNU g++ <strong>4.9.2</strong> or newer</li>
+<li>GNU Make <strong>3.81</strong> or newer</li>
+<li>X11 Toolkit Intrinsics</li>
+<li>X11 Test Extensions</li>
+<li>Xinerama Extensions</li>
+</ul>
+<pre><code class="lang-bash"><span class="hljs-comment"># Example for Ubuntu 12.04</span>
+<span class="hljs-comment"># Update system packages</span>
+$ [sudo] apt-get update
+$ [sudo] apt-get upgrade -y
+
+<span class="hljs-comment"># Install g++ and Make</span>
+$ [sudo] apt-get install build-essential -y
+
+<span class="hljs-comment"># If the installed version of g++ is</span>
+<span class="hljs-comment"># less than 4.9.2, do the following</span>
+
+    <span class="hljs-comment"># Add the toolchain-test-builds PPA and get compilers</span>
+    $ [sudo] add-apt-repository ppa:ubuntu-toolchain-r/<span class="hljs-built_in">test</span>
+    $ [sudo] apt-get update
+    $ [sudo] apt-get install gcc-[ver] g++-[ver] cpp-[ver] -y
+        <span class="hljs-comment"># Replace the above [ver] with the desired version</span>
+        <span class="hljs-comment"># Versions include 4.9 and 5, we recommend using 5</span>
+
+    <span class="hljs-comment"># Replace older compilers</span>
+    $ <span class="hljs-built_in">cd</span> /usr/bin
+    $ [sudo] rm gcc g++ cpp
+    $ [sudo] ln <span class="hljs-_">-s</span> gcc-[ver] gcc
+    $ [sudo] ln <span class="hljs-_">-s</span> g++-[ver] g++
+    $ [sudo] ln <span class="hljs-_">-s</span> cpp-[ver] cpp
+
+<span class="hljs-comment"># Install required libraries</span>
+$ [sudo] apt-get install libxt-dev libxtst-dev libxinerama-dev -y
+</code></pre>
+<h3 id="compiling">Compiling</h3>
+<pre><code class="lang-bash"><span class="hljs-comment"># Download Robot and cd into it</span>
+$ <span class="hljs-built_in">cd</span> /path/to/robot/directory/
+
+<span class="hljs-comment"># Display the make instructions</span>
+<span class="hljs-comment"># Use it as a compilation guide</span>
+$ make
+
+<span class="hljs-comment"># If compiling the testing framework</span>
+<span class="hljs-comment"># you may run it with the following</span>
+$ [sudo] ./Binaries/Linux/Test.bin
+    <span class="hljs-comment"># Run with "types timer" for fully</span>
+    <span class="hljs-comment"># automated testing, other tests</span>
+    <span class="hljs-comment"># require additional interaction</span>
+</code></pre>
+<h2 id="mac">Mac</h2>
+<h3 id="prerequisites">Prerequisites</h3>
+<ul>
+<li>XCode with Command Line Tools</li>
+<li>Expecting clang++ <strong>5.1</strong> or newer</li>
+</ul>
+<h3 id="compiling">Compiling</h3>
+<pre><code class="lang-bash"><span class="hljs-comment"># Download Robot and cd into it</span>
+$ <span class="hljs-built_in">cd</span> /path/to/robot/directory/
+
+<span class="hljs-comment"># Display the make instructions</span>
+<span class="hljs-comment"># Use it as a compilation guide</span>
+$ make
+
+<span class="hljs-comment"># If compiling the testing framework</span>
+<span class="hljs-comment"># you may run it with the following</span>
+$ [sudo] ./Binaries/Mac/Test.bin
+    <span class="hljs-comment"># Run with "types timer" for fully</span>
+    <span class="hljs-comment"># automated testing, other tests</span>
+    <span class="hljs-comment"># require additional interaction</span>
+</code></pre>
+<h2 id="windows">Windows</h2>
+<h3 id="prerequisites">Prerequisites</h3>
+<ul>
+<li>MS <a href="//visualstudio.com">Visual Studio</a> <strong>2010</strong> or newer</li>
+<li>Relevant Windows SDK libraries</li>
+</ul>
+<h3 id="compiling">Compiling</h3>
+<ul>
+<li>Download Robot and open the directory</li>
+<li>Open solution matching your VS version</li>
+<li>Build the project</li>
+<li>Run Test.exe if needed in <code>Binaries/Win*</code></li>
+</ul>
+
+
+		</div>
+
+		<div class="clearfix"></div>
+	</div>
+</section>
+
+		<div id="footer-pad"></div>
+		<section id="footer">
+			<div class="container">
+
+				<div class="author">
+					<p>Licensed under the <a href="//opensource.org/licenses/Zlib">ZLIB License</a></p>
+					<p>Project by the <a href="//github.com/orgs/robot/people">Robot Developers</a></p>
+				</div>
+
+				<div class="github">
+					<p>Proudly Hosted on <a href="//pages.github.com">
+						<svg><use xlink:href="/common/vectors.svg#github" /></svg>
+					</a></p>
+				</div>
+
+				<div class="clearfix"></div>
+
+			</div>
+		</section>
+	</div>
+
+	<script src="/common/svg4everybody.js"></script><script>svg4everybody();</script>
+
+	<script>
+		(function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,"script","//www.google-analytics.com/analytics.js","ga");
+		ga("create", "UA-41804800-7", "auto"); ga("send", "pageview");
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+
+<!--////////////////////////////////////////////////////////////////////////////
+// ========================================================================== //
+//                                                                            //
+//                       (C) 2010-2016 Robot Developers                       //
+//                       See LICENSE for licensing info                       //
+//                                                                            //
+// ========================================================================== //
+/////////////////////////////////////////////////////////////////////////////-->
+
+<html lang="en">
+<head>
+
+	<title>Robot for Node.js</title>
+	<meta name="description" content="Robot documentation and information site">
+
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name=      "mobile-web-app-capable" content="no">
+	<meta name="apple-mobile-web-app-capable" content="no">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="viewport" content="width=980, maximum-scale=1">
+
+	<link rel="stylesheet" href="/common/normalize.css" />
+	<link rel="stylesheet" href="/common/docs.css" />
+
+	<link rel="shortcut icon" href="/common/favicon.ico" />
+
+</head>
+<body>
+
+	<div id="body">
+		
+
+
+
+<section id="header">
+	<div class="noise"></div>
+
+	<section id="banner">
+		<div class="container">
+
+			<a href="/">
+				<svg><use xlink:href="/common/vectors.svg#logo" /></svg>
+			</a>
+
+		</div>
+	</section>
+
+	<section id="menu">
+		<div class="container">
+	
+			<nav>
+				<a href="/docs/about.html"     >DOCUMENTATION</a>
+				<a href="/api/global.html"     >API          </a>
+				<a href="/docs/philosophy.html">COMMUNITY    </a>
+				<a href="//github.com/robot"   >GITHUB       </a>
+			</nav>
+	
+		</div>
+	</section>
+</section>
+
+<section id="docs">
+	<div class="container">
+
+		<div id="sidebar">
+
+			<nav>
+				<h1>Documentation</h1>
+				<a  href="/docs/about.html"       >About       </a>
+				<a  href="/docs/usage.html"       >Usage       </a>
+				<a class="active" href="/docs/node.html"        >Node        </a>
+				<a  href="/docs/platforms.html"   >Platforms   </a>
+				<a  href="/docs/versioning.html"  >Versioning  </a>
+			</nav>
+			<nav>
+				<h1>Community</h1>
+				<a  href="/docs/philosophy.html"  >Philosophy  </a>
+				<a  href="/docs/contributing.html">Contributing</a>
+				<a  href="/docs/conduct.html"     >Conduct     </a>
+				<a  href="/docs/branding.html"    >Branding    </a>
+				<a  href="/docs/attributions.html">Attributions</a>
+			</nav>
+
+		</div>
+		<div id="content" class="marked">
+
+			<h1 id="node">Node</h1>
+<p><a class="edit" href="//github.com/robot/robot.github.io/edit/master/source/docs/node.html">Edit on GitHub</a>In addition to the C++ library, Robot can also be integrated with new or existing <a href="//nodejs.org">Node</a> projects. Although there are some key differences in syntax and coding style, the bulk of the JavaScript API remains identical to its C++ counterpart. Since most of this site focuses on the C++ API, this page is dedicated towards documenting all the differences between the two API&#39;s for the purposes of helping you get started more quickly and easily. Please review all the sections below prior to using Robot in your Node projects.</p>
+<p>Please keep in mind that the API documentation includes examples in both C++ and JavaScript. For more in-depth examples, explore the test cases, however, this document along with the examples in the API section should be sufficient to understand the API.</p>
+<h2 id="installing">Installing</h2>
+<p>The Node version of Robot is called <a href="//npmjs.com/robot-js">robot-js</a> and like most Node libraries, it can be downloaded through <a href="//npmjs.com">NPM</a>. Since robot-js is a Node addon, it requires a binary compilation step in order to work. However, this is not always convenient as it requires setting up the appropriate development environment prior to installation. To make setup easier, we provide precompiled versions of binaries for the most common platforms where Robot is <a href="/docs/platforms.html">supported</a>. These binaries will be downloaded automatically during installation. If the binaries could not be downloaded, you will have to <a href="#compiling">compile</a> them manually.</p>
+<p><strong>Warning:</strong> To save on bandwidth, only binaries appropriate to your immediate environment will be downloaded. Switching to a different platform or Node module version will require a reinstallation or recompilation of the robot-js binaries.</p>
+<pre><code class="lang-bash">$ npm install robot-js
+</code></pre>
+<h2 id="versioning">Versioning</h2>
+<p>Like the C++ library, robot-js has its own independent version number. This is needed because robot-js uses the C++ library but both libraries are developed independently and could have their own issues. To access the version of the C++ library, use the <a href="/api/global.html#version">ROBOT_VERSION</a> and <a href="/api/global.html#version">ROBOT_VERSION_STR</a> constants. To access the version of robot-js, which is identical to the package version, use the <strong>ADDON_VERSION</strong> and <strong>ADDON_VERSION_STR</strong> constants.</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> robot = <span class="hljs-built_in">require</span> (<span class="hljs-string">"robot-js"</span>);
+
+robot.ROBOT_VERSION;     <span class="hljs-comment">// 0x020304</span>
+robot.ROBOT_VERSION_STR; <span class="hljs-comment">// "2.3.4"</span>
+
+robot.ADDON_VERSION;     <span class="hljs-comment">// 0x010102</span>
+robot.ADDON_VERSION_STR; <span class="hljs-comment">// "1.1.2"</span>
+</code></pre>
+<h2 id="conventions">Conventions</h2>
+<p>Unlike C++, JavaScript has a well established set of coding conventions which is respected by most Node libraries and robot-js is no exception. As such, this section will help outline the core differences in coding conventions between the C++ and JavaScript APIs.</p>
+<h3 id="types">Types</h3>
+<p>JavaScript is a loosely typed, dynamic language which means that you don&#39;t actually have to declare the type of the variable ahead of time like you do with C++. Instead, the type will be determined automatically while the program is being executed. That being said, JavaScript has four fundamental data types: booleans, numbers, strings and objects. The boolean type remains identical to its C++ counterpart and has no special considerations attached to it. Numbers, on the other hand, are treated as a single type in JavaScript.</p>
+<p>While C++ has special denominations for its numbers (e.g. variable bit-length integers and floating-point numbers), JavaScript will always only have a single type to represents its numbers. Internally, numbers are represented as double-precision floating-point values, which means that JavaScript can never truly support 64-bit integers, however this is usually not a problem as large 64-bit operations are rare. In the case of optimization, most JavaScript engines will use integers until a floating-point operation is performed, at which point, it will transparently switch over to a double-precision representation. Now with regards to memory addresses, since they can never realistically exceed the maximum representable number, no special accommodations are required.</p>
+<p>C++ has a wide range of methods for representing strings. These include character pointers, character arrays, STL strings and more. While a bit tricky to work with in C++, in JavaScript these are all represented as simple UTF-8 encoded strings. This means that whenever one of the C++ string types is used, it is safe to assume it will behave as a regular JavaScript string.</p>
+<p>Last but not least, JavaScript has a unified method of representing objects and arrays. In C++, STL containers like vector and unordered_map are used to represent managed arrays and hash maps. In JavaScript they are substituted with arrays and objects, respectively. Now, whenever an unmanaged pointer-type is used, Node <a href="//nodejs.org/api/buffer.html">Buffers</a> and JavaScript <a href="//developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays">Typed Arrays</a> are used instead. This allows the API to remain identical across both languages. For more details, see the class-specific <a href="#changes">changes</a> below.</p>
+<h3 id="constants">Constants</h3>
+<p>In robot-js, all constants including those found in enumerations will be represented in all caps. Furthermore, each word or camel-cased character is separated with an underscore. This means that constants like <strong>KeySpace</strong> and <strong>ButtonLeft</strong> will become <strong>KEY_SPACE</strong> and <strong>BUTTON_LEFT</strong> respectively. In addition, all constants will be defined in their original locations as specified by the documentation. This means that constants which are part of the Memory object will continue to be part of the Memory object and constants which are part of the global object will be part of the global robot object, as returned by the require statement loading the robot-js library.</p>
+<h3 id="functions">Functions</h3>
+<p>In JavaScript, all function names begin with lowercase characters. This is different from the C++ version of the library in which all the function names begin with uppercase characters. This is important to keep in mind when reading the documentation as all function names will begin with uppercase characters.</p>
+<p>With regards to function overloading and function consistency, the robot-js API remains identical to C++ except for a few minor cases described <a href="#changes">below</a>. Utility classes like Point and Bounds are especially precise when it comes to function overloading and even provide greater flexibility consistent with traditional JavaScript design patterns. For more information about function overloading and overloading robot-specific data types, see the section <a href="#changes">below</a>.</p>
+<p><strong>Warning:</strong> Calling functions with incorrect parameters will result in runtime exceptions or other undefined behavior. As a result, special care must be taken to ensure that all functions are called with their correct parameters.</p>
+<h3 id="operators">Operators</h3>
+<p>JavaScript does not currently support operator overloading. As such, all operator functions have been assigned a name or in some cases, even removed. The naming conventions, however, are consistent across the entire API except for a few minor cases where a more descriptive name is used instead, see <a href="#changes">below</a> for more details. The naming conventions are as follows:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Operator</th>
+<th style="text-align:center">Becomes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">==</td>
+<td style="text-align:center">eq</td>
+</tr>
+<tr>
+<td style="text-align:center">!=</td>
+<td style="text-align:center">ne</td>
+</tr>
+<tr>
+<td style="text-align:center">+</td>
+<td style="text-align:center">add</td>
+</tr>
+<tr>
+<td style="text-align:center">-</td>
+<td style="text-align:center">sub</td>
+</tr>
+<tr>
+<td style="text-align:center">-</td>
+<td style="text-align:center">neg</td>
+</tr>
+<tr>
+<td style="text-align:center">&lt;</td>
+<td style="text-align:center">lt</td>
+</tr>
+<tr>
+<td style="text-align:center">&gt;</td>
+<td style="text-align:center">gt</td>
+</tr>
+<tr>
+<td style="text-align:center">&lt;=</td>
+<td style="text-align:center">le</td>
+</tr>
+<tr>
+<td style="text-align:center">&gt;=</td>
+<td style="text-align:center">ge</td>
+</tr>
+</tbody>
+</table>
+<h3 id="properties">Properties</h3>
+<p>Like <a href="#functions">functions</a>, public properties also begin with lowercase characters. However, getters and setters are not used for the retrieval and manipulation of said properties, instead, they are accessed and modified directly. As a result, special care must be taken to ensure the properties are set correctly as any error will lead to undefined behavior.</p>
+<p><strong>Warning:</strong> Setting properties to incorrect data types will result in runtime exceptions or other undefined behavior. As a result, special care must be taken to ensure that all properties are set to their correct data types.</p>
+<h3 id="internals">Internals</h3>
+<p>Functions and variables beginning with an underscore are considered private and should not be directly accessed by any application. These utilities are used solely by the robot-js library for various undocumented tasks. While some of these utilities may be accessible, they can and will change without notice.</p>
+<h2 id="changes">Changes</h2>
+<p>This section describes all the changes between the C++ and robot-js API. While this may not be an extensive list, understanding these changes will greatly improve your development time and reduce your code complexity. This section is split up into three parts, the first describes additions exclusive to robot-js, the second describes omissions from robot-js and the third describes any class specific changes and clarifications.</p>
+<h3 id="additions">Additions</h3>
+<p>To make developing with robot-js easier, some additional functionality is included. Most of this functionality is implemented to get around the limitations of the language, others are implemented to stay consistent with JavaScript design patterns. However, the most important reason some of this functionality is implemented is to help reduce code complexity and to address specific performance issues. All additions to robot-js are described in sections below.</p>
+<h4 id="tostring-functions">ToString functions</h4>
+<p>Occasionally, it might be helpful to convert certain classes into their string representations. For this, the <a href="//developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/toString">toString</a> instance function is used. By implementing this function, every supported class will be automatically converted into a string whenever it&#39;s referred to in a manner in which a string is expected. In robot-js, the following classes implement the <strong>toString</strong> function: <a href="/api/hash.html">Hash</a>, <a href="/api/color.html">Color</a>, <a href="/api/image.html">Image</a>, <a href="/api/range.html">Range</a>, <a href="/api/point.html">Point</a>, <a href="/api/size.html">Size</a> and <a href="/api/bounds.html">Bounds</a>.</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> p = robot.Point (<span class="hljs-number">2</span>, <span class="hljs-number">4</span>);
+<span class="hljs-built_in">console</span>.log (p.toString());
+    <span class="hljs-comment">// Will output: [2, 4]</span>
+</code></pre>
+<h4 id="clone-functions">Clone functions</h4>
+<p>In C++, all objects are by default passed by value. This functionality can be changed on a case by case basis by using a pointer or explicitly passing the value by reference. This if different from JavaScript in which all objects are passed by reference. Since passing by value is not really an option in JavaScript, an alternative needs to be implemented to maintain consistency with the C++ library. For this all non-static classes implement a <strong>clone</strong> instance function which returns an identical copy of the object it&#39;s used on.</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> t = robot.Timer();
+<span class="hljs-keyword">var</span> copy  = t.clone();
+
+t.start();
+t.eq (copy); <span class="hljs-comment">// False</span>
+t.ne (copy); <span class="hljs-comment">// True</span>
+</code></pre>
+<h4 id="normalize-functions">Normalize functions</h4>
+<p>JavaScript does not support function overloading in the same way that C++ does. In C++, multiple functions can have the same name as long as their parameters are different and the compiler will take care of differentiating between them. In JavaScript, however, this is not the case as variable data types are not known ahead of time. In order to support function overloading in JavaScript, a series of runtime comparisons must be performed on the parameters to determine which function to use. Furthermore, since C++ supports <a href="//en.cppreference.com/w/cpp/language/implicit_conversion">implicit conversions</a>, there needs to be some reusable method of accepting overloaded parameters.</p>
+<p>In robot-js, a <strong>normalize</strong> function is available on certain classes which are typically used in overloading scenarios. This function accepts a number of parameters and normalizes them into an object which could be used to process the data. If the parameters could not be normalized, a runtime exception is thrown. The following classes implement the <strong>normalize</strong> class function: <a href="/api/color.html">Color</a>, <a href="/api/range.html">Range</a>, <a href="/api/point.html">Point</a>, <a href="/api/size.html">Size</a> and <a href="/api/bounds.html">Bounds</a>.</p>
+<pre><code class="lang-js">robot.Point .normalize (    );       <span class="hljs-comment">// { x: 0, y: 0 }</span>
+robot.Point .normalize (<span class="hljs-number">2</span>   );       <span class="hljs-comment">// { x: 2, y: 2 }</span>
+robot.Point .normalize (<span class="hljs-number">2</span>, <span class="hljs-number">4</span>);       <span class="hljs-comment">// { x: 2, y: 4 }</span>
+
+robot.Color .normalize (a, b, c, d); <span class="hljs-comment">// { r, g, b, a }</span>
+robot.Range .normalize (a, b);       <span class="hljs-comment">// { min, max   }</span>
+robot.Point .normalize (a, b);       <span class="hljs-comment">// { x, y       }</span>
+robot.Size  .normalize (a, b);       <span class="hljs-comment">// { w, h       }</span>
+robot.Bounds.normalize (a, b, c, d); <span class="hljs-comment">// { x, y, w, h }</span>
+</code></pre>
+<h4 id="compare-functions">Compare functions</h4>
+<p>From time to time, a sorting operation needs to be performed on an array of values. Luckily, JavaScript makes this easy for us thanks to the built-in <a href="//developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort">sort</a> function. While this function works great on standard data types such as strings and numbers, a comparator is required whenever a custom data type is used. This function specifies the order in which to sort the array of values.</p>
+<p>In robot-js, a <strong>compare</strong> function is available on certain classes which are typically stored in a list and sorted. This function can be passed directly into the sort function and will correctly sort the items in the array. Keep in mind, however, that the array must be made up of only a single type, specifying a mix of data types will usually result in a runtime exception. The following classes implement the <strong>compare</strong> class function: <a href="/api/timer.html">Timer</a>, <a href="/api/module.html">Module</a>, <a href="/api/module.html#Segment">Segment</a> and <a href="/api/memory.html#Region">Region</a>.</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> process = robot.Process();
+<span class="hljs-keyword">var</span> modules =
+[
+    robot.Module (process, <span class="hljs-string">""</span>, <span class="hljs-string">""</span>, <span class="hljs-number">4</span>, <span class="hljs-number">0</span>),
+    robot.Module (process, <span class="hljs-string">""</span>, <span class="hljs-string">""</span>, <span class="hljs-number">2</span>, <span class="hljs-number">0</span>),
+    robot.Module (process, <span class="hljs-string">""</span>, <span class="hljs-string">""</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>),
+    robot.Module (process, <span class="hljs-string">""</span>, <span class="hljs-string">""</span>, <span class="hljs-number">3</span>, <span class="hljs-number">0</span>),
+];
+
+modules.sort (robot.Module.compare);
+    <span class="hljs-comment">// Modules become [ 1, 2, 3, 4 ]</span>
+</code></pre>
+<p><a name="readInt8"   ></a>
+<a name="readInt16"  ></a>
+<a name="readInt32"  ></a>
+<a name="readInt64"  ></a>
+<a name="readReal32" ></a>
+<a name="readReal64" ></a>
+<a name="readPtr"    ></a>
+<a name="readBool"   ></a>
+<a name="readString" ></a>
+<a name="writeInt8"  ></a>
+<a name="writeInt16" ></a>
+<a name="writeInt32" ></a>
+<a name="writeInt64" ></a>
+<a name="writeReal32"></a>
+<a name="writeReal64"></a>
+<a name="writePtr"   ></a>
+<a name="writeBool"  ></a>
+<a name="writeString"></a></p>
+<h4 id="memory-helpers">Memory Helpers</h4>
+<table id="Memory" class="class">
+<thead>
+	<tr>
+		<th>S</th><th>Return</th><th>Name</th><th>Parameters</th>
+	</tr>
+</thead>
+<tbody>
+	<tr>
+		<td></td>
+		<td>int8</td>
+		<td><a href="#readInt8">readInt8</a></td>
+		<td>(uintptr address,
+ uint32 count  &#x3D; 1,
+ uint32 stride &#x3D; 0)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>int16</td>
+		<td><a href="#readInt16">readInt16</a></td>
+		<td>(uintptr address,
+ uint32 count  &#x3D; 1,
+ uint32 stride &#x3D; 0)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>int32</td>
+		<td><a href="#readInt32">readInt32</a></td>
+		<td>(uintptr address,
+ uint32 count  &#x3D; 1,
+ uint32 stride &#x3D; 0)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>int64</td>
+		<td><a href="#readInt64">readInt64</a></td>
+		<td>(uintptr address,
+ uint32 count  &#x3D; 1,
+ uint32 stride &#x3D; 0)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>real32</td>
+		<td><a href="#readReal32">readReal32</a></td>
+		<td>(uintptr address,
+ uint32 count  &#x3D; 1,
+ uint32 stride &#x3D; 0)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>real64</td>
+		<td><a href="#readReal64">readReal64</a></td>
+		<td>(uintptr address,
+ uint32 count  &#x3D; 1,
+ uint32 stride &#x3D; 0)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>auto</td>
+		<td><a href="#readPtr">readPtr</a></td>
+		<td>(uintptr address,
+ uint32 count  &#x3D; 1,
+ uint32 stride &#x3D; 0)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#readBool">readBool</a></td>
+		<td>(uintptr address,
+ uint32 count  &#x3D; 1,
+ uint32 stride &#x3D; 0)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>string</td>
+		<td><a href="#readString">readString</a></td>
+		<td>(uintptr address,
+ uint32 length,
+ uint32 count  &#x3D; 1,
+ uint32 stride &#x3D; 0)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#writeInt8">writeInt8</a></td>
+		<td>(uintptr address,   int8 data)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#writeInt16">writeInt16</a></td>
+		<td>(uintptr address,  int16 data)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#writeInt32">writeInt32</a></td>
+		<td>(uintptr address,  int32 data)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#writeInt64">writeInt64</a></td>
+		<td>(uintptr address,  int64 data)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#writeReal32">writeReal32</a></td>
+		<td>(uintptr address, real32 data)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#writeReal64">writeReal64</a></td>
+		<td>(uintptr address, real64 data)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#writePtr">writePtr</a></td>
+		<td>(uintptr address,   auto data)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#writeBool">writeBool</a></td>
+		<td>(uintptr address,   bool data)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#writeString">writeString</a></td>
+		<td>(uintptr address, string data,
+ length &#x3D; data.length)</td>
+	</tr>
+</tbody>
+</table><p>Because JavaScript is a loosely typed, dynamic language, performing memory manipulation routines through <a href="/api/memory.html#ReadData">ReadData</a> and <a href="/api/memory.html#WriteData">WriteData</a> will result in a lot of code. More importantly, these functions can have some serious performance implications since the data has to pass through multiple transformation steps to become usable. To solve this, an additional eighteen functions are introduced to minimize the amount of data transformation steps needed and to yield data in the correct type directly.</p>
+<h5 id="read-helpers">Read Helpers</h5>
+<p>The read functions read the memory of the selected process and return the resulting value. <strong>address</strong> specifies the base address in the selected process from which the data is read while the number of bytes read depends on the function itself. For example, reading an int8 will read a single byte while reading an int32 will read four. The string variant of the function requires a <strong>length</strong> parameter which specifies the length of the string(s) to read. This value must be a number and cannot be an array. On success, these functions return the data in memory of a type consistent with the function used. On failure, these functions return null. See the <a href="/api/memory.html#ReadData">ReadData</a> function for more information.</p>
+<p>As an aside, these functions can also accept a <strong>count</strong> and <strong>Stride</strong> parameter. <strong>count</strong> specifies the number of items to read while <strong>stride</strong> specifies the byte offset between each item. If <strong>stride</strong> is zero, it will be set to the size of a single item, meaning the items read are next to each other. Only a single <a href="/api/memory.html#ReadData">read</a> will be performed to extract the data with no additional data being read past the final item. The result will be returned as an array of elements. As an example, calling <a href="#readInt16">readInt16</a> with <strong>count</strong> set to three and <strong>stride</strong> set to six will cause the function to read 14 bytes of data in a single call and extract three 16-bit integers, each four bytes away from each other.</p>
+<p><strong>Note:</strong> For improved performance, consider using a memory <a href="/api/memory.html#CreateCache">cache</a>.</p>
+<p><img class="center" src="/common/memory4.png" /></p>
+<h5 id="write-helpers">Write Helpers</h5>
+<p>The write functions copy <strong>data</strong> into the memory of the selected process and return whether or not they were successful. <strong>address</strong> specifies the base address in the selected process to which the data is written while the number of bytes written depends on the function itself. For example, writing an int8 will write a single byte while writing an int32 will write four. The string variant of the function accepts a <strong>length</strong> parameter which specifies the length of the string to write. By default, the length of the string is used. On success, these functions return true. On failure, these functions return false. See the <a href="/api/memory.html#WriteData">WriteData</a> function for more information.</p>
+<h3 id="omissions">Omissions</h3>
+<p>Not all functionality of the C++ library is available in robot-js. This is mainly due to a couple of reasons. The first is that the functionality in question solves a problem which doesn&#39;t exist in JavaScript, making its implementation irrelevant. The second is that the functionality doesn&#39;t make sense to implement from a framework perspective, because it&#39;s most likely already implemented through Node itself. And the third and final reason is that language-specific differences between C++ and JavaScript prevent the functionality from being able to be properly implemented. Either way, the following functionality is unavailable in robot-js.</p>
+<ul>
+<li><a href="/api/enum.html">Enum</a> class</li>
+<li>Macros</li>
+<li>Copy constructors</li>
+<li>Move constructors</li>
+<li>Destructors</li>
+<li>Assignment operators</li>
+<li><code>+=</code> and <code>-=</code> operators</li>
+</ul>
+<h3 id="class-changes">Class Changes</h3>
+<p>Sometimes, the differences between C++ and JavaScript require slight changes to the API in order to work. Below is a list of changes and clarifications specific to each class. These changes should be taken into account when working with robot-js.</p>
+<h4 id="hash">Hash</h4>
+<ul>
+<li>File functionality is unavailable</li>
+<li>Data is passed through a <a href="//nodejs.org/api/buffer.html">Buffer</a><ul>
+<li>Direct strings are supported</li>
+</ul>
+</li>
+</ul>
+<h4 id="image">Image</h4>
+<ul>
+<li><a href="/api/image.html#GetData">GetData</a> returns a <a href="//developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array">Uint32Array</a> object</li>
+<li><a href="/api/image.html#SetPixel">SetPixel</a> must take an instance of <a href="/api/color.html">Color</a></li>
+</ul>
+<h4 id="bounds">Bounds</h4>
+<ul>
+<li>No <a href="/api/bounds.html#OpOrEq">|=</a> and <a href="/api/bounds.html#OpAndEq">&amp;=</a> operators</li>
+<li><a href="/api/bounds.html#OpOr">operator |</a> becomes <code>unite</code></li>
+<li><a href="/api/bounds.html#OpAnd">operator &amp;</a> becomes <code>intersect</code></li>
+<li><a href="/api/bounds.html#Contains">Contains</a> becomes two functions<ul>
+<li><code>containsP</code> for <a href="/api/bounds.html#Contains">Point</a></li>
+<li><code>containsB</code> for <a href="/api/bounds.html#Contains3">Bounds</a></li>
+</ul>
+</li>
+<li><a href="/api/bounds.html#GetLTRB">GetLTRB</a> returns <code>LTRB</code> object<ul>
+<li><code>{ l, t, r, b }</code></li>
+</ul>
+</li>
+<li>Functions accept <code>LTRB</code> object<ul>
+<li>Including <code>normalize</code></li>
+<li>Including <code>constructor</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="keyboard">Keyboard</h4>
+<ul>
+<li><a href="/api/keyboard.html#Compile">Compile</a> returns an array of <code>{ down, key }</code></li>
+<li><a href="/api/keyboard.html#GetState">GetState</a> returns bool or <code>{ key, isDown }</code></li>
+</ul>
+<h4 id="mouse">Mouse</h4>
+<ul>
+<li><a href="/api/mouse.html#GetState">GetState</a> returns bool or <code>{ key, isDown }</code></li>
+</ul>
+<h4 id="process">Process</h4>
+<ul>
+<li><a href="/api/process.html#GetHandle">GetHandle</a> is unavailable</li>
+</ul>
+<h4 id="memory">Memory</h4>
+<ul>
+<li><a href="/api/memory.html#ReadData">ReadData</a> behaves identically<ul>
+<li><code>void*</code> accepts a Node <a href="//nodejs.org/api/buffer.html">Buffer</a></li>
+</ul>
+</li>
+<li><a href="/api/memory.html#WriteData">WriteData</a> behaves identically<ul>
+<li><code>void*</code> accepts a Node <a href="//nodejs.org/api/buffer.html">Buffer</a></li>
+</ul>
+</li>
+</ul>
+<h4 id="window">Window</h4>
+<ul>
+<li><a href="/api/window.html#GetHandleAx">GetHandleAx</a> is unavailable</li>
+<li>Bounds version of <a href="/api/window.html#MapToClient2">MapToClient</a> is unavailable<ul>
+<li><code>W</code> and <code>H</code> easily attachable upon return</li>
+</ul>
+</li>
+<li>Bounds version of <a href="/api/window.html#MapToScreen2">MapToScreen</a> is unavailable<ul>
+<li><code>W</code> and <code>H</code> easily attachable upon return</li>
+</ul>
+</li>
+</ul>
+<h4 id="screen">Screen</h4>
+<ul>
+<li><code>Screen*</code> returns a <a href="/api/screen.html">Screen</a> object<ul>
+<li>Behaves much like a pointer</li>
+</ul>
+</li>
+<li><a href="/api/screen.html#GrabScreen">GrabScreen</a> behaves identically<ul>
+<li>But make sure Image is <a href="/api/image.html#IsValid">valid</a></li>
+</ul>
+</li>
+</ul>
+<h4 id="timer">Timer</h4>
+<ul>
+<li>No <a href="/api/timer.html#OpFn">operator ()</a>, use <a href="/api/timer.html#GetElapsed">GetElapsed</a> instead</li>
+</ul>
+<h4 id="clipboard">Clipboard</h4>
+<ul>
+<li><a href="/api/clipboard.html#GetImage">GetImage</a> behaves identically<ul>
+<li>But make sure Image is <a href="/api/image.html#IsValid">valid</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="compiling">Compiling</h2>
+<p>Compiling robot-js is quite similar to compiling the C++ library but with additional prerequisites and configuration steps. To get started, read the appropriate <a href="/docs/usage.html">instructions</a> for compiling the C++ library and then follow the additional instructions below. Keep in mind that robot-js is less liberal in the types of compilers it supports so be sure to read over all the instructions prior to installing any new software. If you encounter any problems and you think it might be a bug, please submit a <a href="/docs/contributing.html">bug report</a> and we&#39;ll be more than happy to investigate.</p>
+<h2 id="global">Global</h2>
+<h3 id="prerequisites">Prerequisites</h3>
+<ul>
+<li>Supported version of <a href="//nodejs.org">Node.js</a></li>
+<li>Node development libraries</li>
+</ul>
+<pre><code class="lang-bash"><span class="hljs-comment"># Check if Node &amp; NPM are installed</span>
+$ node -v
+$  npm -v
+
+<span class="hljs-comment"># Download the development libraries</span>
+<span class="hljs-comment"># Using node-gyp for easy management</span>
+
+$ npm install -g node-gyp
+$ node-gyp install [ver]
+    <span class="hljs-comment"># Replace the above [ver] with the latest available</span>
+    <span class="hljs-comment"># release matching the major version number of your</span>
+    <span class="hljs-comment"># local Node installation. For example, if you are</span>
+    <span class="hljs-comment"># using Node 0.12.7, download 0.12.X. If using Node</span>
+    <span class="hljs-comment"># 4.2.0, download 4.X.X and so on.</span>
+</code></pre>
+<h2 id="linux">Linux</h2>
+<h3 id="prerequisites">Prerequisites</h3>
+<ul>
+<li>GNU g++ <strong>4.9.2</strong> or newer</li>
+<li>GNU Make <strong>3.81</strong> or newer</li>
+<li>X11 Toolkit Intrinsics</li>
+<li>X11 Test Extensions</li>
+<li>Xinerama Extensions</li>
+</ul>
+<h3 id="compiling">Compiling</h3>
+<pre><code class="lang-bash"><span class="hljs-comment"># Download robot-js and cd into it</span>
+$ <span class="hljs-built_in">cd</span> /path/to/robot-js/Native/dir/
+
+<span class="hljs-comment"># Display the make instructions</span>
+<span class="hljs-comment"># Use it as a compilation guide</span>
+$ make
+
+<span class="hljs-comment"># nodeVersion represents the version of</span>
+<span class="hljs-comment"># the installed development libraries &amp;</span>
+<span class="hljs-comment"># nodeModules represents the matching</span>
+<span class="hljs-comment"># node "process.versions.modules" value</span>
+</code></pre>
+<h2 id="mac">Mac</h2>
+<h3 id="prerequisites">Prerequisites</h3>
+<ul>
+<li>XCode with Command Line Tools</li>
+<li>Expecting clang++ <strong>5.1</strong> or newer</li>
+</ul>
+<h3 id="compiling">Compiling</h3>
+<pre><code class="lang-bash"><span class="hljs-comment"># Download robot-js and cd into it</span>
+$ <span class="hljs-built_in">cd</span> /path/to/robot-js/Native/dir/
+
+<span class="hljs-comment"># Display the make instructions</span>
+<span class="hljs-comment"># Use it as a compilation guide</span>
+$ make
+
+<span class="hljs-comment"># nodeVersion represents the version of</span>
+<span class="hljs-comment"># the installed development libraries &amp;</span>
+<span class="hljs-comment"># nodeModules represents the matching</span>
+<span class="hljs-comment"># node "process.versions.modules" value</span>
+</code></pre>
+<h2 id="windows">Windows</h2>
+<h3 id="prerequisites">Prerequisites</h3>
+<ul>
+<li>Microsoft <a href="//visualstudio.com">Visual Studio</a> <strong>2015</strong></li>
+<li>Relevant Windows SDK libraries</li>
+</ul>
+<h3 id="compiling">Compiling</h3>
+<p>After downloading robot-js, browse to the Native directory and then Addon. From there, open the <strong>Robot.vcxproj</strong> file in any text editor other than Visual Studio and search for <strong>UserMacros</strong>. Just below that you will find <strong>NodeVersion</strong> and <strong>NodeModules</strong>. NodeVersion represents the version of the installed development libraries and NodeModules represents the matching Node &quot;process.versions.modules&quot; value. Change these to match your environment as needed. Then go back to the Native directory, open the solution file in Visual Studio and build the project. If the build succeeded, the binaries will be copied to the correct directory for robot-js to work.</p>
+<h2 id="errors">Errors</h2>
+<p>In case the build fails, make sure the version of Node you&#39;re compiling for is supported. Next, you may need to need to double check that all the appropriate prerequisites are installed. Depending on the error, you may also need to manually configure the locations of the Node development libraries. This means editing the makefiles or visual studio project directly to ensure that all the dependencies are configured correctly.</p>
+
+
+		</div>
+
+		<div class="clearfix"></div>
+	</div>
+</section>
+
+		<div id="footer-pad"></div>
+		<section id="footer">
+			<div class="container">
+
+				<div class="author">
+					<p>Licensed under the <a href="//opensource.org/licenses/Zlib">ZLIB License</a></p>
+					<p>Project by the <a href="//github.com/orgs/robot/people">Robot Developers</a></p>
+				</div>
+
+				<div class="github">
+					<p>Proudly Hosted on <a href="//pages.github.com">
+						<svg><use xlink:href="/common/vectors.svg#github" /></svg>
+					</a></p>
+				</div>
+
+				<div class="clearfix"></div>
+
+			</div>
+		</section>
+	</div>
+
+	<script src="/common/svg4everybody.js"></script><script>svg4everybody();</script>
+
+	<script>
+		(function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,"script","//www.google-analytics.com/analytics.js","ga");
+		ga("create", "UA-41804800-7", "auto"); ga("send", "pageview");
+	</script>
+
+</body>
+</html>

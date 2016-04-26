@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+
+<!--////////////////////////////////////////////////////////////////////////////
+// ========================================================================== //
+//                                                                            //
+//                       (C) 2010-2016 Robot Developers                       //
+//                       See LICENSE for licensing info                       //
+//                                                                            //
+// ========================================================================== //
+/////////////////////////////////////////////////////////////////////////////-->
+
+<html lang="en">
+<head>
+
+	<title>Robot Size Class</title>
+	<meta name="description" content="Robot documentation and information site">
+
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name=      "mobile-web-app-capable" content="no">
+	<meta name="apple-mobile-web-app-capable" content="no">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="viewport" content="width=980, maximum-scale=1">
+
+	<link rel="stylesheet" href="/common/normalize.css" />
+	<link rel="stylesheet" href="/common/docs.css" />
+
+	<link rel="shortcut icon" href="/common/favicon.ico" />
+
+</head>
+<body>
+
+	<div id="body">
+		
+
+
+
+<section id="header">
+	<div class="noise"></div>
+
+	<section id="banner">
+		<div class="container">
+
+			<a href="/">
+				<svg><use xlink:href="/common/vectors.svg#logo" /></svg>
+			</a>
+
+		</div>
+	</section>
+
+	<section id="menu">
+		<div class="container">
+	
+			<nav>
+				<a href="/docs/about.html"     >DOCUMENTATION</a>
+				<a href="/api/global.html"     >API          </a>
+				<a href="/docs/philosophy.html">COMMUNITY    </a>
+				<a href="//github.com/robot"   >GITHUB       </a>
+			</nav>
+	
+		</div>
+	</section>
+</section>
+
+<section id="docs">
+	<div class="container">
+
+		<div id="sidebar">
+
+			<nav>
+				<h1>Types</h1>
+				<a  href="/api/global.html"   >Global   </a>
+				<a  href="/api/enum.html"     >Enum     </a>
+				<a  href="/api/hash.html"     >Hash     </a>
+				<a  href="/api/color.html"    >Color    </a>
+				<a  href="/api/image.html"    >Image    </a>
+				<a  href="/api/range.html"    >Range    </a>
+				<a  href="/api/point.html"    >Point    </a>
+				<a class="active" href="/api/size.html"     >Size     </a>
+				<a  href="/api/bounds.html"   >Bounds   </a>
+			</nav>
+			<nav>
+				<h1>Native</h1>
+				<a  href="/api/keyboard.html" >Keyboard </a>
+				<a  href="/api/mouse.html"    >Mouse    </a>
+				<a  href="/api/process.html"  >Process  </a>
+				<a  href="/api/module.html"   >Module   </a>
+				<a  href="/api/memory.html"   >Memory   </a>
+				<a  href="/api/window.html"   >Window   </a>
+				<a  href="/api/screen.html"   >Screen   </a>
+				<a  href="/api/timer.html"    >Timer    </a>
+				<a  href="/api/clipboard.html">Clipboard</a>
+			</nav>
+
+		</div>
+		<div id="content" class="marked">
+
+			<h1 id="size">Size</h1>
+<a class="edit" href="//github.com/robot/robot.github.io/edit/master/source/api/size.html">Edit on GitHub</a><div class="include">
+	#<span class="keyword">include</span> <span class="string">&lt;Size.h&gt;</span>
+	<div class="details">
+		<a href="//github.com/robot/robot/blob/master/Source/Size.h" >Header</a>
+		<a href="//github.com/robot/robot/blob/master/Source/Size.cc">Source</a>
+	</div>
+	<div class="clearfix"></div>
+</div><table id="Size" class="class">
+<thead>
+	<tr>
+		<th>S</th><th>Return</th><th>Name</th><th>Parameters</th>
+	</tr>
+</thead>
+<tbody>
+	<tr>
+		<td></td>
+		<td></td>
+		<td><a href="#Ctor">Size</a></td>
+		<td>(int32 value  &#x3D; 0)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td><a href="#Ctor2">Size</a></td>
+		<td>(int32 w, int32 h)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#IsZero">IsZero</a></td>
+		<td>(void) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#IsEmpty">IsEmpty</a></td>
+		<td>(void) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>Point</td>
+		<td><a href="#ToPoint">ToPoint</a></td>
+		<td>(void) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>Size&amp;</td>
+		<td><a href="#OpAddEq">operator +&#x3D;</a></td>
+		<td>(const Size&amp; size)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>Size&amp;</td>
+		<td><a href="#OpSubEq">operator -&#x3D;</a></td>
+		<td>(const Size&amp; size)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>Size</td>
+		<td><a href="#OpAdd">operator +</a></td>
+		<td>(const Size&amp; size) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>Size</td>
+		<td><a href="#OpSub">operator -</a></td>
+		<td>(const Size&amp; size) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#OpEq">operator &#x3D;&#x3D;</a></td>
+		<td>(const Size&amp; size) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#OpNe">operator !&#x3D;</a></td>
+		<td>(const Size&amp; size) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>int32</td>
+		<td><a href="#W">W</a></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>int32</td>
+		<td><a href="#H">H</a></td>
+		<td></td>
+	</tr>
+</tbody>
+</table><h2 id="description">Description</h2>
+<p>Represents the size of a two-dimensional object defined by <a href="#W">W</a> and <a href="#H">H</a> with integer precision. Each component can be manipulated directly through the exposed property values. The <a href="#IsZero">IsZero</a> function returns true if both Width and Height are equal to zero while the <a href="#IsEmpty">IsEmpty</a> function returns true if either Width or Height are equal to zero. The <a href="#ToPoint">ToPoint</a> function converts the size into a <a href="/api/point.html">Point</a>. Addition and Subtraction are performed on each component separately.</p>
+<h2 id="constructors">Constructors</h2>
+<p><a name="Ctor"></a>
+<a name="Ctor2"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+
+            <td ><a class="link" href="#Ctor">Size</a></td>
+            <td>(<a href="/api/global.html#data-types">int32</a> value  &#x3D; 0)</td>
+        </tr>
+        <tr>
+
+
+            <td ><a class="link" href="#Ctor2">Size</a></td>
+            <td>(<a href="/api/global.html#data-types">int32</a> w, <a href="/api/global.html#data-types">int32</a> h)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Constructs a size with both components set to <strong>value</strong> or <strong>w</strong> and <strong>h</strong>.</p>
+<h2 id="functions">Functions</h2>
+<p><a name="IsZero"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#IsZero">IsZero</a></td>
+            <td>(void) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns true if both components are equal to zero.
+<br><br>
+<a name="IsEmpty"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#IsEmpty">IsEmpty</a></td>
+            <td>(void) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns true if either components are equal to zero.
+<br><br>
+<a name="ToPoint"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td><a href="/api/point.html">Point</a></td>
+            <td ><a class="link" href="#ToPoint">ToPoint</a></td>
+            <td>(void) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns a <a href="/api/point.html">Point</a> with X and Y set to Width and Height.</p>
+<h2 id="operators">Operators</h2>
+<p><a name="OpAddEq"></a>
+<a name="OpSubEq"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td><a href="/api/size.html">Size</a>&amp;</td>
+            <td ><a class="link" href="#OpAddEq">operator +&#x3D;</a></td>
+            <td>(const <a href="/api/size.html">Size</a>&amp; size)</td>
+        </tr>
+        <tr>
+
+            <td><a href="/api/size.html">Size</a>&amp;</td>
+            <td ><a class="link" href="#OpSubEq">operator -&#x3D;</a></td>
+            <td>(const <a href="/api/size.html">Size</a>&amp; size)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Adds or subtracts <strong>size</strong> to or from this size and returns a reference to this size.</p>
+<pre><code class="lang-cpp"><span class="hljs-function">Size <span class="hljs-title">s1</span> <span class="hljs-params">( <span class="hljs-number">3</span>, <span class="hljs-number">7</span>)</span></span>;
+<span class="hljs-function">Size <span class="hljs-title">s2</span> <span class="hljs-params">(<span class="hljs-number">-1</span>, <span class="hljs-number">4</span>)</span></span>;
+
+s1 += s2; <span class="hljs-comment">// s1 becomes (2, 11)</span>
+s1 -= s2; <span class="hljs-comment">// s1 becomes (4,  3)</span>
+</code></pre>
+<p><br>
+<a name="OpAdd"></a>
+<a name="OpSub"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td><a href="/api/size.html">Size</a></td>
+            <td ><a class="link" href="#OpAdd">operator +</a></td>
+            <td>(const <a href="/api/size.html">Size</a>&amp; size) const</td>
+        </tr>
+        <tr>
+
+            <td><a href="/api/size.html">Size</a></td>
+            <td ><a class="link" href="#OpSub">operator -</a></td>
+            <td>(const <a href="/api/size.html">Size</a>&amp; size) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Adds or subtracts <strong>size</strong> to or from this size and returns the result in a new size.
+<br><br>
+<a name="OpEq"></a>
+<a name="OpNe"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#OpEq">operator &#x3D;&#x3D;</a></td>
+            <td>(const <a href="/api/size.html">Size</a>&amp; size) const</td>
+        </tr>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#OpNe">operator !&#x3D;</a></td>
+            <td>(const <a href="/api/size.html">Size</a>&amp; size) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Performs equality comparison on each component.</p>
+<h2 id="properties">Properties</h2>
+<p><a name="W"></a>
+<a name="H"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td><a href="/api/global.html#data-types">int32</a></td>
+            <td ><a class="link" href="#W">W</a></td>
+            <td></td>
+        </tr>
+        <tr>
+
+            <td><a href="/api/global.html#data-types">int32</a></td>
+            <td ><a class="link" href="#H">H</a></td>
+            <td></td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Provides direct access to the Width and Height components of this size.</p>
+<h1 id="examples">Examples</h1>
+<pre><code class="lang-cpp"><span class="hljs-comment">// C++</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;Robot.h&gt;</span></span>
+ROBOT_NS_USE_ALL;
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span> <span class="hljs-params">(<span class="hljs-keyword">void</span>)</span>
+</span>{
+    Size s1, s2 (<span class="hljs-number">4</span>, <span class="hljs-number">6</span>);
+
+    s1.IsZero (); <span class="hljs-comment">// True</span>
+    s2.IsZero (); <span class="hljs-comment">// False</span>
+    s1.IsEmpty(); <span class="hljs-comment">// True</span>
+    s2.IsEmpty(); <span class="hljs-comment">// False</span>
+
+    <span class="hljs-comment">// p1 becomes (4, 6)</span>
+    Point p1 = s2.ToPoint();
+
+    <span class="hljs-comment">// s1 becomes (1, 2)</span>
+    s1.W = <span class="hljs-number">1</span>; s1.H = <span class="hljs-number">2</span>;
+
+    s1 += s2; <span class="hljs-comment">// s1 becomes (5, 8)</span>
+    s1 -= s2; <span class="hljs-comment">// s1 becomes (1, 2)</span>
+
+    <span class="hljs-comment">// s3 becomes (3, 4)</span>
+    Size s3 = s2 - s1;
+
+    s1 == s3; <span class="hljs-comment">// False</span>
+    s1 != s3; <span class="hljs-comment">// True</span>
+    return <span class="hljs-number">0</span>;
+}
+</code></pre>
+<pre><code class="lang-js"><span class="hljs-comment">// Node</span>
+<span class="hljs-keyword">var</span> robot = <span class="hljs-built_in">require</span> (<span class="hljs-string">"robot-js"</span>);
+
+<span class="hljs-keyword">var</span> s1 = robot.Size ();
+<span class="hljs-keyword">var</span> s2 = robot.Size (<span class="hljs-number">4</span>, <span class="hljs-number">6</span>);
+
+s1.isZero (); <span class="hljs-comment">// True</span>
+s2.isZero (); <span class="hljs-comment">// False</span>
+s1.isEmpty(); <span class="hljs-comment">// True</span>
+s2.isEmpty(); <span class="hljs-comment">// False</span>
+
+<span class="hljs-comment">// p1 becomes (4, 6)</span>
+<span class="hljs-keyword">var</span> p1 = s2.toPoint();
+
+<span class="hljs-comment">// s1 becomes (1, 2)</span>
+s1.w = <span class="hljs-number">1</span>; s1.h = <span class="hljs-number">2</span>;
+
+s1 = s1.add (s2); <span class="hljs-comment">// s1 becomes (5, 8)</span>
+s1 = s1.sub (s2); <span class="hljs-comment">// s1 becomes (1, 2)</span>
+
+<span class="hljs-comment">// s3 becomes (3, 4)</span>
+<span class="hljs-keyword">var</span> s3 = s2.sub (s1);
+
+s1.eq (s3); <span class="hljs-comment">// False</span>
+s1.ne (s3); <span class="hljs-comment">// True</span>
+
+<span class="hljs-comment">// Size construction</span>
+s1 = robot.Size (s2);
+s1 = robot.Size
+({
+    w: <span class="hljs-number">100</span>,
+    h: <span class="hljs-number">200</span>
+});
+</code></pre>
+
+
+		</div>
+
+		<div class="clearfix"></div>
+	</div>
+</section>
+
+		<div id="footer-pad"></div>
+		<section id="footer">
+			<div class="container">
+
+				<div class="author">
+					<p>Licensed under the <a href="//opensource.org/licenses/Zlib">ZLIB License</a></p>
+					<p>Project by the <a href="//github.com/orgs/robot/people">Robot Developers</a></p>
+				</div>
+
+				<div class="github">
+					<p>Proudly Hosted on <a href="//pages.github.com">
+						<svg><use xlink:href="/common/vectors.svg#github" /></svg>
+					</a></p>
+				</div>
+
+				<div class="clearfix"></div>
+
+			</div>
+		</section>
+	</div>
+
+	<script src="/common/svg4everybody.js"></script><script>svg4everybody();</script>
+
+	<script>
+		(function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,"script","//www.google-analytics.com/analytics.js","ga");
+		ga("create", "UA-41804800-7", "auto"); ga("send", "pageview");
+	</script>
+
+</body>
+</html>

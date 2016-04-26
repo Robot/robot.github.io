@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+
+<!--////////////////////////////////////////////////////////////////////////////
+// ========================================================================== //
+//                                                                            //
+//                       (C) 2010-2016 Robot Developers                       //
+//                       See LICENSE for licensing info                       //
+//                                                                            //
+// ========================================================================== //
+/////////////////////////////////////////////////////////////////////////////-->
+
+<html lang="en">
+<head>
+
+	<title>Robot Module Class</title>
+	<meta name="description" content="Robot documentation and information site">
+
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name=      "mobile-web-app-capable" content="no">
+	<meta name="apple-mobile-web-app-capable" content="no">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="viewport" content="width=980, maximum-scale=1">
+
+	<link rel="stylesheet" href="/common/normalize.css" />
+	<link rel="stylesheet" href="/common/docs.css" />
+
+	<link rel="shortcut icon" href="/common/favicon.ico" />
+
+</head>
+<body>
+
+	<div id="body">
+		
+
+
+
+<section id="header">
+	<div class="noise"></div>
+
+	<section id="banner">
+		<div class="container">
+
+			<a href="/">
+				<svg><use xlink:href="/common/vectors.svg#logo" /></svg>
+			</a>
+
+		</div>
+	</section>
+
+	<section id="menu">
+		<div class="container">
+	
+			<nav>
+				<a href="/docs/about.html"     >DOCUMENTATION</a>
+				<a href="/api/global.html"     >API          </a>
+				<a href="/docs/philosophy.html">COMMUNITY    </a>
+				<a href="//github.com/robot"   >GITHUB       </a>
+			</nav>
+	
+		</div>
+	</section>
+</section>
+
+<section id="docs">
+	<div class="container">
+
+		<div id="sidebar">
+
+			<nav>
+				<h1>Types</h1>
+				<a  href="/api/global.html"   >Global   </a>
+				<a  href="/api/enum.html"     >Enum     </a>
+				<a  href="/api/hash.html"     >Hash     </a>
+				<a  href="/api/color.html"    >Color    </a>
+				<a  href="/api/image.html"    >Image    </a>
+				<a  href="/api/range.html"    >Range    </a>
+				<a  href="/api/point.html"    >Point    </a>
+				<a  href="/api/size.html"     >Size     </a>
+				<a  href="/api/bounds.html"   >Bounds   </a>
+			</nav>
+			<nav>
+				<h1>Native</h1>
+				<a  href="/api/keyboard.html" >Keyboard </a>
+				<a  href="/api/mouse.html"    >Mouse    </a>
+				<a  href="/api/process.html"  >Process  </a>
+				<a class="active" href="/api/module.html"   >Module   </a>
+				<a  href="/api/memory.html"   >Memory   </a>
+				<a  href="/api/window.html"   >Window   </a>
+				<a  href="/api/screen.html"   >Screen   </a>
+				<a  href="/api/timer.html"    >Timer    </a>
+				<a  href="/api/clipboard.html">Clipboard</a>
+			</nav>
+
+		</div>
+		<div id="content" class="marked">
+
+			<h1 id="module">Module</h1>
+<a class="edit" href="//github.com/robot/robot.github.io/edit/master/source/api/module.html">Edit on GitHub</a><div class="include">
+	#<span class="keyword">include</span> <span class="string">&lt;Module.h&gt;</span>
+	<div class="details">
+		<a href="//github.com/robot/robot/blob/master/Source/Module.h" >Header</a>
+		<a href="//github.com/robot/robot/blob/master/Source/Module.cc">Source</a>
+	</div>
+	<div class="clearfix"></div>
+</div><table id="Module" class="class">
+<thead>
+	<tr>
+		<th>S</th><th>Return</th><th>Name</th><th>Parameters</th>
+	</tr>
+</thead>
+<tbody>
+	<tr>
+		<td></td>
+		<td></td>
+		<td><a href="#Ctor">Module</a></td>
+		<td>(void)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td><a href="#Ctor2">Module</a></td>
+		<td>(const Process&amp; process,
+ const string&amp; name,
+ const string&amp; path,
+ uintptr base, uintptr size)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#IsValid">IsValid</a></td>
+		<td>(void) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>string</td>
+		<td><a href="#GetName">GetName</a></td>
+		<td>(void) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>string</td>
+		<td><a href="#GetPath">GetPath</a></td>
+		<td>(void) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>uintptr</td>
+		<td><a href="#GetBase">GetBase</a></td>
+		<td>(void) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>uintptr</td>
+		<td><a href="#GetSize">GetSize</a></td>
+		<td>(void) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>Process</td>
+		<td><a href="#GetProcess">GetProcess</a></td>
+		<td>(void) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>SegmentList</td>
+		<td><a href="#GetSegments">GetSegments</a></td>
+		<td>(void) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#Contains">Contains</a></td>
+		<td>(uintptr address) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#OpLt">operator &lt;</a></td>
+		<td>(uintptr address) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#OpGt">operator &gt;</a></td>
+		<td>(uintptr address) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#OpLe">operator &lt;&#x3D;</a></td>
+		<td>(uintptr address) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#OpGe">operator &gt;&#x3D;</a></td>
+		<td>(uintptr address) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#OpLt2">operator &lt;</a></td>
+		<td>(const Module&amp; module) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#OpGt2">operator &gt;</a></td>
+		<td>(const Module&amp; module) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#OpLe2">operator &lt;&#x3D;</a></td>
+		<td>(const Module&amp; module) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#OpGe2">operator &gt;&#x3D;</a></td>
+		<td>(const Module&amp; module) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#OpEq">operator &#x3D;&#x3D;</a></td>
+		<td>(const Module&amp; module) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#OpNe">operator !&#x3D;</a></td>
+		<td>(const Module&amp; module) const</td>
+	</tr>
+</tbody>
+</table><h2 id="description">Description</h2>
+<p>Represents a single module loaded within a process. A module is an executable file or shared library which has been loaded into a process and each process may consist of one or more of these modules. To retrieve a snapshot of all modules within a process, use the <a href="/api/process.html#GetModules">GetModules</a> function within the <a href="/api/process.html">Process</a> class. When implementing a custom snapshot routine, a module can be created through the <a href="#Ctor2">Constructor</a>. There are no resources to be freed and <strong>all information is cached</strong> and immutable.</p>
+<p>After a module has been created, to check whether the information in that module is valid, use the <a href="#IsValid">IsValid</a> function. To retrieve the name and path of the module, use the <a href="#GetName">GetName</a> and <a href="#GetPath">GetPath</a> functions. To retrieve the loaded base address and size of the module, use the <a href="#GetBase">GetBase</a> and <a href="#GetSize">GetSize</a> functions. The process in which this module is loaded into can be retrieved through the <a href="#GetProcess">GetProcess</a> function. And on Mac, because all segments of the module reside in different regions of the virtual address space, the <a href="#GetSegments">GetSegments</a> function can be used to retrieve all relevant information about them.</p>
+<p>The Module class also offers a wide range of useful functionality. For example, the <a href="#Contains">Contains</a> function can be used to check whether an address is contained within the module. And various relational operators help in cases where a module needs to be compared to other modules, as in the case of sorting. Comparison is supported as well.</p>
+<h2 id="types">Types</h2>
+<pre><code class="lang-cpp"><span class="hljs-keyword">typedef</span> <span class="hljs-built_in">vector</span>&lt;Segment&gt; Module::SegmentList;
+</code></pre>
+<h2 id="constructors">Constructors</h2>
+<p><a name="Ctor"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+
+            <td ><a class="link" href="#Ctor">Module</a></td>
+            <td>(void)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Constructs an <a href="#IsValid">invalid</a> module with all components set to default values.
+<br><br>
+<a name="Ctor2"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+
+            <td ><a class="link" href="#Ctor2">Module</a></td>
+            <td>(const <a href="/api/process.html">Process</a>&amp; process,
+ const string&amp; name,
+ const string&amp; path,
+ <a href="/api/global.html#data-types">uintptr</a> base, <a href="/api/global.html#data-types">uintptr</a> size)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Constructs a <a href="#IsValid">valid</a> module with all components set to the parameters.</p>
+<h2 id="functions">Functions</h2>
+<p><a name="IsValid"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#IsValid">IsValid</a></td>
+            <td>(void) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns true if this module has been assigned data through the <a href="#Ctor2">Constructor</a>.
+<br><br>
+<a name="GetName"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>string</td>
+            <td ><a class="link" href="#GetName">GetName</a></td>
+            <td>(void) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns the name of this module, as a UTF-8 encoded string. This function does not return the platform-dependent module name but rather just the last portion of <a href="#GetPath">GetPath</a>. Returns an empty string if no name is available.
+<br><br>
+<a name="GetPath"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>string</td>
+            <td ><a class="link" href="#GetPath">GetPath</a></td>
+            <td>(void) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns the full path of this module, as a UTF-8 encoded string. A forward slash (/) is always used to represent directories across all platforms. Returns an empty string if no path is available.
+<br><br>
+<a name="GetBase"></a>
+<a name="GetSize"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td><a href="/api/global.html#data-types">uintptr</a></td>
+            <td ><a class="link" href="#GetBase">GetBase</a></td>
+            <td>(void) const</td>
+        </tr>
+        <tr>
+
+            <td><a href="/api/global.html#data-types">uintptr</a></td>
+            <td ><a class="link" href="#GetSize">GetSize</a></td>
+            <td>(void) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns the load address of this module and the size it occupies within the process, in bytes.</p>
+<p><strong>Mac:</strong> <strong>GetSize</strong> will always return zero because modules are not linearly stored within the virtual address space of the process. To determine the size of specific segments, use the <a href="#GetSegments">GetSegments</a> function and iterate through the results until the desired segment is found.
+<br><br>
+<a name="GetProcess"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td><a href="/api/process.html">Process</a></td>
+            <td ><a class="link" href="#GetProcess">GetProcess</a></td>
+            <td>(void) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns the process this module is loaded into.
+<br><br>
+<a name="GetSegments"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td><a href="/api/module.html#types">SegmentList</a></td>
+            <td ><a class="link" href="#GetSegments">GetSegments</a></td>
+            <td>(void) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>On Mac, returns a list of all Mach-O <a href="#Segment">segments</a> in the module. The resulting list is guaranteed to be sorted from the lowest <a href="#Base">base</a> address to the highest and will never contain any duplicate entries. Segments are retrieved and cached the first time this function is called with subsequent calls returning the cached results immediately. On Linux and Windows, this function will always return an empty list.
+<br><br>
+<a name="Contains"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#Contains">Contains</a></td>
+            <td>(<a href="/api/global.html#data-types">uintptr</a> address) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns true if <strong>address</strong> is in the range [<a href="#GetBase">Base</a>, Base + <a href="#GetSize">Size</a>) of this module.</p>
+<h2 id="operators">Operators</h2>
+<p><a name="OpLt"></a>
+<a name="OpGt"></a>
+<a name="OpLe"></a>
+<a name="OpGe"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#OpLt">operator &lt;</a></td>
+            <td>(<a href="/api/global.html#data-types">uintptr</a> address) const</td>
+        </tr>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#OpGt">operator &gt;</a></td>
+            <td>(<a href="/api/global.html#data-types">uintptr</a> address) const</td>
+        </tr>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#OpLe">operator &lt;&#x3D;</a></td>
+            <td>(<a href="/api/global.html#data-types">uintptr</a> address) const</td>
+        </tr>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#OpGe">operator &gt;&#x3D;</a></td>
+            <td>(<a href="/api/global.html#data-types">uintptr</a> address) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Performs relational comparison using the <a href="#GetBase">base</a> of this module and <strong>address</strong>.
+<br><br>
+<a name="OpLt2"></a>
+<a name="OpGt2"></a>
+<a name="OpLe2"></a>
+<a name="OpGe2"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#OpLt2">operator &lt;</a></td>
+            <td>(const <a href="/api/module.html">Module</a>&amp; module) const</td>
+        </tr>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#OpGt2">operator &gt;</a></td>
+            <td>(const <a href="/api/module.html">Module</a>&amp; module) const</td>
+        </tr>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#OpLe2">operator &lt;&#x3D;</a></td>
+            <td>(const <a href="/api/module.html">Module</a>&amp; module) const</td>
+        </tr>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#OpGe2">operator &gt;&#x3D;</a></td>
+            <td>(const <a href="/api/module.html">Module</a>&amp; module) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Performs relational comparison using the <a href="#GetBase">base</a> of this module and <strong>module</strong>.
+<br><br>
+<a name="OpEq"></a>
+<a name="OpNe"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#OpEq">operator &#x3D;&#x3D;</a></td>
+            <td>(const <a href="/api/module.html">Module</a>&amp; module) const</td>
+        </tr>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#OpNe">operator !&#x3D;</a></td>
+            <td>(const <a href="/api/module.html">Module</a>&amp; module) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Performs equality comparison to determine whether or not two modules have the same <a href="#IsValid">validity</a>, <a href="#GetBase">base</a>, <a href="#GetSize">size</a> and <a href="#GetProcess">process</a>. No other properties are compared.</p>
+<h1 id="segment">Segment</h1>
+<table id="Segment" class="class">
+<thead>
+	<tr>
+		<th>S</th><th>Return</th><th>Name</th><th>Parameters</th>
+	</tr>
+</thead>
+<tbody>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#Contains">Contains</a></td>
+		<td>(uintptr address) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#OpLt">operator &lt;</a></td>
+		<td>(uintptr address) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#OpGt">operator &gt;</a></td>
+		<td>(uintptr address) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#OpLe">operator &lt;&#x3D;</a></td>
+		<td>(uintptr address) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#OpGe">operator &gt;&#x3D;</a></td>
+		<td>(uintptr address) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#OpLt2">operator &lt;</a></td>
+		<td>(const Segment&amp; segment) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#OpGt2">operator &gt;</a></td>
+		<td>(const Segment&amp; segment) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#OpLe2">operator &lt;&#x3D;</a></td>
+		<td>(const Segment&amp; segment) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#OpGe2">operator &gt;&#x3D;</a></td>
+		<td>(const Segment&amp; segment) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#OpEq">operator &#x3D;&#x3D;</a></td>
+		<td>(const Segment&amp; segment) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#OpNe">operator !&#x3D;</a></td>
+		<td>(const Segment&amp; segment) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#Valid">Valid</a></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>char*</td>
+		<td><a href="#Name">Name</a></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>uintptr</td>
+		<td><a href="#Base">Base</a></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>uintptr</td>
+		<td><a href="#Size">Size</a></td>
+		<td></td>
+	</tr>
+</tbody>
+</table><h2 id="description">Description</h2>
+<p>Represents a single Mach-O <a href="//developer.apple.com/library/mac/documentation/DeveloperTools/Conceptual/MachORuntime/index.html">segment</a> belonging to a module. On Mac, a module is made up of multiple segments and each segment can be mapped to a different region of the virtual address space. Because of this, each segment has to be retrieved manually depending on the type of information required. To retrieve a list of all segments within a module, use the <a href="#GetSegments">GetSegments</a> function within the <a href="#Module">Module</a> class.</p>
+<p>After a segment has been created, all information can be retrieved through the class properties. For instance, to check whether the segment information is valid, use the <a href="#Valid">Valid</a> property. To get the name of the segment, use the <a href="#Name">Name</a> property. To gwt the loaded base address and size of the segment, use the <a href="#Base">Base</a> and <a href="#Size">Size</a> properties.</p>
+<p>The Module class also offers a wide range of useful functionality. For example, the <a href="#Contains">Contains</a> function can be used to check whether an address is contained within the segment. And various relational operators help in cases where a segment needs to be compared to other segments, as in the case of sorting. Comparison is supported as well.</p>
+<p><strong>Note:</strong> The Module class is not used on Linux and Windows because both platforms store all their modules linearly within the virtual address space of the process.</p>
+<h2 id="functions">Functions</h2>
+<p><a name="Contains"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#Contains">Contains</a></td>
+            <td>(<a href="/api/global.html#data-types">uintptr</a> address) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns true if <strong>address</strong> is in the range [<a href="#Base">Base</a>, Base + <a href="#Size">Size</a>) of this segment.</p>
+<h2 id="operators">Operators</h2>
+<p><a name="OpLt"></a>
+<a name="OpGt"></a>
+<a name="OpLe"></a>
+<a name="OpGe"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#OpLt">operator &lt;</a></td>
+            <td>(<a href="/api/global.html#data-types">uintptr</a> address) const</td>
+        </tr>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#OpGt">operator &gt;</a></td>
+            <td>(<a href="/api/global.html#data-types">uintptr</a> address) const</td>
+        </tr>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#OpLe">operator &lt;&#x3D;</a></td>
+            <td>(<a href="/api/global.html#data-types">uintptr</a> address) const</td>
+        </tr>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#OpGe">operator &gt;&#x3D;</a></td>
+            <td>(<a href="/api/global.html#data-types">uintptr</a> address) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Performs relational comparison using the <a href="#Base">base</a> of this segment and <strong>address</strong>.
+<br><br>
+<a name="OpLt2"></a>
+<a name="OpGt2"></a>
+<a name="OpLe2"></a>
+<a name="OpGe2"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#OpLt2">operator &lt;</a></td>
+            <td>(const <a href="/api/module.html#segment">Segment</a>&amp; segment) const</td>
+        </tr>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#OpGt2">operator &gt;</a></td>
+            <td>(const <a href="/api/module.html#segment">Segment</a>&amp; segment) const</td>
+        </tr>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#OpLe2">operator &lt;&#x3D;</a></td>
+            <td>(const <a href="/api/module.html#segment">Segment</a>&amp; segment) const</td>
+        </tr>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#OpGe2">operator &gt;&#x3D;</a></td>
+            <td>(const <a href="/api/module.html#segment">Segment</a>&amp; segment) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Performs relational comparison using the <a href="#Base">base</a> of this segment and <strong>segment</strong>.
+<br><br>
+<a name="OpEq"></a>
+<a name="OpNe"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#OpEq">operator &#x3D;&#x3D;</a></td>
+            <td>(const <a href="/api/module.html#segment">Segment</a>&amp; segment) const</td>
+        </tr>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#OpNe">operator !&#x3D;</a></td>
+            <td>(const <a href="/api/module.html#segment">Segment</a>&amp; segment) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Performs equality comparison to determine whether two segments have identical properties.</p>
+<h2 id="properties">Properties</h2>
+<p><a name="Valid"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#Valid">Valid</a></td>
+            <td></td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Gets or sets a value indicating whether the information in this segment is valid.
+<br><br>
+<a name="Name"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>char*</td>
+            <td ><a class="link" href="#Name">Name</a></td>
+            <td></td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Gets or sets the short name of this segment (e.g. __TEXT, __LINKEDIT, etc.).
+<br><br>
+<a name="Base"></a>
+<a name="Size"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td><a href="/api/global.html#data-types">uintptr</a></td>
+            <td ><a class="link" href="#Base">Base</a></td>
+            <td></td>
+        </tr>
+        <tr>
+
+            <td><a href="/api/global.html#data-types">uintptr</a></td>
+            <td ><a class="link" href="#Size">Size</a></td>
+            <td></td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Gets or sets the load address of this segment and the size it occupies, in bytes.</p>
+<h1 id="examples">Examples</h1>
+<pre><code class="lang-cpp"><span class="hljs-comment">// C++</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;Robot.h&gt;</span></span>
+ROBOT_NS_USE_ALL;
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span> <span class="hljs-params">(<span class="hljs-keyword">void</span>)</span>
+</span>{
+    <span class="hljs-comment">// Retrieve the active/calling process</span>
+    Process process = Process::GetCurrent();
+
+    <span class="hljs-comment">// Get all modules in the process</span>
+    <span class="hljs-keyword">auto</span> <span class="hljs-built_in">list</span> = process.GetModules();
+
+    <span class="hljs-comment">// List is an STL vector</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> <span class="hljs-keyword">auto</span>&amp; m : <span class="hljs-built_in">list</span>)
+    {
+        m.GetName(); <span class="hljs-comment">// module</span>
+        m.GetPath(); <span class="hljs-comment">// path/to/module</span>
+        m.GetBase(); <span class="hljs-comment">// Load address</span>
+        m.GetSize(); <span class="hljs-comment">// Virtual size</span>
+
+        <span class="hljs-comment">// Points back to process</span>
+        m.GetProcess() == process;
+
+        <span class="hljs-comment">// Retrieve module segments</span>
+        <span class="hljs-comment">// Only relevant on the Mac</span>
+        <span class="hljs-keyword">auto</span> segs = m.GetSegments();
+
+        <span class="hljs-comment">// Segs is an STL vector</span>
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> <span class="hljs-keyword">auto</span>&amp; s : segs)
+        {
+            s.Base; <span class="hljs-comment">// Load address</span>
+            s.Size; <span class="hljs-comment">// Virtual size</span>
+        }
+    }
+
+    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">list</span>.size() &gt;= <span class="hljs-number">2</span>)
+    {
+        <span class="hljs-built_in">list</span>[<span class="hljs-number">0</span>] &lt;= <span class="hljs-built_in">list</span>[<span class="hljs-number">1</span>]; <span class="hljs-comment">// True</span>
+        <span class="hljs-built_in">list</span>[<span class="hljs-number">0</span>] &gt;= <span class="hljs-built_in">list</span>[<span class="hljs-number">1</span>]; <span class="hljs-comment">// False</span>
+
+        <span class="hljs-built_in">list</span>[<span class="hljs-number">0</span>] == <span class="hljs-built_in">list</span>[<span class="hljs-number">1</span>]; <span class="hljs-comment">// False</span>
+        <span class="hljs-built_in">list</span>[<span class="hljs-number">0</span>] != <span class="hljs-built_in">list</span>[<span class="hljs-number">1</span>]; <span class="hljs-comment">// True</span>
+    }
+
+    return <span class="hljs-number">0</span>;
+}
+</code></pre>
+<pre><code class="lang-js"><span class="hljs-comment">// Node</span>
+<span class="hljs-keyword">var</span> robot = <span class="hljs-built_in">require</span> (<span class="hljs-string">"robot-js"</span>);
+
+<span class="hljs-comment">// Retrieve the active/calling process</span>
+<span class="hljs-keyword">var</span> process = robot.Process.getCurrent();
+
+<span class="hljs-comment">// Get all modules in the process</span>
+<span class="hljs-keyword">var</span> list = process.getModules();
+
+<span class="hljs-comment">// List is an array</span>
+list.map (<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">m</span>)
+</span>{
+    m.getName(); <span class="hljs-comment">// module</span>
+    m.getPath(); <span class="hljs-comment">// path/to/module</span>
+    m.getBase(); <span class="hljs-comment">// Load address</span>
+    m.getSize(); <span class="hljs-comment">// Virtual size</span>
+
+    <span class="hljs-comment">// Points back to process</span>
+    m.getProcess().eq (process);
+
+    <span class="hljs-comment">// Retrieve module segments</span>
+    <span class="hljs-comment">// Only relevant on the Mac</span>
+    <span class="hljs-keyword">var</span> segs = m.getSegments();
+
+    <span class="hljs-comment">// Segs is an array</span>
+    segs.map (<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">s</span>)
+    </span>{
+        s.base; <span class="hljs-comment">// Load address</span>
+        s.size; <span class="hljs-comment">// Virtual size</span>
+    });
+});
+
+<span class="hljs-keyword">if</span> (list.length &gt;= <span class="hljs-number">2</span>)
+{
+    list[<span class="hljs-number">0</span>].le (list[<span class="hljs-number">1</span>]); <span class="hljs-comment">// True</span>
+    list[<span class="hljs-number">0</span>].ge (list[<span class="hljs-number">1</span>]); <span class="hljs-comment">// False</span>
+
+    list[<span class="hljs-number">0</span>].eq (list[<span class="hljs-number">1</span>]); <span class="hljs-comment">// False</span>
+    list[<span class="hljs-number">0</span>].ne (list[<span class="hljs-number">1</span>]); <span class="hljs-comment">// True</span>
+}
+</code></pre>
+
+
+		</div>
+
+		<div class="clearfix"></div>
+	</div>
+</section>
+
+		<div id="footer-pad"></div>
+		<section id="footer">
+			<div class="container">
+
+				<div class="author">
+					<p>Licensed under the <a href="//opensource.org/licenses/Zlib">ZLIB License</a></p>
+					<p>Project by the <a href="//github.com/orgs/robot/people">Robot Developers</a></p>
+				</div>
+
+				<div class="github">
+					<p>Proudly Hosted on <a href="//pages.github.com">
+						<svg><use xlink:href="/common/vectors.svg#github" /></svg>
+					</a></p>
+				</div>
+
+				<div class="clearfix"></div>
+
+			</div>
+		</section>
+	</div>
+
+	<script src="/common/svg4everybody.js"></script><script>svg4everybody();</script>
+
+	<script>
+		(function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,"script","//www.google-analytics.com/analytics.js","ga");
+		ga("create", "UA-41804800-7", "auto"); ga("send", "pageview");
+	</script>
+
+</body>
+</html>

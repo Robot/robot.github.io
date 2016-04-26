@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+
+<!--////////////////////////////////////////////////////////////////////////////
+// ========================================================================== //
+//                                                                            //
+//                       (C) 2010-2016 Robot Developers                       //
+//                       See LICENSE for licensing info                       //
+//                                                                            //
+// ========================================================================== //
+/////////////////////////////////////////////////////////////////////////////-->
+
+<html lang="en">
+<head>
+
+	<title>Robot Color Class</title>
+	<meta name="description" content="Robot documentation and information site">
+
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name=      "mobile-web-app-capable" content="no">
+	<meta name="apple-mobile-web-app-capable" content="no">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="viewport" content="width=980, maximum-scale=1">
+
+	<link rel="stylesheet" href="/common/normalize.css" />
+	<link rel="stylesheet" href="/common/docs.css" />
+
+	<link rel="shortcut icon" href="/common/favicon.ico" />
+
+</head>
+<body>
+
+	<div id="body">
+		
+
+
+
+<section id="header">
+	<div class="noise"></div>
+
+	<section id="banner">
+		<div class="container">
+
+			<a href="/">
+				<svg><use xlink:href="/common/vectors.svg#logo" /></svg>
+			</a>
+
+		</div>
+	</section>
+
+	<section id="menu">
+		<div class="container">
+	
+			<nav>
+				<a href="/docs/about.html"     >DOCUMENTATION</a>
+				<a href="/api/global.html"     >API          </a>
+				<a href="/docs/philosophy.html">COMMUNITY    </a>
+				<a href="//github.com/robot"   >GITHUB       </a>
+			</nav>
+	
+		</div>
+	</section>
+</section>
+
+<section id="docs">
+	<div class="container">
+
+		<div id="sidebar">
+
+			<nav>
+				<h1>Types</h1>
+				<a  href="/api/global.html"   >Global   </a>
+				<a  href="/api/enum.html"     >Enum     </a>
+				<a  href="/api/hash.html"     >Hash     </a>
+				<a class="active" href="/api/color.html"    >Color    </a>
+				<a  href="/api/image.html"    >Image    </a>
+				<a  href="/api/range.html"    >Range    </a>
+				<a  href="/api/point.html"    >Point    </a>
+				<a  href="/api/size.html"     >Size     </a>
+				<a  href="/api/bounds.html"   >Bounds   </a>
+			</nav>
+			<nav>
+				<h1>Native</h1>
+				<a  href="/api/keyboard.html" >Keyboard </a>
+				<a  href="/api/mouse.html"    >Mouse    </a>
+				<a  href="/api/process.html"  >Process  </a>
+				<a  href="/api/module.html"   >Module   </a>
+				<a  href="/api/memory.html"   >Memory   </a>
+				<a  href="/api/window.html"   >Window   </a>
+				<a  href="/api/screen.html"   >Screen   </a>
+				<a  href="/api/timer.html"    >Timer    </a>
+				<a  href="/api/clipboard.html">Clipboard</a>
+			</nav>
+
+		</div>
+		<div id="content" class="marked">
+
+			<h1 id="color">Color</h1>
+<a class="edit" href="//github.com/robot/robot.github.io/edit/master/source/api/color.html">Edit on GitHub</a><div class="include">
+	#<span class="keyword">include</span> <span class="string">&lt;Color.h&gt;</span>
+	<div class="details">
+		<a href="//github.com/robot/robot/blob/master/Source/Color.h" >Header</a>
+		<a href="//github.com/robot/robot/blob/master/Source/Color.cc">Source</a>
+	</div>
+	<div class="clearfix"></div>
+</div><table id="Color" class="class">
+<thead>
+	<tr>
+		<th>S</th><th>Return</th><th>Name</th><th>Parameters</th>
+	</tr>
+</thead>
+<tbody>
+	<tr>
+		<td></td>
+		<td></td>
+		<td><a href="#Ctor">Color</a></td>
+		<td>(uint32 argb &#x3D; 0)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td><a href="#Ctor2">Color</a></td>
+		<td>(uint8 r, uint8 g,
+ uint8 b, uint8 a &#x3D; 255)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>uint32</td>
+		<td><a href="#GetARGB">GetARGB</a></td>
+		<td>(void) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>void</td>
+		<td><a href="#SetARGB">SetARGB</a></td>
+		<td>(uint32 argb)</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#OpEq">operator &#x3D;&#x3D;</a></td>
+		<td>(const Color&amp; color) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>bool</td>
+		<td><a href="#OpNe">operator !&#x3D;</a></td>
+		<td>(const Color&amp; color) const</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>uint8</td>
+		<td><a href="#B">B</a></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>uint8</td>
+		<td><a href="#G">G</a></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>uint8</td>
+		<td><a href="#R">R</a></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>uint8</td>
+		<td><a href="#A">A</a></td>
+		<td></td>
+	</tr>
+</tbody>
+</table><h2 id="description">Description</h2>
+<p>Represents a color defined by <a href="#R">R</a>, <a href="#G">G</a>, <a href="#B">B</a>, and <a href="#A">A</a>. Each component can be manipulated directly through the exposed property values. A single color occupies four bytes of memory, one for each channel of the color and each color is arranged in such a way as to allow casting to and from a 4-byte integer of the form <code>0xAARRGGBB</code>. The functions <a href="#GetARGB">GetARGB</a> and <a href="#SetARGB">SetARGB</a>, provide explicit ways of encoding and decoding colors to and from packed ARGB representations.</p>
+<h2 id="constructors">Constructors</h2>
+<p><a name="Ctor"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+
+            <td ><a class="link" href="#Ctor">Color</a></td>
+            <td>(<a href="/api/global.html#data-types">uint32</a> argb &#x3D; 0)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Constructs a color from <strong>argb</strong>, a packed ARGB integer.
+<br><br>
+<a name="Ctor2"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+
+            <td ><a class="link" href="#Ctor2">Color</a></td>
+            <td>(<a href="/api/global.html#data-types">uint8</a> r, <a href="/api/global.html#data-types">uint8</a> g,
+ <a href="/api/global.html#data-types">uint8</a> b, <a href="/api/global.html#data-types">uint8</a> a &#x3D; 255)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Constructs a color with components set to <strong>r</strong>, <strong>g</strong>, <strong>b</strong> and <strong>a</strong>.</p>
+<h2 id="functions">Functions</h2>
+<p><a name="GetARGB"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td><a href="/api/global.html#data-types">uint32</a></td>
+            <td ><a class="link" href="#GetARGB">GetARGB</a></td>
+            <td>(void) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Returns this color as a packed ARGB integer.
+<br><br>
+<a name="SetARGB"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>void</td>
+            <td ><a class="link" href="#SetARGB">SetARGB</a></td>
+            <td>(<a href="/api/global.html#data-types">uint32</a> argb)</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Sets this color to <strong>argb</strong>, a packed ARGB integer.</p>
+<h2 id="operators">Operators</h2>
+<p><a name="OpEq"></a>
+<a name="OpNe"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#OpEq">operator &#x3D;&#x3D;</a></td>
+            <td>(const <a href="/api/color.html">Color</a>&amp; color) const</td>
+        </tr>
+        <tr>
+
+            <td>bool</td>
+            <td ><a class="link" href="#OpNe">operator !&#x3D;</a></td>
+            <td>(const <a href="/api/color.html">Color</a>&amp; color) const</td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Performs equality comparison on each component.</p>
+<h2 id="properties">Properties</h2>
+<p><a name="B"></a>
+<a name="G"></a>
+<a name="R"></a>
+<a name="A"></a></p>
+<pre class="fn">
+    <table>
+        <tr>
+
+            <td><a href="/api/global.html#data-types">uint8</a></td>
+            <td ><a class="link" href="#B">B</a></td>
+            <td></td>
+        </tr>
+        <tr>
+
+            <td><a href="/api/global.html#data-types">uint8</a></td>
+            <td ><a class="link" href="#G">G</a></td>
+            <td></td>
+        </tr>
+        <tr>
+
+            <td><a href="/api/global.html#data-types">uint8</a></td>
+            <td ><a class="link" href="#R">R</a></td>
+            <td></td>
+        </tr>
+        <tr>
+
+            <td><a href="/api/global.html#data-types">uint8</a></td>
+            <td ><a class="link" href="#A">A</a></td>
+            <td></td>
+        </tr>
+    </table>
+
+
+</pre>
+
+<p>Provides direct access to the Red, Green, Blue and Alpha components of this color.</p>
+<h1 id="examples">Examples</h1>
+<pre><code class="lang-cpp"><span class="hljs-comment">// C++</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;Robot.h&gt;</span></span>
+ROBOT_NS_USE_ALL;
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span> <span class="hljs-params">(<span class="hljs-keyword">void</span>)</span>
+</span>{
+    Color c1, c2 (<span class="hljs-number">150</span>, <span class="hljs-number">200</span>, <span class="hljs-number">100</span>);
+
+    <span class="hljs-comment">// argb becomes 0xFF96C864</span>
+    uint32 argb = c2.GetARGB();
+
+    <span class="hljs-comment">// c1 becomes c2</span>
+    c1.SetARGB (argb);
+
+    c1 == c2; <span class="hljs-comment">// True</span>
+    c1 != c2; <span class="hljs-comment">// False</span>
+
+    <span class="hljs-comment">// Standard data</span>
+    uint32 pixels[] =
+    {
+        <span class="hljs-number">0xFFFF0000</span>,
+        <span class="hljs-number">0xFF00FF00</span>,
+        <span class="hljs-number">0xFF0000FF</span>,
+    };
+
+    <span class="hljs-comment">// Pixels can be casted directly</span>
+    Color* colors = (Color*) pixels;
+
+    colors[<span class="hljs-number">0</span>]; <span class="hljs-comment">// (255, 0, 0, 255)</span>
+    colors[<span class="hljs-number">1</span>]; <span class="hljs-comment">// (0, 255, 0, 255)</span>
+    colors[<span class="hljs-number">2</span>]; <span class="hljs-comment">// (0, 0, 255, 255)</span>
+
+    colors[<span class="hljs-number">0</span>].GetARGB(); <span class="hljs-comment">// 0xFFFF0000</span>
+    colors[<span class="hljs-number">1</span>].GetARGB(); <span class="hljs-comment">// 0xFF00FF00</span>
+    colors[<span class="hljs-number">2</span>].GetARGB(); <span class="hljs-comment">// 0xFF0000FF</span>
+    return <span class="hljs-number">0</span>;
+}
+</code></pre>
+<pre><code class="lang-js"><span class="hljs-comment">// Node</span>
+<span class="hljs-keyword">var</span> robot = <span class="hljs-built_in">require</span> (<span class="hljs-string">"robot-js"</span>);
+
+<span class="hljs-keyword">var</span> c1 = robot.Color();
+<span class="hljs-keyword">var</span> c2 = robot.Color
+    (<span class="hljs-number">150</span>, <span class="hljs-number">200</span>, <span class="hljs-number">100</span>);
+
+<span class="hljs-comment">// argb becomes 0xFF96C864</span>
+<span class="hljs-keyword">var</span> argb = c2.getARGB();
+
+<span class="hljs-comment">// c1 becomes c2</span>
+c1.setARGB (argb);
+
+c1.eq (c2); <span class="hljs-comment">// True</span>
+c1.ne (c2); <span class="hljs-comment">// False</span>
+
+c1.r; <span class="hljs-comment">// 150</span>
+c1.g; <span class="hljs-comment">// 200</span>
+c1.b; <span class="hljs-comment">// 100</span>
+c1.a; <span class="hljs-comment">// 255</span>
+
+<span class="hljs-comment">// Color construction</span>
+c1 = robot.Color (c2);
+c1 = robot.Color
+({
+    r: <span class="hljs-number">20</span>,
+    g: <span class="hljs-number">40</span>,
+    b: <span class="hljs-number">60</span>,
+    a: <span class="hljs-number">80</span> <span class="hljs-comment">// Optional</span>
+});
+</code></pre>
+
+
+		</div>
+
+		<div class="clearfix"></div>
+	</div>
+</section>
+
+		<div id="footer-pad"></div>
+		<section id="footer">
+			<div class="container">
+
+				<div class="author">
+					<p>Licensed under the <a href="//opensource.org/licenses/Zlib">ZLIB License</a></p>
+					<p>Project by the <a href="//github.com/orgs/robot/people">Robot Developers</a></p>
+				</div>
+
+				<div class="github">
+					<p>Proudly Hosted on <a href="//pages.github.com">
+						<svg><use xlink:href="/common/vectors.svg#github" /></svg>
+					</a></p>
+				</div>
+
+				<div class="clearfix"></div>
+
+			</div>
+		</section>
+	</div>
+
+	<script src="/common/svg4everybody.js"></script><script>svg4everybody();</script>
+
+	<script>
+		(function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,"script","//www.google-analytics.com/analytics.js","ga");
+		ga("create", "UA-41804800-7", "auto"); ga("send", "pageview");
+	</script>
+
+</body>
+</html>
