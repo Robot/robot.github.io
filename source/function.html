@@ -1,38 +1,38 @@
-<pre class="fn">
-	<a name="{{name.link}}"></a>
-	{{#if name2}}<a name="{{name2.link}}"></a>{{/if}}
-	{{#if name3}}<a name="{{name3.link}}"></a>{{/if}}
-	{{#if name4}}<a name="{{name4.link}}"></a>{{/if}}
+<a name="{{name.link}}"></a>
+{{#if name2}}<a name="{{name2.link}}"></a>{{/if}}
+{{#if name3}}<a name="{{name3.link}}"></a>{{/if}}
+{{#if name4}}<a name="{{name4.link}}"></a>{{/if}}
 
+<pre class="fn">
 	<table>
 		<tr>
 			{{#if name.static}}<td>static</td>{{/if}}
-			{{#if name.return}}<td>{{#linkapi}}{{name.return}}{{/linkapi}}</td>{{/if}}
-			<td {{#if right}}class="right-align"{{/if}}><b>{{name.name}}</b></td>
-			<td>{{#if name.args}}{{#linkapi}}{{name.args}}{{/linkapi}}{{#if name.const}} const{{/if}}{{/if}}</td>
+			{{#if name.return}}<td>{{#linkAPI}}{{name.return}}{{/linkAPI}}</td>{{/if}}
+			<td {{#if right}}class="right-align"{{/if}}><a class="link" href="#{{name.link}}">{{name.name}}</a></td>
+			<td>{{#if name.args}}{{#linkAPI}}{{name.args}}{{/linkAPI}}{{#if name.const}} const{{/if}}{{/if}}</td>
 		</tr>
 	{{#if name2}}
 		<tr>
 			{{#if name2.static}}<td>static</td>{{/if}}
-			{{#if name2.return}}<td>{{#linkapi}}{{name2.return}}{{/linkapi}}</td>{{/if}}
-			<td {{#if right}}class="right-align"{{/if}}><b>{{name2.name}}</b></td>
-			<td>{{#if name2.args}}{{#linkapi}}{{name2.args}}{{/linkapi}}{{#if name2.const}} const{{/if}}{{/if}}</td>
+			{{#if name2.return}}<td>{{#linkAPI}}{{name2.return}}{{/linkAPI}}</td>{{/if}}
+			<td {{#if right}}class="right-align"{{/if}}><a class="link" href="#{{name2.link}}">{{name2.name}}</a></td>
+			<td>{{#if name2.args}}{{#linkAPI}}{{name2.args}}{{/linkAPI}}{{#if name2.const}} const{{/if}}{{/if}}</td>
 		</tr>
 	{{/if}}
 	{{#if name3}}
 		<tr>
 			{{#if name3.static}}<td>static</td>{{/if}}
-			{{#if name3.return}}<td>{{#linkapi}}{{name3.return}}{{/linkapi}}</td>{{/if}}
-			<td {{#if right}}class="right-align"{{/if}}><b>{{name3.name}}</b></td>
-			<td>{{#if name3.args}}{{#linkapi}}{{name3.args}}{{/linkapi}}{{#if name3.const}} const{{/if}}{{/if}}</td>
+			{{#if name3.return}}<td>{{#linkAPI}}{{name3.return}}{{/linkAPI}}</td>{{/if}}
+			<td {{#if right}}class="right-align"{{/if}}><a class="link" href="#{{name3.link}}">{{name3.name}}</a></td>
+			<td>{{#if name3.args}}{{#linkAPI}}{{name3.args}}{{/linkAPI}}{{#if name3.const}} const{{/if}}{{/if}}</td>
 		</tr>
 	{{/if}}
 	{{#if name4}}
 		<tr>
 			{{#if name4.static}}<td>static</td>{{/if}}
-			{{#if name4.return}}<td>{{#linkapi}}{{name4.return}}{{/linkapi}}</td>{{/if}}
-			<td {{#if right}}class="right-align"{{/if}}><b>{{name4.name}}</b></td>
-			<td>{{#if name4.args}}{{#linkapi}}{{name4.args}}{{/linkapi}}{{#if name4.const}} const{{/if}}{{/if}}</td>
+			{{#if name4.return}}<td>{{#linkAPI}}{{name4.return}}{{/linkAPI}}</td>{{/if}}
+			<td {{#if right}}class="right-align"{{/if}}><a class="link" href="#{{name4.link}}">{{name4.name}}</a></td>
+			<td>{{#if name4.args}}{{#linkAPI}}{{name4.args}}{{/linkAPI}}{{#if name4.const}} const{{/if}}{{/if}}</td>
 		</tr>
 	{{/if}}
 	</table>

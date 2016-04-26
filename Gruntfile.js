@@ -22,7 +22,7 @@ mMarked.setOptions
 	highlight: function (code, lang)
 	{
 		return lang ?
-			mHighlight.highlight     (lang, code).value :
+			mHighlight.highlight     (lang, code).value:
 			mHighlight.highlightAuto (      code).value;
 	}
 });
@@ -37,53 +37,54 @@ mMarked.setOptions
 
 var mLinkAPI =
 [
-	{ name: "int8",			page: "global"		},
-	{ name: "int16",		page: "global"		},
-	{ name: "int32",		page: "global"		},
-	{ name: "int64",		page: "global"		},
+	{ name: "int8",			page: "global",		link: "data-types"	},
+	{ name: "int16",		page: "global",		link: "data-types"	},
+	{ name: "int32",		page: "global",		link: "data-types"	},
+	{ name: "int64",		page: "global",		link: "data-types"	},
 
-	{ name: "uint8",		page: "global"		},
-	{ name: "uint16",		page: "global"		},
-	{ name: "uint32",		page: "global"		},
-	{ name: "uint64",		page: "global"		},
+	{ name: "uint8",		page: "global",		link: "data-types"	},
+	{ name: "uint16",		page: "global",		link: "data-types"	},
+	{ name: "uint32",		page: "global",		link: "data-types"	},
+	{ name: "uint64",		page: "global",		link: "data-types"	},
 
-	{ name: "real32",		page: "global"		},
-	{ name: "real64",		page: "global"		},
+	{ name: "real32",		page: "global",		link: "data-types"	},
+	{ name: "real64",		page: "global",		link: "data-types"	},
 
-	{ name: "intptr",		page: "global"		},
-	{ name: "uintptr",		page: "global"		},
+	{ name: "intptr",		page: "global",		link: "data-types"	},
+	{ name: "uintptr",		page: "global",		link: "data-types"	},
 
-	{ name: "Hash",			page: "hash"		},
-	{ name: "Color",		page: "color"		},
-	{ name: "Image",		page: "image"		},
-	{ name: "Range",		page: "range"		},
-	{ name: "Point",		page: "point"		},
-	{ name: "Size",			page: "size"		},
-	{ name: "Bounds",		page: "bounds"		},
+	{ name: "Hash",			page: "hash",		link: false			},
+	{ name: "Color",		page: "color",		link: false			},
+	{ name: "Image",		page: "image",		link: false			},
+	{ name: "Range",		page: "range",		link: false			},
+	{ name: "Point",		page: "point",		link: false			},
+	{ name: "Size",			page: "size",		link: false			},
+	{ name: "Bounds",		page: "bounds",		link: false			},
+	{ name: "ValueMap",		page: "enum",		link: "types"		},
 
-	{ name: "Key",			page: "keyboard"	},
-	{ name: "KeyList",		page: "keyboard"	},
-	{ name: "KeyState",		page: "keyboard"	},
-	{ name: "Button",		page: "mouse"		},
-	{ name: "ButtonState",	page: "mouse"		},
+	{ name: "Key",			page: "keyboard",	link: "key"			},
+	{ name: "KeyList",		page: "keyboard",	link: "types"		},
+	{ name: "KeyState",		page: "keyboard",	link: "types"		},
+	{ name: "Button",		page: "mouse",		link: "button"		},
+	{ name: "ButtonState",	page: "mouse",		link: "types"		},
 
-	{ name: "Process",		page: "process"		},
-	{ name: "ProcessList",	page: "process"		},
-	{ name: "Module",		page: "module"		},
-	{ name: "ModuleList",	page: "module"		},
-	{ name: "Segment",		page: "module"		},
-	{ name: "SegmentList",	page: "module"		},
-	{ name: "Memory",		page: "memory"		},
-	{ name: "Stats",		page: "memory"		},
-	{ name: "Region",		page: "memory"		},
-	{ name: "RegionList",	page: "memory"		},
-	{ name: "Flags",		page: "memory"		},
-	{ name: "AddressList",	page: "memory"		},
+	{ name: "Process",		page: "process",	link: false			},
+	{ name: "ProcessList",	page: "process",	link: "types"		},
+	{ name: "Module",		page: "module",		link: false			},
+	{ name: "ModuleList",	page: "process",	link: "types"		},
+	{ name: "Segment",		page: "module",		link: "segment"		},
+	{ name: "SegmentList",	page: "module",		link: "types"		},
+	{ name: "Memory",		page: "memory",		link: false			},
+	{ name: "Stats",		page: "memory",		link: "stats"		},
+	{ name: "Region",		page: "memory",		link: "region"		},
+	{ name: "RegionList",	page: "memory",		link: "types"		},
+	{ name: "Flags",		page: "memory",		link: "flags"		},
+	{ name: "AddressList",	page: "memory",		link: "types"		},
 
-	{ name: "Window",		page: "window"		},
-	{ name: "WindowList",	page: "window"		},
-	{ name: "Screen",		page: "screen"		},
-	{ name: "ScreenList",	page: "screen"		},
+	{ name: "Window",		page: "window",		link: false			},
+	{ name: "WindowList",	page: "window",		link: "types"		},
+	{ name: "Screen",		page: "screen",		link: false			},
+	{ name: "ScreenList",	page: "screen",		link: "types"		},
 ];
 
 // Compile the data in the linkAPI array
@@ -91,9 +92,10 @@ for (var i = 0; i < mLinkAPI.length; ++i)
 {
 	var name = mLinkAPI[i].name;
 	var page = mLinkAPI[i].page;
+	var link = mLinkAPI[i].link;
 
-	mLinkAPI[i].page = "<a href=\"/api/" +
-		page + ".html\">" +  name + "</a>";
+	mLinkAPI[i].page = "<a href=\"/api/" + page + ".html" +
+		(link ? "#" + link : "") + "\">" + name + "</a>";
 
 	mLinkAPI[i].name = new RegExp
 		("\\b" + name + "\\b", "gm");
@@ -267,31 +269,31 @@ function parseSrc (content)
 
 			switch (name)
 			{
-				case "operator +=" : name = "OpAddEq"; break;
-				case "operator -=" : name = "OpSubEq"; break;
-				case "operator *=" : name = "OpMulEq"; break;
-				case "operator /=" : name = "OpDivEq"; break;
+				case "operator +=": name = "OpAddEq"; break;
+				case "operator -=": name = "OpSubEq"; break;
+				case "operator *=": name = "OpMulEq"; break;
+				case "operator /=": name = "OpDivEq"; break;
 
-				case "operator +"  : name = "OpAdd";   break;
-				case "operator -"  : name = "OpSub";   break;
-				case "operator *"  : name = "OpMul";   break;
-				case "operator /"  : name = "OpDiv";   break;
+				case "operator +" : name = "OpAdd";   break;
+				case "operator -" : name = "OpSub";   break;
+				case "operator *" : name = "OpMul";   break;
+				case "operator /" : name = "OpDiv";   break;
 
-				case "operator &=" : name = "OpAndEq"; break;
-				case "operator &"  : name = "OpAnd";   break;
-				case "operator |=" : name = "OpOrEq";  break;
-				case "operator |"  : name = "OpOr";    break;
+				case "operator |=": name = "OpOrEq";  break;
+				case "operator |" : name = "OpOr";    break;
+				case "operator &=": name = "OpAndEq"; break;
+				case "operator &" : name = "OpAnd";   break;
 
-				case "operator <"  : name = "OpLt";    break;
-				case "operator >"  : name = "OpGt";    break;
-				case "operator <=" : name = "OpLe";    break;
-				case "operator >=" : name = "OpGe";    break;
+				case "operator <" : name = "OpLt";    break;
+				case "operator >" : name = "OpGt";    break;
+				case "operator <=": name = "OpLe";    break;
+				case "operator >=": name = "OpGe";    break;
 
-				case "operator ==" : name = "OpEq";    break;
-				case "operator !=" : name = "OpNe";    break;
+				case "operator ==": name = "OpEq";    break;
+				case "operator !=": name = "OpNe";    break;
 
-				case "operator ="  : name = "OpAs";    break;
-				case "operator ()" : name = "OpFn";    break;
+				case "operator =" : name = "OpAs";    break;
+				case "operator ()": name = "OpFn";    break;
 			}
 		}
 
@@ -330,9 +332,9 @@ module.exports = function (grunt)
 		// Clean                                                                      //
 		//----------------------------------------------------------------------------//
 
-		"clean" :
+		"clean":
 		{
-			all :
+			all:
 			[
 				"index.html",
 				"api/", "docs/",
@@ -347,18 +349,18 @@ module.exports = function (grunt)
 		// Watch                                                                      //
 		//----------------------------------------------------------------------------//
 
-		"watch" :
+		"watch":
 		{
-			"stylus" :
+			"stylus":
 			{
-				files : "source/**/*.styl",
-				tasks : "stylus"
+				files: "source/**/*.styl",
+				tasks: "stylus"
 			},
 
-			"hbs" :
+			"hbs":
 			{
-				files : "source/**/*.html",
-				tasks : "hbs"
+				files: "source/**/*.html",
+				tasks: "hbs"
 			}
 		},
 
@@ -368,20 +370,20 @@ module.exports = function (grunt)
 		// Stylus                                                                     //
 		//----------------------------------------------------------------------------//
 
-		"stylus" :
+		"stylus":
 		{
-			all :
+			all:
 			{
-				options :
+				options:
 				{
-					compress : false,
-					import : [ "nib" ]
+					compress: false,
+					import: [ "nib" ]
 				},
 
-				files :
+				files:
 				{
-					"common/home.css" : "source/home.styl",
-					"common/docs.css" : "source/docs.styl"
+					"common/home.css": "source/home.styl",
+					"common/docs.css": "source/docs.styl"
 				}
 			}
 		},
@@ -392,18 +394,18 @@ module.exports = function (grunt)
 		// Handlebars                                                                 //
 		//----------------------------------------------------------------------------//
 
-		"hbs" :
+		"hbs":
 		{
-			all :
+			all:
 			{
-				options :
+				options:
 				{
-					layout : "source/common.html",
+					layout: "source/common.html",
 
-					helpers :
+					helpers:
 					{
 						// Inline conditional comparison check
-						"ifeq" : function (key, value, content)
+						"ifeq": function (key, value, content)
 						{
 							return key === value ?
 								content.fn      (this) :
@@ -411,15 +413,27 @@ module.exports = function (grunt)
 						},
 
 						// Inline conditional comparison check
-						"ifne" : function (key, value, content)
+						"ifne": function (key, value, content)
 						{
 							return key !== value ?
 								content.fn      (this) :
 								content.inverse (this);
 						},
 
+						// Convert to lower case
+						"toLower": function (str)
+						{
+							return str.toLowerCase();
+						},
+
+						// Convert to upper case
+						"toUpper": function (str)
+						{
+							return str.toUpperCase();
+						},
+
 						// Inline HTML context editing
-						"context" : function (context)
+						"context": function (context)
 						{
 							var value = JSON.parse (context.fn (this));
 							for (var attrname in value)
@@ -427,27 +441,27 @@ module.exports = function (grunt)
 						},
 
 						// Inline string block insertion
-						"string" : function (name, value)
+						"string": function (name, value)
 						{
 							this[name] = value.fn (this);
 						},
 
 						// Inline marked processing
-						"marked" : function (value)
+						"marked": function (value)
 						{
 							return mMarked
 								(value.fn (this));
 						},
 
 						// Inline class block processing
-						"class" : function (name, value)
+						"class": function (name, value)
 						{
 							var source = parseSrc (value.fn (this));
 							source.name = name; this[name] = source;
 						},
 
 						// Inline api link rendering
-						"linkapi" : function (content)
+						"linkAPI": function (content)
 						{
 							content = content.fn (this);
 							// Auto link all of the Robot data types
@@ -462,17 +476,18 @@ module.exports = function (grunt)
 						}
 					},
 
-					partials :
+					partials:
 					{
-						"partial-menu"  : "source/menu.html",
-						"partial-docs"  : "source/docs.html",
-						"partial-inc"   : "source/include.html",
-						"partial-class" : "source/class.html",
-						"partial-fn"    : "source/function.html"
+						"partial-menu" : "source/menu.html",
+						"partial-docs" : "source/docs.html",
+						"partial-edit" : "source/edit.html",
+						"partial-inc"  : "source/include.html",
+						"partial-class": "source/class.html",
+						"partial-fn"   : "source/function.html"
 					}
 				},
 
-				files :
+				files:
 				{
 					"index.html"			: "source/home.html",
 
@@ -484,6 +499,7 @@ module.exports = function (grunt)
 
 					"docs/philosophy.html"	: "source/docs/philosophy.html",
 					"docs/contributing.html": "source/docs/contributing.html",
+					"docs/conduct.html"		: "source/docs/conduct.html",
 					"docs/branding.html"	: "source/docs/branding.html",
 					"docs/attributions.html": "source/docs/attributions.html",
 

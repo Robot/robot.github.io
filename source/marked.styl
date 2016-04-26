@@ -72,7 +72,7 @@
 
 	& p
 		text-align: justify
-		& strong
+		& strong, & b
 			font-weight: 600
 
 	& ol
@@ -80,7 +80,7 @@
 		& p
 			margin: 0px 0px 8px 0px
 
-		& strong
+		& strong, & b
 			font-weight: 600
 
 	& ol ol
@@ -96,7 +96,7 @@
 	& a,
 	& a:hover, & a:active,
 	& a:focus, & a:visited
-		font-weight: 700
+		font-weight: 600
 		color: rgb(60, 120, 180)
 
 	& a:hover
@@ -181,7 +181,21 @@
 		float: right
 		margin-left: 20px
 		text-align: right
-	
+
+	& .text-left
+		text-align: left
+
+	& .text-center
+		text-align: center
+
+	& .text-right
+		text-align: right
+
+	& a.edit
+		margin-top: -56px
+		padding: 0px 20px
+		float: right
+
 	& .include
 		font-family: inconsolata, monospace
 		  font-size: 18px
@@ -251,6 +265,11 @@
 
 			& .right-align
 				text-align: right
+
+		& .link
+			font-weight: 600
+			color: grey(60)
+			text-decoration: none
 
 		& .annotation
 			 margin: 0px
