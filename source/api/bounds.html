@@ -1,6 +1,6 @@
 {{#context}}
 {
-	"title" : "Robot Bounds Class", "api" : "Bounds"
+	"title": "Robot Bounds Class", "api": "Bounds"
 }
 {{/context}}
 
@@ -84,110 +84,240 @@ public:
 
 {{#string "content"}}
 <h1 id="bounds">Bounds</h1>
-{{> partial-inc   name="Bounds"}}
-{{> partial-class name= Bounds }}
+{{> partial-edit  path="api/bounds"}}
+{{> partial-inc   name="Bounds"    }}
+{{> partial-class name= Bounds     }}
 {{#marked}}
 
 ## Description
-Placeholder
+Represents a rectangle defined by [X](#X), [Y](#Y), [W](#W) and [H](#H) with integer precision. Each component can be manipulated directly through the exposed property values. X and Y represent the top-left corner of the bounds while W and H represent the width and height of the bounds, which could be negative. Calling [Normalize](#Normalize) swaps the left and right or top and bottom edges of the bounds, as needed, to make the size positive.
+
+<img class="right" src="/common/bounds1.png" />
+The [GetLTRB](#GetLTRB) and [SetLTRB](#SetLTRB) functions provide an alternative way for manipulating the bounds. These functions express bounds in much more traditional fashion by using left, top, right, and bottom to represent each of the four edges of the bounds. Functions pertaining to left and right modify the X and Width components while top and bottom modify the Y and Height components.
+
+The [IsZero](#IsZero) function returns true if all components are equal to zero while the [IsEmpty](#IsEmpty) function returns true if either Width or Height are equal to zero. An additional function, [IsValid](#IsValid), returns true if both Width and Height are greater than zero, and the [GetCenter](#GetCenter) function returns a point at the center of the bounds.
+
+The Bounds class also offers an additional set of functionality for testing and manipulating the geometry of the bounds. For instance, the [Contains](#Contains) function checks whether a point is inside or on the edges of the bounds. The other [Contains](#Contains3) function performs the same task but with a bounds object instead of a point. Moreover, a bounds can be passed to the [Intersects](#Intersects) function which checks whether any part of it is within or on the edges of the bounds. Two bounds can be [united](#OpAnd) or [intersected](#OpOr) through special overloaded operators.
+
+<img class="center" src="/common/bounds2.png" />
 
 ## Constructors
 {{> partial-fn name =Bounds.Ctor
 			   name2=Bounds.Ctor2}}
-Placeholder
+Constructs a bounds with all components set to **value** or **x**, **y**, **w**, and **h**.
 <br><br>
 {{> partial-fn name=Bounds.Ctor3}}
-Placeholder
+Constructs a bounds with position set to **p** and size set to **s**.
 
 ## Functions
 {{> partial-fn name=Bounds.IsZero}}
-Placeholder
+Returns true if all components are equal to zero.
 <br><br>
 {{> partial-fn name=Bounds.IsEmpty}}
-Placeholder
+Returns true if either Width or Height are equal to zero.
 <br><br>
 {{> partial-fn name=Bounds.IsValid}}
-Placeholder
+Returns true if both Width and Height are greater than zero.
 <br><br>
 {{> partial-fn name =Bounds.GetLeft
 			   name2=Bounds.GetTop
 			   name3=Bounds.GetRight
 			   name4=Bounds.GetBottom}}
-Placeholder
+Returns the left, top, right, and bottom edges of this bounds.
 <br><br>
 {{> partial-fn name =Bounds.SetLeft
 			   name2=Bounds.SetTop
 			   name3=Bounds.SetRight
 			   name4=Bounds.SetBottom}}
-Placeholder
+Sets the left, top, right, and bottom edges of this bounds to **l**, **t**, **r**, and **b**.
 <br><br>
 {{> partial-fn name=Bounds.GetLTRB}}
-Placeholder
+Sets **l**, **t**, **r**, and **b** to the left, top, right, and bottom edges of this bounds.
 <br><br>
 {{> partial-fn name=Bounds.SetLTRB}}
-Placeholder
+Sets the left, top, right, and bottom edges of this bounds to **l**, **t**, **r**, and **b**.
 <br><br>
 {{> partial-fn name=Bounds.Normalize}}
-Placeholder
+Normalizes this bounds to ensure that Width and Height are positive. If Width is negative, this function swaps the left and right edges. If Height is negative, this function swaps the top and bottom edges.
 <br><br>
 {{> partial-fn name =Bounds.Contains
 			   name2=Bounds.Contains2}}
-Placeholder
+Returns true if **p** is within or on the edges of this bounds. If **inclusive** is false, this function returns true only if **p** is entirely within this bounds and not on the edges. This function works even when Width and Height are negative.
 <br><br>
 {{> partial-fn name =Bounds.Contains3
 			   name2=Bounds.Contains4}}
-Placeholder
+Returns true if **b** is within or on the edges of this bounds. If **inclusive** is false, this function returns true only if **b** is entirely within this bounds and not on the edges. This function works even when Width and Height are negative.
 <br><br>
 {{> partial-fn name =Bounds.Intersects
 			   name2=Bounds.Intersects2}}
-Placeholder
+Returns true if any part of **b** intersects with this bounds. If **inclusive** is false, this function returns true only if any part of **b** is entirely within this bounds and not on the edges. This function works even when Width and Height are negative.
 <br><br>
 {{> partial-fn name=Bounds.GetPoint}}
-Placeholder
+Returns a [Point](/api/point.html) with this bounds X and Y components.
 <br><br>
 {{> partial-fn name =Bounds.SetPoint
 			   name2=Bounds.SetPoint2}}
-Placeholder
+Sets the X and Y components of this bounds to **p**.
 <br><br>
 {{> partial-fn name=Bounds.GetSize}}
-Placeholder
+Returns a [Size](/api/size.html) with this bounds Width and Height components.
 <br><br>
 {{> partial-fn name =Bounds.SetSize
 			   name2=Bounds.SetSize2}}
-Placeholder
+Sets the Width and Height components of this bounds to **s**.
 <br><br>
 {{> partial-fn name=Bounds.GetCenter}}
-Placeholder
+Returns a [Point](/api/point.html) representing the center of this bounds.
 
 ## Operators
 {{> partial-fn name=Bounds.OpOrEq}}
-Placeholder
-<br><br>
+Unites **bounds** with this bounds and returns a reference to this bounds. This function works even when Width and Height are negative and always generates a normalized bounds.
+```cpp
+Bounds b1 (0, 0, 4, 4);
+Bounds b2 (2, 2, 4, 4);
+
+// b1 becomes (0, 0, 6, 6)
+b1 |= b2;
+```
+<br>
 {{> partial-fn name=Bounds.OpAndEq}}
-Placeholder
-<br><br>
+Intersects **bounds** with this bounds and returns a reference to this bounds. If there is no intersection, a default bounds is returned. This function works even when Width and Height are negative and always generates a normalized bounds.
+```cpp
+Bounds b1 (0, 0, 4, 4);
+Bounds b2 (2, 2, 4, 4);
+
+// b1 becomes (2, 2, 2, 2)
+b1 &= b2;
+```
+<br>
 {{> partial-fn name=Bounds.OpOr}}
-Placeholder
+Unites **bounds** with this bounds and returns the result in a new bounds. This function works even when Width and Height are negative and always returns a normalized bounds.
 <br><br>
 {{> partial-fn name=Bounds.OpAnd}}
-Placeholder
+Intersects **bounds** with this bounds and returns the result in a new bounds. If there is no intersection, a default bounds is returned. This function works even when Width and Height are negative and always returns a normalized bounds.
 <br><br>
-{{> partial-fn name=Bounds.OpEq}}
-Placeholder
-<br><br>
-{{> partial-fn name=Bounds.OpNe}}
-Placeholder
+{{> partial-fn name =Bounds.OpEq
+			   name2=Bounds.OpNe}}
+Performs equality comparison on each component.
 
 ## Properties
 {{> partial-fn name =Bounds.X
 			   name2=Bounds.Y
 			   name3=Bounds.W
 			   name4=Bounds.H}}
-Placeholder
+Provides direct access to the X, Y, Width and Height components of this bounds.
 
 # Examples
 ```cpp
-Placeholder
+// C++
+#include <Robot.h>
+ROBOT_NS_USE_ALL;
+
+int main (void)
+{
+	Bounds b1, b2 (2, 4, 8, 6);
+
+	b1.IsZero (); // True
+	b1.IsEmpty(); // True
+	b1.IsValid(); // False
+	b2.IsValid(); // True
+
+	// b1 becomes (2, 4, 8, 6)
+	b1.SetPoint (2, 4);
+	b1.SetSize  (8, 6);
+
+	// Returns (6, 7)
+	b1.GetCenter();
+
+	b1 == b2; // True
+	b1 != b2; // False
+
+	// b1 becomes (6, 7, -6, -5)
+	b1.SetLTRB (6, 7, 0, 2);
+	// b1 becomes (0, 2,  6,  5)
+	b1.Normalize();
+
+	b1.Contains (5, 5); // True
+	b1.Contains (6, 6); // True
+	b1.Contains (5, 5, false); // True
+	b1.Contains (6, 6, false); // False
+
+	b1.Contains   (b2); // False
+	b1.Intersects (b2); // True
+
+	// b3 becomes (0, 2, 10, 8)
+	Bounds b3 = b1 | b2;
+	// b4 becomes (2, 4,  4, 3)
+	Bounds b4 = b1 & b2;
+	return 0;
+}
+```
+```js
+// Node
+var robot = require ("robot-js");
+
+var b1 = robot.Bounds ();
+var b2 = robot.Bounds (2, 4, 8, 6);
+
+b1.isZero (); // True
+b1.isEmpty(); // True
+b1.isValid(); // False
+b2.isValid(); // True
+
+// b1 becomes (2, 4, 8, 6)
+b1.setPoint (2, 4);
+b1.setSize  (8, 6);
+
+// Returns (6, 7)
+b1.getCenter();
+
+b1.eq (b2); // True
+b1.ne (b2); // False
+
+// b1 becomes (6, 7, -6, -5)
+b1.setLTRB (6, 7, 0, 2);
+// b1 becomes (0, 2,  6,  5)
+b1.normalize();
+
+b1.containsP (5, 5); // True
+b1.containsP (6, 6); // True
+b1.containsP (5, 5, false); // True
+b1.containsP (6, 6, false); // False
+
+b1.containsB  (b2); // False
+b1.intersects (b2); // True
+
+// b3 becomes (0, 2, 10, 8)
+var b3 = b1.unite (b2);
+// b4 becomes (2, 4,  4, 3)
+var b4 = b1.intersect (b2);
+
+// Bounds construction
+b1 = robot.Bounds (b2);
+
+b1 = robot.Bounds
+(
+	robot.Point (100, 200),
+	robot.Size  (300, 400)
+);
+
+b1 = robot.Bounds
+({
+	x: 100, y: 200,
+	w: 300, h: 400
+});
+
+b1 = robot.Bounds
+({
+	l: 100, t: 200,
+	r: 300, b: 400
+});
+
+b1 = robot.Bounds
+(
+	{ x: 100, y: 200 },
+	{ w: 300, h: 400 }
+);
 ```
 
 {{/marked}}

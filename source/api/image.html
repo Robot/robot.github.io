@@ -1,6 +1,6 @@
 {{#context}}
 {
-	"title" : "Robot Image Class", "api" : "Image"
+	"title": "Robot Image Class", "api": "Image"
 }
 {{/context}}
 
@@ -52,79 +52,227 @@ public:
 
 {{#string "content"}}
 <h1 id="image">Image</h1>
-{{> partial-inc   name="Image"}}
-{{> partial-class name= Image }}
+{{> partial-edit  path="api/image"}}
+{{> partial-inc   name="Image"    }}
+{{> partial-class name= Image     }}
 {{#marked}}
 
 ## Description
-Placeholder
+Represents a cross-platform and hardware-independent two-dimensional image. An image can be created through the [Constructor](#Ctor4) or [Create](#Create) functions but in both cases, data is allocated using width and height. To check whether an image has been created, use the [IsValid](#IsValid) function. Use the [Destroy](#Destroy) function when the image is no longer needed to free up any used resources, although it is also called by the destructor automatically.
+
+When creating an image that's already been created, if the current [length](#GetLimit) of the pixel [data](#GetData) is greater than the new [length](#GetLength), then only the dimensions get set, and the pixel data remains unmodified. If, however, the current length is less than the new length, the image gets [destroyed](#Destroy), and new data gets allocated.
+
+Image metrics are available through accessor functions like [GetWidth](#GetWidth), [GetHeight](#GetHeight), and [GetLength](#GetLength). To get access to the pixel data directly, use the [GetData](#GetData) function which returns a one-dimensional array of packed ARGB integers. Alternately, [GetPixel](#GetPixel) and [SetPixel](#SetPixel) can also be used to manipulate the pixel data.
+
+<img class="left" src="/common/image1.png" />
+```cpp
+Image image (4, 6);
+image.Fill  (0   );
+uint32* data = image.GetData();
+
+image.GetWidth (); // 4
+image.GetHeight(); // 6
+image.GetLength(); // 24
+
+data[ 4] = 0xFFC80000;
+data[11] = 0xFF3CB43C;
+data[17] = 0xFF3C78B4;
+
+image.GetPixel (0, 1); // (200,   0,   0)
+image.GetPixel (3, 2); // ( 60, 180,  60)
+image.GetPixel (1, 4); // ( 60, 120, 180)
+```
+
+The Image class provides additional functionality for manipulating the image. The [Fill](#Fill) function, for instance, can be used to fill the entire image with a color while the [Flip](#Flip) function can mirror the image vertically or horizontally. Individual channels of pixels can be swapped using the [Swap](#Swap) function; this is especially useful for when the channels need to arranged in a specific order.
+
+<img class="center" src="/common/image2.png" />
+
+The Image class supports deep copying, move semantics, and deep comparison. Where appropriate, the image gets copied in its entirety; the now independent copy has the same width and height as the original. In instances where a copy is inefficient, a move is used instead, allowing the class to behave like a regular POD type.
 
 ## Constructors
 {{> partial-fn name=Image.Ctor}}
-Placeholder
+Constructs an image with all components set to zero.
 <br><br>
 {{> partial-fn name =Image.Ctor2
 			   name2=Image.Ctor3}}
-Placeholder
+Constructs an image by copying or moving the contents of **image**.
 <br><br>
 {{> partial-fn name =Image.Ctor4
 			   name2=Image.Ctor5}}
-Placeholder
+Constructs an image with width and height set to **size** or **w** and **h**.
+
+**Warning:** [Data](#GetData) is uninitialized, use the [Fill](#Fill) function to initialize the data prior to use.
 
 ## Functions
 {{> partial-fn name=Image.IsValid}}
-Placeholder
+Returns true if this image has been [created](#Create).
 <br><br>
 {{> partial-fn name =Image.Create
 			   name2=Image.Create2}}
-Placeholder
+Creates a new image with width and height set to **size**. If this image has already been created and the current [length](#GetLimit) of the pixel [data](#GetData) is enough to accommodate the new [length](#GetLength), then only the dimensions get set, and the pixel data remains unmodified. If, however, the current length is less than the new length, then this image gets [destroyed](#Destroy), and new data gets allocated. If any component of **size** is zero, this function returns false
+
+**Warning:** [Data](#GetData) is uninitialized, use the [Fill](#Fill) function to initialize the data prior to use.
 <br><br>
 {{> partial-fn name=Image.Destroy}}
-Placeholder
+Destroys the internal pixel [data](#GetData) and deletes any memory which might have been allocated. All values including width and height are set to zero. This function does nothing if the image has not yet been created or has already been destroyed.
 <br><br>
 {{> partial-fn name =Image.GetWidth
 			   name2=Image.GetHeight}}
-Placeholder
+Returns the width and height of this image.
 <br><br>
 {{> partial-fn name=Image.GetLength}}
-Placeholder
+Returns the number of pixels in this image (i.e. [width](#GetWidth) &times; [height](#GetHeight)).
 <br><br>
 {{> partial-fn name=Image.GetData}}
-Placeholder
+Returns a pointer to the pixel data, stored as an array of packed ARGB integers.
 <br><br>
 {{> partial-fn name=Image.GetLimit}}
-Placeholder
+Returns the length of the pixel [data](#GetData) array, which could be greater than [length](#GetLength).
 <br><br>
 {{> partial-fn name =Image.GetPixel
 			   name2=Image.GetPixel2}}
-Placeholder
+Returns the [Color](/api/color.html) of the pixel at **point**. A default Color is returned if **point** is out of bounds.
 <br><br>
 {{> partial-fn name =Image.SetPixel
 			   name2=Image.SetPixel2}}
-Placeholder
+Sets the [Color](/api/color.html) of the pixel at **point** to **c**. Does nothing if **point** is out of bounds.
 <br><br>
 {{> partial-fn name =Image.Fill
 			   name2=Image.Fill2}}
-Placeholder
+Fills the entire image with **color** and returns true. Returns false if this image is not [valid](#IsValid).
 <br><br>
 {{> partial-fn name=Image.Swap}}
-Placeholder
+Swaps the channels of each pixel in the entire image based on the value of **sw** and returns true. **sw** is made up of four case-insensitive letters: r, g, b, and a, arranged in the order the channels should be rearranged in. Passing "argb", for instance, results in no changes because that is the initial order of the channels, but passing "abgr" keeps the alpha and green channels where they are and only swaps the red and blue channels. Returns false if this image is not [valid](#IsValid) or the format of **sw** is incorrect.
 <br><br>
 {{> partial-fn name=Image.Flip}}
-Placeholder
+Flips the entire image horizontally or vertically depending on the values of **h** and **v** and returns true. Returns false if this image is not [valid](#IsValid).
 
 ## Operators
 {{> partial-fn name =Image.OpAs
 			   name2=Image.OpAs2}}
-Placeholder
+Copies or moves the contents of **image** to this image. Prior instances are destroyed.
 <br><br>
 {{> partial-fn name =Image.OpEq
 			   name2=Image.OpNe}}
-Placeholder
+Performs an equality comparison to determine whether the two images are identical.
+
+**Warning:** This function can be slow for larger images unless they have different sizes.
 
 # Examples
 ```cpp
-Placeholder
+// C++
+#include <Robot.h>
+ROBOT_NS_USE_ALL;
+
+int main (void)
+{
+	Image image (2, 4);
+	image.GetWidth (); // 2
+	image.GetHeight(); // 4
+	image.GetLength(); // 8
+	image.GetLimit (); // 8
+
+	// GetData allocated
+	image.Create (4, 6);
+	image.GetLength(); // 24
+	image.GetLimit (); // 24
+
+	// GetData unchanged
+	image.Create (4, 2);
+	image.GetLength(); // 8
+	image.GetLimit (); // 24
+
+	// Fill image with white
+	image.Fill (0xFFFFFFFF);
+
+	// 00AA00, BB00CC, white, white
+	// 00DD00, EE00FF, white, white
+	uint32* data = image.GetData();
+	data[0] = 0xFF00AA00; // (0, 0)
+	data[1] = 0xFFBB00CC; // (1, 0)
+	data[4] = 0xFF00DD00; // (0, 1)
+	data[5] = 0xFFEE00FF; // (1, 1)
+
+	// Switch red and blue channels
+	// 00AA00, CC00BB, white, white
+	// 00DD00, FF00EE, white, white
+	image.Swap ("abgr");
+
+	// Mirror the image horizontally
+	// white, white, CC00BB, 00AA00
+	// white, white, FF00EE, 00DD00
+	image.Flip (true, false);
+
+	// Create new copy
+	Image copy = image;
+	copy.GetPixel (2, 0); // 0xFFCC00BB
+	copy.GetPixel (3, 0); // 0xFF00AA00
+	copy.GetPixel (2, 1); // 0xFFFF00EE
+	copy.GetPixel (3, 1); // 0xFF00DD00
+
+	image == copy; // True
+	image != copy; // False
+
+	copy.Destroy();
+	image == copy; // False
+	image != copy; // True
+	return 0;
+}
+```
+```js
+// Node
+var robot = require ("robot-js");
+
+var image = robot.Image (2, 4);
+image.getWidth (); // 2
+image.getHeight(); // 4
+image.getLength(); // 8
+image.getLimit (); // 8
+
+// getData allocated
+image.create (4, 6);
+image.getLength(); // 24
+image.getLimit (); // 24
+
+// getData unchanged
+image.create (4, 2);
+image.getLength(); // 8
+image.getLimit (); // 24
+
+// Fill image with white
+image.fill (0xFFFFFFFF);
+
+// 00AA00, BB00CC, white, white
+// 00DD00, EE00FF, white, white
+var data = image.getData();
+data[0] = 0xFF00AA00; // (0, 0)
+data[1] = 0xFFBB00CC; // (1, 0)
+data[4] = 0xFF00DD00; // (0, 1)
+data[5] = 0xFFEE00FF; // (1, 1)
+
+// Switch red and blue channels
+// 00AA00, CC00BB, white, white
+// 00DD00, FF00EE, white, white
+image.swap ("abgr");
+
+// Mirror the image horizontally
+// white, white, CC00BB, 00AA00
+// white, white, FF00EE, 00DD00
+image.flip (true, false);
+
+// Create new image clone
+var copy = image.clone();
+copy.getPixel (2, 0); // 0xFFCC00BB
+copy.getPixel (3, 0); // 0xFF00AA00
+copy.getPixel (2, 1); // 0xFFFF00EE
+copy.getPixel (3, 1); // 0xFF00DD00
+
+image.eq (copy); // True
+image.ne (copy); // False
+
+copy.destroy();
+image.eq (copy); // False
+image.ne (copy); // True
 ```
 
 {{/marked}}

@@ -1,6 +1,6 @@
 {{#context}}
 {
-	"title" : "Robot Color Class", "api" : "Color"
+	"title": "Robot Color Class", "api": "Color"
 }
 {{/context}}
 
@@ -29,44 +29,111 @@ public:
 
 {{#string "content"}}
 <h1 id="color">Color</h1>
-{{> partial-inc   name="Color"}}
-{{> partial-class name= Color }}
+{{> partial-edit  path="api/color"}}
+{{> partial-inc   name="Color"    }}
+{{> partial-class name= Color     }}
 {{#marked}}
 
 ## Description
-Placeholder
+Represents a color defined by [R](#R), [G](#G), [B](#B), and [A](#A). Each component can be manipulated directly through the exposed property values. A single color occupies four bytes of memory, one for each channel of the color and each color is arranged in such a way as to allow casting to and from a 4-byte integer of the form `0xAARRGGBB`. The functions [GetARGB](#GetARGB) and [SetARGB](#SetARGB), provide explicit ways of encoding and decoding colors to and from packed ARGB representations.
 
 ## Constructors
 {{> partial-fn name=Color.Ctor}}
-Placeholder
+Constructs a color from **argb**, a packed ARGB integer.
 <br><br>
 {{> partial-fn name=Color.Ctor2}}
-Placeholder
+Constructs a color with components set to **r**, **g**, **b** and **a**.
 
 ## Functions
 {{> partial-fn name=Color.GetARGB}}
-Placeholder
+Returns this color as a packed ARGB integer.
 <br><br>
 {{> partial-fn name=Color.SetARGB}}
-Placeholder
+Sets this color to **argb**, a packed ARGB integer.
 
 ## Operators
-{{> partial-fn name=Color.OpEq}}
-Placeholder
-<br><br>
-{{> partial-fn name=Color.OpNe}}
-Placeholder
+{{> partial-fn name =Color.OpEq
+			   name2=Color.OpNe}}
+Performs equality comparison on each component.
 
 ## Properties
 {{> partial-fn name =Color.B
 			   name2=Color.G
 			   name3=Color.R
 			   name4=Color.A}}
-Placeholder
+Provides direct access to the Red, Green, Blue and Alpha components of this color.
 
 # Examples
 ```cpp
-Placeholder
+// C++
+#include <Robot.h>
+ROBOT_NS_USE_ALL;
+
+int main (void)
+{
+	Color c1, c2 (150, 200, 100);
+
+	// argb becomes 0xFF96C864
+	uint32 argb = c2.GetARGB();
+
+	// c1 becomes c2
+	c1.SetARGB (argb);
+
+	c1 == c2; // True
+	c1 != c2; // False
+
+	// Standard data
+	uint32 pixels[] =
+	{
+		0xFFFF0000,
+		0xFF00FF00,
+		0xFF0000FF,
+	};
+
+	// Pixels can be casted directly
+	Color* colors = (Color*) pixels;
+
+	colors[0]; // (255, 0, 0, 255)
+	colors[1]; // (0, 255, 0, 255)
+	colors[2]; // (0, 0, 255, 255)
+
+	colors[0].GetARGB(); // 0xFFFF0000
+	colors[1].GetARGB(); // 0xFF00FF00
+	colors[2].GetARGB(); // 0xFF0000FF
+	return 0;
+}
+```
+```js
+// Node
+var robot = require ("robot-js");
+
+var c1 = robot.Color();
+var c2 = robot.Color
+	(150, 200, 100);
+
+// argb becomes 0xFF96C864
+var argb = c2.getARGB();
+
+// c1 becomes c2
+c1.setARGB (argb);
+
+c1.eq (c2); // True
+c1.ne (c2); // False
+
+c1.r; // 150
+c1.g; // 200
+c1.b; // 100
+c1.a; // 255
+
+// Color construction
+c1 = robot.Color (c2);
+c1 = robot.Color
+({
+	r: 20,
+	g: 40,
+	b: 60,
+	a: 80 // Optional
+});
 ```
 
 {{/marked}}

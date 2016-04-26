@@ -1,6 +1,6 @@
 {{#context}}
 {
-	"title" : "Robot Hash Class", "api" : "Hash"
+	"title": "Robot Hash Class", "api": "Hash"
 }
 {{/context}}
 
@@ -31,44 +31,88 @@ public:
 
 {{#string "content"}}
 <h1 id="hash">Hash</h1>
-{{> partial-inc   name="Hash"}}
-{{> partial-class name= Hash }}
+{{> partial-edit  path="api/hash"}}
+{{> partial-inc   name="Hash"    }}
+{{> partial-class name= Hash     }}
 {{#marked}}
 
 ## Description
-Placeholder
+Represents a 32-bit hash value resulting from a hashing operation. Hashes are computed using the [CRC-32](//en.wikipedia.org/wiki/Cyclic_redundancy_check) algorithm, making it unsuitable for cryptographic purposes, but it works well for quickly comparing data and files. Hashes can be computed through the [Constructor](#Ctor2) or [Append](#Append) functions, and retrieved at any time with [Result](#Result).
 
 ## Constructors
 {{> partial-fn name=Hash.Ctor}}
-Placeholder
+Constructs a hash with Result set to zero.
 <br><br>
 {{> partial-fn name =Hash.Ctor2
 			   name2=Hash.Ctor3}}
-Placeholder
+Constructs a hash with a call to [Append](#Append).
 
 ## Functions
 {{> partial-fn name=Hash.Append}}
-Placeholder
+Opens **file** and appends its data to this hash without resetting it, allowing continuous hashing at any time. The data is read in 4KB chunks before being passed over to the [Append](#Append2) function. If **file** could not be read, this function returns false.
 <br><br>
 {{> partial-fn name=Hash.Append2}}
-Placeholder
+Appends **dataLength** bytes from **data** to this hash without resetting it, allowing continuous hashing at any time. Ensure **data** contains at least **dataLength** bytes to avoid a buffer overflow.
 
 ## Operators
 {{> partial-fn name =Hash.OpEq
-			   name2=Hash.OpNe}}
-Placeholder
-<br><br>
-{{> partial-fn name =Hash.OpEq2
-			   name2=Hash.OpNe2}}
-Placeholder
+			   name2=Hash.OpNe
+			   name3=Hash.OpEq2
+			   name4=Hash.OpNe2}}
+Performs equality comparison on the [Result](#Result).
 
 ## Properties
 {{> partial-fn name=Hash.Result}}
-Placeholder
+Provides direct access to the result of this hash.
 
 # Examples
 ```cpp
-Placeholder
+// C++
+#include <Robot.h>
+ROBOT_NS_USE_ALL;
+
+int main (void)
+{
+	Hash h1 ((uint8*) "Hello ", 6);
+	Hash h2 ((uint8*) "World!", 6);
+
+	h1.Result; // 0xEA2DFCC0
+	h2.Result; // 0x76289DDE
+	h2.Result = 0;
+
+	h1.Append ((uint8*)       "World!", 6 );
+	h2.Append ((uint8*) "Hello World!", 12);
+
+	h1.Result; // 0x1C291CA3
+	h2.Result; // 0x1C291CA3
+
+	h1 == h2; // True
+	h1 != h2; // False
+
+	// CRC32 Hash of MyFile
+	Hash ("MyFile").Result;
+	return 0;
+}
+```
+```js
+// Node
+var robot = require ("robot-js");
+
+var h1 = robot.Hash ("Hello ");
+var h2 = robot.Hash ("World!");
+
+h1.result; // 0xEA2DFCC0
+h2.result; // 0x76289DDE
+h2.result = 0;
+
+h1.append (      "World!");
+h2.append ("Hello World!");
+
+h1.result; // 0x1C291CA3
+h2.result; // 0x1C291CA3
+
+h1.eq (h2); // True
+h1.ne (h2); // False
 ```
 
 {{/marked}}

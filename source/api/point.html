@@ -1,6 +1,6 @@
 {{#context}}
 {
-	"title" : "Robot Point Class", "api" : "Point"
+	"title": "Robot Point Class", "api": "Point"
 }
 {{/context}}
 
@@ -34,51 +34,123 @@ public:
 
 {{#string "content"}}
 <h1 id="point">Point</h1>
-{{> partial-inc   name="Point"}}
-{{> partial-class name= Point }}
+{{> partial-edit  path="api/point"}}
+{{> partial-inc   name="Point"    }}
+{{> partial-class name= Point     }}
 {{#marked}}
 
 ## Description
-Placeholder
+Represents a two-dimensional point defined by [X](#X) and [Y](#Y) with integer precision. Each component can be manipulated directly through the exposed property values. The [IsZero](#IsZero) function returns true if both X and Y are equal to zero and the [ToSize](#ToSize) function converts the point into a [Size](/api/size.html). Addition, Subtraction, and negation are performed on each component separately.
 
 ## Constructors
 {{> partial-fn name =Point.Ctor
 			   name2=Point.Ctor2}}
-Placeholder
+Constructs a point with both components set to **value** or **x** and **y**.
 
 ## Functions
 {{> partial-fn name=Point.IsZero}}
-Placeholder
+Returns true if both components are equal to zero.
 <br><br>
 {{> partial-fn name=Point.ToSize}}
-Placeholder
+Returns a [Size](/api/size.html) with [Width](/api/size.html#W) and [Height](/api/size.html#H) set to [X](#X) and [Y](#Y).
 
 ## Operators
 {{> partial-fn name =Point.OpAddEq
 			   name2=Point.OpSubEq}}
-Placeholder
-<br><br>
+Adds or subtracts **point** to or from this point and returns a reference to this point.
+
+```cpp
+Point p1 ( 3, 7);
+Point p2 (-1, 4);
+
+p1 += p2; // p1 becomes (2, 11)
+p1 -= p2; // p1 becomes (4,  3)
+```
+<br>
 {{> partial-fn name =Point.OpAdd
 			   name2=Point.OpSub}}
-Placeholder
+Adds or subtracts **point** to or from this point and returns the result in a new point.
 <br><br>
-{{> partial-fn name=Point.OpEq}}
-Placeholder
-<br><br>
-{{> partial-fn name=Point.OpNe}}
-Placeholder
+{{> partial-fn name =Point.OpEq
+			   name2=Point.OpNe}}
+Performs equality comparison on each component.
 <br><br>
 {{> partial-fn name=Point.OpNeg}}
-Placeholder
+Negates both components of this point and returns the result in a new point.
 
 ## Properties
 {{> partial-fn name =Point.X
 			   name2=Point.Y}}
-Placeholder
+Provides direct access to the X and Y components of this point.
 
 # Examples
 ```cpp
-Placeholder
+// C++
+#include <Robot.h>
+ROBOT_NS_USE_ALL;
+
+int main (void)
+{
+	Point p1, p2 (4, 6);
+
+	p1.IsZero(); // True
+	p2.IsZero(); // False
+
+	// s1 becomes (4, 6)
+	Size s1 = p2.ToSize();
+
+	// p1 becomes (1, 2)
+	p1.X = 1; p1.Y = 2;
+
+	p1 += p2; // p1 becomes (5, 8)
+	p1 -= p2; // p1 becomes (1, 2)
+
+	// p3 becomes (3, 4)
+	Point p3 = p2 - p1;
+
+	p1 == p3; // False
+	p1 != p3; // True
+
+	// p2 becomes (-1, -2)
+	p2 = -p1;
+	return 0;
+}
+```
+```js
+// Node
+var robot = require ("robot-js");
+
+var p1 = robot.Point ();
+var p2 = robot.Point (4, 6);
+
+p1.isZero(); // True
+p2.isZero(); // False
+
+// s1 becomes (4, 6)
+var s1 = p2.toSize();
+
+// p1 becomes (1, 2)
+p1.x = 1; p1.y = 2;
+
+p1 = p1.add (p2); // p1 becomes (5, 8)
+p1 = p1.sub (p2); // p1 becomes (1, 2)
+
+// p3 becomes (3, 4)
+var p3 = p2.sub (p1);
+
+p1.eq (p3); // False
+p1.ne (p3); // True
+
+// p2 becomes (-1, -2)
+p2 = p1.neg();
+
+// Point construction
+p1 = robot.Point (p2);
+p1 = robot.Point
+({
+	x: 100,
+	y: 200
+});
 ```
 
 {{/marked}}
