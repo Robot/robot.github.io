@@ -1,6 +1,6 @@
 {{#context}}
 {
-	"title" : "Robot Clipboard Class", "api" : "Clipboard"
+	"title": "Robot Clipboard Class", "api": "Clipboard"
 }
 {{/context}}
 
@@ -23,41 +23,124 @@ public:
 
 {{#string "content"}}
 <h1 id="clipboard">Clipboard</h1>
-{{> partial-inc   name="Clipboard"}}
-{{> partial-class name= Clipboard }}
+{{> partial-edit  path="api/clipboard"}}
+{{> partial-inc   name="Clipboard"    }}
+{{> partial-class name= Clipboard     }}
 {{#marked}}
 
 ## Description
-Placeholder
+Provides a simple interface for manipulating the system clipboard. A clipboard enables users to copy and paste data between applications. To manipulate text data on the system clipboard, use the [HasText](#HasText), [GetText](#GetText) and [SetText](#SetText) functions. To manipulate image data on the system clipboard, use the [HasImage](#HasImage), [GetImage](#GetImage) and [SetImage](#SetImage) functions. To clear all data on the system clipboard, use the [Clear](#Clear) function. And finally, to check if any changes have been made to the system clipboard, use the [GetSequence](#GetSequence) function.
+
+**Linux:** The functions in the Clipboard class are not available. They will perform no operations and will always return false or otherwise invalid information. This is due to the fact that Linux clipboards are handled very differently and require an active event loop to work. Because Robot does not yet implement such functionality, the Clipboard class is unable to be implemented at this time.
 
 ## Functions
 {{> partial-fn name=Clipboard.Clear}}
-Placeholder
+Clears the contents of the system clipboard and returns true. Returns false on error.
 <br><br>
 {{> partial-fn name=Clipboard.HasText}}
-Placeholder
+Returns true if the system clipboard currently contains text data that is not empty.
 <br><br>
 {{> partial-fn name=Clipboard.GetText}}
-Placeholder
+Returns the text that is currently on the system clipboard, as a UTF-8 encoded string. Returns an empty string if an error occurred or there is no text currently on the system clipboard.
 <br><br>
 {{> partial-fn name=Clipboard.SetText}}
-Placeholder
+Puts text on the system clipboard, as a UTF-8 encoded string, and returns true. Returns false if an error occurred or **string** points to a null pointer.
 <br><br>
 {{> partial-fn name=Clipboard.HasImage}}
-Placeholder
+Returns true if the system clipboard currently contains image data that is not empty.
 <br><br>
 {{> partial-fn name=Clipboard.GetImage}}
-Placeholder
+Copies the image that is currently on the system clipboard into **image**, reusing previously allocated memory if possible, and returns true. Returns false if an error occurred or there is no image currently on the system clipboard. **image** will only be overwritten when data is about to be copied into it, therefore a return value of false will never cause **image** to be modified.
+
+**Warning:** Alpha channels and certain types of image formats are not fully supported.
 <br><br>
 {{> partial-fn name=Clipboard.SetImage}}
-Placeholder
+Puts **image** on the system clipboard and returns true. Returns false if an error occurred or **image** is [invalid](/api/image.html#IsValid). Images will be stored in the most basic format supported by the platform, without any sort of compression or advanced data format.
 <br><br>
 {{> partial-fn name=Clipboard.GetSequence}}
-Placeholder
+Returns the sequence number of the system clipboard. This sequence number is incremented whenever the contents of the clipboard change, making this function extremely useful for monitoring various types of clipboard events.
 
 # Examples
 ```cpp
-Placeholder
+// C++
+#include <Robot.h>
+ROBOT_NS_USE_ALL;
+
+int main (void)
+{
+	// Set text on the clipboard
+	Clipboard::SetText ("Text");
+
+	Clipboard::HasText (); // True
+	Clipboard::HasImage(); // False
+	Clipboard::GetText (); // Text
+
+	Image image (2, 2);
+	image.SetPixel (0, 0, 0xFFFF0000);
+	image.SetPixel (1, 0, 0xFF00FF00);
+	image.SetPixel (0, 1, 0xFF0000FF);
+	image.SetPixel (1, 1, 0xFFFFFFFF);
+
+	// Set image on the clipboard
+	Clipboard::SetImage (image);
+
+	Clipboard::HasText (); // True
+	Clipboard::HasImage(); // False
+
+	Clipboard::GetSequence(); // X
+
+	Image output;
+	// Save the image to output
+	Clipboard::GetImage (output);
+	image == output; // True
+
+	Clipboard::GetSequence(); // X
+
+	// Clear clipboard
+	Clipboard::Clear();
+
+	Clipboard::GetSequence(); // Y
+	Clipboard::GetSequence(); // Y
+	return 0;
+}
+```
+```js
+// Node
+var robot = require ("robot-js");
+
+// Set some text on the clipboard
+robot.Clipboard.setText ("Text");
+
+robot.Clipboard.hasText (); // True
+robot.Clipboard.hasImage(); // False
+robot.Clipboard.getText (); // Text
+
+var image = robot.Image (2, 2);
+image.setPixel (0, 0, robot.Color (0xFFFF0000));
+image.setPixel (1, 0, robot.Color (0xFF00FF00));
+image.setPixel (0, 1, robot.Color (0xFF0000FF));
+image.setPixel (1, 1, robot.Color (0xFFFFFFFF));
+
+// Set the image on the clipboard
+robot.Clipboard.setImage (image);
+
+robot.Clipboard.hasText (); // True
+robot.Clipboard.hasImage(); // False
+
+robot.Clipboard.getSequence(); // X
+
+var output = robot.Image();
+// Save the image to output
+robot.Clipboard.getImage (output);
+image.eq (output); // True
+
+robot.Clipboard.getSequence(); // X
+
+// Clear the clipboard
+robot.Clipboard.clear();
+
+robot.Clipboard.getSequence(); // Y
+robot.Clipboard.getSequence(); // Y
 ```
 
 {{/marked}}

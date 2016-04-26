@@ -1,6 +1,6 @@
 {{#context}}
 {
-	"title" : "Robot Timer Class", "api" : "Timer"
+	"title": "Robot Timer Class", "api": "Timer"
 }
 {{/context}}
 
@@ -39,60 +39,172 @@ public:
 
 {{#string "content"}}
 <h1 id="timer">Timer</h1>
-{{> partial-inc   name="Timer"}}
-{{> partial-class name= Timer }}
+{{> partial-edit  path="api/timer"}}
+{{> partial-inc   name="Timer"    }}
+{{> partial-class name= Timer     }}
 {{#marked}}
 
 ## Description
-Placeholder
+Represents a monotonic timer used for calculating elapsed times with millisecond accuracy. Elapsed times are useful for determining the amount of time passed between two events, such as in the case of performance tuning and time-sensitive operations. Since the timer is monotonic, it does not overflow and it operates completely independent of the system clock. This has the added benefit of being immune to time adjustments and changes to the time zone settings.
+
+Unfortunately, there is no way to convert elapsed times to human-readable formats, meaning that elapsed times can only be compared with other elapsed times that use the same reference. Elapsed times also shouldn't be exchanged across a network or saved to disk, since there is no way of telling whether the computer receiving this data will be compatible or has even been rebooted. It is, however, possible to exchange elapsed times with other processes running on the same machine, provided they also use the same reference clock.
+
+Use the [Start](#Start) function to take a snapshot of the current clock. This snapshot will be used as the starting reference when computing elapsed times. Use the [Reset](#Reset) function to return the current elapsed time and reset the class back to its initial state. Calling [Restart](#Restart) will return the current elapsed time and restart the timer. Use the [GetElapsed](#GetElapsed) function to get the current elapsed time. Helper functions like [HasStarted](#HasStarted) can be used to determine whether the class has been started and [HasExpired](#HasExpired) can be used to determine if the class has expired by a specified number of milliseconds.
+
+The Timer class can also be used to block the execution of the current thread for a specified amount of time through the [Sleep](#Sleep) function. Furthermore, the current platform-dependent clock value can also be retrieved through the [GetCpuTime](#GetCpuTime) function. This level of direct access enables everybody to create functionality similar to what is provided by the class. Relational operators and comparison is supported as well.
 
 ## Constructors
 {{> partial-fn name=Timer.Ctor}}
-Placeholder
+Constructs an unstarted timer which can be started with the [Start](#Start) function.
 
 ## Functions
 {{> partial-fn name=Timer.Start}}
-Placeholder
-<br><br>
+Starts this timer by taking a snapshot of the current clock. Once started, elapsed times can be retrieved through the [GetElapsed](#GetElapsed) function. Normally, a timer is started just before a lengthy operation, as illustrated in the example below:
+
+```cpp
+// Create and start a timer
+Timer timer; timer.Start();
+
+// Some slow operation here
+
+// Get elapsed time
+timer.GetElapsed();
+```
+<br>
 {{> partial-fn name=Timer.Reset}}
-Placeholder
+Resets this class back to its initial state and returns the [elapsed](#GetElapsed) time since the previous call to [Start](#Start). If this timer was not previously started, this function will return zero.
 <br><br>
 {{> partial-fn name=Timer.Restart}}
-Placeholder
+Restarts the timer and returns the [elapsed](#GetElapsed) time since the previous call to [Start](#Start). If this timer was not previously started, this function will return zero. This function is equivalent to obtaining the elapsed time and starting the timer again, but it does so in a single operation, avoiding the need to obtain the clock value twice.
 <br><br>
 {{> partial-fn name=Timer.GetElapsed}}
-Placeholder
+Returns the number of milliseconds since this timer was [started](#Start). If this timer has not yet been [started](#HasStarted), this function will return zero.
 <br><br>
 {{> partial-fn name=Timer.HasStarted}}
-Placeholder
+Returns true if this timer has been [started](#Start).
 <br><br>
 {{> partial-fn name=Timer.HasExpired}}
-Placeholder
+Returns true if this timer's [elapsed](#GetElapsed) time is greater than **time** milliseconds, or if this timer has not yet been [started](#HasStarted).
 <br><br>
 {{> partial-fn name =Timer.Sleep
 			   name2=Timer.Sleep2}}
-Placeholder
+Blocks the execution of the current thread for **time** milliseconds. If **time** is a range between two numbers, a [pseudorandom](/api/range.html#GetRandom) number between that range will be used instead. This function does nothing if **time** is negative.
 <br><br>
 {{> partial-fn name=Timer.GetCpuTime}}
-Placeholder
+Returns the current platform-dependent clock value, in milliseconds. On Linux, this function will return the result of clock_gettime with the CLOCK_MONOTONIC identifier. On Mac, this function will return the result of mach_absolute_time. On Windows, this function will return the result of QueryPerformanceCounter, or GetTickCount64 if for some reason QueryPerformanceFrequency fails to initialize.
 
 ## Operators
 {{> partial-fn name=Timer.OpFn}}
-Placeholder
-<br><br>
+This function is identical to [GetElapsed](#GetElapsed), as illustrated in the example below:
+
+```cpp
+// Create and start a timer
+Timer timer; timer.Start();
+
+// Two ways of obtaining time
+timer.GetElapsed() == timer();
+```
+<br>
 {{> partial-fn name =Timer.OpLt
 			   name2=Timer.OpGt
 			   name3=Timer.OpLe
 			   name4=Timer.OpGe}}
-Placeholder
-<br><br>
+Performs relational comparison using the [elapsed](#GetElapsed) time of this timer and **timer**. If either timer has not yet been [started](#HasStarted), this function will return true or false depending on which makes the most sense. This function is equivalent to retrieving the elapsed times of both timers and performing the relational operation between them, as illustrated in the example below:
+
+```cpp
+// Create and start timers
+Timer timer1; timer1.Start();
+Timer timer2; timer2.Start();
+
+// Example of equivalent relational operations
+(timer1 <  timer2) == (timer1() <  timer2());
+(timer1 >  timer2) == (timer1() >  timer2());
+(timer1 <= timer2) == (timer1() <= timer2());
+(timer1 >= timer2) == (timer1() >= timer2());
+```
+<br>
 {{> partial-fn name =Timer.OpEq
 			   name2=Timer.OpNe}}
-Placeholder
+Performs equality comparison to determine whether two timers were [started](#Start) at the same time.
 
 # Examples
 ```cpp
-Placeholder
+// C++
+#include <Robot.h>
+ROBOT_NS_USE_ALL;
+
+int main (void)
+{
+	// Create and start a timer
+	Timer timer; timer.Start();
+
+	timer.HasStarted (  ); // True
+	timer.HasExpired (50); // False
+
+	// Some slow operation here
+	Timer::Sleep (1000, 2000);
+
+	timer.HasStarted (  ); // True
+	timer.HasExpired (50); // True
+
+	// Get elapsed time in milliseconds
+	// since calling the Start function
+	timer.GetElapsed(); /* or */ timer();
+
+	// Create copy and restart the timer
+	Timer copy = timer; timer.Restart();
+
+	// Copy started first so timer < copy
+	timer < copy; // == timer() < copy()
+	timer > copy; // == timer() > copy()
+
+	timer.Reset(); // timer.GetElapsed()
+	copy .Reset(); // copy .GetElapsed()
+
+	timer == copy; // True
+	timer != copy; // False
+
+	// Platform dependent
+	Timer::GetCpuTime();
+	return 0;
+}
+```
+```js
+// Node
+var robot = require ("robot-js");
+
+// Create and start timer
+var timer = robot.Timer();
+timer.start();
+
+timer.hasStarted (  ); // True
+timer.hasExpired (50); // False
+
+// Some slow operation in here
+robot.Timer.sleep (1000, 2000);
+
+timer.hasStarted (  ); // True
+timer.hasExpired (50); // True
+
+// Get elapsed time in milliseconds
+// since calling the Start function
+timer.getElapsed();
+
+// Create a new copy and restart the timer
+var copy = timer.clone(); timer.restart();
+
+// Copy started first so timer < copy
+timer.lt (copy); // True
+timer.gt (copy); // False
+
+timer.reset(); // timer.getElapsed()
+copy .reset(); // copy .getElapsed()
+
+timer.eq (copy); // True
+timer.ne (copy); // False
+
+// Platform dependent
+robot.Timer.getCpuTime();
 ```
 
 {{/marked}}

@@ -1,6 +1,6 @@
 {{#context}}
 {
-	"title" : "Robot Process Class", "api" : "Process"
+	"title": "Robot Process Class", "api": "Process"
 }
 {{/context}}
 
@@ -45,82 +45,177 @@ public:
 
 {{#string "content"}}
 <h1 id="process">Process</h1>
-{{> partial-inc   name="Process"}}
-{{> partial-class name= Process }}
+{{> partial-edit  path="api/process"}}
+{{> partial-inc   name="Process"    }}
+{{> partial-class name= Process     }}
 {{#marked}}
 
 ## Description
-Placeholder
+Represents a single process running on the system. A process, in simpler terms, represents any application which can be uniquely identified by a [PID](//en.wikipedia.org/wiki/Process_identifier). To select a process, simply pass the PID of the target process to the [Constructor](#Ctor) or [Open](#Open) function. In cases where the PID of the target process is not known, a list of all processes can be retrieved through the [GetList](#GetList) function. To select the current active/calling process, use the [GetCurrent](#GetCurrent) function. To check whether a process has been selected, use the [IsValid](#IsValid) function. Use the [Close](#Close) function to deselect the process and free up any used resources, although this function is called by the destructor and open function automatically.
+
+After a process has been selected, the Process class offers several functions for retrieving useful information and manipulating the process in various ways. For instance, to retrieve the name of the process, use the [GetName](#GetName) function, to terminate the process, use either the [Exit](#Exit) or [Kill](#Kill) function. In addition to the built-in functions, the Process class also provides low-level access to the platform-dependent process handle, which can be used in conjunction with system calls to create custom functionality. This handle can be retrieved through the [GetHandle](#GetHandle) function.
+
+The Process class can also be used to check the architecture of the operating system at runtime by using the [IsSys64Bit](#IsSys64Bit) function. Comparison is supported as well.
 
 ## Types
-Placeholder
+```cpp
+typedef vector<Module > Robot::ModuleList;
+typedef vector<Window > Robot::WindowList;
+typedef vector<Process> Robot::ProcessList;
+```
 
 ## Constructors
 {{> partial-fn name=Process.Ctor}}
-Placeholder
+Constructs a process with a call to [Open](#Open).
 
 ## Functions
 {{> partial-fn name=Process.Open}}
-Placeholder
+Attempts to select the process identified by **PID**. If a process has already been selected, it is [closed](#Close) prior to selecting the new one, regardless of whether or not this function succeeded. If **PID** is zero, negative or not found, this function marks this class as [invalid](#IsValid) and returns false. This function may also fail if the target process requires elevated privileges.
+
+In addition to selecting a process, this function will also read and cache certain information about that process. This includes the PID, name, path, architecture and the platform-dependent handle (if applicable). By caching this information locally, it ensures that respective accessor functions perform in constant-time and without any additional system calls.
+
+**Mac:** This function will attempt to retrieve the mach task port, if it fails this function will still succeed but certain functionality will be unavailable. To check whether a mach task port was successfully retrieved, check that [GetHandle](#GetHandle) returns a non-zero value.
+
+**Warning:** A 64-bit process cannot be selected from a 32-bit application.
 <br><br>
 {{> partial-fn name=Process.Close}}
-Placeholder
+Deselects the process if one has been selected, making this class [invalid](#IsValid).
 <br><br>
 {{> partial-fn name=Process.IsValid}}
-Placeholder
+Returns true if a process has been selected and is still currently accessible.
 <br><br>
 {{> partial-fn name=Process.Is64Bit}}
-Placeholder
+Returns true if the selected process is 64-bit. Returns false if no process is selected.
 <br><br>
 {{> partial-fn name=Process.IsDebugged}}
-Placeholder
+Returns true if the selected process is being debugged. Returns false if no process is selected.
+
+**Mac:** This function requires a valid [mach task port](#Open) in order to work.
 <br><br>
 {{> partial-fn name=Process.GetPID}}
-Placeholder
+Returns the unique PID of the selected process. Returns zero if no process is selected.
 <br><br>
 {{> partial-fn name=Process.GetHandle}}
-Placeholder
+Returns the platform-dependent handle to the selected process. If no process is selected, this function returns zero. On Linux, this function will always return zero. On Mac, this function returns a mach task port as retrieved by task_for_pid, or zero if it failed. On Windows, this function returns a handle to the process as retrieved by [OpenProcess](//msdn.microsoft.com/en-us/library/windows/desktop/ms684320.aspx).
 <br><br>
 {{> partial-fn name=Process.GetName}}
-Placeholder
+Returns the executable image name of the selected process, as a UTF-8 encoded string. This function does not return the platform-dependent executable name but rather just the last portion of [GetPath](#GetPath). Returns an empty string if no name is available or no process has been selected.
 <br><br>
 {{> partial-fn name=Process.GetPath}}
-Placeholder
+Returns the full path of the executable image for the selected process, as a UTF-8 encoded string. A forward slash (/) is always used to represent directories across all platforms. Returns an empty string if no path is available or no process has been selected.
 <br><br>
 {{> partial-fn name=Process.Exit}}
-Placeholder
+Attempts to exit the selected process. This function may not always cause the process to exit, such as in the case of save prompts. On Linux and Mac, a SIGTERM signal is sent to the selected process. On Windows, this function posts a WM_CLOSE message to all top-level windows of the process. Console applications on Windows that do not run an event loop, or whose event loop does not handle the WM_CLOSE message can only be terminated using [Kill](#Kill). Does nothing if no process is selected.
 <br><br>
 {{> partial-fn name=Process.Kill}}
-Placeholder
+Kills the selected process, causing it to exit immediately. On Linux and Mac, a SIGKILL signal is sent to the selected process. On Windows, this function calls [TerminateProcess](//msdn.microsoft.com/en-us/library/windows/desktop/ms686714.aspx) on the selected process. Does nothing if no process is selected.
 <br><br>
 {{> partial-fn name=Process.HasExited}}
-Placeholder
+Returns true if the selected process has exited. If no process is selected, this function returns true. On Linux and Mac, once the process has terminated, the associated PID will become invalid, in turn, making this class invalid. On Windows, a handle to a process can remain valid even when the process has terminated, allowing certain functionality to still work.
 <br><br>
 {{> partial-fn name=Process.GetModules}}
-Placeholder
+Returns a list of all [modules](/api/module.html) loaded into the selected process. **name** accepts any valid case-insensitive [ECMAScript](//www.cplusplus.com/reference/regex/ECMAScript/) regular expression which will be used to filter out modules by [name](/api/module.html#GetName). An empty list will be returned if no process has been selected or the regular expression syntax is incorrect, as determined by [regex](//www.cplusplus.com/reference/regex/). The resulting list is guaranteed to be sorted from the lowest [base](/api/module.html#GetBase) address to the highest and will never contain any duplicate entries.
+
+**Mac:** This function requires a valid [mach task port](#Open) in order to work.
 <br><br>
 {{> partial-fn name=Process.GetWindows}}
-Placeholder
+Returns a list of all visible [windows](/api/window.html) on the system which are a part of the selected process. **title** accepts any valid case-insensitive [ECMAScript](//www.cplusplus.com/reference/regex/ECMAScript/) regular expression which will be used to filter out windows by [title](/api/window.html#GetTitle). An empty list will be returned if no process has been selected or the regular expression syntax is incorrect, as determined by [regex](//www.cplusplus.com/reference/regex/).
 <br><br>
 {{> partial-fn name=Process.GetList}}
-Placeholder
+Returns a list of all [selectable](#Open) processes on the system. **name** accepts any valid case-insensitive [ECMAScript](//www.cplusplus.com/reference/regex/ECMAScript/) regular expression which will be used to filter out processes by [name](#GetName). An empty list will be returned if the regular expression syntax is incorrect, as determined by [regex](//www.cplusplus.com/reference/regex/).
 <br><br>
 {{> partial-fn name=Process.GetCurrent}}
-Placeholder
+Selects and returns the current active/calling process.
 <br><br>
 {{> partial-fn name=Process.IsSys64Bit}}
-Placeholder
+Returns true if the running operating system is 64-bit.
 
 ## Operators
 {{> partial-fn name =Process.OpEq
 			   name2=Process.OpNe
 			   name3=Process.OpEq2
 			   name4=Process.OpNe2}}
-Placeholder
+Performs equality comparison to determine whether two processes have identical [PIDs](#GetPID).
 
 # Examples
 ```cpp
-Placeholder
+// C++
+#include <Robot.h>
+ROBOT_NS_USE_ALL;
+
+int main (void)
+{
+	// Retrieve the active/calling process
+	Process process = Process::GetCurrent();
+
+	process.IsValid(); // True if valid
+	process.Is64Bit(); // True if 64-bit
+	process.GetPID (); // PID of process
+	process.GetName(); // binary
+	process.GetPath(); // path/to/binary
+
+	// Create a shared copy
+	Process copy = process;
+
+	copy.Open (4815); // True if valid and selectable
+	copy == process;  // True  because of shared ptr
+	copy != process;  // False because of shared ptr
+
+	process.Kill ();     // Terminate immediately
+	process.HasExited(); // True if terminated
+	process.Close();     // Completely optional
+
+	// GetModules discussed in Module documentation
+	// GetWindows discussed in Window documentation
+
+	// Try debuggex.com for regex visualization
+	auto list = Process::GetList (".*binary.*");
+
+	// List is an STL vector
+	for (const auto& p : list)
+		p.GetName(); // Always contains "binary"
+
+	Process::IsSys64Bit(); // True if 64-bit OS
+	return 0;
+}
+```
+```js
+// Node
+var robot = require ("robot-js");
+
+// Retrieve the active/calling process
+var process = robot.Process.getCurrent();
+
+process.isValid(); // True if valid
+process.is64Bit(); // True if 64-bit
+process.getPID (); // PID of process
+process.getName(); // binary
+process.getPath(); // path/to/binary
+
+// Create independent copy
+var copy = process.clone();
+
+copy.open  (4815); // True if valid and selectable
+copy.eq (process); // False because of new copy
+copy.ne (process); // True  because of new copy
+
+copy.kill ();      // Terminate immediately
+copy.hasExited();  // True if terminated
+copy.close();      // Completely optional
+
+// getModules discussed in Module documentation
+// getWindows discussed in Window documentation
+
+// Try debuggex.com for regex visualization
+var list = robot.Process.getList (".*binary.*");
+
+// List is an array
+list.map (function (p)
+{
+	p.getName(); // Always contains "binary"
+});
+
+robot.Process.isSys64Bit(); // True if 64-bit OS
 ```
 
 {{/marked}}

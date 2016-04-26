@@ -1,6 +1,6 @@
 {{#context}}
 {
-	"title" : "Robot Mouse Class", "api" : "Mouse"
+	"title": "Robot Mouse Class", "api": "Mouse"
 }
 {{/context}}
 
@@ -31,49 +31,58 @@ public:
 
 {{#string "content"}}
 <h1 id="mouse">Mouse</h1>
-{{> partial-inc   name="Mouse"}}
-{{> partial-class name= Mouse }}
+{{> partial-edit  path="api/mouse"}}
+{{> partial-inc   name="Mouse"    }}
+{{> partial-class name= Mouse     }}
 {{#marked}}
 
 ## Description
-Placeholder
+Provides a simple interface for generating native mouse events on the system. These events can be used for the purposes of test automation, self-running demos, and other applications where control of the mouse is needed. Certain platforms require special privileges or extensions to access low-level mouse controls. If the current platform configuration does not allow this, most of the functionality in the class will perform no operation or return otherwise invalid data. As an example, Linux depends on XTest 2.2 to carry out the majority of the low-level functionality, when missing, the class will not work.
+
+Although mouse events are system-wide, a mouse object must still be created through the [Constructor](#Ctor) in order to support multiple auto delays. Once created, use the [Press](#Press) and [Release](#Release) functions to generate mouse button press and release events. Use the [Click](#Click) function to generate both a press, followed by a release. Use the [ScrollH](#ScrollH) and [ScrollV](#ScrollV) functions to generate either a horizontal or vertical mouse scroll event. All these functions will block after generating an event, the amount of time blocked can be configured through the [AutoDelay](#AutoDelay) property.
+
+The Mouse class also offers a variety of non-blocking static functions. For instance, the position of the mouse can be manipulated through the [GetPos](#GetPos) and [SetPos](#SetPos) functions. Additionally, the current down-state of one of more mouse buttons can be retrieved through the [GetState](#GetState) functions.
 
 ## Types
-Placeholder
+```cpp
+typedef unordered_map<Button, bool> Robot::ButtonState;
+```
 
 ## Constructors
 {{> partial-fn name=Mouse.Ctor}}
-Placeholder
+Constructs a mouse with an [AutoDelay](#AutoDelay) between 40 and 90 milliseconds.
 
 ## Functions
 {{> partial-fn name=Mouse.Click}}
-Placeholder
+Performs a [Press](#Press) followed by a [Release](#Release).
 <br><br>
 {{> partial-fn name =Mouse.Press
 			   name2=Mouse.Release}}
-Placeholder
+Presses or releases a single mouse button and blocks for [AutoDelay](#AutoDelay) milliseconds. The value of **button** can be any valid [Button](#button), however, not all buttons are supported on all platforms and will be ignored without blocking. Passing a **button** which is not part of the [Button](#button) enumeration leads to undefined results. A pressed button should always be released. Pressing or releasing the same button multiple times is not always guaranteed to generate respective press or release events on the target platform.
+
+**Mac:** Double clicking is simulated using an internal timer, therefore, calling click twice within a short period of time will simulate a double click, just like it would on any other platform.
 <br><br>
 {{> partial-fn name =Mouse.ScrollH
 			   name2=Mouse.ScrollV}}
-Placeholder
+Rotates the scroll wheel on wheel-equipped mice and blocks for [AutoDelay](#AutoDelay) milliseconds. Depending on the function used, the scroll wheel will either be rotated horizontally or vertically. **amount** refers to the physical number of "notches" to scroll. For horizontal scrolling, negative values indicate movement to the left while positive values indicate movement to the right. For vertical scrolling, negative values indicate movement down/towards the user while positive values indicate movement up/away from the user.
 <br><br>
 {{> partial-fn name =Mouse.GetPos
 			   name2=Mouse.SetPos
 			   name3=Mouse.SetPos2}}
-Placeholder
+Gets or sets the global position of the mouse cursor in pixels. Out of bounds values are automatically corrected by the platform so that the cursor remains within the boundaries of the display devices on the computer.
 <br><br>
 {{> partial-fn name=Mouse.GetState}}
-Placeholder
+Returns true if **button** is currently pressed system-wide, regardless of whether or not the calling application has focus. The value of **button** can be any valid [Button](#button), however, not all buttons are supported on all platforms and thus, will cause this function to return false. Passing a **button** which is not part of the [Button](#button) enumeration will also cause this function to return false. If two of more button states need to be checked, consider using the other [GetState](#GetState2) function for improved performance.
 <br><br>
 {{> partial-fn name=Mouse.GetState2}}
-Placeholder
+Checks the pressed state of all [buttons](#button) system-wide, regardless of whether or not the calling application has focus. If an error occurs, this function will return false, however, **result** will always be cleared regardless of whether or not this function succeeds. Not all buttons are supported on all platforms and thus, will always be set to false. If only one button state needs to be checked, consider using the other [GetState](#GetState) function for improved performance.
 
 ## Properties
 {{> partial-fn name=Mouse.AutoDelay}}
-Placeholder
+Provides direct access to the automatic delay range in milliseconds.
 
 # Button
-Placeholder
+Represents the mouse buttons supported by this class. These buttons do not map to any platform-dependent value. **ButtonLeft** and **ButtonRight** map to the users system-configured buttons rather than physical mouse buttons. **ButtonMid** and **ButtonMiddle** map to the same button. **ButtonX1** and **ButtonX2** are only supported on Windows and will be ignored when used on Linux and Mac.
 
 ```cpp
 enum Button
@@ -89,7 +98,85 @@ enum Button
 
 # Examples
 ```cpp
-Placeholder
+// C++
+#include <Robot.h>
+ROBOT_NS_USE_ALL;
+
+int main (void)
+{
+	Mouse mouse;
+	// Click the right button
+	mouse.Click (ButtonRight);
+
+	// Current mouse position
+	auto pos = Mouse::GetPos();
+
+	// Move the mouse left
+	// and up by 50 pixels
+	Mouse::SetPos (pos - 50);
+
+	// Change default auto delay
+	mouse.AutoDelay.Min = 100;
+	mouse.AutoDelay.Max = 200;
+
+	// Maybe select some text
+	mouse.Press   (ButtonLeft);
+	mouse.ScrollV (4); // up
+	mouse.Release (ButtonLeft);
+
+	ButtonState s;
+	while (true)
+	{
+		// Press left and right
+		// buttons to exit loop
+		Mouse::GetState (s);
+		if (s[ButtonLeft ] &&
+			s[ButtonRight])
+			break;
+
+		// Avoid busy wait
+		Timer::Sleep (15);
+	}
+
+	return 0;
+}
+```
+```js
+// Node
+var robot = require ("robot-js");
+
+var mouse = robot.Mouse();
+// Click the right button
+mouse.click (robot.BUTTON_RIGHT);
+
+// Get current mouse position
+var pos = robot.Mouse.getPos();
+
+// Move the mouse left
+// and up by 50 pixels
+robot.Mouse.setPos (pos.sub (50));
+
+// Change default auto delay
+mouse.autoDelay.min = 100;
+mouse.autoDelay.max = 200;
+
+// Maybe select text in an editor
+mouse.press   (robot.BUTTON_LEFT);
+mouse.scrollV (4); // up
+mouse.release (robot.BUTTON_LEFT);
+
+while (true)
+{
+	// Press left and right
+	// buttons to exit loop
+	var s = robot.Mouse.getState();
+	if (s[robot.BUTTON_LEFT ] &&
+		s[robot.BUTTON_RIGHT])
+		break;
+
+	// Avoid busy waiting
+	robot.Timer.sleep (15);
+}
 ```
 
 {{/marked}}
