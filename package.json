@@ -27,7 +27,7 @@
 
 	"devDependencies":
 	{
-		"grunt"					: "^0",
+		"grunt"					: "^1",
 		"grunt-contrib-clean"	: "^1",
 		"grunt-contrib-watch"	: "^1",
 		"grunt-contrib-stylus"	: "^1",
