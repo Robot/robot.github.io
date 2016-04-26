@@ -1,6 +1,6 @@
 {{#context}}
 {
-	"title" : "Robot Versioning", "docs" : "Versioning"
+	"title": "Robot Versioning", "docs": "Versioning"
 }
 {{/context}}
 
@@ -8,7 +8,10 @@
 {{#marked}}
 
 # Versioning
-Placeholder
+{{> partial-edit path="docs/versioning"}}
+Robot makes use of [semantic versioning](//semver.org) to dictate how version numbers are assigned and incremented. Doing so avoids version lock and version promiscuity, allowing the project to move forward as new features and bug fixes get implemented. Version numbers are assigned in the form `M.N.P` (Major.Minor.Patch). Bug fixes not affecting the public API increment the patch version, backwards compatible API changes and additions increment the minor version, and backwards incompatible API changes increment the major version.
+
+In short, always update to the latest **patch** version of Robot as updates get released. Consider updating to the latest **minor** version of Robot for new features. And always consult the changelog before updating to the latest **major** version of Robot. The changelog is available through the [releases](https://github.com/blog/1547-release-your-software) feature of the GitHub repository.
 
 {{/marked}}
 {{/string}}

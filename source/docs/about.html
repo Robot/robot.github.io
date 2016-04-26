@@ -1,6 +1,6 @@
 {{#context}}
 {
-	"title" : "About Robot", "docs" : "About"
+	"title": "About Robot", "docs": "About"
 }
 {{/context}}
 
@@ -8,7 +8,40 @@
 {{#marked}}
 
 # About
-Placeholder
+{{> partial-edit path="docs/about"}}
+Robot is a simple cross-platform library designed to facilitate the development of system automation software. The library works by abstracting away all platform-specific differences into a single, robust API compatible with most desktop operating systems. The API is available in both [C++](//github.com/robot/robot) and [Node](//github.com/robot/robot-js) flavors and supports Windows, Mac and some distributions of Linux. Robot is production-proven with no additional dependencies, it is powerful enough to be the primary tool for many professionals yet simple enough for learning and experimentation.
+
+## Features
+* **General**
+	* Support for 32 and 64-bit systems
+	* Vast and feature-rich helper library
+	* Access to native monotonic clocks
+	* Clipboard manipulation capabilities
+
+* **Input**
+	* Keyboard and mouse event synthesis
+	* Async key and mouse state retrieval
+
+* **Process**
+	* Enumerate and query
+		* System windows
+		* System processes
+		* Process modules
+		* Module segments
+	* Manipulate processes and windows
+	* Access to low-level system handles
+
+* **Memory**
+	* Enumerate and query memory regions
+	* Set memory region access attributes
+	* Manipulate the memory of a process
+	* Advanced memory caching algorithms
+	* General purpose signature scanning
+
+* **Screen**
+	* Enumerate and query system screens
+	* Screen and window image capturing
+	* Windows Aero manipulation capabilities
 
 {{/marked}}
 {{/string}}

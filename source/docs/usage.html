@@ -1,6 +1,6 @@
 {{#context}}
 {
-	"title" : "Using Robot", "docs" : "Usage"
+	"title": "Using Robot", "docs": "Usage"
 }
 {{/context}}
 
@@ -8,7 +8,96 @@
 {{#marked}}
 
 # Usage
-Placeholder
+{{> partial-edit path="docs/usage"}}
+Integrating Robot with your project is relatively fast and straightforward, simply follow the instructions below and you'll be up and running in no time. Please keep in mind, however, that although the instructions are limited to only a select few compilers, there is no reason you shouldn't be able to use other compilers as well, just ensure you have all the prerequisites installed. If you encounter any problems, and you think it might be a bug, please submit a [bug report](/docs/contributing.html#reporting-bugs) and we'll be more than happy to investigate.
+
+## Linux
+### Prerequisites
+* GNU g++ **4.9.2** or newer
+* GNU Make **3.81** or newer
+* X11 Toolkit Intrinsics
+* X11 Test Extensions
+* Xinerama Extensions
+
+```bash
+# Example for Ubuntu 12.04
+# Update system packages
+$ [sudo] apt-get update
+$ [sudo] apt-get upgrade -y
+
+# Install g++ and Make
+$ [sudo] apt-get install build-essential -y
+
+# If the installed version of g++ is
+# less than 4.9.2, do the following
+
+	# Add the toolchain-test-builds PPA and get compilers
+	$ [sudo] add-apt-repository ppa:ubuntu-toolchain-r/test
+	$ [sudo] apt-get update
+	$ [sudo] apt-get install gcc-[ver] g++-[ver] cpp-[ver] -y
+		# Replace the above [ver] with the desired version
+		# Versions include 4.9 and 5, we recommend using 5
+
+	# Replace older compilers
+	$ cd /usr/bin
+	$ [sudo] rm gcc g++ cpp
+	$ [sudo] ln -s gcc-[ver] gcc
+	$ [sudo] ln -s g++-[ver] g++
+	$ [sudo] ln -s cpp-[ver] cpp
+
+# Install required libraries
+$ [sudo] apt-get install libxt-dev libxtst-dev libxinerama-dev -y
+```
+
+### Compiling
+```bash
+# Download Robot and cd into it
+$ cd /path/to/robot/directory/
+
+# Display the make instructions
+# Use it as a compilation guide
+$ make
+
+# If compiling the testing framework
+# you may run it with the following
+$ [sudo] ./Binaries/Linux/Test.bin
+	# Run with "types timer" for fully
+	# automated testing, other tests
+	# require additional interaction
+```
+
+## Mac
+### Prerequisites
+* XCode with Command Line Tools
+* Expecting clang++ **5.1** or newer
+
+### Compiling
+```bash
+# Download Robot and cd into it
+$ cd /path/to/robot/directory/
+
+# Display the make instructions
+# Use it as a compilation guide
+$ make
+
+# If compiling the testing framework
+# you may run it with the following
+$ [sudo] ./Binaries/Mac/Test.bin
+	# Run with "types timer" for fully
+	# automated testing, other tests
+	# require additional interaction
+```
+
+## Windows
+### Prerequisites
+* MS [Visual Studio](//visualstudio.com) **2010** or newer
+* Relevant Windows SDK libraries
+
+### Compiling
+* Download Robot and open the directory
+* Open solution matching your VS version
+* Build the project
+* Run Test.exe if needed in `Binaries/Win*`
 
 {{/marked}}
 {{/string}}
