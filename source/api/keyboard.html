@@ -188,6 +188,9 @@ Checks the pressed state of all [keys](#key) system-wide, regardless of whether 
 {{> partial-fn name=Keyboard.AutoDelay}}
 Provides direct access to the automatic delay range in milliseconds.
 
+# The `System` Key
+The `System` key (and the `$` modifier) is platform specific. It corresponds to the **Command Key** on Mac, the **Windows Key** on Windows, and the **Super Key** on Linux.
+
 # Key
 Represents the keyboard keys supported by this class. These keys map to platform-dependent values. On Linux, keys map to the XK\_\* series of constants which get translated into key codes with XKeysymToKeycode. On Mac, keys map to the kVK\_\* series of constants, as defined by CGKeyCode. On Windows, keys map to the standard VK\_\* series of constants.
 
